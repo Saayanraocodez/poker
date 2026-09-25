@@ -1,0 +1,24 @@
+36 runs in 191s
+
+IDENTITY CHECK  du1/d(open top) == sum_j Delta_j over opponents
+   max |engine - decomposition| over 36 runs = 5.60e-05
+
+   n  N  N=n+1   du1/d(top)   Delta P2  Delta P3  Delta P4  Delta P5  Delta P6
+   3  4  YES      -0.00902    -0.01008   +0.00106
+   3  5  no       +0.00099    -0.01135   +0.01234
+   4  5  YES      -0.01022    +0.00068   +0.00126   -0.01217
+   4  6  no       +0.00120    -0.01489   +0.00931   +0.00677
+   5  6  YES      -0.00711    +0.00233   +0.00901   -0.00461   -0.01385
+   5  7  no       +0.00208    -0.00942   -0.00317   +0.01113   +0.00353
+
+   Delta_j > 0: betting extracts more from opponent j
+   Delta_j < 0: checking extracts more from j (slow-play works on j)
+
+   split by opponent role:
+   n  N  N=n+1   NEXT player (P2)   ALL LATER players   total
+   3  4  YES            -0.01008            +0.00106   -0.00902
+   3  5  no             -0.01135            +0.01234   +0.00099
+   4  5  YES            +0.00068            -0.01090   -0.01022
+   4  6  no             -0.01489            +0.01608   +0.00119
+   5  6  YES            +0.00233            -0.00944   -0.00712
+   5  7  no             -0.00942            +0.01149   +0.00207

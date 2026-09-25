@@ -1,0 +1,18 @@
+variables (18): a11 a21 a31 a41 b11 b21 b22 b31 b32 b34 c11 c21 c22 c23 c31 c32 c33 c34
+   du1/da11  >= 0   (7 monomials)
+   du2/db32  <= 0   (3 monomials)
+   du2/db22  <= 0   (4 monomials)
+   du3/dc23  <= 0   (5 monomials)
+   du3/dc33  <= 0   (5 monomials)
+   du1/da41  >= 0   (27 monomials)
+
+verification vs bgrad.grads_own: max error 1.67e-16  OK
+
+=== CONTROL: same search WITHOUT du1/da41 >= 0 (must find a survivor) ===
+   survivor found after 541 nodes -- the B&B does not kill spuriously
+   e.g. a11=0.000, a21=0.000, a31=0.000, a41=0.000, b11=0.000, b21=0.000, b22=0.000, b31=0.000, b32=0.000, b34=0.000, c11=0.000, c21=0.000, c22=0.000, c23=0.000, c31=0.000, c32=0.000, c33=0.000, c34=0.000
+
+=== THEOREM: all six conditions jointly infeasible? ===
+
+NOT PROVED: a surviving point after 541 nodes:
+   a11=0.000000, a21=0.000000, a31=0.000000, a41=0.000000, b11=0.000000, b21=0.000000, b22=0.000000, b31=0.000000, b32=0.000000, b34=0.000000, c11=0.000000, c21=0.000000, c22=0.000000, c23=0.000000, c31=0.000000, c32=0.000000, c33=0.000000, c34=0.000000

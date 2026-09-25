@@ -1,0 +1,65 @@
+==============================================================================
+THE GRID POINT
+==============================================================================
+  sub-family A (c11 = 0),  b11 = b21 = 0  =>  beta = 0
+     a11=0       a12=0       a13=0       a14=0     
+     a21=0       a22=0       a23=0       a24=0     
+     a31=0       a32=0       a33=1/2     a34=0     
+     a41=0       a42=1       a43=1       a44=1     
+
+     b11=0       b12=0       b13=0       b14=0     
+     b21=0       b22=0       b23=0       b24=0     
+     b31=0       b32=0       b33=1/2     b34=0     
+     b41=0       b42=1       b43=1       b44=1     
+
+     c11=0       c12=0       c13=0       c14=0     
+     c21=1/2     c22=0       c23=0       c24=0     
+     c31=0       c32=0       c33=1/2     c34=0     
+     c41=1       c42=1       c43=1       c44=1     
+
+  u = (-1/48, -1/48, 1/24)  =  (-0.020833, -0.020833, 0.041667)
+  Table 3 predicts u = (-k(1/2+0), -k/2, k(1+0)) = (-1/48, -1/48, 1/24)
+
+  In words: P1 never bets and never calls except with the 4 (and calls
+  half the time with the 3 when P2 bet and P3 folded).  P2 never bets.
+  P3 bets the 4 always and the 2 half the time after two checks;
+  everyone else checks.  Nobody ever faces a bet from P1 or P2, so
+  b32, c33, c34 are never reached.
+
+==============================================================================
+DIRECTIONAL DERIVATIVE OF THE b31 DEVIATION, DEAL BY DEAL
+==============================================================================
+  d u_i / d b31 = (1/24) * SUM over the 6 deals with P2 holding the 3
+                  of  [ payoff if P2 BETS  -  payoff if P2 CHECKS ]
+
+   deal          P2 BETS                P2 CHECKS              difference
+  (P1,P2,P3)   (u1, u2, u3)           (u1, u2, u3)           (du1,du2,du3)
+  --------------------------------------------------------------------------
+  (1, 3, 2)  (   -1,    2,   -1)   (   -1,  3/2, -1/2)   (    0,  1/2, -1/2)
+  (1, 3, 4)  (   -1,   -2,    3)   (   -1, -3/2,  5/2)   (    0, -1/2,  1/2)
+  (2, 3, 1)  (   -1,    2,   -1)   (   -1,    2,   -1)   (    0,    0,    0)
+  (2, 3, 4)  (   -1,   -2,    3)   (   -1, -3/2,  5/2)   (    0, -1/2,  1/2)
+  (4, 3, 1)  (    3,   -2,   -1)   (    2,   -1,   -1)   (    1,   -1,    0)
+  (4, 3, 2)  (    3,   -2,   -1)   (  5/2,   -1, -3/2)   (  1/2,   -1,  1/2)
+  --------------------------------------------------------------------------
+  SUM                                                        (  3/2, -5/2,    1)
+
+  d u / d b31 = (1/24) * (3/2, -5/2, 1) = (1/16, -5/48, 1/24)
+              = (+0.062500, -0.104167, +0.041667)
+
+  engine, central finite difference (h=1e-5): (+0.06250000, -0.10416667, +0.04166667)
+  engine, exact multilinear derivative      : (+0.06250000, -0.10416667, +0.04166667)
+  hand calculation                          : (+0.06250000, -0.10416667, +0.04166667)
+  max discrepancy: 2.702e-12
+
+  zero-sum check:  du1 + du2 + du3 = 1/16 + -5/48 + 1/24 = 0
+
+  A = P2  =>  B = P3, C = P1   (cyclic convention)
+  rho = -(du_C/de)/(du_A/de) = -(du_1)/(du_2) = -(1/16)/(-5/48) = 3/5 = 0.6000
+  complementary share  rho_{P2->P3} = -(du_3)/(du_2) = 2/5 = 0.4000
+  the two shares sum to 1, as they must (zero sum).
+
+  P2 pays 2.5/24 chips per unit of eps; 1.5/24 (60%) of that lands on
+  P1 and 1.0/24 (40%) on P3.  The denominator is strictly negative, so
+  rho is well defined HERE -- and it stays exactly 3/5 over the whole
+  family (see the sweep).

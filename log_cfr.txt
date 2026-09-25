@@ -1,0 +1,84 @@
+==============================================================================
+STEP 0.  EXPLOITABILITY FIRST (150 seeds x 1000000 iters, 654s)
+==============================================================================
+   max_i (BR_i - u_i) per seed:
+      min 0.000467   median 0.001503   mean 0.001703   max 0.005465
+       50% of seeds below 0.001503
+       75% of seeds below 0.002071
+       90% of seeds below 0.002941
+      100% of seeds below 0.005465
+   per player (mean): P1 0.000827  P2 0.001077  P3 0.001428
+   kappa = 0.041667, so median exploitability is 3.6% of kappa
+
+==============================================================================
+STEP 1.  IS THE OUTPUT IN THE FAMILY?
+==============================================================================
+   Table 2/3 parameters that should be pinned (mean +- sd over seeds):
+      a11  want 0.00   got 0.0018 +- 0.0021   max dev 0.0082
+      a21  want 0.00   got 0.0032 +- 0.0028   max dev 0.0108
+      a31  want 0.00   got 0.0001 +- 0.0001   max dev 0.0004
+      a41  want 0.00   got 0.0109 +- 0.0076   max dev 0.0312
+      a33  want 0.50   got 0.5054 +- 0.0095   max dev 0.0429
+      b22  want 0.00   got 0.0002 +- 0.0008   max dev 0.0070
+      b31  want 0.00   got 0.0001 +- 0.0001   max dev 0.0003
+      b34  want 0.00   got 0.0002 +- 0.0003   max dev 0.0017
+      c22  want 0.00   got 0.0001 +- 0.0002   max dev 0.0016
+      c23  want 0.00   got 0.0076 +- 0.0240   max dev 0.1436
+      c31  want 0.00   got 0.0000 +- 0.0000   max dev 0.0002
+      c32  want 0.00   got 0.0048 +- 0.0058   max dev 0.0382
+      c41  want 1.00   got 1.0000 +- 0.0000   max dev 0.0000
+
+   Table 3 dependent relations (should hold identically):
+      b41 vs 2(b11+b21):  mean |dev| 0.0075  max 0.0415
+      c21 vs 1/2 - c11 :  mean |dev| 0.0066  max 0.0309
+      b33 vs Table 3    :  mean |dev| 0.0381  max 0.1987
+
+   Table 3 inequality constraints:
+      b11 <= 1/4: 150/150    b21 <= 1/4: 149/150    b11 <= b21: 97/150
+      c33 inside its Table 3 window (+-0.02): 150/150
+
+==============================================================================
+STEP 2-3.  DISTRIBUTION AND CONCENTRATION
+==============================================================================
+   param    mean      sd        min       25%%       50%%       75%%       max
+   b11       0.0917    0.0724    0.0000    0.0185    0.0879    0.1402    0.2693
+   b21       0.1298    0.0714    0.0048    0.0675    0.1377    0.1858    0.2734
+   b23       0.0014    0.0069    0.0000    0.0000    0.0000    0.0000    0.0690
+   b32       0.1151    0.1356    0.0001    0.0159    0.0724    0.1607    0.5596
+   c11       0.1995    0.1773    0.0024    0.0264    0.1409    0.3809    0.5042
+   c33       0.4847    0.1494    0.0002    0.4337    0.5135    0.5778    0.7296
+   c34       0.0251    0.1359    0.0000    0.0000    0.0002    0.0022    1.0000
+   beta      0.1687    0.0499    0.0545    0.1333    0.1725    0.2044    0.2734
+
+   beta concentration: sd 0.0499 over a valid range of [0, 0.25]
+   beta at the extremes: 0 seeds < 0.02, 15 seeds > 0.23
+
+==============================================================================
+STEP 4.  WHERE IN THE WINDOW DOES c33 LAND?
+==============================================================================
+   position of c33 in [lo, hi], as a fraction (0 = lower pole,
+   1 = upper pole, 1/3 = the properness point lo + w/3):
+      n=150 usable seeds   mean 0.4845   sd 0.2739   median 0.4643
+      near lower pole  (<0.10)        16 / 150
+      properness band  (0.23-0.43)    39 / 150
+      middle           (0.43-0.90)    71 / 150
+      near upper pole  (>0.90)         7 / 150
+   distance to each hypothesis (mean |frac - x|):
+      lower pole 0       0.4847
+      properness 1/3     0.2564
+      midpoint 1/2       0.2408
+      upper pole 1       0.5155
+
+==============================================================================
+STEP 5.  DOES IT LAND ON THE REFINED FACE (b32 = 0, c34 = 0)?
+==============================================================================
+   b32 : mean 0.1151  median 0.0724  frac < 0.02: 41/150  frac < 0.05: 68/150
+   c34 : mean 0.0251  median 0.0002  frac < 0.02: 139/150  frac < 0.05: 145/150
+
+   reach of the off-path sets in the CFR output (median over seeds):
+      b32  1.361e-03
+      c33  1.152e-03
+      c34  1.986e-04
+      c44  9.465e-06
+
+[cfr_sweep.json written]

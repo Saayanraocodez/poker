@@ -1,0 +1,33 @@
+=== 1. CENSUS: off-path content of the certified equilibria ===
+certified_eq_all.npy   n=   744  off Table 2:      0 (  0.0%)  ESSENTIAL (T2 projection not Nash):     0
+                                b22>0:    687  c23>0:    727   ESSENTIAL (T2+T3 projection not Nash):     0
+                                leaf-distribution gap to family, first 744: max 1.3e-13
+lmdeep_x_und.npy       n=   881  off Table 2:      0 (  0.0%)  ESSENTIAL (T2 projection not Nash):     7
+                                b22>0:      3  c23>0:      3   ESSENTIAL (T2+T3 projection not Nash):     5
+                                leaf-distribution gap to family, first 881: max 2.3e-06
+hunt_eq_bet2.npy       n= 23820  off Table 2:  22389 ( 94.0%)  ESSENTIAL (T2 projection not Nash):   169
+                                b22>0:   4302  c23>0:   2062   ESSENTIAL (T2+T3 projection not Nash):   169
+                                leaf-distribution gap to family, first 2000: max 3.5e-12
+
+=== 2. EXACT WITNESS ===
+on path: sub-family C corner b11 = 1/4, b21 = b23 = 0, c11 = 1/2 ; off path: b32 = 23/100, c33 = 1/4, c34 = 9/10
+off-path coordinates outside Table 2 / Table 3:
+   b12 = 9/100   (Table 2: 0)   reach 0.0e+00
+   b22 = 1/40   (Table 3: 0)   reach 0.0e+00
+   c23 = 1/25   (Table 3: 0)   reach 0.0e+00
+   and b32 + c33 = 12/25 < 1/2, i.e. c33 is BELOW Table 3's window [1/2 - b32, 3/4 - b32]
+utilities        u = (-1/32, -1/48, 5/96)   = the family's (-k(1/2+beta), -k/2, k(1+beta)) at beta = 1/4
+exploitability   at q            : (0, 0, 0)   <- exactly zero: q IS a Nash equilibrium
+exploitability   at q, b12 := 0  : (1/300, 0, 0)   <- P1 gains 1/300 = 0.00333
+exploitability   at Table-3 pins : (1/150, 0, 0)   <- P1 gains 0.00667
+leaf-distribution gap of q to the family: 0.0e+00   (on path, q IS the family)
+
+=== 3. MECHANISM ===
+P1's exact best response once b12 = 0 (per card: bet-at-root, then situations 2,3,4):
+   card 1: (0, 0, 0, 0)
+   card 2: (1, 0, 0, 0)
+   card 3: (0, 0, 0, 0)
+   card 4: (0, 1, 1, 0)
+=> P1 wants to BET card(s) [2].  With b12 > 0, P2 calls that bet holding card 1, which puts P3 in situation 4 (facing bet + call); the bet then loses enough to P3's calls to be unprofitable.
+
+written offpath_witness.npy / offpath_witness.txt

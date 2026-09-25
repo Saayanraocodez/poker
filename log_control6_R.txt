@@ -1,0 +1,16 @@
+1. CONVEXITY    worst violation of U<=chord / L>=chord: 3.33e-16   OK
+3. DEPENDENCIES symbolic deps contained in tree deps for 48 of 48 conditions   OK
+   slice certified 744      width 0.001 : killed 0  escaped 0  of 744
+   slice certified 744      width 1.000 : killed 0  escaped 0  of 744
+   hunt on-slice 200        width 0.001 : killed 0  escaped 0  of 200
+   hunt on-slice 200        width 1.000 : killed 0  escaped 0  of 200
+   hunt OFF-slice 400       width 0.001 : killed 0  escaped 0  of 400
+   hunt OFF-slice 400       width 1.000 : killed 0  escaped 0  of 400
+   exact off-path witness   width 0.001 : killed 0  escaped 0  of 1
+   exact off-path witness   width 1.000 : killed 0  escaped 0  of 1
+2. SOUNDNESS    OK -- no certified equilibrium (on or off the slice) killed or excluded
+4a. whole cube   verdict None after 20151 nodes (1977s)   OK
+4b. box around off-path witness   verdict None after 20137 nodes (1013s)   OK
+4c. P1-opening label branches dead at the root (a_j1 in {0, 1, >=1/2}): 6 of 81   (bnb5 with weak rules: 34 of 81 for {0,1,interior})
+
+ALL CONTROLS PASSED

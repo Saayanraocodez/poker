@@ -1,0 +1,785 @@
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:0,a21:MIX,a31:0,a41:1 18 b_0_M_0_1NR 4
+mode nash (strong rules only)   layer depth 4
+a11:0,a21:MIX,a31:0,a41:1: top expansion -> 4539 subtrees, 131 complete, 3185s
+a11:0,a21:MIX,a31:0,a41:1: exact frontier filter -> 695 subtrees survive (3345s)
+   jobs 446 done (216 queued, 33 running, 0 handed back)  exact tests 0  killed 0 (0.0%)  leaves 1542  3405s
+   jobs 695 done (0 queued, 0 running, 0 handed back)  exact tests 0  killed 0 (0.0%)  leaves 2033  3428s
+a11:0,a21:MIX,a31:0,a41:1: 2033 leaves, 0 exact tests (0 killed), 3428s  -> enum6_pat_b_0_M_0_1NR.npy
+   leaf 875  TIMEOUT  {'timeout': 600.0}
+   leaf 1856  TIMEOUT  {'timeout': 600.0}
+   leaf 1881  TIMEOUT  {'timeout': 600.0}
+   leaf 1893  TIMEOUT  {'timeout': 600.0}
+   leaf 1979  TIMEOUT  {'timeout': 600.0}
+   leaf 1981  TIMEOUT  {'timeout': 600.0}
+   leaf 1997  TIMEOUT  {'timeout': 600.0}
+   leaf 2001  TIMEOUT  {'timeout': 600.0}
+   leaf 2016  TIMEOUT  {'timeout': 600.0}
+a11:0,a21:MIX,a31:0,a41:1: leaf verdicts {'EMPTY_BOX': 2024, 'TIMEOUT': 9}   4235s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_0_M_0_1NR 18 - 0 300
+tag b_0_M_0_1NR  leaves 2033  workers 18  maxnodes 300  timeout 180s
+   resumed: 2024 leaves already decided, 9 to go
+   leaf 875  TIMEOUT  {'timeout': 180.0}
+   leaf 1856  TIMEOUT  {'timeout': 180.0}
+   leaf 1881  TIMEOUT  {'timeout': 180.0}
+   leaf 1893  TIMEOUT  {'timeout': 180.0}
+   leaf 1979  TIMEOUT  {'timeout': 180.0}
+   leaf 1981  TIMEOUT  {'timeout': 180.0}
+   leaf 1997  TIMEOUT  {'timeout': 180.0}
+   leaf 2001  TIMEOUT  {'timeout': 180.0}
+   leaf 2016  TIMEOUT  {'timeout': 180.0}
+   9/9  EMPTY_BOX 2024  TIMEOUT 9  181s
+   second pass on 9 OPEN/TIMEOUT leaves at 3000 nodes
+   leaf 875  TIMEOUT  {'timeout': 540.0}
+   leaf 1856  TIMEOUT  {'timeout': 540.0}
+   leaf 1881  TIMEOUT  {'timeout': 540.0}
+   leaf 1893  TIMEOUT  {'timeout': 540.0}
+   leaf 1979  TIMEOUT  {'timeout': 540.0}
+   leaf 1981  TIMEOUT  {'timeout': 540.0}
+   leaf 1997  TIMEOUT  {'timeout': 540.0}
+   leaf 2001  TIMEOUT  {'timeout': 540.0}
+   leaf 2016  TIMEOUT  {'timeout': 540.0}
+
+TOTAL 9 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 2024  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 9  FAMILY_WIDE 0   724s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u screen6.py b_0_M_0_1NR 18 8
+undecided leaves 9  starts/leaf 8  workers 18
+  1/1  scanned 9  LM-feasible 0  certified 0  best residual 2.01e-02  1s
+
+TOTAL scanned 9   LM-feasible 0   CERTIFIED Nash 0   best residual 2.015e-02   1s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:0,a21:MIX,a31:1,a41:1 18 b_0_M_1_1NR 4
+mode nash (strong rules only)   layer depth 4
+a11:0,a21:MIX,a31:1,a41:1: top expansion -> 0 subtrees, 5360 complete, 510s
+a11:0,a21:MIX,a31:1,a41:1: exact frontier filter -> 0 subtrees survive (510s)
+a11:0,a21:MIX,a31:1,a41:1: 5360 leaves, 0 exact tests (0 killed), 511s  -> enum6_pat_b_0_M_1_1NR.npy
+a11:0,a21:MIX,a31:1,a41:1: leaf verdicts {'EMPTY_BOX': 5360}   871s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_0_M_1_1NR 18 - 0 300
+tag b_0_M_1_1NR  leaves 5360  workers 18  maxnodes 300  timeout 180s
+   resumed: 5360 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 5360  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:0,a21:MIX,a31:MIX,a41:1 18 b_0_M_M_1NR 4
+mode nash (strong rules only)   layer depth 4
+a11:0,a21:MIX,a31:MIX,a41:1: top expansion -> 4193 subtrees, 0 complete, 360s
+a11:0,a21:MIX,a31:MIX,a41:1: exact frontier filter -> 2 subtrees survive (395s)
+   jobs 1 done (0 queued, 1 running, 0 handed back)  exact tests 282  killed 225 (79.8%)  leaves 45  502s
+   jobs 283 done (0 queued, 0 running, 281 handed back)  exact tests 1069  killed 669 (62.6%)  leaves 581  542s
+a11:0,a21:MIX,a31:MIX,a41:1: 581 leaves, 1069 exact tests (669 killed), 542s  -> enum6_pat_b_0_M_M_1NR.npy
+   leaf 91  OPEN  {'nE': 19, 'nMIX': 19, 'nDC': 4, 'nodes': 302, 'why': 'a21:MIX,a22:MIX,a31:MIX,a32:MIX,a34:MIX,a41:1,b31:MIX,b34:MIX,c22:MIX,c31:MIX,c32:MIX'}
+   leaf 141  OPEN  {'nE': 20, 'nMIX': 20, 'nDC': 4, 'nodes': 302, 'why': 'a21:MIX,a22:MIX,a23:MIX,a31:MIX,a32:MIX,a34:MIX,a41:1,b31:MIX,b34:MIX,c22:MIX,c31:MIX,c32:MIX'}
+a11:0,a21:MIX,a31:MIX,a41:1: leaf verdicts {'EMPTY_BOX': 579, 'OPEN': 2}   623s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_0_M_M_1NR 18 - 0 300
+tag b_0_M_M_1NR  leaves 581  workers 18  maxnodes 300  timeout 180s
+   resumed: 579 leaves already decided, 2 to go
+   leaf 91  OPEN  {'nE': 19, 'nMIX': 19, 'nDC': 4, 'nodes': 302, 'why': 'a21:MIX,a22:MIX,a31:MIX,a32:MIX,a34:MIX,a41:1,b31:MIX,b34:MIX,c22:MIX,c31:MIX,c32:MIX', 'box': 'a21[0.5,0.5] a22[0.5,1.0] a31[0.5,1.0] a32[0.0,0.5] a33[0.0,0.5] a34[0.0,0.5] b11[0.0,0.875] b21[0.0,0.875] b23[0.5,1.0] b41[0.5,1.0] c33[0.5,1.0] a43[0.5,1.0] c44[0.7999999999999972,1.0]'}
+   leaf 141  OPEN  {'nE': 20, 'nMIX': 20, 'nDC': 4, 'nodes': 302, 'why': 'a21:MIX,a22:MIX,a23:MIX,a31:MIX,a32:MIX,a34:MIX,a41:1,b31:MIX,b34:MIX,c22:MIX,c31:MIX,c32:MIX', 'box': 'a21[0.5,0.5] a31[0.0,0.5] a32[0.5,1.0] a34[0.5,1.0] b11[0.0,0.875] b21[0.0,0.875] b41[0.5,1.0] c33[0.5,1.0] c44[0.7999999999999972,1.0]'}
+   2/2  EMPTY_BOX 579  OPEN 2  17s
+   second pass on 2 OPEN/TIMEOUT leaves at 3000 nodes
+
+TOTAL 2 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 581  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   43s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:0,a31:0,a41:1 18 b_M_0_0_1NR 4
+mode nash (strong rules only)   layer depth 4
+a11:MIX,a21:0,a31:0,a41:1: top expansion -> 4409 subtrees, 0 complete, 506s
+a11:MIX,a21:0,a31:0,a41:1: exact frontier filter -> 209 subtrees survive (747s)
+   jobs 150 done (25 queued, 34 running, 0 handed back)  exact tests 654  killed 627 (95.9%)  leaves 16  808s
+   jobs 206 done (0 queued, 3 running, 0 handed back)  exact tests 1592  killed 1459 (91.6%)  leaves 200  870s
+   jobs 209 done (0 queued, 0 running, 0 handed back)  exact tests 1838  killed 1683 (91.6%)  leaves 248  1216s
+a11:MIX,a21:0,a31:0,a41:1: 248 leaves, 1838 exact tests (1683 killed), 1216s  -> enum6_pat_b_M_0_0_1NR.npy
+a11:MIX,a21:0,a31:0,a41:1: leaf verdicts {'EMPTY_BOX': 248}   1233s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_M_0_0_1NR 18 - 0 300
+tag b_M_0_0_1NR  leaves 248  workers 18  maxnodes 300  timeout 180s
+   resumed: 248 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 248  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:0,a31:MIX,a41:1 18 b_M_0_M_1NR 4
+mode nash (strong rules only)   layer depth 4
+a11:MIX,a21:0,a31:MIX,a41:1: top expansion -> 3874 subtrees, 0 complete, 367s
+a11:MIX,a21:0,a31:MIX,a41:1: exact frontier filter -> 3 subtrees survive (409s)
+   jobs 3 done (0 queued, 0 running, 0 handed back)  exact tests 381  killed 300 (78.7%)  leaves 81  535s
+a11:MIX,a21:0,a31:MIX,a41:1: 81 leaves, 381 exact tests (300 killed), 535s  -> enum6_pat_b_M_0_M_1NR.npy
+a11:MIX,a21:0,a31:MIX,a41:1: leaf verdicts {'EMPTY_BOX': 81}   544s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_M_0_M_1NR 18 - 0 300
+tag b_M_0_M_1NR  leaves 81  workers 18  maxnodes 300  timeout 180s
+   resumed: 81 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 81  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:MIX,a31:0,a41:1 18 b_M_M_0_1NR 4
+mode nash (strong rules only)   layer depth 4
+a11:MIX,a21:MIX,a31:0,a41:1: top expansion -> 3960 subtrees, 0 complete, 344s
+a11:MIX,a21:MIX,a31:0,a41:1: exact frontier filter -> 30 subtrees survive (380s)
+   jobs 24 done (0 queued, 6 running, 0 handed back)  exact tests 584  killed 543 (93.0%)  leaves 33  471s
+   jobs 25 done (12 queued, 5 running, 12 handed back)  exact tests 1020  killed 935 (91.7%)  leaves 45  548s
+   jobs 73 done (8 queued, 35 running, 86 handed back)  exact tests 2190  killed 1943 (88.7%)  leaves 220  608s
+   jobs 113 done (71 queued, 3 running, 157 handed back)  exact tests 3458  killed 3031 (87.7%)  leaves 410  719s
+   jobs 185 done (0 queued, 2 running, 157 handed back)  exact tests 4511  killed 3987 (88.4%)  leaves 613  830s
+   jobs 186 done (0 queued, 1 running, 157 handed back)  exact tests 4818  killed 4283 (88.9%)  leaves 613  965s
+   jobs 187 done (0 queued, 0 running, 157 handed back)  exact tests 5165  killed 4619 (89.4%)  leaves 613  973s
+a11:MIX,a21:MIX,a31:0,a41:1: 613 leaves, 5165 exact tests (4619 killed), 973s  -> enum6_pat_b_M_M_0_1NR.npy
+a11:MIX,a21:MIX,a31:0,a41:1: leaf verdicts {'EMPTY_BOX': 613}   1024s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_M_M_0_1NR 18 - 0 300
+tag b_M_M_0_1NR  leaves 613  workers 18  maxnodes 300  timeout 180s
+   resumed: 613 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 613  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:0,a31:1,a41:1 18 b_M_0_1_1NR 4
+mode nash (strong rules only)   layer depth 4
+a11:MIX,a21:0,a31:1,a41:1: top expansion -> 0 subtrees, 5191 complete, 412s
+a11:MIX,a21:0,a31:1,a41:1: exact frontier filter -> 0 subtrees survive (412s)
+a11:MIX,a21:0,a31:1,a41:1: 5191 leaves, 0 exact tests (0 killed), 412s  -> enum6_pat_b_M_0_1_1NR.npy
+a11:MIX,a21:0,a31:1,a41:1: leaf verdicts {'EMPTY_BOX': 5191}   689s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_M_0_1_1NR 18 - 0 300
+tag b_M_0_1_1NR  leaves 5191  workers 18  maxnodes 300  timeout 180s
+   resumed: 5191 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 5191  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:0,a21:0,a31:1,a41:0 18 b_0_0_1_0NR 4
+mode nash (strong rules only)   layer depth 4
+a11:0,a21:0,a31:1,a41:0: top expansion -> 0 subtrees, 886 complete, 136s
+a11:0,a21:0,a31:1,a41:0: exact frontier filter -> 0 subtrees survive (136s)
+a11:0,a21:0,a31:1,a41:0: 886 leaves, 0 exact tests (0 killed), 136s  -> enum6_pat_b_0_0_1_0NR.npy
+a11:0,a21:0,a31:1,a41:0: leaf verdicts {'EMPTY_BOX': 886}   164s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_0_0_1_0NR 18 - 0 300
+tag b_0_0_1_0NR  leaves 886  workers 18  maxnodes 300  timeout 180s
+   resumed: 886 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 886  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:0,a31:1,a41:MIX 18 b_M_0_1_MNR 4
+mode nash (strong rules only)   layer depth 4
+a11:MIX,a21:0,a31:1,a41:MIX: top expansion -> 5497 subtrees, 0 complete, 468s
+a11:MIX,a21:0,a31:1,a41:MIX: exact frontier filter -> 3 subtrees survive (531s)
+   jobs 3 done (0 queued, 0 running, 0 handed back)  exact tests 26  killed 26 (100.0%)  leaves 0  541s
+a11:MIX,a21:0,a31:1,a41:MIX: 0 leaves, 26 exact tests (26 killed), 542s  -> enum6_pat_b_M_0_1_MNR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:MIX,a31:1,a41:1 18 b_M_M_1_1NR 4
+mode nash (strong rules only)   layer depth 4
+a11:MIX,a21:MIX,a31:1,a41:1: top expansion -> 4219 subtrees, 0 complete, 368s
+a11:MIX,a21:MIX,a31:1,a41:1: exact frontier filter -> 3 subtrees survive (393s)
+   jobs 3 done (0 queued, 0 running, 0 handed back)  exact tests 52  killed 52 (100.0%)  leaves 0  404s
+a11:MIX,a21:MIX,a31:1,a41:1: 0 leaves, 52 exact tests (52 killed), 404s  -> enum6_pat_b_M_M_1_1NR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:0,a21:0,a31:1,a41:MIX 18 b_0_0_1_MNR 4
+mode nash (strong rules only)   layer depth 4
+a11:0,a21:0,a31:1,a41:MIX: top expansion -> 0 subtrees, 2066 complete, 599s
+a11:0,a21:0,a31:1,a41:MIX: exact frontier filter -> 0 subtrees survive (599s)
+a11:0,a21:0,a31:1,a41:MIX: 2066 leaves, 0 exact tests (0 killed), 600s  -> enum6_pat_b_0_0_1_MNR.npy
+a11:0,a21:0,a31:1,a41:MIX: leaf verdicts {'EMPTY_BOX': 2066}   670s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_0_0_1_MNR 18 - 0 300
+tag b_0_0_1_MNR  leaves 2066  workers 18  maxnodes 300  timeout 180s
+   resumed: 2066 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 2066  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:MIX,a31:1,a41:MIX 18 b_M_M_1_MNR 4
+mode nash (strong rules only)   layer depth 4
+a11:MIX,a21:MIX,a31:1,a41:MIX: top expansion -> 6769 subtrees, 0 complete, 516s
+a11:MIX,a21:MIX,a31:1,a41:MIX: exact frontier filter -> 3 subtrees survive (587s)
+   jobs 3 done (0 queued, 0 running, 0 handed back)  exact tests 44  killed 44 (100.0%)  leaves 0  601s
+a11:MIX,a21:MIX,a31:1,a41:MIX: 0 leaves, 44 exact tests (44 killed), 601s  -> enum6_pat_b_M_M_1_MNR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:0,a21:MIX,a31:1,a41:MIX 18 b_0_M_1_MNR 4
+mode nash (strong rules only)   layer depth 4
+a11:0,a21:MIX,a31:1,a41:MIX: top expansion -> 5113 subtrees, 0 complete, 327s
+a11:0,a21:MIX,a31:1,a41:MIX: exact frontier filter -> 3 subtrees survive (393s)
+   jobs 3 done (0 queued, 0 running, 0 handed back)  exact tests 36  killed 36 (100.0%)  leaves 0  405s
+a11:0,a21:MIX,a31:1,a41:MIX: 0 leaves, 36 exact tests (36 killed), 405s  -> enum6_pat_b_0_M_1_MNR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:0,a21:MIX,a31:1,a41:0 18 b_0_M_1_0NR 4
+mode nash (strong rules only)   layer depth 4
+a11:0,a21:MIX,a31:1,a41:0: top expansion -> 4996 subtrees, 0 complete, 367s
+a11:0,a21:MIX,a31:1,a41:0: exact frontier filter -> 0 subtrees survive (380s)
+a11:0,a21:MIX,a31:1,a41:0: 0 leaves, 0 exact tests (0 killed), 381s  -> enum6_pat_b_0_M_1_0NR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:0,a31:1,a41:0 18 b_M_0_1_0NR 4
+mode nash (strong rules only)   layer depth 4
+a11:MIX,a21:0,a31:1,a41:0: top expansion -> 5256 subtrees, 0 complete, 329s
+a11:MIX,a21:0,a31:1,a41:0: exact frontier filter -> 0 subtrees survive (339s)
+a11:MIX,a21:0,a31:1,a41:0: 0 leaves, 0 exact tests (0 killed), 339s  -> enum6_pat_b_M_0_1_0NR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:MIX,a31:1,a41:0 18 b_M_M_1_0NR 4
+mode nash (strong rules only)   layer depth 4
+a11:MIX,a21:MIX,a31:1,a41:0: top expansion -> 4956 subtrees, 0 complete, 324s
+a11:MIX,a21:MIX,a31:1,a41:0: exact frontier filter -> 0 subtrees survive (345s)
+a11:MIX,a21:MIX,a31:1,a41:0: 0 leaves, 0 exact tests (0 killed), 345s  -> enum6_pat_b_M_M_1_0NR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:MIX,a31:MIX,a41:1 18 b_M_M_M_1NR 4
+mode nash (strong rules only)   layer depth 4
+a11:MIX,a21:MIX,a31:MIX,a41:1: top expansion -> 5266 subtrees, 0 complete, 435s
+a11:MIX,a21:MIX,a31:MIX,a41:1: exact frontier filter -> 3 subtrees survive (500s)
+   jobs 3 done (109 queued, 0 running, 109 handed back)  exact tests 688  killed 561 (81.5%)  leaves 11  710s
+   jobs 112 done (0 queued, 0 running, 109 handed back)  exact tests 1180  killed 978 (82.9%)  leaves 193  739s
+a11:MIX,a21:MIX,a31:MIX,a41:1: 193 leaves, 1180 exact tests (978 killed), 739s  -> enum6_pat_b_M_M_M_1NR.npy
+a11:MIX,a21:MIX,a31:MIX,a41:1: leaf verdicts {'EMPTY_BOX': 193}   763s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_M_M_M_1NR 18 - 0 300
+tag b_M_M_M_1NR  leaves 193  workers 18  maxnodes 300  timeout 180s
+   resumed: 193 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 193  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:0,a21:MIX,a31:0,a41:0 18 b_0_M_0_0NR 4
+mode nash (strong rules only)   layer depth 4
+a11:0,a21:MIX,a31:0,a41:0: top expansion -> 5025 subtrees, 0 complete, 320s
+a11:0,a21:MIX,a31:0,a41:0: exact frontier filter -> 0 subtrees survive (336s)
+a11:0,a21:MIX,a31:0,a41:0: 0 leaves, 0 exact tests (0 killed), 337s  -> enum6_pat_b_0_M_0_0NR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:0,a21:0,a31:0,a41:MIX 18 b_0_0_0_MNR 4
+mode nash (strong rules only)   layer depth 4
+a11:0,a21:0,a31:0,a41:MIX: top expansion -> 6264 subtrees, 0 complete, 161s
+a11:0,a21:0,a31:0,a41:MIX: exact frontier filter -> 0 subtrees survive (180s)
+a11:0,a21:0,a31:0,a41:MIX: 0 leaves, 0 exact tests (0 killed), 181s  -> enum6_pat_b_0_0_0_MNR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:0,a21:0,a31:MIX,a41:0 18 b_0_0_M_0NR 4
+mode nash (strong rules only)   layer depth 4
+a11:0,a21:0,a31:MIX,a41:0: top expansion -> 5546 subtrees, 0 complete, 336s
+a11:0,a21:0,a31:MIX,a41:0: exact frontier filter -> 191 subtrees survive (904s)
+   jobs 45 done (111 queued, 35 running, 0 handed back)  exact tests 453  killed 429 (94.7%)  leaves 13  972s
+   jobs 83 done (73 queued, 35 running, 0 handed back)  exact tests 839  killed 790 (94.2%)  leaves 13  1041s
+   jobs 106 done (50 queued, 35 running, 0 handed back)  exact tests 1465  killed 1294 (88.3%)  leaves 105  1101s
+   jobs 140 done (16 queued, 35 running, 0 handed back)  exact tests 2668  killed 2342 (87.8%)  leaves 234  1180s
+   jobs 166 done (0 queued, 25 running, 0 handed back)  exact tests 3325  killed 2933 (88.2%)  leaves 239  1240s
+   jobs 202 done (336 queued, 35 running, 382 handed back)  exact tests 4428  killed 3532 (79.8%)  leaves 475  1301s
+   jobs 479 done (519 queued, 34 running, 841 handed back)  exact tests 5204  killed 3750 (72.1%)  leaves 1463  1361s
+   jobs 612 done (385 queued, 35 running, 841 handed back)  exact tests 5718  killed 4057 (71.0%)  leaves 2179  1421s
+   jobs 805 done (481 queued, 35 running, 1130 handed back)  exact tests 6567  killed 4316 (65.7%)  leaves 3562  1481s
+   jobs 1074 done (549 queued, 35 running, 1467 handed back)  exact tests 7078  killed 4474 (63.2%)  leaves 4665  1542s
+   jobs 1335 done (289 queued, 34 running, 1467 handed back)  exact tests 7102  killed 4485 (63.2%)  leaves 5760  1602s
+   jobs 1675 done (208 queued, 32 running, 1724 handed back)  exact tests 7603  killed 4679 (61.5%)  leaves 6315  1662s
+   jobs 1914 done (0 queued, 1 running, 1724 handed back)  exact tests 8271  killed 4932 (59.6%)  leaves 7964  1770s
+   jobs 1915 done (0 queued, 0 running, 1724 handed back)  exact tests 8703  killed 5140 (59.1%)  leaves 8681  1793s
+a11:0,a21:0,a31:MIX,a41:0: 8681 leaves, 8703 exact tests (5140 killed), 1793s  -> enum6_pat_b_0_0_M_0NR.npy
+a11:0,a21:0,a31:MIX,a41:0: leaf verdicts {'EMPTY_GB': 1, 'EMPTY_BOX': 8678, 'EMPTY_CONST': 2}   2203s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_0_0_M_0NR 18 - 0 300
+tag b_0_0_M_0NR  leaves 8681  workers 18  maxnodes 300  timeout 180s
+   resumed: 8681 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 1  EMPTY_MIX 0  EMPTY_BOX 8678  EMPTY_CONST 2  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:0,a31:0,a41:0 18 b_M_0_0_0NR 4
+mode nash (strong rules only)   layer depth 4
+a11:MIX,a21:0,a31:0,a41:0: top expansion -> 3964 subtrees, 0 complete, 262s
+a11:MIX,a21:0,a31:0,a41:0: exact frontier filter -> 0 subtrees survive (284s)
+a11:MIX,a21:0,a31:0,a41:0: 0 leaves, 0 exact tests (0 killed), 284s  -> enum6_pat_b_M_0_0_0NR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:MIX,a31:0,a41:0 18 b_M_M_0_0NR 4
+mode nash (strong rules only)   layer depth 4
+a11:MIX,a21:MIX,a31:0,a41:0: top expansion -> 3877 subtrees, 0 complete, 246s
+a11:MIX,a21:MIX,a31:0,a41:0: exact frontier filter -> 0 subtrees survive (272s)
+a11:MIX,a21:MIX,a31:0,a41:0: 0 leaves, 0 exact tests (0 killed), 273s  -> enum6_pat_b_M_M_0_0NR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:MIX,a31:0,a41:MIX 18 b_M_M_0_MNR 4
+mode nash (strong rules only)   layer depth 4
+a11:MIX,a21:MIX,a31:0,a41:MIX: top expansion -> 4085 subtrees, 0 complete, 255s
+a11:MIX,a21:MIX,a31:0,a41:MIX: exact frontier filter -> 8 subtrees survive (401s)
+   jobs 3 done (0 queued, 5 running, 0 handed back)  exact tests 145  killed 105 (72.4%)  leaves 0  466s
+   jobs 4 done (0 queued, 4 running, 0 handed back)  exact tests 531  killed 468 (88.1%)  leaves 0  547s
+   jobs 30 done (52 queued, 35 running, 109 handed back)  exact tests 1820  killed 1514 (83.2%)  leaves 183  608s
+   jobs 62 done (213 queued, 35 running, 302 handed back)  exact tests 3348  killed 2648 (79.1%)  leaves 540  671s
+   jobs 91 done (184 queued, 35 running, 302 handed back)  exact tests 4075  killed 3148 (77.3%)  leaves 1491  732s
+   jobs 128 done (183 queued, 35 running, 338 handed back)  exact tests 5719  killed 4319 (75.5%)  leaves 2945  792s
+   jobs 293 done (19 queued, 34 running, 338 handed back)  exact tests 6619  killed 5005 (75.6%)  leaves 3812  852s
+   jobs 344 done (0 queued, 2 running, 338 handed back)  exact tests 7310  killed 5543 (75.8%)  leaves 4428  928s
+   jobs 346 done (0 queued, 0 running, 338 handed back)  exact tests 7708  killed 5908 (76.6%)  leaves 4433  1207s
+a11:MIX,a21:MIX,a31:0,a41:MIX: 4433 leaves, 7708 exact tests (5908 killed), 1207s  -> enum6_pat_b_M_M_0_MNR.npy
+a11:MIX,a21:MIX,a31:0,a41:MIX: leaf verdicts {'EMPTY_BOX': 4433}   1559s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_M_M_0_MNR 18 - 0 300
+tag b_M_M_0_MNR  leaves 4433  workers 18  maxnodes 300  timeout 180s
+   resumed: 4433 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 4433  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:0,a21:0,a31:MIX,a41:MIX 18 b_0_0_M_MNR 4
+mode nash (strong rules only)   layer depth 4
+a11:0,a21:0,a31:MIX,a41:MIX: top expansion -> 4860 subtrees, 0 complete, 59s
+a11:0,a21:0,a31:MIX,a41:MIX: exact frontier filter -> 0 subtrees survive (82s)
+a11:0,a21:0,a31:MIX,a41:MIX: 0 leaves, 0 exact tests (0 killed), 83s  -> enum6_pat_b_0_0_M_MNR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:0,a31:0,a41:MIX 18 b_M_0_0_MNR 4
+mode nash (strong rules only)   layer depth 4
+a11:MIX,a21:0,a31:0,a41:MIX: top expansion -> 4129 subtrees, 0 complete, 270s
+a11:MIX,a21:0,a31:0,a41:MIX: exact frontier filter -> 23 subtrees survive (374s)
+   jobs 7 done (0 queued, 16 running, 0 handed back)  exact tests 110  killed 70 (63.6%)  leaves 0  436s
+   jobs 11 done (0 queued, 12 running, 0 handed back)  exact tests 446  killed 353 (79.1%)  leaves 0  529s
+   jobs 14 done (0 queued, 9 running, 0 handed back)  exact tests 1157  killed 927 (80.1%)  leaves 0  644s
+   jobs 40 done (220 queued, 35 running, 272 handed back)  exact tests 3249  killed 2611 (80.4%)  leaves 130  706s
+   jobs 74 done (234 queued, 35 running, 320 handed back)  exact tests 4975  killed 3987 (80.1%)  leaves 413  767s
+   jobs 125 done (185 queued, 33 running, 320 handed back)  exact tests 5754  killed 4632 (80.5%)  leaves 940  827s
+   jobs 289 done (138 queued, 35 running, 439 handed back)  exact tests 6965  killed 5437 (78.1%)  leaves 1831  888s
+   jobs 373 done (75 queued, 35 running, 460 handed back)  exact tests 8871  killed 7102 (80.1%)  leaves 2194  949s
+   jobs 426 done (22 queued, 35 running, 460 handed back)  exact tests 9614  killed 7653 (79.6%)  leaves 2420  1009s
+   jobs 481 done (0 queued, 2 running, 460 handed back)  exact tests 10470  killed 8168 (78.0%)  leaves 3054  1168s
+   jobs 483 done (0 queued, 0 running, 460 handed back)  exact tests 10837  killed 8507 (78.5%)  leaves 3055  1295s
+a11:MIX,a21:0,a31:0,a41:MIX: 3055 leaves, 10837 exact tests (8507 killed), 1295s  -> enum6_pat_b_M_0_0_MNR.npy
+a11:MIX,a21:0,a31:0,a41:MIX: leaf verdicts {'EMPTY_BOX': 3055}   1419s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_M_0_0_MNR 18 - 0 300
+tag b_M_0_0_MNR  leaves 3055  workers 18  maxnodes 300  timeout 180s
+   resumed: 3055 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 3055  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:0,a21:MIX,a31:0,a41:MIX 18 b_0_M_0_MNR 4
+mode nash (strong rules only)   layer depth 4
+a11:0,a21:MIX,a31:0,a41:MIX: top expansion -> 5024 subtrees, 0 complete, 252s
+a11:0,a21:MIX,a31:0,a41:MIX: exact frontier filter -> 8 subtrees survive (283s)
+   jobs 4 done (170 queued, 4 running, 170 handed back)  exact tests 539  killed 315 (58.4%)  leaves 0  429s
+   jobs 46 done (324 queued, 35 running, 397 handed back)  exact tests 2239  killed 1496 (66.8%)  leaves 294  489s
+   jobs 80 done (290 queued, 35 running, 397 handed back)  exact tests 3111  killed 2118 (68.1%)  leaves 821  550s
+   jobs 103 done (267 queued, 35 running, 397 handed back)  exact tests 3826  killed 2620 (68.5%)  leaves 1316  611s
+   jobs 141 done (229 queued, 35 running, 397 handed back)  exact tests 4834  killed 3233 (66.9%)  leaves 2584  672s
+   jobs 205 done (259 queued, 35 running, 491 handed back)  exact tests 6353  killed 4303 (67.7%)  leaves 3731  732s
+   jobs 267 done (197 queued, 35 running, 491 handed back)  exact tests 7052  killed 4645 (65.9%)  leaves 4907  793s
+   jobs 383 done (82 queued, 34 running, 491 handed back)  exact tests 7637  killed 4933 (64.6%)  leaves 5721  854s
+   jobs 442 done (22 queued, 35 running, 491 handed back)  exact tests 8892  killed 5712 (64.2%)  leaves 6778  914s
+   jobs 499 done (0 queued, 0 running, 491 handed back)  exact tests 9558  killed 5975 (62.5%)  leaves 8273  969s
+a11:0,a21:MIX,a31:0,a41:MIX: 8273 leaves, 9558 exact tests (5975 killed), 969s  -> enum6_pat_b_0_M_0_MNR.npy
+   leaf 3304  OPEN  {'nE': 14, 'nMIX': 14, 'nDC': 2, 'priv': 1, 'nodes': 302, 'why': 'a21:MIX,a22:MIX,a32:MIX,a41:MIX,b31:MIX,b34:MIX,c32:MIX'}
+a11:0,a21:MIX,a31:0,a41:MIX: leaf verdicts {'EMPTY_BOX': 8272, 'OPEN': 1}   1681s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_0_M_0_MNR 18 - 0 300
+tag b_0_M_0_MNR  leaves 8273  workers 18  maxnodes 300  timeout 180s
+   resumed: 8272 leaves already decided, 1 to go
+   leaf 3304  OPEN  {'nE': 14, 'nMIX': 14, 'nDC': 2, 'priv': 1, 'nodes': 302, 'why': 'a21:MIX,a22:MIX,a32:MIX,a41:MIX,b31:MIX,b34:MIX,c32:MIX', 'box': 'a21[0.25,0.5] a22[0.0,0.5] a33[0.5,1.0] a41[0.5,1.0] b21[0.0,0.5] b31[0.5,1.0] b33[0.5,1.0] b34[0.5,1.0] c32[0.0,0.5] c33[0.5,1.0]'}
+   1/1  EMPTY_BOX 8272  OPEN 1  8s
+   second pass on 1 OPEN/TIMEOUT leaves at 3000 nodes
+
+TOTAL 1 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 8273  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   16s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:0,a21:MIX,a31:MIX,a41:0 18 b_0_M_M_0NR 4
+mode nash (strong rules only)   layer depth 4
+a11:0,a21:MIX,a31:MIX,a41:0: top expansion -> 4583 subtrees, 0 complete, 184s
+a11:0,a21:MIX,a31:MIX,a41:0: exact frontier filter -> 0 subtrees survive (202s)
+a11:0,a21:MIX,a31:MIX,a41:0: 0 leaves, 0 exact tests (0 killed), 203s  -> enum6_pat_b_0_M_M_0NR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:0,a31:MIX,a41:0 18 b_M_0_M_0NR 4
+mode nash (strong rules only)   layer depth 4
+a11:MIX,a21:0,a31:MIX,a41:0: top expansion -> 3989 subtrees, 0 complete, 209s
+a11:MIX,a21:0,a31:MIX,a41:0: exact frontier filter -> 0 subtrees survive (228s)
+a11:MIX,a21:0,a31:MIX,a41:0: 0 leaves, 0 exact tests (0 killed), 229s  -> enum6_pat_b_M_0_M_0NR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:MIX,a31:MIX,a41:0 18 b_M_M_M_0NR 4
+mode nash (strong rules only)   layer depth 4
+a11:MIX,a21:MIX,a31:MIX,a41:0: top expansion -> 3991 subtrees, 0 complete, 199s
+a11:MIX,a21:MIX,a31:MIX,a41:0: exact frontier filter -> 0 subtrees survive (224s)
+a11:MIX,a21:MIX,a31:MIX,a41:0: 0 leaves, 0 exact tests (0 killed), 224s  -> enum6_pat_b_M_M_M_0NR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:0,a21:MIX,a31:MIX,a41:MIX 18 b_0_M_M_MNR 4
+mode nash (strong rules only)   layer depth 4
+a11:0,a21:MIX,a31:MIX,a41:MIX: top expansion -> 4592 subtrees, 0 complete, 183s
+a11:0,a21:MIX,a31:MIX,a41:MIX: exact frontier filter -> 1 subtrees survive (211s)
+   jobs 1 done (0 queued, 0 running, 0 handed back)  exact tests 53  killed 53 (100.0%)  leaves 0  227s
+a11:0,a21:MIX,a31:MIX,a41:MIX: 0 leaves, 53 exact tests (53 killed), 227s  -> enum6_pat_b_0_M_M_MNR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:0,a31:MIX,a41:MIX 18 b_M_0_M_MNR 4
+mode nash (strong rules only)   layer depth 4
+a11:MIX,a21:0,a31:MIX,a41:MIX: top expansion -> 4162 subtrees, 0 complete, 213s
+a11:MIX,a21:0,a31:MIX,a41:MIX: exact frontier filter -> 1 subtrees survive (288s)
+   jobs 1 done (0 queued, 0 running, 0 handed back)  exact tests 60  killed 60 (100.0%)  leaves 0  304s
+a11:MIX,a21:0,a31:MIX,a41:MIX: 0 leaves, 60 exact tests (60 killed), 304s  -> enum6_pat_b_M_0_M_MNR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:MIX,a31:MIX,a41:MIX 18 b_M_M_M_MNR 4
+mode nash (strong rules only)   layer depth 4
+a11:MIX,a21:MIX,a31:MIX,a41:MIX: top expansion -> 4199 subtrees, 0 complete, 221s
+a11:MIX,a21:MIX,a31:MIX,a41:MIX: exact frontier filter -> 1 subtrees survive (340s)
+   jobs 1 done (0 queued, 0 running, 0 handed back)  exact tests 73  killed 73 (100.0%)  leaves 0  359s
+a11:MIX,a21:MIX,a31:MIX,a41:MIX: 0 leaves, 73 exact tests (73 killed), 359s  -> enum6_pat_b_M_M_M_MNR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:0,a21:1,a31:0,a41:0 18 b_0_1_0_0NR 4
+mode nash (strong rules only)   layer depth 4
+a11:0,a21:1,a31:0,a41:0: top expansion -> 0 subtrees, 96 complete, 39s
+a11:0,a21:1,a31:0,a41:0: exact frontier filter -> 0 subtrees survive (39s)
+a11:0,a21:1,a31:0,a41:0: 96 leaves, 0 exact tests (0 killed), 39s  -> enum6_pat_b_0_1_0_0NR.npy
+a11:0,a21:1,a31:0,a41:0: leaf verdicts {'EMPTY_BOX': 96}   43s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_0_1_0_0NR 18 - 0 300
+tag b_0_1_0_0NR  leaves 96  workers 18  maxnodes 300  timeout 180s
+   resumed: 96 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 96  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:0,a21:1,a31:0,a41:1 18 b_0_1_0_1NR 4
+mode nash (strong rules only)   layer depth 4
+a11:0,a21:1,a31:0,a41:1: top expansion -> 0 subtrees, 56 complete, 56s
+a11:0,a21:1,a31:0,a41:1: exact frontier filter -> 0 subtrees survive (56s)
+a11:0,a21:1,a31:0,a41:1: 56 leaves, 0 exact tests (0 killed), 57s  -> enum6_pat_b_0_1_0_1NR.npy
+a11:0,a21:1,a31:0,a41:1: leaf verdicts {'EMPTY_BOX': 56}   60s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_0_1_0_1NR 18 - 0 300
+tag b_0_1_0_1NR  leaves 56  workers 18  maxnodes 300  timeout 180s
+   resumed: 56 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 56  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:0,a21:1,a31:0,a41:MIX 18 b_0_1_0_MNR 4
+mode nash (strong rules only)   layer depth 4
+a11:0,a21:1,a31:0,a41:MIX: top expansion -> 0 subtrees, 0 complete, 98s
+a11:0,a21:1,a31:0,a41:MIX: exact frontier filter -> 0 subtrees survive (98s)
+a11:0,a21:1,a31:0,a41:MIX: 0 leaves, 0 exact tests (0 killed), 98s  -> enum6_pat_b_0_1_0_MNR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:0,a21:1,a31:1,a41:0 18 b_0_1_1_0NR 4
+mode nash (strong rules only)   layer depth 4
+a11:0,a21:1,a31:1,a41:0: top expansion -> 0 subtrees, 96 complete, 24s
+a11:0,a21:1,a31:1,a41:0: exact frontier filter -> 0 subtrees survive (24s)
+a11:0,a21:1,a31:1,a41:0: 96 leaves, 0 exact tests (0 killed), 24s  -> enum6_pat_b_0_1_1_0NR.npy
+a11:0,a21:1,a31:1,a41:0: leaf verdicts {'EMPTY_BOX': 96}   27s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_0_1_1_0NR 18 - 0 300
+tag b_0_1_1_0NR  leaves 96  workers 18  maxnodes 300  timeout 180s
+   resumed: 96 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 96  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:0,a21:1,a31:1,a41:1 18 b_0_1_1_1NR 4
+mode nash (strong rules only)   layer depth 4
+a11:0,a21:1,a31:1,a41:1: top expansion -> 0 subtrees, 224 complete, 27s
+a11:0,a21:1,a31:1,a41:1: exact frontier filter -> 0 subtrees survive (27s)
+a11:0,a21:1,a31:1,a41:1: 224 leaves, 0 exact tests (0 killed), 27s  -> enum6_pat_b_0_1_1_1NR.npy
+a11:0,a21:1,a31:1,a41:1: leaf verdicts {'EMPTY_BOX': 224}   45s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_0_1_1_1NR 18 - 0 300
+tag b_0_1_1_1NR  leaves 224  workers 18  maxnodes 300  timeout 180s
+   resumed: 224 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 224  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:0,a21:1,a31:1,a41:MIX 18 b_0_1_1_MNR 4
+mode nash (strong rules only)   layer depth 4
+a11:0,a21:1,a31:1,a41:MIX: top expansion -> 0 subtrees, 0 complete, 46s
+a11:0,a21:1,a31:1,a41:MIX: exact frontier filter -> 0 subtrees survive (46s)
+a11:0,a21:1,a31:1,a41:MIX: 0 leaves, 0 exact tests (0 killed), 47s  -> enum6_pat_b_0_1_1_MNR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:0,a21:1,a31:MIX,a41:0 18 b_0_1_M_0NR 4
+mode nash (strong rules only)   layer depth 4
+a11:0,a21:1,a31:MIX,a41:0: top expansion -> 0 subtrees, 288 complete, 76s
+a11:0,a21:1,a31:MIX,a41:0: exact frontier filter -> 0 subtrees survive (76s)
+a11:0,a21:1,a31:MIX,a41:0: 288 leaves, 0 exact tests (0 killed), 77s  -> enum6_pat_b_0_1_M_0NR.npy
+a11:0,a21:1,a31:MIX,a41:0: leaf verdicts {'EMPTY_BOX': 288}   91s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_0_1_M_0NR 18 - 0 300
+tag b_0_1_M_0NR  leaves 288  workers 18  maxnodes 300  timeout 180s
+   resumed: 288 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 288  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:0,a21:1,a31:MIX,a41:1 18 b_0_1_M_1NR 4
+mode nash (strong rules only)   layer depth 4
+a11:0,a21:1,a31:MIX,a41:1: top expansion -> 4916 subtrees, 0 complete, 255s
+a11:0,a21:1,a31:MIX,a41:1: exact frontier filter -> 0 subtrees survive (264s)
+a11:0,a21:1,a31:MIX,a41:1: 0 leaves, 0 exact tests (0 killed), 264s  -> enum6_pat_b_0_1_M_1NR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:0,a21:1,a31:MIX,a41:MIX 18 b_0_1_M_MNR 4
+mode nash (strong rules only)   layer depth 4
+a11:0,a21:1,a31:MIX,a41:MIX: top expansion -> 5885 subtrees, 0 complete, 287s
+a11:0,a21:1,a31:MIX,a41:MIX: exact frontier filter -> 0 subtrees survive (303s)
+a11:0,a21:1,a31:MIX,a41:MIX: 0 leaves, 0 exact tests (0 killed), 304s  -> enum6_pat_b_0_1_M_MNR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:1,a21:0,a31:0,a41:0 18 b_1_0_0_0NR 4
+mode nash (strong rules only)   layer depth 4
+a11:1,a21:0,a31:0,a41:0: top expansion -> 0 subtrees, 192 complete, 68s
+a11:1,a21:0,a31:0,a41:0: exact frontier filter -> 0 subtrees survive (68s)
+a11:1,a21:0,a31:0,a41:0: 192 leaves, 0 exact tests (0 killed), 68s  -> enum6_pat_b_1_0_0_0NR.npy
+a11:1,a21:0,a31:0,a41:0: leaf verdicts {'EMPTY_BOX': 192}   75s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_1_0_0_0NR 18 - 0 300
+tag b_1_0_0_0NR  leaves 192  workers 18  maxnodes 300  timeout 180s
+   resumed: 192 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 192  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:1,a21:0,a31:0,a41:1 18 b_1_0_0_1NR 4
+mode nash (strong rules only)   layer depth 4
+a11:1,a21:0,a31:0,a41:1: top expansion -> 0 subtrees, 530 complete, 96s
+a11:1,a21:0,a31:0,a41:1: exact frontier filter -> 0 subtrees survive (96s)
+a11:1,a21:0,a31:0,a41:1: 530 leaves, 0 exact tests (0 killed), 96s  -> enum6_pat_b_1_0_0_1NR.npy
+a11:1,a21:0,a31:0,a41:1: leaf verdicts {'EMPTY_BOX': 530}   118s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_1_0_0_1NR 18 - 0 300
+tag b_1_0_0_1NR  leaves 530  workers 18  maxnodes 300  timeout 180s
+   resumed: 530 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 530  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:1,a21:0,a31:0,a41:MIX 18 b_1_0_0_MNR 4
+mode nash (strong rules only)   layer depth 4
+a11:1,a21:0,a31:0,a41:MIX: top expansion -> 0 subtrees, 0 complete, 137s
+a11:1,a21:0,a31:0,a41:MIX: exact frontier filter -> 0 subtrees survive (137s)
+a11:1,a21:0,a31:0,a41:MIX: 0 leaves, 0 exact tests (0 killed), 137s  -> enum6_pat_b_1_0_0_MNR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:1,a21:0,a31:1,a41:0 18 b_1_0_1_0NR 4
+mode nash (strong rules only)   layer depth 4
+a11:1,a21:0,a31:1,a41:0: top expansion -> 0 subtrees, 256 complete, 42s
+a11:1,a21:0,a31:1,a41:0: exact frontier filter -> 0 subtrees survive (42s)
+a11:1,a21:0,a31:1,a41:0: 256 leaves, 0 exact tests (0 killed), 42s  -> enum6_pat_b_1_0_1_0NR.npy
+a11:1,a21:0,a31:1,a41:0: leaf verdicts {'EMPTY_BOX': 256}   48s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_1_0_1_0NR 18 - 0 300
+tag b_1_0_1_0NR  leaves 256  workers 18  maxnodes 300  timeout 180s
+   resumed: 256 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 256  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:1,a21:0,a31:1,a41:1 18 b_1_0_1_1NR 4
+mode nash (strong rules only)   layer depth 4
+a11:1,a21:0,a31:1,a41:1: top expansion -> 0 subtrees, 377 complete, 36s
+a11:1,a21:0,a31:1,a41:1: exact frontier filter -> 0 subtrees survive (36s)
+a11:1,a21:0,a31:1,a41:1: 377 leaves, 0 exact tests (0 killed), 36s  -> enum6_pat_b_1_0_1_1NR.npy
+a11:1,a21:0,a31:1,a41:1: leaf verdicts {'EMPTY_BOX': 377}   63s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_1_0_1_1NR 18 - 0 300
+tag b_1_0_1_1NR  leaves 377  workers 18  maxnodes 300  timeout 180s
+   resumed: 377 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 377  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:1,a21:0,a31:1,a41:MIX 18 b_1_0_1_MNR 4
+mode nash (strong rules only)   layer depth 4
+a11:1,a21:0,a31:1,a41:MIX: top expansion -> 0 subtrees, 24 complete, 125s
+a11:1,a21:0,a31:1,a41:MIX: exact frontier filter -> 0 subtrees survive (125s)
+a11:1,a21:0,a31:1,a41:MIX: 24 leaves, 0 exact tests (0 killed), 125s  -> enum6_pat_b_1_0_1_MNR.npy
+a11:1,a21:0,a31:1,a41:MIX: leaf verdicts {'EMPTY_BOX': 24}   128s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_1_0_1_MNR 18 - 0 300
+tag b_1_0_1_MNR  leaves 24  workers 18  maxnodes 300  timeout 180s
+   resumed: 24 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 24  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:1,a21:0,a31:MIX,a41:0 18 b_1_0_M_0NR 4
+mode nash (strong rules only)   layer depth 4
+a11:1,a21:0,a31:MIX,a41:0: top expansion -> 0 subtrees, 993 complete, 130s
+a11:1,a21:0,a31:MIX,a41:0: exact frontier filter -> 0 subtrees survive (130s)
+a11:1,a21:0,a31:MIX,a41:0: 993 leaves, 0 exact tests (0 killed), 130s  -> enum6_pat_b_1_0_M_0NR.npy
+a11:1,a21:0,a31:MIX,a41:0: leaf verdicts {'EMPTY_BOX': 993}   176s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_1_0_M_0NR 18 - 0 300
+tag b_1_0_M_0NR  leaves 993  workers 18  maxnodes 300  timeout 180s
+   resumed: 993 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 993  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:1,a21:0,a31:MIX,a41:1 18 b_1_0_M_1NR 4
+mode nash (strong rules only)   layer depth 4
+a11:1,a21:0,a31:MIX,a41:1: top expansion -> 6155 subtrees, 0 complete, 341s
+a11:1,a21:0,a31:MIX,a41:1: exact frontier filter -> 0 subtrees survive (352s)
+a11:1,a21:0,a31:MIX,a41:1: 0 leaves, 0 exact tests (0 killed), 352s  -> enum6_pat_b_1_0_M_1NR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:1,a21:0,a31:MIX,a41:MIX 18 b_1_0_M_MNR 4
+mode nash (strong rules only)   layer depth 4
+a11:1,a21:0,a31:MIX,a41:MIX: top expansion -> 4807 subtrees, 0 complete, 298s
+a11:1,a21:0,a31:MIX,a41:MIX: exact frontier filter -> 0 subtrees survive (316s)
+a11:1,a21:0,a31:MIX,a41:MIX: 0 leaves, 0 exact tests (0 killed), 316s  -> enum6_pat_b_1_0_M_MNR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:1,a21:1,a31:0,a41:0 18 b_1_1_0_0NR 4
+mode nash (strong rules only)   layer depth 4
+a11:1,a21:1,a31:0,a41:0: top expansion -> 0 subtrees, 0 complete, 7s
+a11:1,a21:1,a31:0,a41:0: exact frontier filter -> 0 subtrees survive (7s)
+a11:1,a21:1,a31:0,a41:0: 0 leaves, 0 exact tests (0 killed), 7s  -> enum6_pat_b_1_1_0_0NR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:1,a21:1,a31:0,a41:1 18 b_1_1_0_1NR 4
+mode nash (strong rules only)   layer depth 4
+a11:1,a21:1,a31:0,a41:1: top expansion -> 0 subtrees, 29 complete, 37s
+a11:1,a21:1,a31:0,a41:1: exact frontier filter -> 0 subtrees survive (37s)
+a11:1,a21:1,a31:0,a41:1: 29 leaves, 0 exact tests (0 killed), 38s  -> enum6_pat_b_1_1_0_1NR.npy
+a11:1,a21:1,a31:0,a41:1: leaf verdicts {'EMPTY_BOX': 29}   41s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_1_1_0_1NR 18 - 0 300
+tag b_1_1_0_1NR  leaves 29  workers 18  maxnodes 300  timeout 180s
+   resumed: 29 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 29  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:1,a21:1,a31:0,a41:MIX 18 b_1_1_0_MNR 4
+mode nash (strong rules only)   layer depth 4
+a11:1,a21:1,a31:0,a41:MIX: top expansion -> 0 subtrees, 24 complete, 48s
+a11:1,a21:1,a31:0,a41:MIX: exact frontier filter -> 0 subtrees survive (48s)
+a11:1,a21:1,a31:0,a41:MIX: 24 leaves, 0 exact tests (0 killed), 48s  -> enum6_pat_b_1_1_0_MNR.npy
+a11:1,a21:1,a31:0,a41:MIX: leaf verdicts {'EMPTY_BOX': 24}   51s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_1_1_0_MNR 18 - 0 300
+tag b_1_1_0_MNR  leaves 24  workers 18  maxnodes 300  timeout 180s
+   resumed: 24 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 24  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:1,a21:1,a31:1,a41:0 18 b_1_1_1_0NR 4
+mode nash (strong rules only)   layer depth 4
+a11:1,a21:1,a31:1,a41:0: top expansion -> 0 subtrees, 0 complete, 3s
+a11:1,a21:1,a31:1,a41:0: exact frontier filter -> 0 subtrees survive (3s)
+a11:1,a21:1,a31:1,a41:0: 0 leaves, 0 exact tests (0 killed), 3s  -> enum6_pat_b_1_1_1_0NR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:1,a21:1,a31:1,a41:1 18 b_1_1_1_1NR 4
+mode nash (strong rules only)   layer depth 4
+a11:1,a21:1,a31:1,a41:1: top expansion -> 0 subtrees, 1 complete, 0s
+a11:1,a21:1,a31:1,a41:1: exact frontier filter -> 0 subtrees survive (0s)
+a11:1,a21:1,a31:1,a41:1: 1 leaves, 0 exact tests (0 killed), 1s  -> enum6_pat_b_1_1_1_1NR.npy
+a11:1,a21:1,a31:1,a41:1: leaf verdicts {'EMPTY_BOX': 1}   3s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_1_1_1_1NR 18 - 0 300
+tag b_1_1_1_1NR  leaves 1  workers 18  maxnodes 300  timeout 180s
+   resumed: 1 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 1  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:1,a21:1,a31:1,a41:MIX 18 b_1_1_1_MNR 4
+mode nash (strong rules only)   layer depth 4
+a11:1,a21:1,a31:1,a41:MIX: top expansion -> 0 subtrees, 217 complete, 72s
+a11:1,a21:1,a31:1,a41:MIX: exact frontier filter -> 0 subtrees survive (72s)
+a11:1,a21:1,a31:1,a41:MIX: 217 leaves, 0 exact tests (0 killed), 72s  -> enum6_pat_b_1_1_1_MNR.npy
+a11:1,a21:1,a31:1,a41:MIX: leaf verdicts {'EMPTY_BOX': 217}   88s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_1_1_1_MNR 18 - 0 300
+tag b_1_1_1_MNR  leaves 217  workers 18  maxnodes 300  timeout 180s
+   resumed: 217 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 217  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:1,a21:1,a31:MIX,a41:0 18 b_1_1_M_0NR 4
+mode nash (strong rules only)   layer depth 4
+a11:1,a21:1,a31:MIX,a41:0: top expansion -> 0 subtrees, 0 complete, 20s
+a11:1,a21:1,a31:MIX,a41:0: exact frontier filter -> 0 subtrees survive (20s)
+a11:1,a21:1,a31:MIX,a41:0: 0 leaves, 0 exact tests (0 killed), 21s  -> enum6_pat_b_1_1_M_0NR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:1,a21:1,a31:MIX,a41:1 18 b_1_1_M_1NR 4
+mode nash (strong rules only)   layer depth 4
+a11:1,a21:1,a31:MIX,a41:1: top expansion -> 3672 subtrees, 0 complete, 154s
+a11:1,a21:1,a31:MIX,a41:1: exact frontier filter -> 0 subtrees survive (163s)
+a11:1,a21:1,a31:MIX,a41:1: 0 leaves, 0 exact tests (0 killed), 163s  -> enum6_pat_b_1_1_M_1NR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:1,a21:1,a31:MIX,a41:MIX 18 b_1_1_M_MNR 4
+mode nash (strong rules only)   layer depth 4
+a11:1,a21:1,a31:MIX,a41:MIX: top expansion -> 7734 subtrees, 0 complete, 347s
+a11:1,a21:1,a31:MIX,a41:MIX: exact frontier filter -> 0 subtrees survive (368s)
+a11:1,a21:1,a31:MIX,a41:MIX: 0 leaves, 0 exact tests (0 killed), 368s  -> enum6_pat_b_1_1_M_MNR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:1,a21:MIX,a31:0,a41:0 18 b_1_M_0_0NR 4
+mode nash (strong rules only)   layer depth 4
+a11:1,a21:MIX,a31:0,a41:0: top expansion -> 0 subtrees, 0 complete, 18s
+a11:1,a21:MIX,a31:0,a41:0: exact frontier filter -> 0 subtrees survive (18s)
+a11:1,a21:MIX,a31:0,a41:0: 0 leaves, 0 exact tests (0 killed), 18s  -> enum6_pat_b_1_M_0_0NR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:1,a21:MIX,a31:0,a41:1 18 b_1_M_0_1NR 4
+mode nash (strong rules only)   layer depth 4
+a11:1,a21:MIX,a31:0,a41:1: top expansion -> 5352 subtrees, 0 complete, 553s
+a11:1,a21:MIX,a31:0,a41:1: exact frontier filter -> 0 subtrees survive (559s)
+a11:1,a21:MIX,a31:0,a41:1: 0 leaves, 0 exact tests (0 killed), 559s  -> enum6_pat_b_1_M_0_1NR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:1,a21:MIX,a31:0,a41:MIX 18 b_1_M_0_MNR 4
+mode nash (strong rules only)   layer depth 4
+a11:1,a21:MIX,a31:0,a41:MIX: top expansion -> 4914 subtrees, 0 complete, 414s
+a11:1,a21:MIX,a31:0,a41:MIX: exact frontier filter -> 0 subtrees survive (420s)
+a11:1,a21:MIX,a31:0,a41:MIX: 0 leaves, 0 exact tests (0 killed), 420s  -> enum6_pat_b_1_M_0_MNR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:1,a21:MIX,a31:1,a41:0 18 b_1_M_1_0NR 4
+mode nash (strong rules only)   layer depth 4
+a11:1,a21:MIX,a31:1,a41:0: top expansion -> 0 subtrees, 0 complete, 6s
+a11:1,a21:MIX,a31:1,a41:0: exact frontier filter -> 0 subtrees survive (6s)
+a11:1,a21:MIX,a31:1,a41:0: 0 leaves, 0 exact tests (0 killed), 7s  -> enum6_pat_b_1_M_1_0NR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:1,a21:MIX,a31:1,a41:1 18 b_1_M_1_1NR 4
+mode nash (strong rules only)   layer depth 4
+a11:1,a21:MIX,a31:1,a41:1: top expansion -> 3935 subtrees, 179 complete, 254s
+a11:1,a21:MIX,a31:1,a41:1: exact frontier filter -> 0 subtrees survive (259s)
+a11:1,a21:MIX,a31:1,a41:1: 179 leaves, 0 exact tests (0 killed), 260s  -> enum6_pat_b_1_M_1_1NR.npy
+a11:1,a21:MIX,a31:1,a41:1: leaf verdicts {'EMPTY_BOX': 179}   274s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_1_M_1_1NR 18 - 0 300
+tag b_1_M_1_1NR  leaves 179  workers 18  maxnodes 300  timeout 180s
+   resumed: 179 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 179  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:1,a21:MIX,a31:1,a41:MIX 18 b_1_M_1_MNR 4
+mode nash (strong rules only)   layer depth 4
+a11:1,a21:MIX,a31:1,a41:MIX: top expansion -> 5180 subtrees, 0 complete, 287s
+a11:1,a21:MIX,a31:1,a41:MIX: exact frontier filter -> 0 subtrees survive (294s)
+a11:1,a21:MIX,a31:1,a41:MIX: 0 leaves, 0 exact tests (0 killed), 294s  -> enum6_pat_b_1_M_1_MNR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:1,a21:MIX,a31:MIX,a41:0 18 b_1_M_M_0NR 4
+mode nash (strong rules only)   layer depth 4
+a11:1,a21:MIX,a31:MIX,a41:0: top expansion -> 0 subtrees, 0 complete, 42s
+a11:1,a21:MIX,a31:MIX,a41:0: exact frontier filter -> 0 subtrees survive (42s)
+a11:1,a21:MIX,a31:MIX,a41:0: 0 leaves, 0 exact tests (0 killed), 42s  -> enum6_pat_b_1_M_M_0NR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:1,a21:MIX,a31:MIX,a41:1 18 b_1_M_M_1NR 4
+mode nash (strong rules only)   layer depth 4
+a11:1,a21:MIX,a31:MIX,a41:1: top expansion -> 6306 subtrees, 0 complete, 376s
+a11:1,a21:MIX,a31:MIX,a41:1: exact frontier filter -> 0 subtrees survive (389s)
+a11:1,a21:MIX,a31:MIX,a41:1: 0 leaves, 0 exact tests (0 killed), 389s  -> enum6_pat_b_1_M_M_1NR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:1,a21:MIX,a31:MIX,a41:MIX 18 b_1_M_M_MNR 4
+mode nash (strong rules only)   layer depth 4
+a11:1,a21:MIX,a31:MIX,a41:MIX: top expansion -> 6262 subtrees, 0 complete, 381s
+a11:1,a21:MIX,a31:MIX,a41:MIX: exact frontier filter -> 0 subtrees survive (396s)
+a11:1,a21:MIX,a31:MIX,a41:MIX: 0 leaves, 0 exact tests (0 killed), 396s  -> enum6_pat_b_1_M_M_MNR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:1,a31:0,a41:0 18 b_M_1_0_0NR 4
+mode nash (strong rules only)   layer depth 4
+a11:MIX,a21:1,a31:0,a41:0: top expansion -> 0 subtrees, 0 complete, 38s
+a11:MIX,a21:1,a31:0,a41:0: exact frontier filter -> 0 subtrees survive (38s)
+a11:MIX,a21:1,a31:0,a41:0: 0 leaves, 0 exact tests (0 killed), 39s  -> enum6_pat_b_M_1_0_0NR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:1,a31:0,a41:1 18 b_M_1_0_1NR 4
+mode nash (strong rules only)   layer depth 4
+a11:MIX,a21:1,a31:0,a41:1: top expansion -> 0 subtrees, 0 complete, 29s
+a11:MIX,a21:1,a31:0,a41:1: exact frontier filter -> 0 subtrees survive (29s)
+a11:MIX,a21:1,a31:0,a41:1: 0 leaves, 0 exact tests (0 killed), 29s  -> enum6_pat_b_M_1_0_1NR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:1,a31:0,a41:MIX 18 b_M_1_0_MNR 4
+mode nash (strong rules only)   layer depth 4
+a11:MIX,a21:1,a31:0,a41:MIX: top expansion -> 0 subtrees, 0 complete, 57s
+a11:MIX,a21:1,a31:0,a41:MIX: exact frontier filter -> 0 subtrees survive (57s)
+a11:MIX,a21:1,a31:0,a41:MIX: 0 leaves, 0 exact tests (0 killed), 57s  -> enum6_pat_b_M_1_0_MNR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:1,a31:1,a41:0 18 b_M_1_1_0NR 4
+mode nash (strong rules only)   layer depth 4
+a11:MIX,a21:1,a31:1,a41:0: top expansion -> 0 subtrees, 0 complete, 26s
+a11:MIX,a21:1,a31:1,a41:0: exact frontier filter -> 0 subtrees survive (26s)
+a11:MIX,a21:1,a31:1,a41:0: 0 leaves, 0 exact tests (0 killed), 27s  -> enum6_pat_b_M_1_1_0NR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:1,a31:1,a41:1 18 b_M_1_1_1NR 4
+mode nash (strong rules only)   layer depth 4
+a11:MIX,a21:1,a31:1,a41:1: top expansion -> 0 subtrees, 0 complete, 69s
+a11:MIX,a21:1,a31:1,a41:1: exact frontier filter -> 0 subtrees survive (69s)
+a11:MIX,a21:1,a31:1,a41:1: 0 leaves, 0 exact tests (0 killed), 70s  -> enum6_pat_b_M_1_1_1NR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:1,a31:1,a41:MIX 18 b_M_1_1_MNR 4
+mode nash (strong rules only)   layer depth 4
+a11:MIX,a21:1,a31:1,a41:MIX: top expansion -> 3645 subtrees, 0 complete, 218s
+a11:MIX,a21:1,a31:1,a41:MIX: exact frontier filter -> 0 subtrees survive (221s)
+a11:MIX,a21:1,a31:1,a41:MIX: 0 leaves, 0 exact tests (0 killed), 221s  -> enum6_pat_b_M_1_1_MNR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:1,a31:MIX,a41:0 18 b_M_1_M_0NR 4
+mode nash (strong rules only)   layer depth 4
+a11:MIX,a21:1,a31:MIX,a41:0: top expansion -> 0 subtrees, 0 complete, 45s
+a11:MIX,a21:1,a31:MIX,a41:0: exact frontier filter -> 0 subtrees survive (45s)
+a11:MIX,a21:1,a31:MIX,a41:0: 0 leaves, 0 exact tests (0 killed), 46s  -> enum6_pat_b_M_1_M_0NR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:1,a31:MIX,a41:1 18 b_M_1_M_1NR 4
+mode nash (strong rules only)   layer depth 4
+a11:MIX,a21:1,a31:MIX,a41:1: top expansion -> 5204 subtrees, 0 complete, 240s
+a11:MIX,a21:1,a31:MIX,a41:1: exact frontier filter -> 0 subtrees survive (244s)
+a11:MIX,a21:1,a31:MIX,a41:1: 0 leaves, 0 exact tests (0 killed), 245s  -> enum6_pat_b_M_1_M_1NR.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:1,a31:MIX,a41:MIX 18 b_M_1_M_MNR 4
+mode nash (strong rules only)   layer depth 4
+a11:MIX,a21:1,a31:MIX,a41:MIX: top expansion -> 5204 subtrees, 0 complete, 284s
+a11:MIX,a21:1,a31:MIX,a41:MIX: exact frontier filter -> 0 subtrees survive (288s)
+a11:MIX,a21:1,a31:MIX,a41:MIX: 0 leaves, 0 exact tests (0 killed), 289s  -> enum6_pat_b_M_1_M_MNR.npy

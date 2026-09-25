@@ -1,0 +1,41 @@
+
+==============================================================================
+1. Table 3 utilities:  u1 = -k(1/2+beta),  u2 = -k/2,  u3 = k(1+beta)
+==============================================================================
+   sub-families tested: A  c11=0, B  0<c11<1/2, C  c11=1/2 (200 random points each)
+   max |u_enumerated - u_paper| = 4.996e-16
+   -> engine agrees with the paper's closed-form utilities
+   exact rational check at b11=1/8, b21=1/4 (beta=1/4):
+      u = ('-1/32', '-1/48', '5/96')
+      expected ('-1/32', '-1/48', '5/96')
+
+==============================================================================
+2. Appendix eq. (3): u3 with P1,P2 from Table 3 and P3's parameters free
+==============================================================================
+   max |u3_engine - eq(3)| over 400 random points = 5.967e-16
+
+==============================================================================
+3. Appendix eq. (4): u2 with P1,P3 from Table 3 and P2's parameters free
+==============================================================================
+   max |u2_engine - eq(4)| over 400 random points = 2.220e-16
+
+==============================================================================
+4. Appendix eq. (5): u1 with P2,P3 from Table 3 and P1's parameters free
+==============================================================================
+   max |u1_engine - eq(5)| over 400 random points = 8.882e-16
+   (note eq(5) contains no a33, b23, b33, c34 -> u1 is independent of
+    them; the random draws above confirm that too)
+
+==============================================================================
+5. Table 4: the paper's deliberately MIS-MATCHED (non-equilibrium) profile
+==============================================================================
+   engine   u =  [-0.02083333 -0.03125     0.05208333]
+   paper    u =  [-0.02083333 -0.03125     0.05208333]
+   match: True
+   P2 exploitability here = 0.01041667  (paper says P2 can gain k*beta = 0.01041667)
+
+==============================================================================
+6. Equilibrium property: exact best-response gap over the whole family
+==============================================================================
+   450 random family points; max_i (BR_i - u_i) = [3.81639165e-16 1.73472348e-16 5.27355937e-16]
+   -> every profile in the family is an exact Nash equilibrium

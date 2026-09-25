@@ -1,0 +1,15 @@
+36 runs in 219s
+
+   n  N  N=n+1  P1 opens TOP card   P(someone bets|P1 checks)   du1/d(open top)
+   3  4  YES    0.0154              0.5114                     -0.00902
+   3  5  no     0.8306              0.5841                     +0.00099
+   4  5  YES    0.0169              0.4514                     -0.01022
+   4  6  no     0.8390              0.6531                     +0.00120
+   5  6  YES    0.0237              0.4424                     -0.00711
+   5  7  no     0.8308              0.7009                     +0.00208
+
+   corr(P1 opens top card, P(someone bets)) = +0.9101  over 6 configs
+   corr over all 36 individual seeds              = +0.8846
+
+   du1/d(open top) < 0 means P1 strictly prefers to CHECK the best card
+   (slow-play); > 0 means P1 wants to bet it.

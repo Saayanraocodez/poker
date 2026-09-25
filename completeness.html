@@ -1,0 +1,476 @@
+<title>Kuhn Poker's Equilibrium Set</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..600&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --paper:#FFFFFF;
+  --ground:#F5F2F3;
+  --ink:#14121A;
+  --ink2:#433D48;
+  --slate:#6E6873;
+  --rule:#D9D4D7;
+  --rule2:#F1EDEF;
+  --red:#BE1E2D;
+  --redsoft:#FBEEEF;
+  --proven:#1F6F4A;
+  --provensoft:#E9F4EE;
+  --open:#9A6212;
+  --opensoft:#FBF2E4;
+  --shadow:0 1px 2px rgba(20,18,26,.05), 0 8px 24px rgba(20,18,26,.05);
+  --measure:64ch;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#171519;
+    --ground:#100E12;
+    --ink:#F0ECEE;
+    --ink2:#C3BBC2;
+    --slate:#948D96;
+    --rule:#332E36;
+    --rule2:#221F26;
+    --red:#F2707C;
+    --redsoft:#2A181C;
+    --proven:#63C795;
+    --provensoft:#152520;
+    --open:#DDA24A;
+    --opensoft:#2A2117;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 28px rgba(0,0,0,.34);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#171519;
+  --ground:#100E12;
+  --ink:#F0ECEE;
+  --ink2:#C3BBC2;
+  --slate:#948D96;
+  --rule:#332E36;
+  --rule2:#221F26;
+  --red:#F2707C;
+  --redsoft:#2A181C;
+  --proven:#63C795;
+  --provensoft:#152520;
+  --open:#DDA24A;
+  --opensoft:#2A2117;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 28px rgba(0,0,0,.34);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font:400 16.5px/1.6 "Instrument Sans", ui-sans-serif, -apple-system, "Segoe UI", system-ui, sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px 96px}
+p,li{color:var(--ink2)}
+a{color:var(--red)}
+code,.mono{font-family:"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace}
+code{font-size:.88em;background:var(--rule2);padding:.1em .34em;border-radius:3px;color:var(--ink)}
+.num{font-variant-numeric:tabular-nums}
+
+/* ---------- masthead ---------- */
+header.top{
+  border-bottom:1px solid var(--rule); background:var(--paper);
+  padding:56px 0 40px; margin-bottom:44px;
+}
+header.top .wrap{padding-bottom:0}
+.eyebrow{
+  font-family:"IBM Plex Mono",monospace; font-size:11.5px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--slate); margin:0 0 20px;
+}
+h1{
+  font-family:"Instrument Serif", Georgia, serif; font-weight:400;
+  font-size:clamp(40px,7vw,68px); line-height:1.02; letter-spacing:-.015em;
+  margin:0 0 22px; text-wrap:balance; color:var(--ink);
+}
+h1 em{font-style:italic;color:var(--red)}
+.deck{font-size:19px;line-height:1.55;max-width:var(--measure);margin:0;color:var(--ink2)}
+
+/* ---------- verdict strip ---------- */
+.verdicts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:36px 0 0}
+.v{background:var(--paper);border:1px solid var(--rule);border-radius:5px;padding:18px 18px 16px;box-shadow:var(--shadow)}
+.v .tag{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;display:inline-block;padding:3px 7px;border-radius:3px;margin-bottom:12px}
+.v.p .tag{background:var(--provensoft);color:var(--proven)}
+.v.c .tag{background:var(--redsoft);color:var(--red)}
+.v.o .tag{background:var(--opensoft);color:var(--open)}
+.v .big{font-family:"Instrument Serif",Georgia,serif;font-size:34px;line-height:1;margin:0 0 8px;color:var(--ink);font-variant-numeric:tabular-nums}
+.v p{margin:0;font-size:14px;line-height:1.45;color:var(--slate)}
+
+/* ---------- sections ---------- */
+section{margin:56px 0 0}
+h2{
+  font-family:"Instrument Serif",Georgia,serif;font-weight:400;
+  font-size:30px;line-height:1.15;letter-spacing:-.01em;margin:0 0 6px;color:var(--ink);
+  text-wrap:balance;
+}
+.sec-no{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--red);margin:0 0 10px}
+section > p, section > ul, section > ol{max-width:var(--measure)}
+ul,ol{padding-left:1.15em}
+li{margin:.3em 0}
+.lede{font-size:17.5px;color:var(--ink2)}
+
+/* ---------- panels & tables ---------- */
+.panel{background:var(--paper);border:1px solid var(--rule);border-radius:6px;box-shadow:var(--shadow);margin:26px 0;overflow:hidden}
+.panel > .ph{padding:14px 18px;border-bottom:1px solid var(--rule);background:var(--rule2)}
+.panel > .ph h3{margin:0;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+.panel > .pb{padding:18px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--rule2)}
+thead th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);font-weight:600;
+  border-bottom:1px solid var(--rule);white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+td.n{text-align:right;font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--ink)}
+td.k{font-family:"IBM Plex Mono",monospace;color:var(--ink)}
+.hi{color:var(--red);font-weight:600}
+
+/* ---------- interval diagram ---------- */
+figure{margin:26px 0}
+figcaption{font-size:13.5px;color:var(--slate);margin-top:12px;max-width:var(--measure)}
+svg{display:block;width:100%;height:auto}
+
+/* ---------- branch grid ---------- */
+.gridwrap{display:flex;gap:22px;flex-wrap:wrap;align-items:flex-start}
+.bgrid{display:grid;grid-template-columns:auto repeat(9,1fr);gap:3px;font-family:"IBM Plex Mono",monospace;
+  font-size:10px;min-width:340px;flex:1 1 360px}
+.bgrid .hd{color:var(--slate);text-align:center;padding-bottom:3px;letter-spacing:.02em}
+.bgrid .rh{color:var(--slate);padding-right:6px;display:flex;align-items:center;justify-content:flex-end}
+.cell{aspect-ratio:1;border-radius:2px;display:flex;align-items:center;justify-content:center;
+  font-size:9px;color:transparent}
+.cell.dead{background:var(--provensoft);border:1px solid color-mix(in srgb,var(--proven) 30%,transparent)}
+.cell.provn{background:color-mix(in srgb,var(--proven) 26%,transparent);border:1px solid var(--proven)}
+.cell.open{background:var(--opensoft);border:1px solid color-mix(in srgb,var(--open) 45%,transparent)}
+.cell.silent{background:var(--redsoft);border:1.5px solid var(--red)}
+.legend{flex:0 1 250px;font-size:13.5px;color:var(--ink2)}
+.legend .row{display:flex;gap:9px;align-items:flex-start;margin:0 0 12px}
+.sw{width:14px;height:14px;border-radius:2px;flex:none;margin-top:3px}
+.sw.dead{background:var(--provensoft);border:1px solid color-mix(in srgb,var(--proven) 30%,transparent)}
+.sw.provn{background:color-mix(in srgb,var(--proven) 26%,transparent);border:1px solid var(--proven)}
+.sw.open{background:var(--opensoft);border:1px solid color-mix(in srgb,var(--open) 45%,transparent)}
+.sw.silent{background:var(--redsoft);border:1.5px solid var(--red)}
+
+/* ---------- equations ---------- */
+pre.eq{margin:0;font-family:"IBM Plex Mono",monospace;font-size:13px;line-height:1.85;
+  color:var(--ink);overflow-x:auto;white-space:pre}
+pre.eq b{color:var(--red);font-weight:600}
+
+/* ---------- callout ---------- */
+.callout{border-left:3px solid var(--red);background:var(--redsoft);padding:16px 18px;border-radius:0 5px 5px 0;margin:26px 0;max-width:var(--measure)}
+.callout p{margin:0;color:var(--ink)}
+.callout p + p{margin-top:10px}
+.callout .lbl{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:8px}
+
+
+svg .dline{stroke:var(--slate)}
+svg .dfill{fill:var(--slate)}
+svg .dcut,svg .dcuttx{stroke:var(--red);fill:var(--red)}
+svg .dcuttx{stroke:none}
+svg .dbar{stroke:var(--ink)}
+svg .dmono{font-family:"IBM Plex Mono",monospace;font-size:13px;fill:var(--ink)}
+svg .dcap{font-family:"Instrument Sans",sans-serif;font-size:13.5px;fill:var(--ink2)}
+footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--rule);font-size:13.5px;color:var(--slate);max-width:var(--measure)}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <p class="eyebrow">Three-player Kuhn poker &middot; four-card deck &middot; 312 leaves</p>
+    <h1>Is the &beta;&#8288;-family <em>everything?</em></h1>
+    <p class="deck">Szafron, Gibson and Sturtevant left it open whether their parameterized family
+    contains <em>all</em> equilibria. Four earlier attempts here were inconclusive, and the verdict
+    named the missing tool: branch-and-bound with partial-feasibility pruning. That tool now exists.
+    Here is what it settles, and what it does not.</p>
+
+    <div class="verdicts">
+      <div class="v p">
+        <span class="tag">Proven</span>
+        <p class="big">39 / 80</p>
+        <p>P1-betting branches that contain no equilibrium at all &mdash; by rigorous interval
+        propagation, not search.</p>
+      </div>
+      <div class="v c">
+        <span class="tag">Certified</span>
+        <p class="big">259</p>
+        <p>Exact equilibria found so far. Every one of them lies inside the family, to
+        <span class="mono">2.3e&#8288;-14</span>.</p>
+      </div>
+      <div class="v o">
+        <span class="tag">Still open</span>
+        <p class="big">41</p>
+        <p>Branches where P1 bluffs at a frequency strictly between 0 and 1. Completeness is not
+        proved.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section>
+  <p class="sec-no">01 &mdash; The short answer</p>
+  <h2>Nothing outside the family &mdash; but the proof isn't closed</h2>
+  <p class="lede">The support space of the P1-silent branch has been enumerated <strong>exhaustively</strong>
+  for the first time. Of a 13% random sample of it, four fifths are <em>proven</em> to carry no
+  equilibrium, and every equilibrium that does exist there reproduces Table 3 exactly &mdash; every
+  identity, every payoff, the whole range of &beta;. Separately, 39 of the 80 branches in which P1
+  bets are proven empty.</p>
+  <p>What is left is a genuine gap, not a formality: 41 branches in which P1 bluffs with interior
+  probability, and 87% of the enumerated silent supports still being screened. P1's bet is not
+  dominated &mdash; against loose enough opponents it gains up to <span class="mono">+1.25</span> &mdash;
+  so those branches cannot be waved away.</p>
+</section>
+
+<section>
+  <p class="sec-no">02 &mdash; The instrument</p>
+  <h2>A box implies its own condition</h2>
+  <p>The earlier searches enumerated <em>support labels</em>: each coordinate marked 0, 1, or
+  interior. That has a defect. "Interior" has to be carried as the box <span class="mono">[0,1]</span>,
+  which <em>contains</em> both pure labels &mdash; so the branch "P1 bluffs card&nbsp;1" silently re-does
+  the entire problem. That redundancy is why the label search never terminated on the betting branches.</p>
+  <p>Dropping labels entirely fixes it. Work with a box per coordinate and let the box imply the
+  Nash condition:</p>
+
+  <figure>
+  <svg viewBox="0 0 720 208" role="img" aria-label="Splitting the unit interval at m produces two children, each carrying a Nash condition immediately">
+    <defs>
+      <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0 0 L10 5 L0 10 z" class="dfill"/>
+      </marker>
+    </defs>
+    <g class="dline" fill="none">
+      <line x1="150" y1="46" x2="570" y2="46" stroke-width="1.5"/>
+      <line x1="150" y1="36" x2="150" y2="56" stroke-width="1.5"/>
+      <line x1="570" y1="36" x2="570" y2="56" stroke-width="1.5"/>
+      <path d="M360 70 L360 96 L235 96 L235 120" stroke-width="1.2" marker-end="url(#ar)"/>
+      <path d="M360 70 L360 96 L485 96 L485 120" stroke-width="1.2" marker-end="url(#ar)"/>
+    </g>
+    <line x1="360" y1="30" x2="360" y2="62" stroke-width="1.5" stroke-dasharray="3 3" class="dcut" fill="none"/>
+    <g class="dbar" fill="none">
+      <line x1="150" y1="140" x2="320" y2="140" stroke-width="3"/>
+      <line x1="400" y1="140" x2="570" y2="140" stroke-width="3"/>
+    </g>
+    <g class="dmono">
+      <text x="144" y="30">0</text>
+      <text x="564" y="30">1</text>
+      <text x="150" y="170">[0, m]</text>
+      <text x="400" y="170">[m, 1]</text>
+    </g>
+    <text x="354" y="24" class="dmono dcuttx">m</text>
+    <g class="dcap">
+      <text x="150" y="192">x &lt; 1 always &rarr; needs du/dx &#8804; 0</text>
+      <text x="400" y="192">x &gt; 0 always &rarr; needs du/dx &#8805; 0</text>
+    </g>
+  </svg>
+  <figcaption>One split, two children, and both carry a live constraint straight away. The halves do
+  not overlap in what they demand, so nothing is searched twice. On a branch that the label
+  enumeration needed 43,218 nodes and 25,738 leftover patterns to handle, this settles it
+  in <strong>1,777 nodes</strong> with no leftovers.</figcaption>
+  </figure>
+
+  <p>The bound underneath is interval propagation over the game tree, not term-by-term arithmetic on
+  the 312-leaf sum. At a node with coordinate <span class="mono">x &isin; [lo,hi]</span> the value is a
+  convex combination in <span class="mono">x</span>, so the interval is tight in that variable &mdash;
+  term-by-term bounds throw away <span class="mono">x + (1&minus;x) = 1</span> and are far weaker.
+  It collapses onto the exact gradient at a point to <span class="mono">5.6e&#8288;-17</span>.</p>
+</section>
+
+<section>
+  <p class="sec-no">03 &mdash; The silent branch</p>
+  <h2>387 million hypotheses, enumerated</h2>
+  <p>Fix P1 silent. After the forced values and reachability collapsing, 18 coordinates stay live
+  &mdash; <span class="mono">3<sup>18</sup> = 387,420,489</span> support hypotheses. Depth-first search
+  with interval and unit propagation at every node clears it in 525 seconds on one core.</p>
+
+  <div class="panel">
+    <div class="ph"><h3>Enumeration and feasibility</h3></div>
+    <div class="scroll"><table>
+      <tbody>
+        <tr><td>Support hypotheses in the branch</td><td class="n">387,420,489</td></tr>
+        <tr><td>Search nodes visited</td><td class="n">5,267,496</td></tr>
+        <tr><td><strong>Surviving support patterns</strong></td><td class="n"><strong>3,045,358</strong> &nbsp;<span style="color:var(--slate)">(0.79%)</span></td></tr>
+        <tr><td>&hellip; of which compatible with Table 3's structure</td><td class="n">223</td></tr>
+        <tr style="border-top:1px solid var(--rule)"><td>Patterns tested (uniform sample, 13.1%)</td><td class="n">400,000</td></tr>
+        <tr><td><span class="hi">Proven infeasible</span> by interval bisection</td><td class="n"><span class="hi">320,743</span> &nbsp;<span style="color:var(--slate)">(80.2%)</span></td></tr>
+        <tr><td>Sub-boxes examined</td><td class="n">1,507,713</td></tr>
+        <tr><td>Certified exact Nash (exploitability &lt; 1e-13)</td><td class="n">259</td></tr>
+        <tr><td>Distinct leaf distributions among them</td><td class="n">114</td></tr>
+        <tr><td><strong>Outside the SGS family</strong></td><td class="n"><strong>0</strong></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <p>The 3,045,135 patterns that are <em>in</em>compatible with Table 3 are the whole question: if any
+  one of them were realisable, it would be an equilibrium outside the family. None that has been
+  tested is. Across all 114 distinct certified equilibria, every Table 3 identity holds at machine
+  precision:</p>
+
+  <div class="panel">
+    <div class="ph"><h3>Table 3 identities, max residual over 114 equilibria</h3></div>
+    <div class="scroll"><table>
+      <thead><tr><th>Identity</th><th style="text-align:right">Max residual</th></tr></thead>
+      <tbody>
+        <tr><td class="k">b41 = 2(b11 + b21)</td><td class="n">4.2e-15</td></tr>
+        <tr><td class="k">b33 = 1/2 + (b11+b21)/2 + &beta;/2 &minus; b23(1&minus;b21)</td><td class="n">1.5e-14</td></tr>
+        <tr><td class="k">c21 = 1/2 &minus; c11</td><td class="n">8.1e-16</td></tr>
+        <tr><td class="k">a33 = 1/2 &nbsp;<span style="color:var(--slate)">(wherever reached)</span></td><td class="n">0</td></tr>
+        <tr><td class="k">u1 = &minus;&kappa;(1/2 + &beta;)</td><td class="n">3.1e-16</td></tr>
+        <tr><td class="k">u2 = &minus;&kappa;/2</td><td class="n">1.0e-16</td></tr>
+        <tr><td class="k">u3 = &kappa;(1 + &beta;)</td><td class="n">2.3e-16</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <p><span class="mono">&beta; = max{b11, b21}</span> reaches both ends of <span class="mono">[0, 1/4]</span>,
+  so the certified payoff set is exactly the family's &mdash; <span class="mono">u2 = &minus;&kappa;/2</span>
+  identically, and nothing anywhere pays P2 anything else.</p>
+</section>
+
+<section>
+  <p class="sec-no">04 &mdash; The betting branches</p>
+  <h2>Where P1 speaks, and where it can't</h2>
+  <p>Branch on the labels of P1's four opening coordinates: <span class="mono">3<sup>4</sup> = 81</span>
+  cells. One is the silent branch that holds the family. Thirty-four die on the very first fixed point
+  of interval propagation, in milliseconds; five more fall to the full search.</p>
+
+  <div class="panel">
+    <div class="ph"><h3>The 81 P1-opening branches &mdash; rows (a11, a21), columns (a31, a41)</h3></div>
+    <div class="pb">
+      <div class="gridwrap">
+        <div class="bgrid" id="bgrid"></div>
+        <div class="legend">
+          <div class="row"><span class="sw silent"></span><div><strong>The silent branch</strong> &mdash; P1 never bets. Contains the whole SGS family.</div></div>
+          <div class="row"><span class="sw dead"></span><div><strong>Dead at the root</strong> (34). Killed by one propagation fixed point, before any branching.</div></div>
+          <div class="row"><span class="sw provn"></span><div><strong>Proven empty by search</strong> (5). Each is a branch where P1 always bets card 2.</div></div>
+          <div class="row"><span class="sw open"></span><div><strong>Open</strong> (41). All have at least one opening coordinate strictly interior.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p>The dead cells have structure, not scatter. <strong>P1 always betting the worst card kills 22 of
+  its 27 branches outright</strong>, and every branch combining that with <span class="mono">a21 &isin; {1, interior}</span>
+  is dead. The five proven by search all have P1 always betting card&nbsp;2. What survives is exactly the
+  interesting case: P1 bluffing at some frequency strictly inside <span class="mono">(0,1)</span>.</p>
+</section>
+
+<section>
+  <p class="sec-no">05 &mdash; The algebra</p>
+  <h2>Where &beta; = max{b11, b21} actually comes from</h2>
+  <p>Fixing the support structure the enumeration says is the only one carrying P1-silent equilibria
+  and building the indifference equations symbolically over the 24-deal tree in exact rational
+  arithmetic, the whole system is eight small polynomials:</p>
+
+  <div class="panel"><div class="pb"><pre class="eq">du1/da33 = (2·b11 + 2·b21 − b41)/12            du2/db33 = (2·c11 + 2·c21 − 1)/12
+du2/db11 = −(2·a33 − 1)/12                     du2/db41 = (a33 − c11 − c21)/12
+du2/db21 = −(2·a33 + 2·b23·c11 − b23 − 1)/12   du3/dc21 = −(b11 + 2·b33 − b41 − 1)/12
+du2/db23 = <b>−(b21 − 1)(2·c11 − 1)/12</b>
+du3/dc11 = (2·b21·b23 − b21 − 2·b23 − 2·b33 + b41 + 1)/12</pre></div></div>
+
+  <p>They read off almost by inspection. <span class="mono">du2/db11 = 0</span> gives
+  <span class="mono">a33 = 1/2</span> on the spot &mdash; P1's call frequency at KBF is pinned by
+  P2's willingness to bet card&nbsp;1 and by nothing else. <span class="mono">du1/da33 = 0</span> gives
+  <span class="mono">b41 = 2(b11+b21)</span>. <span class="mono">du2/db33 = 0</span> gives
+  <span class="mono">c21 = 1/2 &minus; c11</span>.</p>
+
+  <p>And <span class="mono">du2/db21 = 0</span>, once <span class="mono">a33 = 1/2</span> is substituted,
+  collapses to a single product:</p>
+
+  <div class="callout">
+    <span class="lbl">The factorisation that splits the family</span>
+    <p><strong><span class="mono">b23 · (2·c11 &minus; 1) = 0</span></strong> &mdash; so either
+    <span class="mono">b23 = 0</span>, or <span class="mono">c11 = 1/2</span>. There is no third option,
+    and that is the whole of SGS's sub-family structure.</p>
+  </div>
+
+  <div class="panel">
+    <div class="ph"><h3>Solving each case</h3></div>
+    <div class="scroll"><table>
+      <thead><tr><th>Case</th><th>Interior / boundary pattern</th><th>What the equations force</th><th>&beta; appears as</th></tr></thead>
+      <tbody>
+        <tr><td class="k">A</td><td class="k">c11 = 0, c21 interior, b23 = 0</td><td class="k">c21 = 1/2, b33 = 1/2 + b11/2 + b21</td><td class="k">b21</td></tr>
+        <tr><td class="k">B</td><td class="k">c11 and c21 both interior</td><td class="k">adds <span class="hi">b21 = b11</span>, b33 = 1/2 + 3·b11/2</td><td class="k">b11 = b21</td></tr>
+        <tr><td class="k">C</td><td class="k">c11 = 1/2, c21 = 0, b23 interior</td><td class="k">b33 = 1/2 + b11 + b21/2 &minus; b23(1&minus;b21)</td><td class="k">b11</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <p>Each of those <span class="mono">b33</span> expressions equals Table 3's single formula
+  <em>exactly</em> &mdash; symbolic residual zero &mdash; once <span class="mono">&beta;</span> is read
+  as <span class="mono">b21</span> in case A and <span class="mono">b11</span> in cases B and C. Which
+  gives the punchline:</p>
+
+  <div class="callout">
+    <span class="lbl">Reading the max</span>
+    <p><strong><span class="mono">&beta; = max{b11, b21}</span> is not a formula. It is two cases glued.</strong></p>
+    <p>Sub-family A carries <span class="mono">b11 &le; b21</span> and produces <span class="mono">&beta; = b21</span>;
+    sub-family C carries <span class="mono">b21 &le; b11</span> and produces <span class="mono">&beta; = b11</span>;
+    B has them equal. The <span class="mono">max</span> in Table 3 is the one expression that covers all
+    three &mdash; nothing in the algebra ever computes a maximum.</p>
+  </div>
+  <p>Conditional on the support structure, this <em>is</em> a proof of Table 3.</p>
+</section>
+
+<section>
+  <p class="sec-no">06 &mdash; Correction</p>
+  <h2>c41 = 1 is not dominance-forced</h2>
+  <p>One rigorous by-product: a single interval fixed point over the full 48-dimensional cube &mdash;
+  no sampling, no interiority assumption &mdash; forces exactly the 21 values of the paper's Table 2,
+  entry for entry. It does <em>not</em> force a 22nd.</p>
+  <p>An earlier pass in this project claimed <span class="mono">c41 = 1</span> was also dominance-forced,
+  "a small strengthening" of Table 2. It isn't. Set <span class="mono">a22 = a32 = b23 = b33 = 0</span>
+  alongside the Table 2 values: then <span class="mono">du3/dc41 = 0</span> <em>exactly</em>, while the
+  information set has reach <span class="mono">0.25</span>. P3 holding card&nbsp;4 wins the same two chips
+  whether it bets and everyone folds or checks and takes the showdown. The old scan confined the other
+  coordinates to <span class="mono">[&epsilon;, 1&minus;&epsilon;]</span>, which excludes exactly that
+  profile &mdash; and an interiority-restricted scan cannot establish dominance.
+  <span class="mono">c41 = 1</span> belongs in Table 3, where SGS put it.</p>
+</section>
+
+<section>
+  <p class="sec-no">07 &mdash; What would close it</p>
+  <h2>The remaining gap, stated honestly</h2>
+  <ul>
+    <li><strong>41 betting branches.</strong> All have P1 bluffing at an interior frequency. The
+    partition-based search handles them without the redundancy that stalled the label search; they are
+    running, not resolved.</li>
+    <li><strong>87% of the silent supports.</strong> The remaining 2,645,358 enumerated patterns are
+    being screened now. Every completed block so far has come back the same way: ~80% proven
+    infeasible, the rest either infeasible or a family point.</li>
+    <li><strong>The solver stage is a search, not a decision procedure.</strong> A pattern the
+    Levenberg&ndash;Marquardt stage fails on is <em>not</em> thereby proved infeasible. Only the
+    interval-bisection stage issues proofs, and it settled 80.2%. Closing the remaining 20% needs the
+    bisection driven deeper, or an exact solver on each surviving system.</li>
+  </ul>
+  <p>The honest statement is stronger than the old one but the same in kind: <strong>no equilibrium
+  outside the SGS family exists anywhere the search has looked &mdash; and the search has now looked
+  exhaustively at the support level.</strong></p>
+</section>
+
+<footer>
+  <p>Full record, including every validation figure and dead end, in <span class="mono">MASTER_DATA.md</span>,
+  Part 15. Source: Szafron, Gibson &amp; Sturtevant, <em>A Parameterized Family of Equilibrium Profiles
+  for Three-Player Kuhn Poker</em>, AAMAS 2013.</p>
+</footer>
+</div>
+
+<script>
+(function(){
+  var L = ['0','1','M'];
+  var dead = new Set(['0001','0011','00M1','1000','1001','100M','1010','1011','101M','10M0','10M1',
+    '10MM','1100','1101','110M','1110','1111','111M','11M0','11M1','11MM','1M00','1M10','1M11','1MM0',
+    'M100','M101','M10M','M110','M111','M11M','M1M0','M1M1','M1MM']);
+  var provn = new Set(['0110','0111','01M0','0100','011M']);
+  var g = document.getElementById('bgrid');
+  var html = '<div class="hd"></div>';
+  for (var a=0;a<3;a++) for (var b=0;b<3;b++) html += '<div class="hd">'+L[a]+L[b]+'</div>';
+  for (var i=0;i<3;i++) for (var j=0;j<3;j++){
+    html += '<div class="rh">'+L[i]+L[j]+'</div>';
+    for (var k=0;k<3;k++) for (var m=0;m<3;m++){
+      var code = L[i]+L[j]+L[k]+L[m];
+      var cls = code==='0000' ? 'silent' : (dead.has(code) ? 'dead' : (provn.has(code) ? 'provn' : 'open'));
+      html += '<div class="cell '+cls+'" title="a11 a21 a31 a41 = '+code.split('').join(' ')+'">'+code+'</div>';
+    }
+  }
+  g.innerHTML = html;
+})();
+</script>

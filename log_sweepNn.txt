@@ -1,0 +1,27 @@
+108 runs in 696s
+
+   n  N  N=n+1 seeds  expl(med)  P1 max open  off-path  rank  pairs  attain  POLES  seeds w/pole
+   3  4  YES   20     0.00157    0.011        6         1     251    175     175    18/20
+   3  5  no    20     0.00348    0.828        2         1     40     0       0      0/20
+   4  5  YES   20     0.00264    0.010        34        2     756    468     468    20/20
+   4  6  no    20     0.00284    0.850        14        2     288    22      22     15/20
+   5  6  YES   20     0.00313    0.024        94        3     393    213     213    15/20
+   5  7  no    8      0.00448    0.826        52        3     350    2       2      2/8
+
+   (rank should equal n-2:  n=3 -> 1,  n=4 -> 2,  n=5 -> 3)
+
+   root distributions (only configs with pairs):
+      n=3 N=4:  251 roots | min  -11.604  median   0.718  max   55.477 | 70% inside [0,1]
+      n=3 N=5:   40 roots | min    1.218  median   1.572  max    2.778 | 0% inside [0,1]
+      n=4 N=5:  756 roots | min -116.489  median   0.610  max 1409.874 | 62% inside [0,1]
+      n=4 N=6:  288 roots | min -306.199  median   2.126  max 7071.596 | 8% inside [0,1]
+      n=5 N=6:  393 roots | min -116.861  median   0.526  max   29.931 | 54% inside [0,1]
+      n=5 N=7:  350 roots | min -19496.747  median   9.165  max 7027969.173 | 1% inside [0,1]
+
+   seat utilities (mean over seeds):
+      n=3 N=4: P1 -0.02832  P2 -0.02021  P3 +0.04853
+      n=3 N=5: P1 -0.03509  P2 -0.00145  P3 +0.03653
+      n=4 N=5: P1 -0.01406  P2 -0.01397  P3 -0.00840  P4 +0.03643
+      n=4 N=6: P1 -0.03184  P2 -0.01022  P3 +0.00769  P4 +0.03437
+      n=5 N=6: P1 -0.00908  P2 -0.00907  P3 -0.00770  P4 -0.00388  P5 +0.02973
+      n=5 N=7: P1 -0.02954  P2 -0.01483  P3 -0.00095  P4 +0.01254  P5 +0.03278

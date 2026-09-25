@@ -1,0 +1,16 @@
+stale lock_rest.pid (pid 27908 not running) -- taking over
+resuming rest: 36/265 jobs already done, 320387 proven infeasible, 222 survivors, 21556s prior
+patterns 2645358  jobs 265  remaining 229  workers 16  depth 8
+Traceback (most recent call last):
+  File "C:\Users\raosa\OneDrive\Documents\poker\pipe2.py", line 154, in <module>
+    _atomic_savez(ck, done=np.array(sorted(done)), pv=pv, bx=bx, tot=tot,
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                  nsurv=len(AP), elapsed=elapsed + time.time() - t0)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\raosa\OneDrive\Documents\poker\pipe2.py", line 99, in _atomic_savez
+    _replace(tmp, path)
+    ~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\raosa\OneDrive\Documents\poker\pipe2.py", line 82, in _replace
+    os.replace(tmp, path)
+    ~~~~~~~~~~^^^^^^^^^^^
+PermissionError: [WinError 5] Access is denied: 'ck_rest.npz.tmp.npz' -> 'ck_rest.npz'

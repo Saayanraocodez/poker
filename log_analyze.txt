@@ -1,0 +1,168 @@
+
+==============================================================================
+0.  Grid over the family's free parameters
+==============================================================================
+   sub-family A  c11=0     :  2268 grid points
+   sub-family B  0<c11<1/2 :  2268 grid points
+   sub-family C  c11=1/2   :  4536 grid points
+   TOTAL                :  9072 grid points   (requirement was >= 100)
+   beta range spanned   : [0.0000, 0.2500]
+   free params varied   : b11, b21, b23, b32, c11, c33, c34
+   max |u_grid - Table 3 closed form| = 2.082e-16
+
+==============================================================================
+1.  Is there ANY strictly improving direction?  (exact best responses)
+==============================================================================
+   exact best-response gap  max_i (BR_i - u_i) over 400 sampled points:
+      P1 3.331e-16   P2 9.021e-17   P3 4.094e-16
+   Every profile is an exact Nash equilibrium, so by definition NO
+   perturbation of any single player can strictly increase that
+   player's utility:  du_A/d eps <= 0 for every feasible direction.
+
+==============================================================================
+2.  Central finite differences vs exact multilinear derivatives
+==============================================================================
+   central difference step h = 1e-05
+   max |central_diff - exact| over 9072 points x 48 coords x 3 players = 2.425e-11
+   (u_i is multilinear, hence AFFINE along a single coordinate, so the
+    central difference is exact up to floating-point round-off.)
+
+==============================================================================
+3.  Zero-sum identity   du_A/d eps + du_B/d eps + du_C/d eps = 0
+==============================================================================
+   max |sum_i du_i| (central difference) = 2.758e-11
+   max |sum_i du_i| (exact)              = 3.539e-16
+   points/directions flagged as violating zero-sum (> 1e-9): 0
+   This can never fail: every leaf of the tree pays out exactly the
+   chips put in, so sum_i u_i(p) = 0 identically on ALL of [0,1]^48,
+   not just on the equilibrium family.  It is a property of the game,
+   not a property of the equilibrium.
+
+==============================================================================
+4.  Sign of du_A along every FEASIBLE direction  (equilibrium check)
+==============================================================================
+   A = P1 :  154224 feasible (point,direction) pairs | strictly IMPROVING 0 | strictly COSTLY  111456 | NEUTRAL (du_A = 0)   42768
+   A = P2 :  186618 feasible (point,direction) pairs | strictly IMPROVING 0 | strictly COSTLY   52038 | NEUTRAL (du_A = 0)  134580
+   A = P3 :  161784 feasible (point,direction) pairs | strictly IMPROVING 0 | strictly COSTLY   57072 | NEUTRAL (du_A = 0)  104712
+
+   => the requested d_A ('a perturbation that strictly increases u_A')
+      DOES NOT EXIST at any point of this family, for any player.
+
+==============================================================================
+5.  Costless transfer directions:  du_A = 0 but du_B = -du_C != 0
+==============================================================================
+   A = P1 : 7484 of 9072 grid points have >=1 costless transfer direction   (params: a11, a21, a22, a32, a41)
+   A = P2 : 9072 of 9072 grid points have >=1 costless transfer direction   (params: b11, b21, b41)
+   A = P3 : 9072 of 9072 grid points have >=1 costless transfer direction   (params: c11, c21)
+
+==============================================================================
+6.  rho = -(du_C/d eps) / (du_A/d eps)  over the grid
+==============================================================================
+   Convention (cyclic):  A=P1 -> B=P2, C=P3 ;  A=P2 -> B=P3, C=P1 ;
+                         A=P3 -> B=P1, C=P2.
+   rho is invariant under d -> -d (both numerator and denominator
+   flip sign), so rho depends only on WHICH parameter is perturbed.
+   Identity: rho_{A->B} + rho_{A->C} = 1, since du_B + du_C = -du_A.
+
+   ---- A = P1  (B = P2, C = P3) ------------------------------------------------
+     param  kind        undef/9072   min|du_A|      rho range               sign of rho
+     a11    TRANSFER      2112/9072   1.042e-03   [ -48.7500,  +22.0000]   *** FLIPS + <-> - ***
+     a12    costly           0/9072   7.589e-02   [  +0.5946,   +1.3889]   + everywhere
+     a13    unreached      432/9072   2.083e-03   [  +0.0000,   +0.0000]   identically 0
+     a14    unreached     1332/9072   1.042e-04   [  +1.0000,   +1.0000]   + everywhere
+     a21    TRANSFER      2112/9072   1.042e-03   [ -50.2500,  +22.0000]   *** FLIPS + <-> - ***
+     a22    TRANSFER       432/9072   2.083e-04   [  +0.5000, +102.0000]   + everywhere
+     a23    unreached     1332/9072   4.167e-04   [  +0.0000,   +0.0000]   identically 0
+     a24    unreached      792/9072   1.042e-04   [  +1.0000,   +1.0000]   + everywhere
+     a31    costly           0/9072   5.729e-02   [  +0.2727,   +0.4000]   + everywhere
+     a32    TRANSFER       432/9072   1.042e-03   [  -9.5000,   +0.0000]   - , touches 0
+     a33    null          9072/9072   ---           UNDEFINED everywhere   (no effect on anyone)
+     a34    unreached      432/9072   5.208e-04   [  +1.0000,   +1.0000]   + everywhere
+     a41    TRANSFER      5712/9072   5.208e-04   [  -1.2857,  +40.0000]   *** FLIPS + <-> - ***
+     a42    costly           0/9072   1.458e-01   [  +0.5000,   +0.7500]   + everywhere
+     a43    unreached      432/9072   4.167e-03   [  -0.0000,   -0.0000]   identically 0
+     a44    null          9072/9072   ---           UNDEFINED everywhere   (no effect on anyone)
+
+   ---- A = P2  (B = P3, C = P1) ------------------------------------------------
+     param  kind        undef/9072   min|du_A|      rho range               sign of rho
+     b11    TRANSFER      9072/9072   ---           UNDEFINED everywhere   (costless transfer)
+     b12    null          9072/9072   ---           UNDEFINED everywhere   (no effect on anyone)
+     b13    costly           0/9072   6.250e-02   [  +0.0000,   +0.0000]   identically 0
+     b14    unreached     4536/9072   3.490e-04   [  +1.0000,   +1.0000]   + everywhere
+     b21    TRANSFER      9072/9072   ---           UNDEFINED everywhere   (costless transfer)
+     b22    null          9072/9072   ---           UNDEFINED everywhere   (no effect on anyone)
+     b23    unreached     4536/9072   1.396e-03   [  +0.0000,   +0.0000]   identically 0
+     b24    unreached     2268/9072   2.734e-04   [  +1.0000,   +1.0000]   + everywhere
+     b31    costly           0/9072   1.042e-01   [  +0.6000,   +0.6000]   + everywhere
+     b32    null          9072/9072   ---           UNDEFINED everywhere   (no effect on anyone)
+     b33    null          9072/9072   ---           UNDEFINED everywhere   (no effect on anyone)
+     b34    costly           0/9072   2.083e-02   [  +1.0000,   +1.0000]   + everywhere
+     b41    TRANSFER      9072/9072   ---           UNDEFINED everywhere   (costless transfer)
+     b42    null          9072/9072   ---           UNDEFINED everywhere   (no effect on anyone)
+     b43    unreached      126/9072   8.333e-03   [  -0.0000,   -0.0000]   identically 0
+     b44    null          9072/9072   ---           UNDEFINED everywhere   (no effect on anyone)
+
+   ---- A = P3  (B = P1, C = P2) ------------------------------------------------
+     param  kind        undef/9072   min|du_A|      rho range               sign of rho
+     c11    TRANSFER      7272/9072   2.083e-04   [  +2.0000, +196.0000]   + everywhere
+     c12    unreached      432/9072   2.083e-03   [  +0.7500,   +1.0000]   + everywhere
+     c13    null          9072/9072   ---           UNDEFINED everywhere   (no effect on anyone)
+     c14    null          9072/9072   ---           UNDEFINED everywhere   (no effect on anyone)
+     c21    TRANSFER      6504/9072   1.042e-04   [  +2.0000, +391.0000]   + everywhere
+     c22    unreached      432/9072   5.208e-04   [  +0.7500,   +1.0000]   + everywhere
+     c23    null          9072/9072   ---           UNDEFINED everywhere   (no effect on anyone)
+     c24    null          9072/9072   ---           UNDEFINED everywhere   (no effect on anyone)
+     c31    costly           0/9072   6.250e-02   [  +0.0000,   +0.5000]   + , touches 0
+     c32    unreached      432/9072   5.208e-04   [  -0.0000,   +0.0000]   identically 0
+     c33    null          9072/9072   ---           UNDEFINED everywhere   (no effect on anyone)
+     c34    null          9072/9072   ---           UNDEFINED everywhere   (no effect on anyone)
+     c41    costly           0/9072   4.167e-02   [  +1.0000,   +1.0000]   + everywhere
+     c42    unreached      432/9072   4.167e-03   [  +0.7500,   +0.7500]   + everywhere
+     c43    null          9072/9072   ---           UNDEFINED everywhere   (no effect on anyone)
+     c44    null          9072/9072   ---           UNDEFINED everywhere   (no effect on anyone)
+
+
+==============================================================================
+6b. Summary answers
+==============================================================================
+   (1) WELL-DEFINED?  No.
+       19 of 48 parameters have du_A == 0 at EVERY grid point:
+           a33, a44, b11, b12, b21, b22, b32, b33, b41, b42, b44, c13, c14, c23, c24, c33, c34, c43, c44
+       a further 21 have du_A == 0 on part of the grid:
+           a11, a13, a14, a21, a22, a23, a24, a32, a34, a41, a43, b14, b23, b24, b43, c11, c12, c21, c22, c32, c42
+       and where it is nonzero the denominator gets as small as
+       1.0e-04 vs kappa = 0.0417, so rho is unbounded, not merely undefined
+
+   (2) SIGN?  Not constant.
+       sign flips (+ and - both occur): a11, a21, a41
+       reaches 0 but does not flip     : a32, c31
+       strictly positive everywhere    : a12, a14, a22, a24, a31, a34, a42, b14, b24, b31, b34, c11, c12, c21, c22, c41, c42
+
+==============================================================================
+7.  The paper's utility transfer:  moving ALONG the family (d/d beta)
+==============================================================================
+   This is a MULTI-coordinate direction: b11, b21, b33 and b41 all move
+   together so the profile stays inside the family.  Central difference
+   in beta with step 1e-05:
+
+     A  c11=0   (beta = b21, b11 = b21)          du/dbeta = [-0.041667 -0.000000 +0.041667]   (kappa = +0.041667)
+     B  0<c11<1/2 (beta = b11 = b21, c11 = 0.3)  du/dbeta = [-0.041667 -0.000000 +0.041667]   (kappa = +0.041667)
+     C  c11=1/2 (beta = b11, b21 = 0)            du/dbeta = [-0.041667 -0.000000 +0.041667]   (kappa = +0.041667)
+
+   du_2/d beta == 0 exactly:  P2 moves kappa*d(beta) of utility from
+   P1 to P3 at zero cost to itself.  With A = P2 the denominator of rho
+   is exactly zero along this direction -> rho = -kappa/0 is UNDEFINED.
+
+==============================================================================
+8.  A genuinely IMPROVING direction: the paper's Table 4 profile
+==============================================================================
+   Table 4 mixes sub-families (P2 from c11=1/2, P3 from c11=0) and is
+   NOT an equilibrium.  P2's exploitability there = 0.010417 = kappa*beta.
+   Improving direction d_A = -e_{b23} (P2 stops calling P3's bet with
+   the 2 after folding P1 out).  Central differences:
+      du_1/d eps = -0.000000    du_2/d eps = +0.083333    du_3/d eps = -0.083333
+      sum = +3.816e-12
+      rho_{P2->P1} = +0.0000      rho_{P2->P3} = +1.0000   (sum = 1.0000)
+   P2's whole gain comes out of P3; P1 is untouched.
+
+[results.json written]

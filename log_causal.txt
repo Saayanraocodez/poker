@@ -1,0 +1,24 @@
+36 runs in 151s
+
+Which half of Delta moves?  (later opponents, expected extra chips)
+   n  N  N=n+1   if P1 BETS   if P1 CHECKS   Delta      sharpness
+   3  4  YES       0.04162        0.04055    +0.00106  0.1667
+   3  5  no        0.06178        0.04944    +0.01234  0.1667
+   4  5  YES       0.03322        0.04412    -0.01090  0.0833
+   4  6  no        0.06590        0.04982    +0.01608  0.1333
+   5  6  YES       0.02816        0.03760    -0.00944  0.0500
+   5  7  no        0.05846        0.04697    +0.01149  0.0833
+
+   corr(Delta_later, sharpness) = +0.5640
+
+   sharpness: 0 = your card tells you your rank exactly,
+              0.5 = it tells you nothing
+
+Same split for the NEXT player:
+   n  N  N=n+1   if P1 BETS   if P1 CHECKS   Delta
+   3  4  YES       0.00981        0.01989    -0.01008
+   3  5  no        0.01450        0.02585    -0.01135
+   4  5  YES       0.00187        0.00118    +0.00068
+   4  6  no        0.00278        0.01767    -0.01489
+   5  6  YES       0.00291        0.00058    +0.00233
+   5  7  no        0.00356        0.01299    -0.00942

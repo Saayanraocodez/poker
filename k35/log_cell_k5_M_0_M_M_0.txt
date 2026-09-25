@@ -1,0 +1,11 @@
+mode nash (strong rules only)   layer depth 4
+a11:MIX,a21:0,a31:MIX,a41:MIX,a51:0: top expansion -> 2148 subtrees, 0 complete, 234s
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=44112, pipe_handle=1380)
+                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\Lib\multiprocessing\spawn.py", line 108, in spawn_main
+    source_process = _winapi.OpenProcess(
+        _winapi.SYNCHRONIZE | _winapi.PROCESS_DUP_HANDLE,
+        False, parent_pid)
+OSError: [WinError 87] The parameter is incorrect

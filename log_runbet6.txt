@@ -1,0 +1,2835 @@
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:0,a21:MIX,a31:0,a41:1 20 b_0_M_0_1
+a11:0,a21:MIX,a31:0,a41:1: top expansion -> 1147 subtrees, 0 complete, 3181 nodes, 67s
+   200/1147 subtrees  nodes 4790  leaves 0  aborted 0  72s
+   400/1147 subtrees  nodes 7289  leaves 0  aborted 0  77s
+   600/1147 subtrees  nodes 15327  leaves 14  aborted 0  105s
+   800/1147 subtrees  nodes 27944  leaves 91  aborted 0  155s
+   1000/1147 subtrees  nodes 55006  leaves 837  aborted 0  299s
+   1147/1147 subtrees  nodes 91781  leaves 4346  aborted 0  525s
+a11:0,a21:MIX,a31:0,a41:1: 4346 leaves from 91781 nodes, 0 subtrees aborted (node cap), 525s  -> enum6_pat_b_0_M_0_1.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u screen6.py b_0_M_0_1 20 8
+undecided leaves 4346  starts/leaf 8  workers 20
+  1/87  scanned 50  LM-feasible 0  certified 0  best residual 1.80e-02  11s
+  11/87  scanned 550  LM-feasible 0  certified 0  best residual 1.27e-02  13s
+  21/87  scanned 1050  LM-feasible 0  certified 0  best residual 1.27e-02  22s
+  31/87  scanned 1550  LM-feasible 0  certified 0  best residual 1.27e-02  25s
+  41/87  scanned 2050  LM-feasible 0  certified 0  best residual 1.27e-02  35s
+  51/87  scanned 2550  LM-feasible 0  certified 0  best residual 1.20e-02  37s
+  61/87  scanned 3050  LM-feasible 0  certified 0  best residual 1.20e-02  46s
+  71/87  scanned 3550  LM-feasible 0  certified 0  best residual 1.20e-02  48s
+  81/87  scanned 4050  LM-feasible 0  certified 0  best residual 1.20e-02  53s
+
+TOTAL scanned 4346   LM-feasible 0   CERTIFIED Nash 0   best residual 1.196e-02   53s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u prove6pat.py b_0_M_0_1 20 2000 b_0_M_0_1p enum6_restidx_b_0_M_0_1.npy
+restricted to 4346 leaves from enum6_restidx_b_0_M_0_1.npy
+leaves 4346  workers 20  node budget 2000 per leaf
+   200/4346  proven 200  (100.0%)  nodes 1826  16s
+   400/4346  proven 400  (100.0%)  nodes 2488  16s
+   600/4346  proven 600  (100.0%)  nodes 3070  16s
+   800/4346  proven 800  (100.0%)  nodes 3654  16s
+   1000/4346  proven 998  (99.8%)  nodes 8782  409s
+   1200/4346  proven 1198  (99.8%)  nodes 11236  409s
+   1400/4346  proven 1398  (99.9%)  nodes 31216  409s
+   1600/4346  proven 1598  (99.9%)  nodes 32342  409s
+   1800/4346  proven 1790  (99.4%)  nodes 72626  511s
+   2000/4346  proven 1988  (99.4%)  nodes 79410  511s
+   2200/4346  proven 2188  (99.5%)  nodes 84478  511s
+   2400/4346  proven 2388  (99.5%)  nodes 98698  513s
+   2600/4346  proven 2588  (99.5%)  nodes 104042  523s
+   2800/4346  proven 2788  (99.6%)  nodes 110868  555s
+   3000/4346  proven 2988  (99.6%)  nodes 122294  585s
+   3200/4346  proven 3188  (99.6%)  nodes 125302  585s
+   3400/4346  proven 3382  (99.5%)  nodes 161472  1208s
+   3600/4346  proven 3555  (98.8%)  nodes 251296  1505s
+   3800/4346  proven 3752  (98.7%)  nodes 261366  1540s
+   4000/4346  proven 3946  (98.7%)  nodes 310356  1749s
+   4200/4346  proven 4128  (98.3%)  nodes 380350  2161s
+   4346/4346  proven 4270  (98.3%)  nodes 391424  2161s
+
+TOTAL leaves 4346   PROVEN infeasible 4270 (98.25%)   undecided 76   nodes 391424   2161s
+undecided: smallest surviving box width  min 2.11e-01  median 4.02e-01  max 1.00e+00
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:0,a21:MIX,a31:1,a41:1 20 b_0_M_1_1
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:0,a21:MIX,a31:MIX,a41:1 20 b_0_M_M_1
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:MIX,a21:0,a31:0,a41:1 20 b_M_0_0_1
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:MIX,a21:0,a31:MIX,a41:1 20 b_M_0_M_1
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:MIX,a21:MIX,a31:0,a41:1 20 b_M_M_0_1
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:MIX,a21:0,a31:1,a41:1 20 b_M_0_1_1
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:0,a21:0,a31:1,a41:0 20 b_0_0_1_0
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:MIX,a21:0,a31:1,a41:MIX 20 b_M_0_1_M
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:MIX,a21:MIX,a31:1,a41:1 20 b_M_M_1_1
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:0,a21:0,a31:1,a41:MIX 20 b_0_0_1_M
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:MIX,a21:MIX,a31:1,a41:MIX 20 b_M_M_1_M
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:0,a21:MIX,a31:1,a41:MIX 20 b_0_M_1_M
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:0,a21:MIX,a31:1,a41:0 20 b_0_M_1_0
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:MIX,a21:0,a31:1,a41:0 20 b_M_0_1_0
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:MIX,a21:MIX,a31:1,a41:0 20 b_M_M_1_0
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:MIX,a21:MIX,a31:MIX,a41:1 20 b_M_M_M_1
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:0,a21:MIX,a31:0,a41:0 20 b_0_M_0_0
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:0,a21:0,a31:0,a41:MIX 20 b_0_0_0_M
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:0,a21:0,a31:MIX,a41:0 20 b_0_0_M_0
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:MIX,a21:0,a31:0,a41:0 20 b_M_0_0_0
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:MIX,a21:MIX,a31:0,a41:0 20 b_M_M_0_0
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:MIX,a21:MIX,a31:0,a41:MIX 20 b_M_M_0_M
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:0,a21:0,a31:MIX,a41:MIX 20 b_0_0_M_M
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:MIX,a21:0,a31:0,a41:MIX 20 b_M_0_0_M
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:0,a21:MIX,a31:0,a41:MIX 20 b_0_M_0_M
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:0,a21:MIX,a31:MIX,a41:0 20 b_0_M_M_0
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:MIX,a21:0,a31:MIX,a41:0 20 b_M_0_M_0
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:MIX,a21:MIX,a31:MIX,a41:0 20 b_M_M_M_0
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:0,a21:MIX,a31:MIX,a41:MIX 20 b_0_M_M_M
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:MIX,a21:0,a31:MIX,a41:MIX 20 b_M_0_M_M
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:MIX,a21:MIX,a31:MIX,a41:MIX 20 b_M_M_M_M
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:0,a21:MIX,a31:1,a41:1 16 b_0_M_1_1
+a11:0,a21:MIX,a31:1,a41:1: top expansion -> 963 subtrees, 0 complete, 4770 nodes, 115s
+   200/963 subtrees  nodes 5830  leaves 0  aborted 0  116s
+   400/963 subtrees  nodes 7150  leaves 0  aborted 0  118s
+   600/963 subtrees  nodes 8484  leaves 2  aborted 0  121s
+   800/963 subtrees  nodes 9881  leaves 13  aborted 0  123s
+   963/963 subtrees  nodes 11134  leaves 23  aborted 0  125s
+a11:0,a21:MIX,a31:1,a41:1: 23 leaves from 11134 nodes, 0 subtrees aborted (node cap), 125s  -> enum6_pat_b_0_M_1_1.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u screen6.py b_0_M_1_1 16 8
+undecided leaves 23  starts/leaf 8  workers 16
+  1/1  scanned 23  LM-feasible 0  certified 0  best residual 2.97e-02  3s
+
+TOTAL scanned 23   LM-feasible 0   CERTIFIED Nash 0   best residual 2.966e-02   3s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u prove6pat.py b_0_M_1_1 16 2000 b_0_M_1_1p enum6_restidx_b_0_M_1_1.npy
+restricted to 23 leaves from enum6_restidx_b_0_M_1_1.npy
+leaves 23  workers 16  node budget 2000 per leaf
+   23/23  proven 23  (100.0%)  nodes 93  1s
+
+TOTAL leaves 23   PROVEN infeasible 23 (100.00%)   undecided 0   nodes 93   1s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:0,a21:MIX,a31:MIX,a41:1 16 b_0_M_M_1
+a11:0,a21:MIX,a31:MIX,a41:1: top expansion -> 908 subtrees, 0 complete, 2619 nodes, 61s
+   200/908 subtrees  nodes 53155  leaves 76  aborted 0  242s
+   400/908 subtrees  nodes 162490  leaves 418  aborted 0  622s
+   600/908 subtrees  nodes 306066  leaves 1246  aborted 0  1182s
+   800/908 subtrees  nodes 510860  leaves 6337  aborted 0  1938s
+   908/908 subtrees  nodes 704364  leaves 17691  aborted 0  2661s
+a11:0,a21:MIX,a31:MIX,a41:1: 17691 leaves from 704364 nodes, 0 subtrees aborted (node cap), 2661s  -> enum6_pat_b_0_M_M_1.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u screen6.py b_0_M_M_1 16 8
+undecided leaves 17691  starts/leaf 8  workers 16
+  1/354  scanned 50  LM-feasible 0  certified 0  best residual 2.99e-02  5s
+  11/354  scanned 550  LM-feasible 0  certified 0  best residual 2.31e-02  5s
+  21/354  scanned 1050  LM-feasible 0  certified 0  best residual 2.06e-02  10s
+  31/354  scanned 1550  LM-feasible 0  certified 0  best residual 2.06e-02  10s
+  41/354  scanned 2050  LM-feasible 0  certified 0  best residual 2.06e-02  14s
+  51/354  scanned 2550  LM-feasible 0  certified 0  best residual 2.06e-02  18s
+  61/354  scanned 3050  LM-feasible 0  certified 0  best residual 2.06e-02  19s
+  71/354  scanned 3550  LM-feasible 0  certified 0  best residual 2.06e-02  23s
+  81/354  scanned 4050  LM-feasible 0  certified 0  best residual 2.06e-02  26s
+  91/354  scanned 4550  LM-feasible 0  certified 0  best residual 1.73e-02  27s
+  101/354  scanned 5050  LM-feasible 0  certified 0  best residual 1.63e-02  31s
+  111/354  scanned 5550  LM-feasible 0  certified 0  best residual 1.63e-02  33s
+  121/354  scanned 6050  LM-feasible 0  certified 0  best residual 1.63e-02  36s
+  131/354  scanned 6550  LM-feasible 0  certified 0  best residual 1.63e-02  40s
+  141/354  scanned 7050  LM-feasible 0  certified 0  best residual 1.63e-02  41s
+  151/354  scanned 7550  LM-feasible 0  certified 0  best residual 1.58e-02  45s
+  161/354  scanned 8050  LM-feasible 0  certified 0  best residual 1.58e-02  48s
+  171/354  scanned 8550  LM-feasible 0  certified 0  best residual 1.58e-02  50s
+  181/354  scanned 9050  LM-feasible 0  certified 0  best residual 1.58e-02  54s
+  191/354  scanned 9550  LM-feasible 0  certified 0  best residual 1.58e-02  55s
+  201/354  scanned 10050  LM-feasible 0  certified 0  best residual 1.58e-02  58s
+  211/354  scanned 10550  LM-feasible 0  certified 0  best residual 1.58e-02  62s
+  221/354  scanned 11050  LM-feasible 0  certified 0  best residual 1.58e-02  63s
+  231/354  scanned 11550  LM-feasible 0  certified 0  best residual 1.58e-02  67s
+  241/354  scanned 12050  LM-feasible 0  certified 0  best residual 1.58e-02  70s
+  251/354  scanned 12550  LM-feasible 0  certified 0  best residual 1.58e-02  72s
+  261/354  scanned 13050  LM-feasible 0  certified 0  best residual 1.58e-02  76s
+  271/354  scanned 13550  LM-feasible 0  certified 0  best residual 1.58e-02  78s
+  281/354  scanned 14050  LM-feasible 0  certified 0  best residual 1.58e-02  80s
+  291/354  scanned 14550  LM-feasible 0  certified 0  best residual 1.58e-02  84s
+  301/354  scanned 15050  LM-feasible 0  certified 0  best residual 1.58e-02  86s
+  311/354  scanned 15550  LM-feasible 0  certified 0  best residual 1.58e-02  90s
+  321/354  scanned 16050  LM-feasible 0  certified 0  best residual 1.58e-02  93s
+  331/354  scanned 16550  LM-feasible 0  certified 0  best residual 1.58e-02  94s
+  341/354  scanned 17050  LM-feasible 0  certified 0  best residual 1.58e-02  98s
+  351/354  scanned 17550  LM-feasible 0  certified 0  best residual 1.58e-02  100s
+
+TOTAL scanned 17691   LM-feasible 0   CERTIFIED Nash 0   best residual 1.581e-02   101s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u prove6pat.py b_0_M_M_1 16 2000 b_0_M_M_1p enum6_restidx_b_0_M_M_1.npy
+restricted to 17691 leaves from enum6_restidx_b_0_M_M_1.npy
+leaves 17691  workers 16  node budget 2000 per leaf  mode seq
+   200/17691  proven 200  (100.0%)  nodes 4016  23s
+   400/17691  proven 399  (99.8%)  nodes 8440  27s
+   600/17691  proven 599  (99.8%)  nodes 10050  27s
+   800/17691  proven 799  (99.9%)  nodes 12264  27s
+   1000/17691  proven 999  (99.9%)  nodes 13854  27s
+   1200/17691  proven 1199  (99.9%)  nodes 14726  27s
+   1400/17691  proven 1399  (99.9%)  nodes 15602  27s
+   1600/17691  proven 1598  (99.9%)  nodes 20830  95s
+   1800/17691  proven 1796  (99.8%)  nodes 28054  101s
+   2000/17691  proven 1994  (99.7%)  nodes 80558  149s
+   2200/17691  proven 2191  (99.6%)  nodes 97606  204s
+   2400/17691  proven 2391  (99.6%)  nodes 98914  204s
+   2600/17691  proven 2591  (99.7%)  nodes 113682  204s
+   2800/17691  proven 2791  (99.7%)  nodes 130112  233s
+   3000/17691  proven 2989  (99.6%)  nodes 138894  280s
+   3200/17691  proven 3188  (99.6%)  nodes 148968  304s
+   3400/17691  proven 3381  (99.4%)  nodes 200018  416s
+   3600/17691  proven 3569  (99.1%)  nodes 289662  597s
+   3800/17691  proven 3769  (99.2%)  nodes 293300  597s
+   4000/17691  proven 3969  (99.2%)  nodes 297450  597s
+   4200/17691  proven 4169  (99.3%)  nodes 298386  597s
+   4400/17691  proven 4369  (99.3%)  nodes 299254  597s
+   4600/17691  proven 4569  (99.3%)  nodes 300786  597s
+   4800/17691  proven 4767  (99.3%)  nodes 308174  634s
+   5000/17691  proven 4967  (99.3%)  nodes 317682  634s
+   5200/17691  proven 5167  (99.4%)  nodes 373400  737s
+   5400/17691  proven 5364  (99.3%)  nodes 406860  809s
+   5600/17691  proven 5564  (99.4%)  nodes 409002  809s
+   5800/17691  proven 5764  (99.4%)  nodes 409790  809s
+   6000/17691  proven 5964  (99.4%)  nodes 410720  809s
+   6200/17691  proven 6164  (99.4%)  nodes 411688  809s
+   6400/17691  proven 6364  (99.4%)  nodes 412474  809s
+   6600/17691  proven 6564  (99.5%)  nodes 413368  809s
+   6800/17691  proven 6764  (99.5%)  nodes 419056  809s
+   7000/17691  proven 6963  (99.5%)  nodes 422270  860s
+   7200/17691  proven 7163  (99.5%)  nodes 424064  860s
+   7400/17691  proven 7363  (99.5%)  nodes 424816  860s
+   7600/17691  proven 7562  (99.5%)  nodes 433296  863s
+   7800/17691  proven 7760  (99.5%)  nodes 445140  882s
+   8000/17691  proven 7960  (99.5%)  nodes 446064  882s
+   8200/17691  proven 8160  (99.5%)  nodes 446994  882s
+   8400/17691  proven 8360  (99.5%)  nodes 455834  882s
+   8600/17691  proven 8560  (99.5%)  nodes 458302  882s
+   8800/17691  proven 8757  (99.5%)  nodes 472024  919s
+   9000/17691  proven 8957  (99.5%)  nodes 482718  919s
+   9200/17691  proven 9157  (99.5%)  nodes 486294  919s
+   9400/17691  proven 9357  (99.5%)  nodes 492944  919s
+   9600/17691  proven 9556  (99.5%)  nodes 512542  991s
+   9800/17691  proven 9756  (99.6%)  nodes 560116  1016s
+   10000/17691  proven 9952  (99.5%)  nodes 623998  1258s
+   10200/17691  proven 10143  (99.4%)  nodes 709684  1529s
+   10400/17691  proven 10333  (99.4%)  nodes 804348  1939s
+   10600/17691  proven 10533  (99.4%)  nodes 806732  1939s
+   10800/17691  proven 10733  (99.4%)  nodes 809034  1939s
+   11000/17691  proven 10933  (99.4%)  nodes 811816  1939s
+   11200/17691  proven 11133  (99.4%)  nodes 814304  1939s
+   11400/17691  proven 11333  (99.4%)  nodes 824030  1939s
+   11600/17691  proven 11533  (99.4%)  nodes 856236  2045s
+   11800/17691  proven 11731  (99.4%)  nodes 893400  2298s
+   12000/17691  proven 11928  (99.4%)  nodes 901926  2326s
+   12200/17691  proven 12111  (99.3%)  nodes 951446  2655s
+   12400/17691  proven 12311  (99.3%)  nodes 960444  2655s
+   12600/17691  proven 12511  (99.3%)  nodes 965486  2655s
+   12800/17691  proven 12711  (99.3%)  nodes 973428  2655s
+   13000/17691  proven 12911  (99.3%)  nodes 984488  2655s
+   13200/17691  proven 13108  (99.3%)  nodes 1010024  2791s
+   13400/17691  proven 13303  (99.3%)  nodes 1044824  2890s
+   13600/17691  proven 13502  (99.3%)  nodes 1105498  2987s
+   13800/17691  proven 13692  (99.2%)  nodes 1172590  3377s
+   14000/17691  proven 13879  (99.1%)  nodes 1239668  3676s
+   14200/17691  proven 14058  (99.0%)  nodes 1355052  4002s
+   14400/17691  proven 14230  (98.8%)  nodes 1489914  4684s
+   14600/17691  proven 14422  (98.8%)  nodes 1535486  4806s
+   14800/17691  proven 14622  (98.8%)  nodes 1539402  4806s
+   15000/17691  proven 14822  (98.8%)  nodes 1546304  4806s
+   15200/17691  proven 15022  (98.8%)  nodes 1553518  4806s
+   15400/17691  proven 15222  (98.8%)  nodes 1561264  4806s
+   15600/17691  proven 15421  (98.9%)  nodes 1571404  4806s
+   15800/17691  proven 15621  (98.9%)  nodes 1575242  4806s
+   16000/17691  proven 15820  (98.9%)  nodes 1591634  4871s
+   16200/17691  proven 16016  (98.9%)  nodes 1620514  5230s
+   16400/17691  proven 16213  (98.9%)  nodes 1669028  5247s
+   16600/17691  proven 16408  (98.8%)  nodes 1748024  5672s
+   16800/17691  proven 16592  (98.8%)  nodes 1836684  6008s
+   17000/17691  proven 16767  (98.6%)  nodes 1970230  6508s
+   17200/17691  proven 16956  (98.6%)  nodes 2022788  6804s
+   17400/17691  proven 17156  (98.6%)  nodes 2027890  6804s
+   17600/17691  proven 17356  (98.6%)  nodes 2033796  6804s
+   17691/17691  proven 17447  (98.6%)  nodes 2038415  6804s
+
+TOTAL leaves 17691   PROVEN infeasible 17447 (98.62%)   undecided 244   nodes 2038415   6805s
+undecided: smallest surviving box width  min 2.17e-01  median 4.48e-01  max 1.00e+00
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_0_M_M_1 16 enum6_exidx_b_0_M_M_1.npy
+tag b_0_M_M_1  leaves 244  workers 16  maxnodes 300  timeout 180s
+   100/244  EMPTY_GB 1  EMPTY_BOX 99  8s
+   200/244  EMPTY_GB 1  EMPTY_BOX 199  43s
+   leaf 14359  OPEN  {'nE': 16, 'nMIX': 16, 'nDC': 0, 'nodes': 301, 'why': 'a21:MIX,a22:MIX,a31:MIX,a32:MIX,a34:MIX,a41:1,b31:MIX,b34:MIX,c22:MIX,c32:MIX', 'box': 'a21[0.5,0.6666666666666666] a22[0.0,0.5] a31[0.5,1.0] a32[0.5,1.0] a33[0.5,1.0] a34[0.5,1.0] b31[0.0,0.5] b41[0.5,1.0]'}
+   leaf 16715  OPEN  {'nE': 16, 'nMIX': 16, 'nDC': 0, 'nodes': 301, 'why': 'a21:MIX,a22:MIX,a31:MIX,a32:MIX,a41:1,b31:MIX,b34:MIX,c31:MIX,c32:MIX', 'box': 'a21[0.5,0.6666666666666666] a22[0.5,1.0] a31[0.5,1.0] b11[0.0,0.5] b21[0.0,0.5] b31[0.5,1.0] b33[0.5,1.0] b41[0.5,1.0]'}
+   leaf 14463  OPEN  {'nE': 18, 'nMIX': 18, 'nDC': 0, 'nodes': 304, 'why': 'a21:MIX,a22:MIX,a23:MIX,a31:MIX,a32:MIX,a34:MIX,a41:1,b31:MIX,b34:MIX,c22:MIX,c32:MIX', 'box': 'a21[0.5,0.6666666666666666] a22[0.0,0.5] a31[0.5,1.0] a32[0.5,1.0] b34[0.5,1.0]'}
+   leaf 16325  OPEN  {'nE': 20, 'nMIX': 20, 'nDC': 0, 'nodes': 303, 'why': 'a21:MIX,a22:MIX,a23:MIX,a31:MIX,a32:MIX,a34:MIX,a41:1,b31:MIX,b34:MIX,c22:MIX,c31:MIX,c32:MIX', 'box': 'a21[0.6666666666666666,0.6666666666666666] a22[0.0,0.5] a23[0.5,1.0] a31[0.5,1.0] a32[0.0,0.5] a33[0.5,1.0] a34[0.0,0.5] b11[0.0,0.5] b21[0.0,0.75] b33[0.5,1.0] b34[0.5,1.0] b41[0.5,1.0]'}
+   leaf 17016  OPEN  {'nE': 18, 'nMIX': 18, 'nDC': 0, 'nodes': 301, 'why': 'a21:MIX,a22:MIX,a31:MIX,a32:MIX,a34:MIX,a41:1,b31:MIX,b34:MIX,c22:MIX,c31:MIX,c32:MIX', 'box': 'a21[0.5,0.6666666666666666] a22[0.0,0.5] a31[0.0,0.5] a32[0.0,0.5] a33[0.5,1.0] a34[0.0,0.5] b23[0.5,1.0] b33[0.0,0.5] b34[0.0,0.5]'}
+   leaf 17054  OPEN  {'nE': 19, 'nMIX': 19, 'nDC': 0, 'nodes': 301, 'why': 'a21:MIX,a22:MIX,a23:MIX,a31:MIX,a32:MIX,a34:MIX,a41:1,b31:MIX,b34:MIX,c22:MIX,c31:MIX,c32:MIX', 'box': 'a21[0.5,0.6666666666666666] a22[0.0,0.5] a31[0.5,1.0] a32[0.0,0.5] a34[0.0,0.5] b11[0.0,0.5] b21[0.0,0.7708333333333334] b33[0.0,0.5] b34[0.0,0.5] b41[0.5,1.0]'}
+   244/244  EMPTY_GB 1  EMPTY_BOX 237  OPEN 6  107s
+
+TOTAL 244 leaves:  EMPTY_GB 1  EMPTY_MIX 0  EMPTY_BOX 237  EMPTY_CONST 0  FAMILY 0  OPEN 6  ERROR 0  TIMEOUT 0   108s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:MIX,a21:0,a31:0,a41:1 16 b_M_0_0_1
+mode seq (weak rules)
+a11:MIX,a21:0,a31:0,a41:1: top expansion -> 801 subtrees, 0 complete, 4176 nodes, 132s
+   200/801 subtrees  nodes 8724  leaves 0  aborted 0  144s
+   400/801 subtrees  nodes 19835  leaves 21  aborted 0  191s
+   600/801 subtrees  nodes 43204  leaves 297  aborted 0  312s
+   800/801 subtrees  nodes 106170  leaves 1506  aborted 0  709s
+   801/801 subtrees  nodes 110978  leaves 1613  aborted 0  736s
+a11:MIX,a21:0,a31:0,a41:1: 1613 leaves from 110978 nodes, 0 subtrees aborted (node cap), 736s  -> enum6_pat_b_M_0_0_1.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u screen6.py b_M_0_0_1 16 8
+undecided leaves 1613  starts/leaf 8  workers 16
+  1/33  scanned 50  LM-feasible 0  certified 0  best residual 1.18e-02  16s
+  11/33  scanned 550  LM-feasible 0  certified 0  best residual 1.18e-02  17s
+  21/33  scanned 1050  LM-feasible 0  certified 0  best residual 1.12e-02  24s
+  31/33  scanned 1550  LM-feasible 0  certified 0  best residual 1.12e-02  24s
+
+TOTAL scanned 1613   LM-feasible 0   CERTIFIED Nash 0   best residual 1.123e-02   25s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u prove6pat.py b_M_0_0_1 16 2000 b_M_0_0_1p enum6_restidx_b_M_0_0_1.npy
+restricted to 1613 leaves from enum6_restidx_b_M_0_0_1.npy
+leaves 1613  workers 16  node budget 2000 per leaf  mode seq
+   200/1613  proven 200  (100.0%)  nodes 702  9s
+   400/1613  proven 400  (100.0%)  nodes 1400  12s
+   600/1613  proven 600  (100.0%)  nodes 2764  15s
+   800/1613  proven 800  (100.0%)  nodes 5118  21s
+   1000/1613  proven 998  (99.8%)  nodes 12504  143s
+   1200/1613  proven 1198  (99.8%)  nodes 14788  143s
+   1400/1613  proven 1398  (99.9%)  nodes 17842  143s
+   1600/1613  proven 1598  (99.9%)  nodes 22568  143s
+   1613/1613  proven 1611  (99.9%)  nodes 23023  143s
+
+TOTAL leaves 1613   PROVEN infeasible 1611 (99.88%)   undecided 2   nodes 23023   146s
+undecided: smallest surviving box width  min 4.34e-01  median 5.49e-01  max 6.65e-01
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_M_0_0_1 16 enum6_exidx_b_M_0_0_1.npy
+tag b_M_0_0_1  leaves 2  workers 16  maxnodes 300  timeout 180s
+   2/2  EMPTY_BOX 2  3s
+
+TOTAL 2 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 2  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0   3s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:MIX,a21:0,a31:MIX,a41:1 16 b_M_0_M_1
+mode seq (weak rules)
+a11:MIX,a21:0,a31:MIX,a41:1: top expansion -> 766 subtrees, 0 complete, 2344 nodes, 53s
+   200/766 subtrees  nodes 26237  leaves 0  aborted 0  169s
+   400/766 subtrees  nodes 68160  leaves 4  aborted 0  394s
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\Lib\multiprocessing\pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\raosa\OneDrive\Documents\poker\enum6.py", line 38, in dfs
+    lab, LO, HI, al = T6.propagate(lab, LO, HI, weak)
+                      ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\raosa\OneDrive\Documents\poker\treesize6.py", line 45, in propagate
+    LO, HI, al, DLO, DHI, SL, SK = bnb6.propagate(LO, HI, weak=weak, hyp_ge=mix, hyp_le=mix)
+                                   ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\raosa\OneDrive\Documents\poker\bnb6.py", line 148, in propagate
+    pl, ph = ivl.bounds(PL, PH)[:2]
+             ~~~~~~~~~~^^^^^^^^
+  File "C:\Users\raosa\OneDrive\Documents\poker\ivl.py", line 56, in bounds
+    dlo = np.empty((B, len(INT), ND)); dhi = np.empty((B, len(INT), ND))
+                                             ~~~~~~~~^^^^^^^^^^^^^^^^^^^
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 35.3 MiB for an array with shape (16064, 12, 24) and data type float64
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\raosa\OneDrive\Documents\poker\enum6.py", line 111, in <module>
+    for L, A, B, n, ab in pool.imap_unordered(dfs, jobs, chunksize=1):
+                          ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\Lib\multiprocessing\pool.py", line 873, in next
+    raise value
+numpy._core._exceptions._ArrayMemoryError: Unable to allocate 35.3 MiB for an array with shape (16064, 12, 24) and data type float64
+*** exit code 1, enum6_pat_b_M_0_M_1.npy missing -- retry 1/3 in 30s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:MIX,a21:0,a31:MIX,a41:1 16 b_M_0_M_1
+mode seq (weak rules)
+a11:MIX,a21:0,a31:MIX,a41:1: top expansion -> 766 subtrees, 0 complete, 2344 nodes, 32s
+   200/766 subtrees  nodes 26275  leaves 0  aborted 0  104s
+   400/766 subtrees  nodes 68160  leaves 4  aborted 0  255s
+   600/766 subtrees  nodes 191007  leaves 37  aborted 0  771s
+   766/766 subtrees  nodes 567505  leaves 2402  aborted 0  2311s
+a11:MIX,a21:0,a31:MIX,a41:1: 2402 leaves from 567505 nodes, 0 subtrees aborted (node cap), 2311s  -> enum6_pat_b_M_0_M_1.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u screen6.py b_M_0_M_1 16 8
+undecided leaves 2402  starts/leaf 8  workers 16
+  1/49  scanned 50  LM-feasible 0  certified 0  best residual 2.81e-02  4s
+  11/49  scanned 550  LM-feasible 0  certified 0  best residual 2.76e-02  5s
+  21/49  scanned 1050  LM-feasible 0  certified 0  best residual 2.76e-02  8s
+  31/49  scanned 1550  LM-feasible 0  certified 0  best residual 2.65e-02  9s
+  41/49  scanned 2050  LM-feasible 0  certified 0  best residual 2.65e-02  12s
+
+TOTAL scanned 2402   LM-feasible 0   CERTIFIED Nash 0   best residual 2.650e-02   13s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u prove6pat.py b_M_0_M_1 16 2000 b_M_0_M_1p enum6_restidx_b_M_0_M_1.npy
+restricted to 2402 leaves from enum6_restidx_b_M_0_M_1.npy
+leaves 2402  workers 16  node budget 2000 per leaf  mode seq
+   200/2402  proven 200  (100.0%)  nodes 1188  2s
+   400/2402  proven 400  (100.0%)  nodes 2640  5s
+   600/2402  proven 600  (100.0%)  nodes 4184  7s
+   800/2402  proven 800  (100.0%)  nodes 4900  7s
+   1000/2402  proven 1000  (100.0%)  nodes 6926  9s
+   1200/2402  proven 1200  (100.0%)  nodes 8896  12s
+   1400/2402  proven 1399  (99.9%)  nodes 21038  66s
+   1600/2402  proven 1599  (99.9%)  nodes 23228  66s
+   1800/2402  proven 1799  (99.9%)  nodes 26862  66s
+   2000/2402  proven 1994  (99.7%)  nodes 52380  114s
+   2200/2402  proven 2194  (99.7%)  nodes 52974  114s
+   2400/2402  proven 2394  (99.8%)  nodes 56012  114s
+   2402/2402  proven 2396  (99.8%)  nodes 56078  114s
+
+TOTAL leaves 2402   PROVEN infeasible 2396 (99.75%)   undecided 6   nodes 56078   114s
+undecided: smallest surviving box width  min 5.45e-01  median 8.97e-01  max 1.00e+00
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_M_0_M_1 16 enum6_exidx_b_M_0_M_1.npy
+tag b_M_0_M_1  leaves 6  workers 16  maxnodes 300  timeout 180s
+   6/6  EMPTY_BOX 6  1s
+
+TOTAL 6 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 6  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0   1s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:MIX,a21:MIX,a31:0,a41:1 16 b_M_M_0_1
+mode seq (weak rules)
+a11:MIX,a21:MIX,a31:0,a41:1: top expansion -> 1016 subtrees, 0 complete, 3387 nodes, 54s
+   200/1016 subtrees  nodes 7152  leaves 38  aborted 0  61s
+   400/1016 subtrees  nodes 12832  leaves 185  aborted 0  72s
+   600/1016 subtrees  nodes 35150  leaves 1012  aborted 0  153s
+   800/1016 subtrees  nodes 102376  leaves 5698  aborted 0  536s
+   1000/1016 subtrees  nodes 285971  leaves 22703  aborted 0  1264s
+   1016/1016 subtrees  nodes 386603  leaves 32958  aborted 0  1593s
+a11:MIX,a21:MIX,a31:0,a41:1: 32958 leaves from 386603 nodes, 0 subtrees aborted (node cap), 1593s  -> enum6_pat_b_M_M_0_1.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u screen6.py b_M_M_0_1 16 8
+undecided leaves 32958  starts/leaf 8  workers 16
+  1/660  scanned 50  LM-feasible 0  certified 0  best residual 1.29e-02  4s
+  11/660  scanned 550  LM-feasible 0  certified 0  best residual 1.20e-02  4s
+  21/660  scanned 1050  LM-feasible 0  certified 0  best residual 1.20e-02  8s
+  31/660  scanned 1550  LM-feasible 0  certified 0  best residual 1.20e-02  9s
+  41/660  scanned 2050  LM-feasible 0  certified 0  best residual 1.19e-02  12s
+  51/660  scanned 2550  LM-feasible 0  certified 0  best residual 1.19e-02  16s
+  61/660  scanned 3050  LM-feasible 0  certified 0  best residual 1.01e-02  16s
+  71/660  scanned 3550  LM-feasible 0  certified 0  best residual 1.01e-02  20s
+  81/660  scanned 4050  LM-feasible 0  certified 0  best residual 1.01e-02  23s
+  91/660  scanned 4550  LM-feasible 0  certified 0  best residual 8.50e-03  24s
+  101/660  scanned 5050  LM-feasible 0  certified 0  best residual 8.50e-03  27s
+  111/660  scanned 5550  LM-feasible 0  certified 0  best residual 8.50e-03  28s
+  121/660  scanned 6050  LM-feasible 0  certified 0  best residual 8.50e-03  31s
+  131/660  scanned 6550  LM-feasible 0  certified 0  best residual 8.50e-03  34s
+  141/660  scanned 7050  LM-feasible 0  certified 0  best residual 8.50e-03  35s
+  151/660  scanned 7550  LM-feasible 0  certified 0  best residual 8.50e-03  39s
+  161/660  scanned 8050  LM-feasible 0  certified 0  best residual 8.50e-03  41s
+  171/660  scanned 8550  LM-feasible 0  certified 0  best residual 8.50e-03  43s
+  181/660  scanned 9050  LM-feasible 0  certified 0  best residual 8.50e-03  46s
+  191/660  scanned 9550  LM-feasible 0  certified 0  best residual 8.50e-03  47s
+  201/660  scanned 10050  LM-feasible 0  certified 0  best residual 8.50e-03  50s
+  211/660  scanned 10550  LM-feasible 0  certified 0  best residual 8.50e-03  53s
+  221/660  scanned 11050  LM-feasible 0  certified 0  best residual 8.50e-03  54s
+  231/660  scanned 11550  LM-feasible 0  certified 0  best residual 8.50e-03  57s
+  241/660  scanned 12050  LM-feasible 0  certified 0  best residual 8.50e-03  59s
+  251/660  scanned 12550  LM-feasible 0  certified 0  best residual 8.50e-03  61s
+  261/660  scanned 13050  LM-feasible 0  certified 0  best residual 8.50e-03  65s
+  271/660  scanned 13550  LM-feasible 0  certified 0  best residual 8.50e-03  66s
+  281/660  scanned 14050  LM-feasible 0  certified 0  best residual 8.50e-03  69s
+  291/660  scanned 14550  LM-feasible 0  certified 0  best residual 8.50e-03  72s
+  301/660  scanned 15050  LM-feasible 0  certified 0  best residual 8.50e-03  73s
+  311/660  scanned 15550  LM-feasible 0  certified 0  best residual 8.50e-03  76s
+  321/660  scanned 16050  LM-feasible 0  certified 0  best residual 8.50e-03  79s
+  331/660  scanned 16550  LM-feasible 0  certified 0  best residual 8.50e-03  80s
+  341/660  scanned 17050  LM-feasible 0  certified 0  best residual 8.50e-03  83s
+  351/660  scanned 17550  LM-feasible 0  certified 0  best residual 8.50e-03  85s
+  361/660  scanned 18050  LM-feasible 0  certified 0  best residual 8.50e-03  88s
+  371/660  scanned 18550  LM-feasible 0  certified 0  best residual 8.50e-03  91s
+  381/660  scanned 19050  LM-feasible 0  certified 0  best residual 8.50e-03  92s
+  391/660  scanned 19550  LM-feasible 0  certified 0  best residual 8.50e-03  95s
+  401/660  scanned 20050  LM-feasible 0  certified 0  best residual 8.50e-03  98s
+  411/660  scanned 20550  LM-feasible 0  certified 0  best residual 8.50e-03  100s
+  421/660  scanned 21050  LM-feasible 0  certified 0  best residual 8.50e-03  103s
+  431/660  scanned 21550  LM-feasible 0  certified 0  best residual 8.50e-03  105s
+  441/660  scanned 22050  LM-feasible 0  certified 0  best residual 8.50e-03  107s
+  451/660  scanned 22550  LM-feasible 0  certified 0  best residual 8.50e-03  110s
+  461/660  scanned 23050  LM-feasible 0  certified 0  best residual 8.50e-03  112s
+  471/660  scanned 23550  LM-feasible 0  certified 0  best residual 8.50e-03  115s
+  481/660  scanned 24050  LM-feasible 0  certified 0  best residual 8.50e-03  118s
+  491/660  scanned 24550  LM-feasible 0  certified 0  best residual 8.50e-03  119s
+  501/660  scanned 25050  LM-feasible 0  certified 0  best residual 8.50e-03  122s
+  511/660  scanned 25550  LM-feasible 0  certified 0  best residual 8.50e-03  124s
+  521/660  scanned 26050  LM-feasible 0  certified 0  best residual 8.50e-03  127s
+  531/660  scanned 26550  LM-feasible 0  certified 0  best residual 8.50e-03  130s
+  541/660  scanned 27050  LM-feasible 0  certified 0  best residual 8.50e-03  131s
+  551/660  scanned 27550  LM-feasible 0  certified 0  best residual 8.50e-03  134s
+  561/660  scanned 28050  LM-feasible 0  certified 0  best residual 8.50e-03  137s
+  571/660  scanned 28550  LM-feasible 0  certified 0  best residual 8.50e-03  139s
+  581/660  scanned 29050  LM-feasible 0  certified 0  best residual 8.50e-03  142s
+  591/660  scanned 29550  LM-feasible 0  certified 0  best residual 8.50e-03  144s
+  601/660  scanned 30050  LM-feasible 0  certified 0  best residual 8.50e-03  147s
+  611/660  scanned 30550  LM-feasible 0  certified 0  best residual 8.50e-03  149s
+  621/660  scanned 31050  LM-feasible 0  certified 0  best residual 8.50e-03  151s
+  631/660  scanned 31550  LM-feasible 0  certified 0  best residual 8.50e-03  154s
+  641/660  scanned 32050  LM-feasible 0  certified 0  best residual 8.50e-03  157s
+  651/660  scanned 32508  LM-feasible 0  certified 0  best residual 8.50e-03  159s
+
+TOTAL scanned 32958   LM-feasible 0   CERTIFIED Nash 0   best residual 8.503e-03   160s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u prove6pat.py b_M_M_0_1 16 2000 b_M_M_0_1p enum6_restidx_b_M_M_0_1.npy
+restricted to 32958 leaves from enum6_restidx_b_M_M_0_1.npy
+leaves 32958  workers 16  node budget 2000 per leaf  mode seq
+   200/32958  proven 200  (100.0%)  nodes 600  1s
+   400/32958  proven 400  (100.0%)  nodes 1944  4s
+   600/32958  proven 600  (100.0%)  nodes 2544  4s
+   800/32958  proven 800  (100.0%)  nodes 3132  4s
+   1000/32958  proven 1000  (100.0%)  nodes 3728  4s
+   1200/32958  proven 1200  (100.0%)  nodes 4598  4s
+   1400/32958  proven 1400  (100.0%)  nodes 5198  5s
+   1600/32958  proven 1600  (100.0%)  nodes 5794  6s
+   1800/32958  proven 1800  (100.0%)  nodes 6480  7s
+   2000/32958  proven 2000  (100.0%)  nodes 7080  7s
+   2200/32958  proven 2200  (100.0%)  nodes 7702  7s
+   2400/32958  proven 2400  (100.0%)  nodes 8308  8s
+   2600/32958  proven 2600  (100.0%)  nodes 9248  12s
+   2800/32958  proven 2800  (100.0%)  nodes 9848  12s
+   3000/32958  proven 3000  (100.0%)  nodes 10602  12s
+   3200/32958  proven 3200  (100.0%)  nodes 11202  12s
+   3400/32958  proven 3400  (100.0%)  nodes 11802  12s
+   3600/32958  proven 3600  (100.0%)  nodes 12402  12s
+   3800/32958  proven 3800  (100.0%)  nodes 13008  12s
+   4000/32958  proven 4000  (100.0%)  nodes 13922  14s
+   4200/32958  proven 4200  (100.0%)  nodes 14522  14s
+   4400/32958  proven 4400  (100.0%)  nodes 15122  14s
+   4600/32958  proven 4600  (100.0%)  nodes 15742  15s
+   4800/32958  proven 4800  (100.0%)  nodes 16424  15s
+   5000/32958  proven 5000  (100.0%)  nodes 17260  16s
+   5200/32958  proven 5200  (100.0%)  nodes 18302  19s
+   5400/32958  proven 5400  (100.0%)  nodes 18950  19s
+   5600/32958  proven 5600  (100.0%)  nodes 20302  24s
+   5800/32958  proven 5800  (100.0%)  nodes 21030  24s
+   6000/32958  proven 6000  (100.0%)  nodes 21674  24s
+   6200/32958  proven 6200  (100.0%)  nodes 22736  24s
+   6400/32958  proven 6400  (100.0%)  nodes 23466  24s
+   6600/32958  proven 6600  (100.0%)  nodes 24570  24s
+   6800/32958  proven 6800  (100.0%)  nodes 25576  24s
+   7000/32958  proven 7000  (100.0%)  nodes 26176  24s
+   7200/32958  proven 7200  (100.0%)  nodes 27442  27s
+   7400/32958  proven 7400  (100.0%)  nodes 28290  27s
+   7600/32958  proven 7600  (100.0%)  nodes 31730  38s
+   7800/32958  proven 7800  (100.0%)  nodes 32380  38s
+   8000/32958  proven 8000  (100.0%)  nodes 33632  38s
+   8200/32958  proven 8200  (100.0%)  nodes 34646  38s
+   8400/32958  proven 8400  (100.0%)  nodes 36066  38s
+   8600/32958  proven 8600  (100.0%)  nodes 36666  38s
+   8800/32958  proven 8800  (100.0%)  nodes 37772  39s
+   9000/32958  proven 9000  (100.0%)  nodes 39762  48s
+   9200/32958  proven 9200  (100.0%)  nodes 40362  48s
+   9400/32958  proven 9400  (100.0%)  nodes 40962  48s
+   9600/32958  proven 9600  (100.0%)  nodes 41562  48s
+   9800/32958  proven 9800  (100.0%)  nodes 42162  48s
+   10000/32958  proven 10000  (100.0%)  nodes 42762  48s
+   10200/32958  proven 10200  (100.0%)  nodes 43346  48s
+   10400/32958  proven 10400  (100.0%)  nodes 43938  48s
+   10600/32958  proven 10600  (100.0%)  nodes 44538  48s
+   10800/32958  proven 10800  (100.0%)  nodes 45138  48s
+   11000/32958  proven 11000  (100.0%)  nodes 45760  48s
+   11200/32958  proven 11200  (100.0%)  nodes 46360  48s
+   11400/32958  proven 11400  (100.0%)  nodes 46960  48s
+   11600/32958  proven 11600  (100.0%)  nodes 47574  48s
+   11800/32958  proven 11800  (100.0%)  nodes 48668  48s
+   12000/32958  proven 12000  (100.0%)  nodes 49400  48s
+   12200/32958  proven 12200  (100.0%)  nodes 52610  56s
+   12400/32958  proven 12400  (100.0%)  nodes 53306  56s
+   12600/32958  proven 12600  (100.0%)  nodes 54242  56s
+   12800/32958  proven 12800  (100.0%)  nodes 54842  56s
+   13000/32958  proven 13000  (100.0%)  nodes 55442  56s
+   13200/32958  proven 13200  (100.0%)  nodes 56042  56s
+   13400/32958  proven 13400  (100.0%)  nodes 56664  56s
+   13600/32958  proven 13600  (100.0%)  nodes 57264  56s
+   13800/32958  proven 13800  (100.0%)  nodes 57864  56s
+   14000/32958  proven 14000  (100.0%)  nodes 58464  56s
+   14200/32958  proven 14200  (100.0%)  nodes 59594  56s
+   14400/32958  proven 14400  (100.0%)  nodes 60356  56s
+   14600/32958  proven 14600  (100.0%)  nodes 60956  56s
+   14800/32958  proven 14800  (100.0%)  nodes 61556  56s
+   15000/32958  proven 15000  (100.0%)  nodes 62170  56s
+   15200/32958  proven 15200  (100.0%)  nodes 62786  56s
+   15400/32958  proven 15400  (100.0%)  nodes 63404  56s
+   15600/32958  proven 15600  (100.0%)  nodes 64004  57s
+   15800/32958  proven 15800  (100.0%)  nodes 64604  58s
+   16000/32958  proven 16000  (100.0%)  nodes 65190  58s
+   16200/32958  proven 16200  (100.0%)  nodes 66296  64s
+   16400/32958  proven 16400  (100.0%)  nodes 68234  76s
+   16600/32958  proven 16600  (100.0%)  nodes 68834  76s
+   16800/32958  proven 16800  (100.0%)  nodes 69484  76s
+   17000/32958  proven 17000  (100.0%)  nodes 71098  76s
+   17200/32958  proven 17200  (100.0%)  nodes 72938  76s
+   17400/32958  proven 17398  (100.0%)  nodes 81390  130s
+   17600/32958  proven 17594  (100.0%)  nodes 97174  341s
+   17800/32958  proven 17794  (100.0%)  nodes 97774  341s
+   18000/32958  proven 17994  (100.0%)  nodes 98370  341s
+   18200/32958  proven 18194  (100.0%)  nodes 99868  341s
+   18400/32958  proven 18394  (100.0%)  nodes 101194  341s
+   18600/32958  proven 18594  (100.0%)  nodes 102112  341s
+   18800/32958  proven 18791  (100.0%)  nodes 113488  341s
+   19000/32958  proven 18991  (100.0%)  nodes 116036  341s
+   19200/32958  proven 19191  (100.0%)  nodes 116612  341s
+   19400/32958  proven 19391  (100.0%)  nodes 117212  341s
+   19600/32958  proven 19591  (100.0%)  nodes 117812  341s
+   19800/32958  proven 19791  (100.0%)  nodes 118452  341s
+   20000/32958  proven 19991  (100.0%)  nodes 119076  341s
+   20200/32958  proven 20191  (100.0%)  nodes 119676  341s
+   20400/32958  proven 20391  (100.0%)  nodes 120276  341s
+   20600/32958  proven 20591  (100.0%)  nodes 120876  341s
+   20800/32958  proven 20791  (100.0%)  nodes 121476  341s
+   21000/32958  proven 20991  (100.0%)  nodes 122076  341s
+   21200/32958  proven 21191  (100.0%)  nodes 122672  341s
+   21400/32958  proven 21391  (100.0%)  nodes 123294  341s
+   21600/32958  proven 21591  (100.0%)  nodes 123894  341s
+   21800/32958  proven 21791  (100.0%)  nodes 124494  341s
+   22000/32958  proven 21991  (100.0%)  nodes 125094  341s
+   22200/32958  proven 22191  (100.0%)  nodes 125696  341s
+   22400/32958  proven 22391  (100.0%)  nodes 126308  341s
+   22600/32958  proven 22591  (100.0%)  nodes 126932  341s
+   22800/32958  proven 22791  (100.0%)  nodes 127992  341s
+   23000/32958  proven 22991  (100.0%)  nodes 128594  341s
+   23200/32958  proven 23191  (100.0%)  nodes 129304  341s
+   23400/32958  proven 23391  (100.0%)  nodes 129936  341s
+   23600/32958  proven 23585  (99.9%)  nodes 148940  398s
+   23800/32958  proven 23785  (99.9%)  nodes 151112  398s
+   24000/32958  proven 23980  (99.9%)  nodes 167050  398s
+   24200/32958  proven 24170  (99.9%)  nodes 190632  421s
+   24400/32958  proven 24370  (99.9%)  nodes 191232  421s
+   24600/32958  proven 24570  (99.9%)  nodes 191784  421s
+   24800/32958  proven 24770  (99.9%)  nodes 192384  421s
+   25000/32958  proven 24970  (99.9%)  nodes 192984  421s
+   25200/32958  proven 25170  (99.9%)  nodes 193592  421s
+   25400/32958  proven 25370  (99.9%)  nodes 194258  421s
+   25600/32958  proven 25570  (99.9%)  nodes 194792  421s
+   25800/32958  proven 25770  (99.9%)  nodes 195470  421s
+   26000/32958  proven 25970  (99.9%)  nodes 196108  421s
+   26200/32958  proven 26170  (99.9%)  nodes 197068  421s
+   26400/32958  proven 26370  (99.9%)  nodes 197812  421s
+   26600/32958  proven 26570  (99.9%)  nodes 198474  421s
+   26800/32958  proven 26770  (99.9%)  nodes 199074  421s
+   27000/32958  proven 26970  (99.9%)  nodes 199698  421s
+   27200/32958  proven 27170  (99.9%)  nodes 200362  421s
+   27400/32958  proven 27370  (99.9%)  nodes 201562  421s
+   27600/32958  proven 27570  (99.9%)  nodes 203824  421s
+   27800/32958  proven 27770  (99.9%)  nodes 204498  421s
+   28000/32958  proven 27970  (99.9%)  nodes 205154  421s
+   28200/32958  proven 28170  (99.9%)  nodes 205864  421s
+   28400/32958  proven 28370  (99.9%)  nodes 206634  421s
+   28600/32958  proven 28570  (99.9%)  nodes 207178  421s
+   28800/32958  proven 28770  (99.9%)  nodes 207790  421s
+   29000/32958  proven 28970  (99.9%)  nodes 208420  421s
+   29200/32958  proven 29170  (99.9%)  nodes 209020  421s
+   29400/32958  proven 29370  (99.9%)  nodes 210146  421s
+   29600/32958  proven 29570  (99.9%)  nodes 210762  421s
+   29800/32958  proven 29770  (99.9%)  nodes 211386  421s
+   30000/32958  proven 29970  (99.9%)  nodes 212022  421s
+   30200/32958  proven 30170  (99.9%)  nodes 212630  421s
+   30400/32958  proven 30370  (99.9%)  nodes 213580  421s
+   30600/32958  proven 30570  (99.9%)  nodes 214350  421s
+   30800/32958  proven 30770  (99.9%)  nodes 216804  421s
+   31000/32958  proven 30970  (99.9%)  nodes 217466  421s
+   31200/32958  proven 31170  (99.9%)  nodes 218404  421s
+   31400/32958  proven 31370  (99.9%)  nodes 219204  421s
+   31600/32958  proven 31570  (99.9%)  nodes 220436  421s
+   31800/32958  proven 31770  (99.9%)  nodes 221310  421s
+   32000/32958  proven 31970  (99.9%)  nodes 223018  421s
+   32200/32958  proven 32170  (99.9%)  nodes 224088  421s
+   32400/32958  proven 32370  (99.9%)  nodes 224916  421s
+   32600/32958  proven 32570  (99.9%)  nodes 225708  421s
+   32800/32958  proven 32770  (99.9%)  nodes 226712  421s
+   32958/32958  proven 32928  (99.9%)  nodes 227330  421s
+
+TOTAL leaves 32958   PROVEN infeasible 32928 (99.91%)   undecided 30   nodes 227330   421s
+undecided: smallest surviving box width  min 1.68e-01  median 4.95e-01  max 1.00e+00
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_M_M_0_1 16 enum6_exidx_b_M_M_0_1.npy
+tag b_M_M_0_1  leaves 30  workers 16  maxnodes 300  timeout 180s
+   30/30  EMPTY_BOX 30  2s
+
+TOTAL 30 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 30  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0   2s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:MIX,a21:0,a31:1,a41:1 16 b_M_0_1_1
+mode seq (weak rules)
+a11:MIX,a21:0,a31:1,a41:1: top expansion -> 0 subtrees, 7 complete, 2232 nodes, 32s
+a11:MIX,a21:0,a31:1,a41:1: 7 leaves from 2232 nodes, 0 subtrees aborted (node cap), 33s  -> enum6_pat_b_M_0_1_1.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u screen6.py b_M_0_1_1 16 8
+undecided leaves 7  starts/leaf 8  workers 16
+  1/1  scanned 7  LM-feasible 0  certified 0  best residual 3.18e-02  1s
+
+TOTAL scanned 7   LM-feasible 0   CERTIFIED Nash 0   best residual 3.177e-02   1s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u prove6pat.py b_M_0_1_1 16 2000 b_M_0_1_1p enum6_restidx_b_M_0_1_1.npy
+restricted to 7 leaves from enum6_restidx_b_M_0_1_1.npy
+leaves 7  workers 16  node budget 2000 per leaf  mode seq
+   7/7  proven 7  (100.0%)  nodes 21  0s
+
+TOTAL leaves 7   PROVEN infeasible 7 (100.00%)   undecided 0   nodes 21   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:0,a21:0,a31:1,a41:0 16 b_0_0_1_0
+mode seq (weak rules)
+a11:0,a21:0,a31:1,a41:0: top expansion -> 0 subtrees, 494 complete, 2525 nodes, 17s
+a11:0,a21:0,a31:1,a41:0: 494 leaves from 2525 nodes, 0 subtrees aborted (node cap), 17s  -> enum6_pat_b_0_0_1_0.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u screen6.py b_0_0_1_0 16 8
+undecided leaves 494  starts/leaf 8  workers 16
+  1/10  scanned 44  LM-feasible 0  certified 0  best residual 4.50e-02  3s
+
+TOTAL scanned 494   LM-feasible 0   CERTIFIED Nash 0   best residual 3.590e-02   3s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u prove6pat.py b_0_0_1_0 16 2000 b_0_0_1_0p enum6_restidx_b_0_0_1_0.npy
+restricted to 494 leaves from enum6_restidx_b_0_0_1_0.npy
+leaves 494  workers 16  node budget 2000 per leaf  mode seq
+   200/494  proven 2  (1.0%)  nodes 410840  503s
+   400/494  proven 50  (12.5%)  nodes 722782  1042s
+   494/494  proven 98  (19.8%)  nodes 816558  1098s
+
+TOTAL leaves 494   PROVEN infeasible 98 (19.84%)   undecided 396   nodes 816558   1098s
+undecided: smallest surviving box width  min 1.00e+00  median 1.00e+00  max 1.00e+00
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_0_0_1_0 16 enum6_exidx_b_0_0_1_0.npy
+tag b_0_0_1_0  leaves 396  workers 16  maxnodes 300  timeout 180s
+   100/396  EMPTY_BOX 100  1s
+   200/396  EMPTY_BOX 200  2s
+   300/396  EMPTY_BOX 300  2s
+   396/396  EMPTY_BOX 396  2s
+
+TOTAL 396 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 396  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0   3s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:MIX,a21:0,a31:1,a41:MIX 16 b_M_0_1_M
+mode seq (weak rules)
+a11:MIX,a21:0,a31:1,a41:MIX: top expansion -> 677 subtrees, 0 complete, 5687 nodes, 93s
+   200/677 subtrees  nodes 9787  leaves 1029  aborted 0  97s
+   400/677 subtrees  nodes 13858  leaves 2151  aborted 0  100s
+   600/677 subtrees  nodes 22590  leaves 2630  aborted 0  110s
+   677/677 subtrees  nodes 25929  leaves 2794  aborted 0  114s
+a11:MIX,a21:0,a31:1,a41:MIX: 2794 leaves from 25929 nodes, 0 subtrees aborted (node cap), 114s  -> enum6_pat_b_M_0_1_M.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u screen6.py b_M_0_1_M 16 8
+undecided leaves 2794  starts/leaf 8  workers 16
+  1/56  scanned 50  LM-feasible 0  certified 0  best residual 4.66e-02  4s
+  11/56  scanned 550  LM-feasible 0  certified 0  best residual 3.64e-02  4s
+  21/56  scanned 1050  LM-feasible 0  certified 0  best residual 3.30e-02  8s
+  31/56  scanned 1550  LM-feasible 0  certified 0  best residual 2.54e-02  9s
+  41/56  scanned 2050  LM-feasible 0  certified 0  best residual 2.54e-02  12s
+  51/56  scanned 2550  LM-feasible 0  certified 0  best residual 2.54e-02  15s
+
+TOTAL scanned 2794   LM-feasible 0   CERTIFIED Nash 0   best residual 2.540e-02   15s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u prove6pat.py b_M_0_1_M 16 2000 b_M_0_1_Mp enum6_restidx_b_M_0_1_M.npy
+restricted to 2794 leaves from enum6_restidx_b_M_0_1_M.npy
+leaves 2794  workers 16  node budget 2000 per leaf  mode seq
+   200/2794  proven 38  (19.0%)  nodes 396818  386s
+   400/2794  proven 49  (12.2%)  nodes 807466  815s
+   600/2794  proven 54  (9.0%)  nodes 1241880  1177s
+   800/2794  proven 55  (6.9%)  nodes 1682466  1654s
+   1000/2794  proven 118  (11.8%)  nodes 1972764  2100s
+   1200/2794  proven 167  (13.9%)  nodes 2325652  2302s
+   1400/2794  proven 205  (14.6%)  nodes 2713400  2630s
+   1600/2794  proven 215  (13.4%)  nodes 3123414  3093s
+   1800/2794  proven 238  (13.2%)  nodes 3539808  3443s
+   2000/2794  proven 248  (12.4%)  nodes 3950548  3734s
+   2200/2794  proven 312  (14.2%)  nodes 4234462  4231s
+   2400/2794  proven 470  (19.6%)  nodes 4350174  4394s
+   2600/2794  proven 658  (25.3%)  nodes 4381220  4407s
+   2794/2794  proven 852  (30.5%)  nodes 4381920  4407s
+
+TOTAL leaves 2794   PROVEN infeasible 852 (30.49%)   undecided 1942   nodes 4381920   4407s
+undecided: smallest surviving box width  min 1.00e+00  median 1.00e+00  max 1.00e+00
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_M_0_1_M 16 enum6_exidx_b_M_0_1_M.npy
+tag b_M_0_1_M  leaves 1942  workers 16  maxnodes 300  timeout 180s
+   100/1942  EMPTY_BOX 100  2s
+   200/1942  EMPTY_BOX 200  2s
+   300/1942  EMPTY_BOX 300  2s
+   400/1942  EMPTY_BOX 400  3s
+   500/1942  EMPTY_BOX 500  3s
+   600/1942  EMPTY_BOX 600  4s
+   700/1942  EMPTY_BOX 700  4s
+   800/1942  EMPTY_BOX 800  4s
+   900/1942  EMPTY_BOX 900  5s
+   1000/1942  EMPTY_BOX 1000  5s
+   1100/1942  EMPTY_BOX 1100  6s
+   1200/1942  EMPTY_BOX 1200  6s
+   1300/1942  EMPTY_BOX 1300  6s
+   1400/1942  EMPTY_BOX 1400  7s
+   1500/1942  EMPTY_BOX 1500  7s
+   1600/1942  EMPTY_BOX 1600  7s
+   1700/1942  EMPTY_BOX 1700  8s
+   1800/1942  EMPTY_BOX 1800  8s
+   1900/1942  EMPTY_BOX 1900  9s
+   1942/1942  EMPTY_BOX 1942  9s
+
+TOTAL 1942 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 1942  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0   9s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:MIX,a21:MIX,a31:1,a41:1 16 b_M_M_1_1
+mode seq (weak rules)
+a11:MIX,a21:MIX,a31:1,a41:1: top expansion -> 763 subtrees, 3 complete, 3333 nodes, 57s
+   200/763 subtrees  nodes 4825  leaves 302  aborted 0  59s
+   400/763 subtrees  nodes 6799  leaves 640  aborted 0  61s
+   600/763 subtrees  nodes 8882  leaves 972  aborted 0  63s
+   763/763 subtrees  nodes 10618  leaves 1230  aborted 0  65s
+a11:MIX,a21:MIX,a31:1,a41:1: 1230 leaves from 10618 nodes, 0 subtrees aborted (node cap), 65s  -> enum6_pat_b_M_M_1_1.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u screen6.py b_M_M_1_1 16 8
+undecided leaves 1230  starts/leaf 8  workers 16
+  1/25  scanned 50  LM-feasible 0  certified 0  best residual 4.32e-02  4s
+  11/25  scanned 550  LM-feasible 0  certified 0  best residual 2.39e-02  4s
+  21/25  scanned 1030  LM-feasible 0  certified 0  best residual 2.39e-02  7s
+
+TOTAL scanned 1230   LM-feasible 0   CERTIFIED Nash 0   best residual 2.391e-02   7s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u prove6pat.py b_M_M_1_1 16 2000 b_M_M_1_1p enum6_restidx_b_M_M_1_1.npy
+restricted to 1230 leaves from enum6_restidx_b_M_M_1_1.npy
+leaves 1230  workers 16  node budget 2000 per leaf  mode seq
+   200/1230  proven 200  (100.0%)  nodes 16536  32s
+   400/1230  proven 394  (98.5%)  nodes 49142  65s
+   600/1230  proven 594  (99.0%)  nodes 67432  81s
+   800/1230  proven 788  (98.5%)  nodes 86854  215s
+   1000/1230  proven 960  (96.0%)  nodes 156182  325s
+   1200/1230  proven 1154  (96.2%)  nodes 183700  325s
+   1230/1230  proven 1184  (96.3%)  nodes 186396  325s
+
+TOTAL leaves 1230   PROVEN infeasible 1184 (96.26%)   undecided 46   nodes 186396   325s
+undecided: smallest surviving box width  min 6.53e-01  median 1.00e+00  max 1.00e+00
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_M_M_1_1 16 enum6_exidx_b_M_M_1_1.npy
+tag b_M_M_1_1  leaves 46  workers 16  maxnodes 300  timeout 180s
+   46/46  EMPTY_GB 2  EMPTY_BOX 41  EMPTY_CONST 3  3s
+
+TOTAL 46 leaves:  EMPTY_GB 2  EMPTY_MIX 0  EMPTY_BOX 41  EMPTY_CONST 3  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0   3s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:0,a21:0,a31:1,a41:MIX 16 b_0_0_1_M
+mode seq (weak rules)
+a11:0,a21:0,a31:1,a41:MIX: top expansion -> 686 subtrees, 54 complete, 6490 nodes, 72s
+   200/686 subtrees  nodes 6986  leaves 350  aborted 0  72s
+   400/686 subtrees  nodes 7587  leaves 691  aborted 0  73s
+   600/686 subtrees  nodes 9655  leaves 1158  aborted 0  74s
+   686/686 subtrees  nodes 10649  leaves 1326  aborted 0  75s
+a11:0,a21:0,a31:1,a41:MIX: 1326 leaves from 10649 nodes, 0 subtrees aborted (node cap), 75s  -> enum6_pat_b_0_0_1_M.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u screen6.py b_0_0_1_M 16 8
+undecided leaves 1326  starts/leaf 8  workers 16
+  1/27  scanned 50  LM-feasible 0  certified 0  best residual 4.85e-02  4s
+  11/27  scanned 550  LM-feasible 0  certified 0  best residual 2.76e-02  4s
+  21/27  scanned 1026  LM-feasible 0  certified 0  best residual 2.76e-02  7s
+
+TOTAL scanned 1326   LM-feasible 0   CERTIFIED Nash 0   best residual 2.762e-02   7s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u prove6pat.py b_0_0_1_M 16 2000 b_0_0_1_Mp enum6_restidx_b_0_0_1_M.npy
+restricted to 1326 leaves from enum6_restidx_b_0_0_1_M.npy
+leaves 1326  workers 16  node budget 2000 per leaf  mode seq
+   200/1326  proven 64  (32.0%)  nodes 323182  340s
+   400/1326  proven 64  (16.0%)  nodes 750282  731s
+   600/1326  proven 108  (18.0%)  nodes 1092928  988s
+   800/1326  proven 108  (13.5%)  nodes 1518604  2046s
+   1000/1326  proven 182  (18.2%)  nodes 1788486  3035s
+   1200/1326  proven 276  (23.0%)  nodes 2021222  3751s
+   1326/1326  proven 348  (26.2%)  nodes 2138270  3945s
+
+TOTAL leaves 1326   PROVEN infeasible 348 (26.24%)   undecided 978   nodes 2138270   3945s
+undecided: smallest surviving box width  min 1.00e+00  median 1.00e+00  max 1.00e+00
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_0_0_1_M 16 enum6_exidx_b_0_0_1_M.npy
+tag b_0_0_1_M  leaves 978  workers 16  maxnodes 300  timeout 180s
+   100/978  EMPTY_BOX 100  2s
+   200/978  EMPTY_BOX 200  2s
+   300/978  EMPTY_BOX 300  2s
+   400/978  EMPTY_BOX 400  3s
+   500/978  EMPTY_BOX 500  3s
+   600/978  EMPTY_BOX 600  3s
+   700/978  EMPTY_BOX 700  4s
+   800/978  EMPTY_BOX 800  4s
+   900/978  EMPTY_BOX 900  4s
+   978/978  EMPTY_BOX 978  5s
+
+TOTAL 978 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 978  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0   5s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:MIX,a21:MIX,a31:1,a41:MIX 16 b_M_M_1_M
+mode seq (weak rules)
+a11:MIX,a21:MIX,a31:1,a41:MIX: top expansion -> 930 subtrees, 0 complete, 4063 nodes, 79s
+   200/930 subtrees  nodes 9778  leaves 802  aborted 0  91s
+   400/930 subtrees  nodes 12902  leaves 887  aborted 0  95s
+   600/930 subtrees  nodes 26311  leaves 2440  aborted 0  125s
+   800/930 subtrees  nodes 42344  leaves 3819  aborted 0  166s
+   930/930 subtrees  nodes 55041  leaves 5225  aborted 0  197s
+a11:MIX,a21:MIX,a31:1,a41:MIX: 5225 leaves from 55041 nodes, 0 subtrees aborted (node cap), 197s  -> enum6_pat_b_M_M_1_M.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u screen6.py b_M_M_1_M 16 8
+undecided leaves 5225  starts/leaf 8  workers 16
+  1/105  scanned 50  LM-feasible 0  certified 0  best residual 3.97e-02  4s
+  11/105  scanned 550  LM-feasible 0  certified 0  best residual 2.55e-02  5s
+  21/105  scanned 1050  LM-feasible 0  certified 0  best residual 2.55e-02  8s
+  31/105  scanned 1550  LM-feasible 0  certified 0  best residual 2.47e-02  9s
+  41/105  scanned 2050  LM-feasible 0  certified 0  best residual 2.47e-02  12s
+  51/105  scanned 2550  LM-feasible 0  certified 0  best residual 2.47e-02  16s
+  61/105  scanned 3050  LM-feasible 0  certified 0  best residual 2.47e-02  17s
+  71/105  scanned 3550  LM-feasible 0  certified 0  best residual 2.47e-02  21s
+  81/105  scanned 4050  LM-feasible 0  certified 0  best residual 2.47e-02  23s
+  91/105  scanned 4550  LM-feasible 0  certified 0  best residual 2.47e-02  25s
+  101/105  scanned 5025  LM-feasible 0  certified 0  best residual 2.47e-02  27s
+
+TOTAL scanned 5225   LM-feasible 0   CERTIFIED Nash 0   best residual 2.469e-02   27s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u prove6pat.py b_M_M_1_M 16 2000 b_M_M_1_Mp enum6_restidx_b_M_M_1_M.npy
+restricted to 5225 leaves from enum6_restidx_b_M_M_1_M.npy
+leaves 5225  workers 16  node budget 2000 per leaf  mode seq
+   200/5225  proven 84  (42.0%)  nodes 277100  592s
+   400/5225  proven 143  (35.8%)  nodes 601262  1163s
+   600/5225  proven 198  (33.0%)  nodes 918952  1640s
+   800/5225  proven 283  (35.4%)  nodes 1162994  1770s
+   1000/5225  proven 423  (42.3%)  nodes 1308714  2139s
+   1200/5225  proven 570  (47.5%)  nodes 1437922  2479s
+   1400/5225  proven 664  (47.4%)  nodes 1698620  2854s
+   1600/5225  proven 781  (48.8%)  nodes 1908790  3256s
+   1800/5225  proven 867  (48.2%)  nodes 2164200  3648s
+   2000/5225  proven 952  (47.6%)  nodes 2421264  3937s
+   2200/5225  proven 1047  (47.6%)  nodes 2654210  4203s
+   2400/5225  proven 1108  (46.2%)  nodes 2945772  4576s
+   2600/5225  proven 1283  (49.3%)  nodes 3004702  5086s
+   2800/5225  proven 1475  (52.7%)  nodes 3034434  5086s
+   3000/5225  proven 1595  (53.2%)  nodes 3221082  5513s
+   3200/5225  proven 1725  (53.9%)  nodes 3379938  6004s
+   3400/5225  proven 1849  (54.4%)  nodes 3567034  6479s
+   3600/5225  proven 1999  (55.5%)  nodes 3689064  6625s
+   3800/5225  proven 2119  (55.8%)  nodes 3868932  7188s
+   4000/5225  proven 2239  (56.0%)  nodes 4075140  7826s
+   4200/5225  proven 2292  (54.6%)  nodes 4405458  8294s
+   4400/5225  proven 2479  (56.3%)  nodes 4437152  8419s
+   4600/5225  proven 2535  (55.1%)  nodes 4737576  8936s
+   4800/5225  proven 2733  (56.9%)  nodes 4748670  8955s
+   5000/5225  proven 2923  (58.5%)  nodes 4778606  9062s
+   5200/5225  proven 3108  (59.8%)  nodes 4817988  9088s
+   5225/5225  proven 3133  (60.0%)  nodes 4818355  9088s
+
+TOTAL leaves 5225   PROVEN infeasible 3133 (59.96%)   undecided 2092   nodes 4818355   9088s
+undecided: smallest surviving box width  min 4.69e-01  median 1.00e+00  max 1.00e+00
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_M_M_1_M 16 enum6_exidx_b_M_M_1_M.npy
+tag b_M_M_1_M  leaves 2092  workers 16  maxnodes 300  timeout 180s
+   100/2092  EMPTY_GB 1  EMPTY_BOX 99  2s
+   200/2092  EMPTY_GB 1  EMPTY_BOX 199  3s
+   300/2092  EMPTY_GB 1  EMPTY_BOX 299  3s
+   400/2092  EMPTY_GB 1  EMPTY_BOX 399  4s
+   500/2092  EMPTY_GB 1  EMPTY_BOX 499  5s
+   600/2092  EMPTY_GB 4  EMPTY_BOX 595  EMPTY_CONST 1  5s
+   700/2092  EMPTY_GB 4  EMPTY_BOX 694  EMPTY_CONST 2  6s
+   800/2092  EMPTY_GB 4  EMPTY_BOX 794  EMPTY_CONST 2  7s
+   900/2092  EMPTY_GB 4  EMPTY_BOX 894  EMPTY_CONST 2  8s
+   1000/2092  EMPTY_GB 4  EMPTY_BOX 994  EMPTY_CONST 2  9s
+   1100/2092  EMPTY_GB 4  EMPTY_BOX 1094  EMPTY_CONST 2  10s
+   1200/2092  EMPTY_GB 4  EMPTY_BOX 1194  EMPTY_CONST 2  10s
+   1300/2092  EMPTY_GB 4  EMPTY_BOX 1294  EMPTY_CONST 2  11s
+   1400/2092  EMPTY_GB 4  EMPTY_BOX 1394  EMPTY_CONST 2  12s
+   1500/2092  EMPTY_GB 4  EMPTY_BOX 1494  EMPTY_CONST 2  12s
+   1600/2092  EMPTY_GB 4  EMPTY_BOX 1593  EMPTY_CONST 3  13s
+   1700/2092  EMPTY_GB 4  EMPTY_BOX 1693  EMPTY_CONST 3  14s
+   1800/2092  EMPTY_GB 4  EMPTY_BOX 1793  EMPTY_CONST 3  15s
+   1900/2092  EMPTY_GB 4  EMPTY_BOX 1893  EMPTY_CONST 3  15s
+   2000/2092  EMPTY_GB 4  EMPTY_BOX 1993  EMPTY_CONST 3  16s
+   2092/2092  EMPTY_GB 4  EMPTY_BOX 2085  EMPTY_CONST 3  75s
+
+TOTAL 2092 leaves:  EMPTY_GB 4  EMPTY_MIX 0  EMPTY_BOX 2085  EMPTY_CONST 3  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0   75s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:0,a21:MIX,a31:1,a41:MIX 16 b_0_M_1_M
+mode seq (weak rules)
+a11:0,a21:MIX,a31:1,a41:MIX: top expansion -> 696 subtrees, 0 complete, 2416 nodes, 36s
+   200/696 subtrees  nodes 10069  leaves 1207  aborted 0  44s
+   400/696 subtrees  nodes 27011  leaves 2245  aborted 0  75s
+   600/696 subtrees  nodes 46036  leaves 4340  aborted 0  117s
+   696/696 subtrees  nodes 59602  leaves 5323  aborted 0  148s
+a11:0,a21:MIX,a31:1,a41:MIX: 5323 leaves from 59602 nodes, 0 subtrees aborted (node cap), 148s  -> enum6_pat_b_0_M_1_M.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u screen6.py b_0_M_1_M 16 8
+undecided leaves 5323  starts/leaf 8  workers 16
+  1/107  scanned 50  LM-feasible 0  certified 0  best residual 8.33e-02  4s
+  11/107  scanned 550  LM-feasible 0  certified 0  best residual 2.37e-02  4s
+  21/107  scanned 1050  LM-feasible 0  certified 0  best residual 2.37e-02  8s
+  31/107  scanned 1550  LM-feasible 0  certified 0  best residual 2.37e-02  9s
+  41/107  scanned 2050  LM-feasible 0  certified 0  best residual 2.37e-02  12s
+  51/107  scanned 2550  LM-feasible 0  certified 0  best residual 2.37e-02  15s
+  61/107  scanned 3050  LM-feasible 0  certified 0  best residual 1.82e-02  16s
+  71/107  scanned 3550  LM-feasible 0  certified 0  best residual 1.82e-02  20s
+  81/107  scanned 4050  LM-feasible 0  certified 0  best residual 1.82e-02  23s
+  91/107  scanned 4550  LM-feasible 0  certified 0  best residual 1.82e-02  24s
+  101/107  scanned 5023  LM-feasible 0  certified 0  best residual 1.72e-02  27s
+
+TOTAL scanned 5323   LM-feasible 0   CERTIFIED Nash 0   best residual 1.717e-02   27s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u prove6pat.py b_0_M_1_M 16 2000 b_0_M_1_Mp enum6_restidx_b_0_M_1_M.npy
+restricted to 5323 leaves from enum6_restidx_b_0_M_1_M.npy
+leaves 5323  workers 16  node budget 2000 per leaf  mode seq
+   200/5323  proven 12  (6.0%)  nodes 412232  375s
+   400/5323  proven 18  (4.5%)  nodes 826698  757s
+   600/5323  proven 31  (5.2%)  nodes 1233814  1153s
+   800/5323  proven 45  (5.6%)  nodes 1654240  1515s
+   1000/5323  proven 78  (7.8%)  nodes 2016052  1888s
+   1200/5323  proven 132  (11.0%)  nodes 2362680  2311s
+   1400/5323  proven 332  (23.7%)  nodes 2363366  2311s
+   1600/5323  proven 532  (33.2%)  nodes 2364222  2311s
+   1800/5323  proven 719  (39.9%)  nodes 2393736  2311s
+   2000/5323  proven 908  (45.4%)  nodes 2419272  2311s
+   2200/5323  proven 1003  (45.6%)  nodes 2640374  2528s
+   2400/5323  proven 1059  (44.1%)  nodes 2956722  2893s
+   2600/5323  proven 1103  (42.4%)  nodes 3309174  3154s
+   2800/5323  proven 1108  (39.6%)  nodes 3722792  3591s
+   3000/5323  proven 1222  (40.7%)  nodes 3931014  3763s
+   3200/5323  proven 1336  (41.8%)  nodes 4163122  3988s
+   3400/5323  proven 1464  (43.1%)  nodes 4364604  4221s
+   3600/5323  proven 1572  (43.7%)  nodes 4597630  4491s
+   3800/5323  proven 1772  (46.6%)  nodes 4599404  4491s
+   4000/5323  proven 1942  (48.5%)  nodes 4674040  4629s
+   4200/5323  proven 2141  (51.0%)  nodes 4679124  4629s
+   4400/5323  proven 2319  (52.7%)  nodes 4738002  4813s
+   4600/5323  proven 2487  (54.1%)  nodes 4827584  4907s
+   4800/5323  proven 2684  (55.9%)  nodes 4838938  4907s
+   5000/5323  proven 2876  (57.5%)  nodes 4858938  4915s
+   5200/5323  proven 3076  (59.2%)  nodes 4860810  4915s
+   5323/5323  proven 3199  (60.1%)  nodes 4862107  4915s
+
+TOTAL leaves 5323   PROVEN infeasible 3199 (60.10%)   undecided 2124   nodes 4862107   4915s
+undecided: smallest surviving box width  min 1.00e+00  median 1.00e+00  max 1.00e+00
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_0_M_1_M 16 enum6_exidx_b_0_M_1_M.npy
+tag b_0_M_1_M  leaves 2124  workers 16  maxnodes 300  timeout 180s
+   100/2124  EMPTY_BOX 100  2s
+   200/2124  EMPTY_BOX 200  2s
+   300/2124  EMPTY_BOX 300  2s
+   400/2124  EMPTY_BOX 400  3s
+   500/2124  EMPTY_BOX 500  3s
+   600/2124  EMPTY_BOX 600  3s
+   700/2124  EMPTY_BOX 700  4s
+   800/2124  EMPTY_BOX 800  4s
+   900/2124  EMPTY_BOX 900  5s
+   1000/2124  EMPTY_BOX 1000  5s
+   1100/2124  EMPTY_BOX 1100  5s
+   1200/2124  EMPTY_BOX 1200  6s
+   1300/2124  EMPTY_BOX 1300  6s
+   1400/2124  EMPTY_BOX 1400  6s
+   1500/2124  EMPTY_BOX 1500  7s
+   1600/2124  EMPTY_BOX 1600  7s
+   1700/2124  EMPTY_BOX 1700  8s
+   1800/2124  EMPTY_BOX 1800  8s
+   1900/2124  EMPTY_BOX 1900  8s
+   2000/2124  EMPTY_BOX 2000  9s
+   2100/2124  EMPTY_GB 1  EMPTY_BOX 2099  9s
+   2124/2124  EMPTY_GB 1  EMPTY_BOX 2123  10s
+
+TOTAL 2124 leaves:  EMPTY_GB 1  EMPTY_MIX 0  EMPTY_BOX 2123  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0   10s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:0,a21:MIX,a31:1,a41:0 16 b_0_M_1_0
+mode seq (weak rules)
+a11:0,a21:MIX,a31:1,a41:0: top expansion -> 688 subtrees, 54 complete, 2683 nodes, 20s
+   200/688 subtrees  nodes 3727  leaves 741  aborted 0  20s
+   400/688 subtrees  nodes 5227  leaves 1695  aborted 0  21s
+   600/688 subtrees  nodes 7555  leaves 2886  aborted 0  22s
+   688/688 subtrees  nodes 9307  leaves 3618  aborted 0  22s
+a11:0,a21:MIX,a31:1,a41:0: 3618 leaves from 9307 nodes, 0 subtrees aborted (node cap), 22s  -> enum6_pat_b_0_M_1_0.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u screen6.py b_0_M_1_0 16 8
+undecided leaves 3618  starts/leaf 8  workers 16
+  1/73  scanned 50  LM-feasible 0  certified 0  best residual 5.94e-02  4s
+  11/73  scanned 550  LM-feasible 0  certified 0  best residual 3.36e-02  4s
+  21/73  scanned 1050  LM-feasible 0  certified 0  best residual 3.36e-02  8s
+  31/73  scanned 1550  LM-feasible 0  certified 0  best residual 3.35e-02  8s
+  41/73  scanned 2050  LM-feasible 0  certified 0  best residual 3.35e-02  11s
+  51/73  scanned 2550  LM-feasible 0  certified 0  best residual 3.35e-02  14s
+  61/73  scanned 3050  LM-feasible 0  certified 0  best residual 3.35e-02  15s
+  71/73  scanned 3518  LM-feasible 0  certified 0  best residual 3.35e-02  17s
+
+TOTAL scanned 3618   LM-feasible 0   CERTIFIED Nash 0   best residual 3.352e-02   17s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u prove6pat.py b_0_M_1_0 16 2000 b_0_M_1_0p enum6_restidx_b_0_M_1_0.npy
+restricted to 3618 leaves from enum6_restidx_b_0_M_1_0.npy
+leaves 3618  workers 16  node budget 2000 per leaf  mode seq
+   200/3618  proven 65  (32.5%)  nodes 317426  351s
+   400/3618  proven 188  (47.0%)  nodes 519038  514s
+   600/3618  proven 222  (37.0%)  nodes 885454  810s
+   800/3618  proven 222  (27.8%)  nodes 1302562  1132s
+   1000/3618  proven 222  (22.2%)  nodes 1730070  1426s
+   1200/3618  proven 246  (20.5%)  nodes 2123338  1761s
+   1400/3618  proven 375  (26.8%)  nodes 2346058  1912s
+   1600/3618  proven 477  (29.8%)  nodes 2594046  2139s
+   1800/3618  proven 480  (26.7%)  nodes 3012330  2445s
+   2000/3618  proven 480  (24.0%)  nodes 3446648  2776s
+   2200/3618  proven 480  (21.8%)  nodes 3881168  3339s
+   2400/3618  proven 510  (21.2%)  nodes 4267836  3785s
+   2600/3618  proven 596  (22.9%)  nodes 4513236  4175s
+   2800/3618  proven 624  (22.3%)  nodes 4914316  4777s
+   3000/3618  proven 726  (24.2%)  nodes 5157468  5058s
+   3200/3618  proven 840  (26.2%)  nodes 5370854  5449s
+   3400/3618  proven 910  (26.8%)  nodes 5640876  5835s
+   3600/3618  proven 1038  (28.8%)  nodes 5806188  6049s
+   3618/3618  proven 1056  (29.2%)  nodes 5806242  6049s
+
+TOTAL leaves 3618   PROVEN infeasible 1056 (29.19%)   undecided 2562   nodes 5806242   6049s
+undecided: smallest surviving box width  min 1.00e+00  median 1.00e+00  max 1.00e+00
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_0_M_1_0 16 enum6_exidx_b_0_M_1_0.npy
+tag b_0_M_1_0  leaves 2562  workers 16  maxnodes 300  timeout 180s
+   100/2562  EMPTY_BOX 100  1s
+   200/2562  EMPTY_BOX 200  2s
+   300/2562  EMPTY_BOX 300  2s
+   400/2562  EMPTY_BOX 400  2s
+   500/2562  EMPTY_BOX 500  3s
+   600/2562  EMPTY_BOX 600  3s
+   700/2562  EMPTY_BOX 700  3s
+   800/2562  EMPTY_BOX 800  4s
+   900/2562  EMPTY_BOX 900  4s
+   1000/2562  EMPTY_BOX 1000  4s
+   1100/2562  EMPTY_BOX 1100  5s
+   1200/2562  EMPTY_BOX 1200  5s
+   1300/2562  EMPTY_BOX 1300  5s
+   1400/2562  EMPTY_BOX 1400  5s
+   1500/2562  EMPTY_BOX 1500  6s
+   1600/2562  EMPTY_BOX 1600  6s
+   1700/2562  EMPTY_BOX 1700  6s
+   1800/2562  EMPTY_BOX 1800  7s
+   1900/2562  EMPTY_BOX 1900  7s
+   2000/2562  EMPTY_BOX 2000  7s
+   2100/2562  EMPTY_BOX 2100  8s
+   2200/2562  EMPTY_BOX 2200  8s
+   2300/2562  EMPTY_BOX 2300  8s
+   2400/2562  EMPTY_BOX 2400  9s
+   2500/2562  EMPTY_BOX 2500  9s
+   2562/2562  EMPTY_BOX 2562  9s
+
+TOTAL 2562 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 2562  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0   10s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:MIX,a21:0,a31:1,a41:0 16 b_M_0_1_0
+mode seq (weak rules)
+a11:MIX,a21:0,a31:1,a41:0: top expansion -> 824 subtrees, 54 complete, 2899 nodes, 19s
+   200/824 subtrees  nodes 3851  leaves 690  aborted 0  20s
+   400/824 subtrees  nodes 5341  leaves 1638  aborted 0  20s
+   600/824 subtrees  nodes 6549  leaves 2388  aborted 0  21s
+   800/824 subtrees  nodes 10755  leaves 4380  aborted 0  22s
+   824/824 subtrees  nodes 11027  leaves 4446  aborted 0  22s
+a11:MIX,a21:0,a31:1,a41:0: 4446 leaves from 11027 nodes, 0 subtrees aborted (node cap), 22s  -> enum6_pat_b_M_0_1_0.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u screen6.py b_M_0_1_0 16 8
+undecided leaves 4446  starts/leaf 8  workers 16
+  1/89  scanned 50  LM-feasible 0  certified 0  best residual 5.95e-02  4s
+  11/89  scanned 550  LM-feasible 0  certified 0  best residual 3.37e-02  4s
+  21/89  scanned 1050  LM-feasible 0  certified 0  best residual 3.37e-02  8s
+  31/89  scanned 1550  LM-feasible 0  certified 0  best residual 3.35e-02  8s
+  41/89  scanned 2050  LM-feasible 0  certified 0  best residual 3.35e-02  11s
+  51/89  scanned 2550  LM-feasible 0  certified 0  best residual 3.35e-02  15s
+  61/89  scanned 3050  LM-feasible 0  certified 0  best residual 3.15e-02  15s
+  71/89  scanned 3550  LM-feasible 0  certified 0  best residual 3.15e-02  19s
+  81/89  scanned 4050  LM-feasible 0  certified 0  best residual 3.15e-02  21s
+
+TOTAL scanned 4446   LM-feasible 0   CERTIFIED Nash 0   best residual 3.153e-02   21s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u prove6pat.py b_M_0_1_0 16 2000 b_M_0_1_0p enum6_restidx_b_M_0_1_0.npy
+restricted to 4446 leaves from enum6_restidx_b_M_0_1_0.npy
+leaves 4446  workers 16  node budget 2000 per leaf  mode seq
+   200/4446  proven 58  (29.0%)  nodes 315406  393s
+   400/4446  proven 185  (46.2%)  nodes 584988  549s
+   600/4446  proven 216  (36.0%)  nodes 989194  851s
+   800/4446  proven 234  (29.2%)  nodes 1385000  1208s
+   1000/4446  proven 280  (28.0%)  nodes 1727558  1446s
+   1200/4446  proven 330  (27.5%)  nodes 2058158  1842s
+   1400/4446  proven 453  (32.4%)  nodes 2281922  1992s
+   1600/4446  proven 552  (34.5%)  nodes 2515352  2160s
+   1800/4446  proven 552  (30.7%)  nodes 2943522  2528s
+   2000/4446  proven 594  (29.7%)  nodes 3284918  2857s
+   2200/4446  proven 641  (29.1%)  nodes 3635360  3146s
+   2400/4446  proven 666  (27.8%)  nodes 4029516  3657s
+   2600/4446  proven 666  (25.6%)  nodes 4470848  4271s
+   2800/4446  proven 748  (26.7%)  nodes 4720118  4574s
+   3000/4446  proven 816  (27.2%)  nodes 5010222  5120s
+   3200/4446  proven 860  (26.9%)  nodes 5375730  5894s
+   3400/4446  proven 1000  (29.4%)  nodes 5511934  6012s
+   3600/4446  proven 1098  (30.5%)  nodes 5745524  6311s
+   3800/4446  proven 1196  (31.5%)  nodes 5967566  6604s
+   4000/4446  proven 1300  (32.5%)  nodes 6192090  7071s
+   4200/4446  proven 1374  (32.7%)  nodes 6467066  7329s
+   4400/4446  proven 1484  (33.7%)  nodes 6655182  7549s
+   4446/4446  proven 1530  (34.4%)  nodes 6655320  7549s
+
+TOTAL leaves 4446   PROVEN infeasible 1530 (34.41%)   undecided 2916   nodes 6655320   7549s
+undecided: smallest surviving box width  min 1.00e+00  median 1.00e+00  max 1.00e+00
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_M_0_1_0 16 enum6_exidx_b_M_0_1_0.npy
+tag b_M_0_1_0  leaves 2916  workers 16  maxnodes 300  timeout 180s
+   100/2916  EMPTY_BOX 100  1s
+   200/2916  EMPTY_BOX 200  2s
+   300/2916  EMPTY_BOX 300  2s
+   400/2916  EMPTY_BOX 400  2s
+   500/2916  EMPTY_BOX 500  3s
+   600/2916  EMPTY_BOX 600  3s
+   700/2916  EMPTY_BOX 700  3s
+   800/2916  EMPTY_BOX 800  4s
+   900/2916  EMPTY_BOX 900  4s
+   1000/2916  EMPTY_BOX 1000  4s
+   1100/2916  EMPTY_BOX 1100  5s
+   1200/2916  EMPTY_BOX 1200  5s
+   1300/2916  EMPTY_BOX 1300  5s
+   1400/2916  EMPTY_BOX 1400  6s
+   1500/2916  EMPTY_BOX 1500  6s
+   1600/2916  EMPTY_BOX 1600  6s
+   1700/2916  EMPTY_BOX 1700  7s
+   1800/2916  EMPTY_BOX 1800  7s
+   1900/2916  EMPTY_BOX 1900  7s
+   2000/2916  EMPTY_BOX 2000  8s
+   2100/2916  EMPTY_BOX 2100  8s
+   2200/2916  EMPTY_BOX 2200  8s
+   2300/2916  EMPTY_BOX 2300  9s
+   2400/2916  EMPTY_BOX 2400  9s
+   2500/2916  EMPTY_BOX 2500  9s
+   2600/2916  EMPTY_BOX 2600  9s
+   2700/2916  EMPTY_BOX 2700  10s
+   2800/2916  EMPTY_BOX 2800  10s
+   2900/2916  EMPTY_BOX 2900  11s
+   2916/2916  EMPTY_BOX 2916  11s
+
+TOTAL 2916 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 2916  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0   11s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:MIX,a21:MIX,a31:1,a41:0 16 b_M_M_1_0
+mode seq (weak rules)
+a11:MIX,a21:MIX,a31:1,a41:0: top expansion -> 824 subtrees, 54 complete, 2899 nodes, 21s
+   200/824 subtrees  nodes 3851  leaves 690  aborted 0  22s
+   400/824 subtrees  nodes 5337  leaves 1635  aborted 0  22s
+   600/824 subtrees  nodes 6605  leaves 2427  aborted 0  23s
+   800/824 subtrees  nodes 10747  leaves 4374  aborted 0  24s
+   824/824 subtrees  nodes 11027  leaves 4446  aborted 0  24s
+a11:MIX,a21:MIX,a31:1,a41:0: 4446 leaves from 11027 nodes, 0 subtrees aborted (node cap), 24s  -> enum6_pat_b_M_M_1_0.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u screen6.py b_M_M_1_0 16 8
+undecided leaves 4446  starts/leaf 8  workers 16
+  1/89  scanned 50  LM-feasible 0  certified 0  best residual 5.90e-02  4s
+  11/89  scanned 550  LM-feasible 0  certified 0  best residual 3.48e-02  4s
+  21/89  scanned 1050  LM-feasible 0  certified 0  best residual 3.40e-02  8s
+  31/89  scanned 1550  LM-feasible 0  certified 0  best residual 3.40e-02  8s
+  41/89  scanned 2050  LM-feasible 0  certified 0  best residual 3.40e-02  11s
+  51/89  scanned 2550  LM-feasible 0  certified 0  best residual 3.40e-02  15s
+  61/89  scanned 3050  LM-feasible 0  certified 0  best residual 3.40e-02  16s
+  71/89  scanned 3550  LM-feasible 0  certified 0  best residual 3.01e-02  19s
+  81/89  scanned 4050  LM-feasible 0  certified 0  best residual 3.01e-02  21s
+
+TOTAL scanned 4446   LM-feasible 0   CERTIFIED Nash 0   best residual 3.006e-02   22s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u prove6pat.py b_M_M_1_0 16 2000 b_M_M_1_0p enum6_restidx_b_M_M_1_0.npy
+restricted to 4446 leaves from enum6_restidx_b_M_M_1_0.npy
+leaves 4446  workers 16  node budget 2000 per leaf  mode seq
+   200/4446  proven 36  (18.0%)  nodes 357306  436s
+   400/4446  proven 111  (27.8%)  nodes 685862  661s
+   600/4446  proven 120  (20.0%)  nodes 1118128  1004s
+   800/4446  proven 140  (17.5%)  nodes 1525568  1461s
+   1000/4446  proven 181  (18.1%)  nodes 1891158  1743s
+   1200/4446  proven 210  (17.5%)  nodes 2293710  2109s
+   1400/4446  proven 284  (20.3%)  nodes 2606302  2328s
+   1600/4446  proven 366  (22.9%)  nodes 2905746  2586s
+   1800/4446  proven 366  (20.3%)  nodes 3340556  3006s
+   2000/4446  proven 408  (20.4%)  nodes 3715764  3296s
+   2200/4446  proven 441  (20.0%)  nodes 4127234  3626s
+   2400/4446  proven 462  (19.2%)  nodes 4526656  4507s
+   2600/4446  proven 462  (17.8%)  nodes 4963372  5136s
+   2800/4446  proven 558  (19.9%)  nodes 5180240  5420s
+   3000/4446  proven 612  (20.4%)  nodes 5501696  6164s
+   3200/4446  proven 672  (21.0%)  nodes 5796318  6899s
+   3400/4446  proven 786  (23.1%)  nodes 6003338  7248s
+   3600/4446  proven 894  (24.8%)  nodes 6261848  7749s
+   3800/4446  proven 962  (25.3%)  nodes 6533486  8072s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_M_M_1_0 16 - 0 300
+tag b_M_M_1_0  leaves 4446  workers 16  maxnodes 300  timeout 180s
+   100/4446  EMPTY_BOX 100  2s
+   200/4446  EMPTY_BOX 200  2s
+   300/4446  EMPTY_BOX 300  3s
+   400/4446  EMPTY_BOX 400  3s
+   500/4446  EMPTY_BOX 500  4s
+   600/4446  EMPTY_BOX 600  4s
+   700/4446  EMPTY_BOX 700  5s
+   800/4446  EMPTY_BOX 800  5s
+   900/4446  EMPTY_BOX 900  5s
+   1000/4446  EMPTY_BOX 1000  6s
+   1100/4446  EMPTY_BOX 1100  6s
+   1200/4446  EMPTY_BOX 1200  7s
+   1300/4446  EMPTY_BOX 1300  7s
+   1400/4446  EMPTY_BOX 1400  8s
+   1500/4446  EMPTY_BOX 1500  8s
+   1600/4446  EMPTY_BOX 1600  9s
+   1700/4446  EMPTY_BOX 1700  9s
+   1800/4446  EMPTY_BOX 1800  10s
+   1900/4446  EMPTY_BOX 1900  10s
+   2000/4446  EMPTY_BOX 2000  11s
+   2100/4446  EMPTY_BOX 2100  11s
+   2200/4446  EMPTY_BOX 2200  12s
+   2300/4446  EMPTY_BOX 2300  12s
+   2400/4446  EMPTY_BOX 2400  13s
+   2500/4446  EMPTY_BOX 2500  13s
+   2600/4446  EMPTY_BOX 2600  14s
+   2700/4446  EMPTY_BOX 2697  EMPTY_CONST 3  15s
+   2800/4446  EMPTY_BOX 2791  EMPTY_CONST 9  15s
+   2900/4446  EMPTY_BOX 2891  EMPTY_CONST 9  16s
+   3000/4446  EMPTY_BOX 2991  EMPTY_CONST 9  16s
+   3100/4446  EMPTY_BOX 3091  EMPTY_CONST 9  17s
+   3200/4446  EMPTY_BOX 3191  EMPTY_CONST 9  17s
+   3300/4446  EMPTY_BOX 3291  EMPTY_CONST 9  18s
+   3400/4446  EMPTY_BOX 3391  EMPTY_CONST 9  18s
+   3500/4446  EMPTY_BOX 3491  EMPTY_CONST 9  19s
+   3600/4446  EMPTY_BOX 3591  EMPTY_CONST 9  19s
+   3700/4446  EMPTY_BOX 3691  EMPTY_CONST 9  19s
+   3800/4446  EMPTY_BOX 3791  EMPTY_CONST 9  20s
+   3900/4446  EMPTY_BOX 3891  EMPTY_CONST 9  20s
+   4000/4446  EMPTY_BOX 3991  EMPTY_CONST 9  21s
+   4100/4446  EMPTY_BOX 4091  EMPTY_CONST 9  21s
+   4200/4446  EMPTY_BOX 4191  EMPTY_CONST 9  22s
+   4300/4446  EMPTY_BOX 4291  EMPTY_CONST 9  22s
+   4400/4446  EMPTY_BOX 4391  EMPTY_CONST 9  23s
+   4446/4446  EMPTY_BOX 4437  EMPTY_CONST 9  23s
+
+TOTAL 4446 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 4437  EMPTY_CONST 9  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0   24s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:MIX,a21:MIX,a31:MIX,a41:1 16 b_M_M_M_1
+mode seq (weak rules)
+a11:MIX,a21:MIX,a31:MIX,a41:1: top expansion -> 1024 subtrees, 0 complete, 2940 nodes, 49s
+   200/1024 subtrees  nodes 23880  leaves 129  aborted 0  143s
+   400/1024 subtrees  nodes 121086  leaves 4016  aborted 0  825s
+   600/1024 subtrees  nodes 261766  leaves 8835  aborted 0  1775s
+   800/1024 subtrees  nodes 476509  leaves 18008  aborted 0  2994s
+   1000/1024 subtrees  nodes 1338453  leaves 84938  aborted 0  6646s
+   1024/1024 subtrees  nodes 1889761  leaves 136830  aborted 0  8180s
+a11:MIX,a21:MIX,a31:MIX,a41:1: 136830 leaves from 1889761 nodes, 0 subtrees aborted (node cap), 8180s  -> enum6_pat_b_M_M_M_1.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_M_M_M_1 16 - 0 300
+tag b_M_M_M_1  leaves 136830  workers 16  maxnodes 300  timeout 180s
+   100/136830  EMPTY_GB 35  EMPTY_BOX 62  EMPTY_CONST 3  3s
+   200/136830  EMPTY_GB 39  EMPTY_BOX 158  EMPTY_CONST 3  4s
+   300/136830  EMPTY_GB 58  EMPTY_BOX 236  EMPTY_CONST 6  5s
+   400/136830  EMPTY_GB 72  EMPTY_BOX 322  EMPTY_CONST 6  6s
+   500/136830  EMPTY_GB 74  EMPTY_BOX 411  EMPTY_CONST 15  7s
+   600/136830  EMPTY_GB 87  EMPTY_BOX 494  EMPTY_CONST 19  8s
+   700/136830  EMPTY_GB 90  EMPTY_BOX 591  EMPTY_CONST 19  9s
+   800/136830  EMPTY_GB 91  EMPTY_BOX 690  EMPTY_CONST 19  10s
+   900/136830  EMPTY_GB 102  EMPTY_BOX 772  EMPTY_CONST 26  12s
+   1000/136830  EMPTY_GB 110  EMPTY_BOX 858  EMPTY_CONST 32  13s
+   1100/136830  EMPTY_GB 126  EMPTY_BOX 937  EMPTY_CONST 37  14s
+   1200/136830  EMPTY_GB 129  EMPTY_BOX 1034  EMPTY_CONST 37  15s
+   1300/136830  EMPTY_GB 130  EMPTY_BOX 1132  EMPTY_CONST 38  16s
+   1400/136830  EMPTY_GB 134  EMPTY_BOX 1227  EMPTY_CONST 39  17s
+   1500/136830  EMPTY_GB 140  EMPTY_BOX 1320  EMPTY_CONST 40  18s
+   1600/136830  EMPTY_GB 140  EMPTY_BOX 1419  EMPTY_CONST 41  20s
+   1700/136830  EMPTY_GB 145  EMPTY_BOX 1514  EMPTY_CONST 41  21s
+   1800/136830  EMPTY_GB 145  EMPTY_BOX 1614  EMPTY_CONST 41  22s
+   1900/136830  EMPTY_GB 145  EMPTY_BOX 1714  EMPTY_CONST 41  24s
+   2000/136830  EMPTY_GB 145  EMPTY_BOX 1812  EMPTY_CONST 43  25s
+   2100/136830  EMPTY_GB 145  EMPTY_BOX 1911  EMPTY_CONST 44  26s
+   2200/136830  EMPTY_GB 146  EMPTY_BOX 2008  EMPTY_CONST 46  27s
+   2300/136830  EMPTY_GB 154  EMPTY_BOX 2097  EMPTY_CONST 49  29s
+   2400/136830  EMPTY_GB 166  EMPTY_BOX 2185  EMPTY_CONST 49  30s
+   2500/136830  EMPTY_GB 167  EMPTY_BOX 2284  EMPTY_CONST 49  31s
+   2600/136830  EMPTY_GB 167  EMPTY_BOX 2384  EMPTY_CONST 49  33s
+   2700/136830  EMPTY_GB 167  EMPTY_BOX 2484  EMPTY_CONST 49  35s
+   2800/136830  EMPTY_GB 168  EMPTY_BOX 2583  EMPTY_CONST 49  36s
+   2900/136830  EMPTY_GB 184  EMPTY_BOX 2662  EMPTY_CONST 54  37s
+   3000/136830  EMPTY_GB 184  EMPTY_BOX 2762  EMPTY_CONST 54  39s
+   3100/136830  EMPTY_GB 184  EMPTY_BOX 2862  EMPTY_CONST 54  40s
+   3200/136830  EMPTY_GB 184  EMPTY_BOX 2962  EMPTY_CONST 54  42s
+   3300/136830  EMPTY_GB 184  EMPTY_BOX 3062  EMPTY_CONST 54  43s
+   3400/136830  EMPTY_GB 184  EMPTY_BOX 3162  EMPTY_CONST 54  45s
+   3500/136830  EMPTY_GB 185  EMPTY_BOX 3261  EMPTY_CONST 54  46s
+   3600/136830  EMPTY_GB 185  EMPTY_BOX 3361  EMPTY_CONST 54  47s
+   3700/136830  EMPTY_GB 185  EMPTY_BOX 3461  EMPTY_CONST 54  50s
+   3800/136830  EMPTY_GB 185  EMPTY_BOX 3561  EMPTY_CONST 54  52s
+   3900/136830  EMPTY_GB 185  EMPTY_BOX 3661  EMPTY_CONST 54  54s
+   4000/136830  EMPTY_GB 185  EMPTY_BOX 3761  EMPTY_CONST 54  55s
+   4100/136830  EMPTY_GB 185  EMPTY_BOX 3861  EMPTY_CONST 54  57s
+   4200/136830  EMPTY_GB 185  EMPTY_BOX 3961  EMPTY_CONST 54  59s
+   4300/136830  EMPTY_GB 185  EMPTY_BOX 4061  EMPTY_CONST 54  61s
+   4400/136830  EMPTY_GB 185  EMPTY_BOX 4161  EMPTY_CONST 54  62s
+   4500/136830  EMPTY_GB 185  EMPTY_BOX 4261  EMPTY_CONST 54  64s
+   4600/136830  EMPTY_GB 185  EMPTY_BOX 4361  EMPTY_CONST 54  66s
+   4700/136830  EMPTY_GB 190  EMPTY_BOX 4456  EMPTY_CONST 54  68s
+   4800/136830  EMPTY_GB 190  EMPTY_BOX 4556  EMPTY_CONST 54  70s
+   4900/136830  EMPTY_GB 190  EMPTY_BOX 4656  EMPTY_CONST 54  72s
+   5000/136830  EMPTY_GB 190  EMPTY_BOX 4756  EMPTY_CONST 54  74s
+   5100/136830  EMPTY_GB 190  EMPTY_BOX 4856  EMPTY_CONST 54  77s
+   5200/136830  EMPTY_GB 190  EMPTY_BOX 4956  EMPTY_CONST 54  79s
+   5300/136830  EMPTY_GB 198  EMPTY_BOX 5047  EMPTY_CONST 55  81s
+   5400/136830  EMPTY_GB 211  EMPTY_BOX 5134  EMPTY_CONST 55  82s
+   5500/136830  EMPTY_GB 220  EMPTY_BOX 5224  EMPTY_CONST 56  83s
+   5600/136830  EMPTY_GB 222  EMPTY_BOX 5322  EMPTY_CONST 56  84s
+   5700/136830  EMPTY_GB 239  EMPTY_BOX 5403  EMPTY_CONST 58  85s
+   5800/136830  EMPTY_GB 239  EMPTY_BOX 5503  EMPTY_CONST 58  87s
+   5900/136830  EMPTY_GB 246  EMPTY_BOX 5595  EMPTY_CONST 59  88s
+   6000/136830  EMPTY_GB 290  EMPTY_BOX 5646  EMPTY_CONST 64  88s
+   6100/136830  EMPTY_GB 300  EMPTY_BOX 5732  EMPTY_CONST 68  89s
+   6200/136830  EMPTY_GB 306  EMPTY_BOX 5824  EMPTY_CONST 70  90s
+   6300/136830  EMPTY_GB 310  EMPTY_BOX 5918  EMPTY_CONST 72  91s
+   6400/136830  EMPTY_GB 310  EMPTY_BOX 6018  EMPTY_CONST 72  93s
+   6500/136830  EMPTY_GB 310  EMPTY_BOX 6118  EMPTY_CONST 72  95s
+   6600/136830  EMPTY_GB 310  EMPTY_BOX 6218  EMPTY_CONST 72  96s
+   6700/136830  EMPTY_GB 310  EMPTY_BOX 6318  EMPTY_CONST 72  98s
+   6800/136830  EMPTY_GB 310  EMPTY_BOX 6418  EMPTY_CONST 72  100s
+   6900/136830  EMPTY_GB 310  EMPTY_BOX 6518  EMPTY_CONST 72  102s
+   7000/136830  EMPTY_GB 310  EMPTY_BOX 6618  EMPTY_CONST 72  104s
+   7100/136830  EMPTY_GB 310  EMPTY_BOX 6718  EMPTY_CONST 72  106s
+   7200/136830  EMPTY_GB 310  EMPTY_BOX 6818  EMPTY_CONST 72  108s
+   7300/136830  EMPTY_GB 310  EMPTY_BOX 6918  EMPTY_CONST 72  110s
+   7400/136830  EMPTY_GB 310  EMPTY_BOX 7018  EMPTY_CONST 72  112s
+   7500/136830  EMPTY_GB 311  EMPTY_BOX 7117  EMPTY_CONST 72  114s
+   7600/136830  EMPTY_GB 311  EMPTY_BOX 7217  EMPTY_CONST 72  116s
+   7700/136830  EMPTY_GB 312  EMPTY_BOX 7316  EMPTY_CONST 72  117s
+   7800/136830  EMPTY_GB 312  EMPTY_BOX 7416  EMPTY_CONST 72  119s
+   7900/136830  EMPTY_GB 312  EMPTY_BOX 7516  EMPTY_CONST 72  120s
+   8000/136830  EMPTY_GB 313  EMPTY_BOX 7615  EMPTY_CONST 72  122s
+   8100/136830  EMPTY_GB 332  EMPTY_BOX 7693  EMPTY_CONST 75  123s
+   8200/136830  EMPTY_GB 333  EMPTY_BOX 7792  EMPTY_CONST 75  124s
+   8300/136830  EMPTY_GB 334  EMPTY_BOX 7890  EMPTY_CONST 76  126s
+   8400/136830  EMPTY_GB 340  EMPTY_BOX 7982  EMPTY_CONST 78  127s
+   8500/136830  EMPTY_GB 343  EMPTY_BOX 8076  EMPTY_CONST 81  128s
+   8600/136830  EMPTY_GB 343  EMPTY_BOX 8175  EMPTY_CONST 82  129s
+   8700/136830  EMPTY_GB 353  EMPTY_BOX 8255  EMPTY_CONST 92  130s
+   8800/136830  EMPTY_GB 353  EMPTY_BOX 8354  EMPTY_CONST 93  132s
+   8900/136830  EMPTY_GB 353  EMPTY_BOX 8454  EMPTY_CONST 93  134s
+   9000/136830  EMPTY_GB 353  EMPTY_BOX 8554  EMPTY_CONST 93  136s
+   9100/136830  EMPTY_GB 353  EMPTY_BOX 8654  EMPTY_CONST 93  138s
+   9200/136830  EMPTY_GB 353  EMPTY_BOX 8754  EMPTY_CONST 93  140s
+   9300/136830  EMPTY_GB 353  EMPTY_BOX 8854  EMPTY_CONST 93  142s
+   9400/136830  EMPTY_GB 353  EMPTY_BOX 8954  EMPTY_CONST 93  143s
+   9500/136830  EMPTY_GB 359  EMPTY_BOX 9046  EMPTY_CONST 95  145s
+   9600/136830  EMPTY_GB 359  EMPTY_BOX 9145  EMPTY_CONST 96  146s
+   9700/136830  EMPTY_GB 359  EMPTY_BOX 9245  EMPTY_CONST 96  148s
+   9800/136830  EMPTY_GB 374  EMPTY_BOX 9322  EMPTY_CONST 104  149s
+   9900/136830  EMPTY_GB 374  EMPTY_BOX 9422  EMPTY_CONST 104  150s
+   10000/136830  EMPTY_GB 377  EMPTY_BOX 9512  EMPTY_CONST 111  152s
+   10100/136830  EMPTY_GB 377  EMPTY_BOX 9612  EMPTY_CONST 111  154s
+   10200/136830  EMPTY_GB 377  EMPTY_BOX 9712  EMPTY_CONST 111  157s
+   10300/136830  EMPTY_GB 377  EMPTY_BOX 9812  EMPTY_CONST 111  159s
+   10400/136830  EMPTY_GB 377  EMPTY_BOX 9912  EMPTY_CONST 111  162s
+   10500/136830  EMPTY_GB 377  EMPTY_BOX 10012  EMPTY_CONST 111  164s
+   10600/136830  EMPTY_GB 377  EMPTY_BOX 10112  EMPTY_CONST 111  167s
+   10700/136830  EMPTY_GB 377  EMPTY_BOX 10212  EMPTY_CONST 111  169s
+   10800/136830  EMPTY_GB 377  EMPTY_BOX 10312  EMPTY_CONST 111  171s
+   10900/136830  EMPTY_GB 377  EMPTY_BOX 10412  EMPTY_CONST 111  173s
+   11000/136830  EMPTY_GB 381  EMPTY_BOX 10508  EMPTY_CONST 111  175s
+   11100/136830  EMPTY_GB 382  EMPTY_BOX 10607  EMPTY_CONST 111  176s
+   11200/136830  EMPTY_GB 382  EMPTY_BOX 10707  EMPTY_CONST 111  178s
+   11300/136830  EMPTY_GB 382  EMPTY_BOX 10807  EMPTY_CONST 111  180s
+   11400/136830  EMPTY_GB 384  EMPTY_BOX 10905  EMPTY_CONST 111  181s
+   11500/136830  EMPTY_GB 384  EMPTY_BOX 11005  EMPTY_CONST 111  183s
+   11600/136830  EMPTY_GB 384  EMPTY_BOX 11105  EMPTY_CONST 111  185s
+   11700/136830  EMPTY_GB 384  EMPTY_BOX 11205  EMPTY_CONST 111  187s
+   11800/136830  EMPTY_GB 384  EMPTY_BOX 11305  EMPTY_CONST 111  189s
+   11900/136830  EMPTY_GB 384  EMPTY_BOX 11405  EMPTY_CONST 111  191s
+   12000/136830  EMPTY_GB 385  EMPTY_BOX 11504  EMPTY_CONST 111  192s
+   12100/136830  EMPTY_GB 385  EMPTY_BOX 11604  EMPTY_CONST 111  194s
+   12200/136830  EMPTY_GB 385  EMPTY_BOX 11704  EMPTY_CONST 111  196s
+   12300/136830  EMPTY_GB 385  EMPTY_BOX 11804  EMPTY_CONST 111  197s
+   12400/136830  EMPTY_GB 385  EMPTY_BOX 11904  EMPTY_CONST 111  199s
+   12500/136830  EMPTY_GB 385  EMPTY_BOX 12004  EMPTY_CONST 111  202s
+   12600/136830  EMPTY_GB 385  EMPTY_BOX 12104  EMPTY_CONST 111  204s
+   12700/136830  EMPTY_GB 385  EMPTY_BOX 12204  EMPTY_CONST 111  206s
+   12800/136830  EMPTY_GB 385  EMPTY_BOX 12304  EMPTY_CONST 111  208s
+   12900/136830  EMPTY_GB 399  EMPTY_BOX 12390  EMPTY_CONST 111  209s
+   13000/136830  EMPTY_GB 399  EMPTY_BOX 12490  EMPTY_CONST 111  210s
+   13100/136830  EMPTY_GB 399  EMPTY_BOX 12590  EMPTY_CONST 111  212s
+   13200/136830  EMPTY_GB 399  EMPTY_BOX 12690  EMPTY_CONST 111  214s
+   13300/136830  EMPTY_GB 399  EMPTY_BOX 12790  EMPTY_CONST 111  216s
+   13400/136830  EMPTY_GB 399  EMPTY_BOX 12890  EMPTY_CONST 111  219s
+   13500/136830  EMPTY_GB 399  EMPTY_BOX 12990  EMPTY_CONST 111  221s
+   13600/136830  EMPTY_GB 399  EMPTY_BOX 13090  EMPTY_CONST 111  223s
+   13700/136830  EMPTY_GB 399  EMPTY_BOX 13190  EMPTY_CONST 111  225s
+   13800/136830  EMPTY_GB 399  EMPTY_BOX 13290  EMPTY_CONST 111  227s
+   13900/136830  EMPTY_GB 399  EMPTY_BOX 13390  EMPTY_CONST 111  229s
+   14000/136830  EMPTY_GB 399  EMPTY_BOX 13490  EMPTY_CONST 111  231s
+   14100/136830  EMPTY_GB 399  EMPTY_BOX 13589  EMPTY_CONST 112  232s
+   14200/136830  EMPTY_GB 399  EMPTY_BOX 13688  EMPTY_CONST 113  233s
+   14300/136830  EMPTY_GB 400  EMPTY_BOX 13787  EMPTY_CONST 113  234s
+   14400/136830  EMPTY_GB 400  EMPTY_BOX 13887  EMPTY_CONST 113  236s
+   14500/136830  EMPTY_GB 400  EMPTY_BOX 13987  EMPTY_CONST 113  238s
+   14600/136830  EMPTY_GB 400  EMPTY_BOX 14087  EMPTY_CONST 113  239s
+   14700/136830  EMPTY_GB 400  EMPTY_BOX 14187  EMPTY_CONST 113  241s
+   14800/136830  EMPTY_GB 407  EMPTY_BOX 14280  EMPTY_CONST 113  242s
+   14900/136830  EMPTY_GB 407  EMPTY_BOX 14380  EMPTY_CONST 113  243s
+   15000/136830  EMPTY_GB 407  EMPTY_BOX 14480  EMPTY_CONST 113  245s
+   15100/136830  EMPTY_GB 412  EMPTY_BOX 14565  EMPTY_CONST 123  246s
+   15200/136830  EMPTY_GB 425  EMPTY_BOX 14651  EMPTY_CONST 124  247s
+   15300/136830  EMPTY_GB 425  EMPTY_BOX 14750  EMPTY_CONST 125  248s
+   15400/136830  EMPTY_GB 425  EMPTY_BOX 14850  EMPTY_CONST 125  250s
+   15500/136830  EMPTY_GB 426  EMPTY_BOX 14949  EMPTY_CONST 125  251s
+   15600/136830  EMPTY_GB 428  EMPTY_BOX 15046  EMPTY_CONST 126  252s
+   15700/136830  EMPTY_GB 432  EMPTY_BOX 15140  EMPTY_CONST 128  254s
+   15800/136830  EMPTY_GB 433  EMPTY_BOX 15239  EMPTY_CONST 128  255s
+   15900/136830  EMPTY_GB 433  EMPTY_BOX 15339  EMPTY_CONST 128  257s
+   16000/136830  EMPTY_GB 434  EMPTY_BOX 15438  EMPTY_CONST 128  259s
+   16100/136830  EMPTY_GB 438  EMPTY_BOX 15533  EMPTY_CONST 129  261s
+   16200/136830  EMPTY_GB 440  EMPTY_BOX 15631  EMPTY_CONST 129  262s
+   16300/136830  EMPTY_GB 440  EMPTY_BOX 15731  EMPTY_CONST 129  264s
+   16400/136830  EMPTY_GB 445  EMPTY_BOX 15820  EMPTY_CONST 135  266s
+   16500/136830  EMPTY_GB 452  EMPTY_BOX 15912  EMPTY_CONST 136  267s
+   16600/136830  EMPTY_GB 452  EMPTY_BOX 16012  EMPTY_CONST 136  269s
+   16700/136830  EMPTY_GB 452  EMPTY_BOX 16110  EMPTY_CONST 138  271s
+   16800/136830  EMPTY_GB 452  EMPTY_BOX 16210  EMPTY_CONST 138  273s
+   16900/136830  EMPTY_GB 452  EMPTY_BOX 16310  EMPTY_CONST 138  276s
+   17000/136830  EMPTY_GB 452  EMPTY_BOX 16410  EMPTY_CONST 138  278s
+   17100/136830  EMPTY_GB 452  EMPTY_BOX 16510  EMPTY_CONST 138  280s
+   17200/136830  EMPTY_GB 452  EMPTY_BOX 16610  EMPTY_CONST 138  283s
+   17300/136830  EMPTY_GB 452  EMPTY_BOX 16710  EMPTY_CONST 138  285s
+   17400/136830  EMPTY_GB 452  EMPTY_BOX 16810  EMPTY_CONST 138  287s
+   17500/136830  EMPTY_GB 452  EMPTY_BOX 16910  EMPTY_CONST 138  290s
+   17600/136830  EMPTY_GB 452  EMPTY_BOX 17010  EMPTY_CONST 138  292s
+   17700/136830  EMPTY_GB 452  EMPTY_BOX 17110  EMPTY_CONST 138  295s
+   17800/136830  EMPTY_GB 452  EMPTY_BOX 17210  EMPTY_CONST 138  297s
+   17900/136830  EMPTY_GB 452  EMPTY_BOX 17310  EMPTY_CONST 138  300s
+   18000/136830  EMPTY_GB 452  EMPTY_BOX 17410  EMPTY_CONST 138  302s
+   18100/136830  EMPTY_GB 452  EMPTY_BOX 17510  EMPTY_CONST 138  304s
+   18200/136830  EMPTY_GB 452  EMPTY_BOX 17610  EMPTY_CONST 138  308s
+   18300/136830  EMPTY_GB 452  EMPTY_BOX 17710  EMPTY_CONST 138  310s
+   18400/136830  EMPTY_GB 452  EMPTY_BOX 17810  EMPTY_CONST 138  313s
+   18500/136830  EMPTY_GB 452  EMPTY_BOX 17910  EMPTY_CONST 138  315s
+   18600/136830  EMPTY_GB 452  EMPTY_BOX 18010  EMPTY_CONST 138  317s
+   18700/136830  EMPTY_GB 452  EMPTY_BOX 18110  EMPTY_CONST 138  319s
+   18800/136830  EMPTY_GB 452  EMPTY_BOX 18210  EMPTY_CONST 138  322s
+   18900/136830  EMPTY_GB 452  EMPTY_BOX 18310  EMPTY_CONST 138  325s
+   19000/136830  EMPTY_GB 452  EMPTY_BOX 18410  EMPTY_CONST 138  327s
+   19100/136830  EMPTY_GB 452  EMPTY_BOX 18510  EMPTY_CONST 138  329s
+   19200/136830  EMPTY_GB 452  EMPTY_BOX 18610  EMPTY_CONST 138  331s
+   19300/136830  EMPTY_GB 452  EMPTY_BOX 18710  EMPTY_CONST 138  333s
+   19400/136830  EMPTY_GB 452  EMPTY_BOX 18810  EMPTY_CONST 138  336s
+   19500/136830  EMPTY_GB 452  EMPTY_BOX 18910  EMPTY_CONST 138  337s
+   19600/136830  EMPTY_GB 452  EMPTY_BOX 19010  EMPTY_CONST 138  339s
+   19700/136830  EMPTY_GB 452  EMPTY_BOX 19110  EMPTY_CONST 138  341s
+   19800/136830  EMPTY_GB 452  EMPTY_BOX 19210  EMPTY_CONST 138  343s
+   19900/136830  EMPTY_GB 452  EMPTY_BOX 19310  EMPTY_CONST 138  345s
+   20000/136830  EMPTY_GB 452  EMPTY_BOX 19410  EMPTY_CONST 138  346s
+   20100/136830  EMPTY_GB 452  EMPTY_BOX 19510  EMPTY_CONST 138  348s
+   20200/136830  EMPTY_GB 452  EMPTY_BOX 19610  EMPTY_CONST 138  350s
+   20300/136830  EMPTY_GB 452  EMPTY_BOX 19710  EMPTY_CONST 138  352s
+   20400/136830  EMPTY_GB 452  EMPTY_BOX 19810  EMPTY_CONST 138  354s
+   20500/136830  EMPTY_GB 452  EMPTY_BOX 19910  EMPTY_CONST 138  356s
+   20600/136830  EMPTY_GB 452  EMPTY_BOX 20010  EMPTY_CONST 138  357s
+   20700/136830  EMPTY_GB 452  EMPTY_BOX 20110  EMPTY_CONST 138  359s
+   20800/136830  EMPTY_GB 452  EMPTY_BOX 20210  EMPTY_CONST 138  361s
+   20900/136830  EMPTY_GB 452  EMPTY_BOX 20310  EMPTY_CONST 138  363s
+   21000/136830  EMPTY_GB 452  EMPTY_BOX 20410  EMPTY_CONST 138  365s
+   21100/136830  EMPTY_GB 452  EMPTY_BOX 20510  EMPTY_CONST 138  367s
+   21200/136830  EMPTY_GB 453  EMPTY_BOX 20609  EMPTY_CONST 138  370s
+   21300/136830  EMPTY_GB 453  EMPTY_BOX 20709  EMPTY_CONST 138  371s
+   21400/136830  EMPTY_GB 453  EMPTY_BOX 20809  EMPTY_CONST 138  374s
+   21500/136830  EMPTY_GB 453  EMPTY_BOX 20909  EMPTY_CONST 138  376s
+   21600/136830  EMPTY_GB 453  EMPTY_BOX 21009  EMPTY_CONST 138  377s
+   21700/136830  EMPTY_GB 453  EMPTY_BOX 21109  EMPTY_CONST 138  379s
+   21800/136830  EMPTY_GB 470  EMPTY_BOX 21192  EMPTY_CONST 138  380s
+   21900/136830  EMPTY_GB 470  EMPTY_BOX 21292  EMPTY_CONST 138  382s
+   22000/136830  EMPTY_GB 470  EMPTY_BOX 21392  EMPTY_CONST 138  385s
+   22100/136830  EMPTY_GB 470  EMPTY_BOX 21492  EMPTY_CONST 138  387s
+   22200/136830  EMPTY_GB 470  EMPTY_BOX 21592  EMPTY_CONST 138  388s
+   22300/136830  EMPTY_GB 470  EMPTY_BOX 21692  EMPTY_CONST 138  390s
+   22400/136830  EMPTY_GB 470  EMPTY_BOX 21792  EMPTY_CONST 138  392s
+   22500/136830  EMPTY_GB 470  EMPTY_BOX 21892  EMPTY_CONST 138  394s
+   22600/136830  EMPTY_GB 470  EMPTY_BOX 21992  EMPTY_CONST 138  395s
+   22700/136830  EMPTY_GB 470  EMPTY_BOX 22092  EMPTY_CONST 138  397s
+   22800/136830  EMPTY_GB 470  EMPTY_BOX 22192  EMPTY_CONST 138  399s
+   22900/136830  EMPTY_GB 470  EMPTY_BOX 22292  EMPTY_CONST 138  400s
+   23000/136830  EMPTY_GB 470  EMPTY_BOX 22392  EMPTY_CONST 138  402s
+   23100/136830  EMPTY_GB 470  EMPTY_BOX 22492  EMPTY_CONST 138  404s
+   23200/136830  EMPTY_GB 470  EMPTY_BOX 22592  EMPTY_CONST 138  405s
+   23300/136830  EMPTY_GB 470  EMPTY_BOX 22692  EMPTY_CONST 138  407s
+   23400/136830  EMPTY_GB 470  EMPTY_BOX 22792  EMPTY_CONST 138  409s
+   23500/136830  EMPTY_GB 470  EMPTY_BOX 22890  EMPTY_CONST 140  410s
+   23600/136830  EMPTY_GB 475  EMPTY_BOX 22984  EMPTY_CONST 141  411s
+   23700/136830  EMPTY_GB 475  EMPTY_BOX 23084  EMPTY_CONST 141  413s
+   23800/136830  EMPTY_GB 475  EMPTY_BOX 23184  EMPTY_CONST 141  414s
+   23900/136830  EMPTY_GB 475  EMPTY_BOX 23284  EMPTY_CONST 141  416s
+   24000/136830  EMPTY_GB 475  EMPTY_BOX 23384  EMPTY_CONST 141  418s
+   24100/136830  EMPTY_GB 475  EMPTY_BOX 23484  EMPTY_CONST 141  419s
+   24200/136830  EMPTY_GB 476  EMPTY_BOX 23581  EMPTY_CONST 143  421s
+   24300/136830  EMPTY_GB 481  EMPTY_BOX 23674  EMPTY_CONST 145  422s
+   24400/136830  EMPTY_GB 481  EMPTY_BOX 23774  EMPTY_CONST 145  424s
+   24500/136830  EMPTY_GB 496  EMPTY_BOX 23858  EMPTY_CONST 146  425s
+   24600/136830  EMPTY_GB 512  EMPTY_BOX 23939  EMPTY_CONST 149  426s
+   24700/136830  EMPTY_GB 554  EMPTY_BOX 23997  EMPTY_CONST 149  428s
+   24800/136830  EMPTY_GB 567  EMPTY_BOX 24084  EMPTY_CONST 149  429s
+   24900/136830  EMPTY_GB 567  EMPTY_BOX 24184  EMPTY_CONST 149  431s
+   25000/136830  EMPTY_GB 567  EMPTY_BOX 24284  EMPTY_CONST 149  432s
+   25100/136830  EMPTY_GB 567  EMPTY_BOX 24384  EMPTY_CONST 149  435s
+   25200/136830  EMPTY_GB 567  EMPTY_BOX 24484  EMPTY_CONST 149  437s
+   25300/136830  EMPTY_GB 567  EMPTY_BOX 24584  EMPTY_CONST 149  438s
+   25400/136830  EMPTY_GB 567  EMPTY_BOX 24684  EMPTY_CONST 149  440s
+   25500/136830  EMPTY_GB 567  EMPTY_BOX 24784  EMPTY_CONST 149  442s
+   25600/136830  EMPTY_GB 567  EMPTY_BOX 24884  EMPTY_CONST 149  444s
+   25700/136830  EMPTY_GB 567  EMPTY_BOX 24984  EMPTY_CONST 149  445s
+   25800/136830  EMPTY_GB 567  EMPTY_BOX 25084  EMPTY_CONST 149  447s
+   25900/136830  EMPTY_GB 567  EMPTY_BOX 25184  EMPTY_CONST 149  449s
+   26000/136830  EMPTY_GB 567  EMPTY_BOX 25284  EMPTY_CONST 149  451s
+   26100/136830  EMPTY_GB 567  EMPTY_BOX 25384  EMPTY_CONST 149  453s
+   26200/136830  EMPTY_GB 568  EMPTY_BOX 25483  EMPTY_CONST 149  454s
+   26300/136830  EMPTY_GB 568  EMPTY_BOX 25583  EMPTY_CONST 149  456s
+   26400/136830  EMPTY_GB 568  EMPTY_BOX 25683  EMPTY_CONST 149  458s
+   26500/136830  EMPTY_GB 568  EMPTY_BOX 25783  EMPTY_CONST 149  460s
+   26600/136830  EMPTY_GB 568  EMPTY_BOX 25883  EMPTY_CONST 149  461s
+   26700/136830  EMPTY_GB 568  EMPTY_BOX 25983  EMPTY_CONST 149  463s
+   26800/136830  EMPTY_GB 570  EMPTY_BOX 26081  EMPTY_CONST 149  464s
+   26900/136830  EMPTY_GB 570  EMPTY_BOX 26181  EMPTY_CONST 149  466s
+   27000/136830  EMPTY_GB 570  EMPTY_BOX 26281  EMPTY_CONST 149  468s
+   27100/136830  EMPTY_GB 570  EMPTY_BOX 26381  EMPTY_CONST 149  470s
+   27200/136830  EMPTY_GB 570  EMPTY_BOX 26481  EMPTY_CONST 149  472s
+   27300/136830  EMPTY_GB 572  EMPTY_BOX 26579  EMPTY_CONST 149  473s
+   27400/136830  EMPTY_GB 572  EMPTY_BOX 26679  EMPTY_CONST 149  475s
+   27500/136830  EMPTY_GB 573  EMPTY_BOX 26778  EMPTY_CONST 149  476s
+   27600/136830  EMPTY_GB 573  EMPTY_BOX 26878  EMPTY_CONST 149  478s
+   27700/136830  EMPTY_GB 573  EMPTY_BOX 26978  EMPTY_CONST 149  480s
+   27800/136830  EMPTY_GB 597  EMPTY_BOX 27046  EMPTY_CONST 157  481s
+   27900/136830  EMPTY_GB 607  EMPTY_BOX 27136  EMPTY_CONST 157  482s
+   28000/136830  EMPTY_GB 623  EMPTY_BOX 27220  EMPTY_CONST 157  484s
+   28100/136830  EMPTY_GB 660  EMPTY_BOX 27280  EMPTY_CONST 160  485s
+   28200/136830  EMPTY_GB 660  EMPTY_BOX 27378  EMPTY_CONST 162  486s
+   28300/136830  EMPTY_GB 660  EMPTY_BOX 27478  EMPTY_CONST 162  488s
+   28400/136830  EMPTY_GB 660  EMPTY_BOX 27578  EMPTY_CONST 162  490s
+   28500/136830  EMPTY_GB 660  EMPTY_BOX 27678  EMPTY_CONST 162  492s
+   28600/136830  EMPTY_GB 660  EMPTY_BOX 27778  EMPTY_CONST 162  494s
+   28700/136830  EMPTY_GB 660  EMPTY_BOX 27878  EMPTY_CONST 162  496s
+   28800/136830  EMPTY_GB 660  EMPTY_BOX 27978  EMPTY_CONST 162  497s
+   28900/136830  EMPTY_GB 660  EMPTY_BOX 28078  EMPTY_CONST 162  499s
+   29000/136830  EMPTY_GB 660  EMPTY_BOX 28178  EMPTY_CONST 162  502s
+   29100/136830  EMPTY_GB 660  EMPTY_BOX 28278  EMPTY_CONST 162  506s
+   29200/136830  EMPTY_GB 660  EMPTY_BOX 28378  EMPTY_CONST 162  509s
+   29300/136830  EMPTY_GB 660  EMPTY_BOX 28478  EMPTY_CONST 162  512s
+   29400/136830  EMPTY_GB 660  EMPTY_BOX 28578  EMPTY_CONST 162  514s
+   29500/136830  EMPTY_GB 660  EMPTY_BOX 28678  EMPTY_CONST 162  517s
+   29600/136830  EMPTY_GB 660  EMPTY_BOX 28778  EMPTY_CONST 162  520s
+   29700/136830  EMPTY_GB 660  EMPTY_BOX 28878  EMPTY_CONST 162  523s
+   29800/136830  EMPTY_GB 660  EMPTY_BOX 28978  EMPTY_CONST 162  525s
+   29900/136830  EMPTY_GB 662  EMPTY_BOX 29074  EMPTY_CONST 164  526s
+   30000/136830  EMPTY_GB 676  EMPTY_BOX 29154  EMPTY_CONST 170  527s
+   30100/136830  EMPTY_GB 676  EMPTY_BOX 29253  EMPTY_CONST 171  529s
+   30200/136830  EMPTY_GB 677  EMPTY_BOX 29348  EMPTY_CONST 175  530s
+   30300/136830  EMPTY_GB 677  EMPTY_BOX 29447  EMPTY_CONST 176  532s
+   30400/136830  EMPTY_GB 677  EMPTY_BOX 29547  EMPTY_CONST 176  534s
+   30500/136830  EMPTY_GB 677  EMPTY_BOX 29647  EMPTY_CONST 176  536s
+   30600/136830  EMPTY_GB 677  EMPTY_BOX 29747  EMPTY_CONST 176  539s
+   30700/136830  EMPTY_GB 677  EMPTY_BOX 29847  EMPTY_CONST 176  541s
+   30800/136830  EMPTY_GB 677  EMPTY_BOX 29947  EMPTY_CONST 176  544s
+   30900/136830  EMPTY_GB 677  EMPTY_BOX 30047  EMPTY_CONST 176  546s
+   31000/136830  EMPTY_GB 677  EMPTY_BOX 30147  EMPTY_CONST 176  548s
+   31100/136830  EMPTY_GB 677  EMPTY_BOX 30247  EMPTY_CONST 176  550s
+   31200/136830  EMPTY_GB 677  EMPTY_BOX 30347  EMPTY_CONST 176  552s
+   31300/136830  EMPTY_GB 677  EMPTY_BOX 30447  EMPTY_CONST 176  554s
+   31400/136830  EMPTY_GB 677  EMPTY_BOX 30547  EMPTY_CONST 176  556s
+   31500/136830  EMPTY_GB 677  EMPTY_BOX 30647  EMPTY_CONST 176  558s
+   31600/136830  EMPTY_GB 677  EMPTY_BOX 30747  EMPTY_CONST 176  561s
+   31700/136830  EMPTY_GB 677  EMPTY_BOX 30847  EMPTY_CONST 176  563s
+   31800/136830  EMPTY_GB 677  EMPTY_BOX 30947  EMPTY_CONST 176  565s
+   31900/136830  EMPTY_GB 677  EMPTY_BOX 31047  EMPTY_CONST 176  567s
+   32000/136830  EMPTY_GB 677  EMPTY_BOX 31147  EMPTY_CONST 176  568s
+   32100/136830  EMPTY_GB 677  EMPTY_BOX 31247  EMPTY_CONST 176  570s
+   32200/136830  EMPTY_GB 677  EMPTY_BOX 31347  EMPTY_CONST 176  572s
+   32300/136830  EMPTY_GB 677  EMPTY_BOX 31447  EMPTY_CONST 176  574s
+   32400/136830  EMPTY_GB 677  EMPTY_BOX 31547  EMPTY_CONST 176  576s
+   32500/136830  EMPTY_GB 677  EMPTY_BOX 31647  EMPTY_CONST 176  578s
+   32600/136830  EMPTY_GB 677  EMPTY_BOX 31747  EMPTY_CONST 176  580s
+   32700/136830  EMPTY_GB 677  EMPTY_BOX 31847  EMPTY_CONST 176  582s
+   32800/136830  EMPTY_GB 677  EMPTY_BOX 31947  EMPTY_CONST 176  584s
+   32900/136830  EMPTY_GB 677  EMPTY_BOX 32047  EMPTY_CONST 176  586s
+   33000/136830  EMPTY_GB 677  EMPTY_BOX 32147  EMPTY_CONST 176  588s
+   33100/136830  EMPTY_GB 677  EMPTY_BOX 32247  EMPTY_CONST 176  590s
+   33200/136830  EMPTY_GB 677  EMPTY_BOX 32347  EMPTY_CONST 176  592s
+   33300/136830  EMPTY_GB 677  EMPTY_BOX 32447  EMPTY_CONST 176  594s
+   33400/136830  EMPTY_GB 677  EMPTY_BOX 32547  EMPTY_CONST 176  597s
+   33500/136830  EMPTY_GB 677  EMPTY_BOX 32647  EMPTY_CONST 176  599s
+   33600/136830  EMPTY_GB 677  EMPTY_BOX 32747  EMPTY_CONST 176  601s
+   33700/136830  EMPTY_GB 677  EMPTY_BOX 32847  EMPTY_CONST 176  603s
+   33800/136830  EMPTY_GB 677  EMPTY_BOX 32947  EMPTY_CONST 176  605s
+   33900/136830  EMPTY_GB 677  EMPTY_BOX 33047  EMPTY_CONST 176  607s
+   34000/136830  EMPTY_GB 677  EMPTY_BOX 33147  EMPTY_CONST 176  609s
+   34100/136830  EMPTY_GB 677  EMPTY_BOX 33247  EMPTY_CONST 176  610s
+   34200/136830  EMPTY_GB 677  EMPTY_BOX 33347  EMPTY_CONST 176  613s
+   34300/136830  EMPTY_GB 677  EMPTY_BOX 33447  EMPTY_CONST 176  615s
+   34400/136830  EMPTY_GB 677  EMPTY_BOX 33547  EMPTY_CONST 176  617s
+   34500/136830  EMPTY_GB 677  EMPTY_BOX 33647  EMPTY_CONST 176  619s
+   34600/136830  EMPTY_GB 677  EMPTY_BOX 33747  EMPTY_CONST 176  622s
+   34700/136830  EMPTY_GB 677  EMPTY_BOX 33847  EMPTY_CONST 176  623s
+   34800/136830  EMPTY_GB 677  EMPTY_BOX 33947  EMPTY_CONST 176  626s
+   34900/136830  EMPTY_GB 677  EMPTY_BOX 34047  EMPTY_CONST 176  627s
+   35000/136830  EMPTY_GB 677  EMPTY_BOX 34147  EMPTY_CONST 176  630s
+   35100/136830  EMPTY_GB 677  EMPTY_BOX 34247  EMPTY_CONST 176  632s
+   35200/136830  EMPTY_GB 677  EMPTY_BOX 34347  EMPTY_CONST 176  634s
+   35300/136830  EMPTY_GB 677  EMPTY_BOX 34447  EMPTY_CONST 176  636s
+   35400/136830  EMPTY_GB 677  EMPTY_BOX 34547  EMPTY_CONST 176  638s
+   35500/136830  EMPTY_GB 677  EMPTY_BOX 34647  EMPTY_CONST 176  640s
+   35600/136830  EMPTY_GB 677  EMPTY_BOX 34747  EMPTY_CONST 176  642s
+   35700/136830  EMPTY_GB 677  EMPTY_BOX 34847  EMPTY_CONST 176  644s
+   35800/136830  EMPTY_GB 677  EMPTY_BOX 34947  EMPTY_CONST 176  646s
+   35900/136830  EMPTY_GB 677  EMPTY_BOX 35047  EMPTY_CONST 176  648s
+   36000/136830  EMPTY_GB 677  EMPTY_BOX 35147  EMPTY_CONST 176  651s
+   36100/136830  EMPTY_GB 677  EMPTY_BOX 35247  EMPTY_CONST 176  653s
+   36200/136830  EMPTY_GB 677  EMPTY_BOX 35347  EMPTY_CONST 176  655s
+   36300/136830  EMPTY_GB 677  EMPTY_BOX 35447  EMPTY_CONST 176  657s
+   36400/136830  EMPTY_GB 677  EMPTY_BOX 35547  EMPTY_CONST 176  660s
+   36500/136830  EMPTY_GB 677  EMPTY_BOX 35647  EMPTY_CONST 176  662s
+   36600/136830  EMPTY_GB 677  EMPTY_BOX 35747  EMPTY_CONST 176  664s
+   36700/136830  EMPTY_GB 686  EMPTY_BOX 35838  EMPTY_CONST 176  666s
+   36800/136830  EMPTY_GB 733  EMPTY_BOX 35891  EMPTY_CONST 176  666s
+   36900/136830  EMPTY_GB 792  EMPTY_BOX 35932  EMPTY_CONST 176  667s
+   37000/136830  EMPTY_GB 794  EMPTY_BOX 36030  EMPTY_CONST 176  668s
+   37100/136830  EMPTY_GB 794  EMPTY_BOX 36130  EMPTY_CONST 176  669s
+   37200/136830  EMPTY_GB 794  EMPTY_BOX 36230  EMPTY_CONST 176  671s
+   37300/136830  EMPTY_GB 795  EMPTY_BOX 36329  EMPTY_CONST 176  672s
+   37400/136830  EMPTY_GB 808  EMPTY_BOX 36416  EMPTY_CONST 176  673s
+   37500/136830  EMPTY_GB 808  EMPTY_BOX 36516  EMPTY_CONST 176  674s
+   37600/136830  EMPTY_GB 816  EMPTY_BOX 36608  EMPTY_CONST 176  675s
+   37700/136830  EMPTY_GB 817  EMPTY_BOX 36707  EMPTY_CONST 176  677s
+   37800/136830  EMPTY_GB 817  EMPTY_BOX 36807  EMPTY_CONST 176  678s
+   37900/136830  EMPTY_GB 817  EMPTY_BOX 36907  EMPTY_CONST 176  680s
+   38000/136830  EMPTY_GB 817  EMPTY_BOX 37007  EMPTY_CONST 176  681s
+   38100/136830  EMPTY_GB 832  EMPTY_BOX 37092  EMPTY_CONST 176  682s
+   38200/136830  EMPTY_GB 853  EMPTY_BOX 37171  EMPTY_CONST 176  683s
+   38300/136830  EMPTY_GB 862  EMPTY_BOX 37262  EMPTY_CONST 176  684s
+   38400/136830  EMPTY_GB 862  EMPTY_BOX 37362  EMPTY_CONST 176  685s
+   38500/136830  EMPTY_GB 868  EMPTY_BOX 37456  EMPTY_CONST 176  687s
+   38600/136830  EMPTY_GB 868  EMPTY_BOX 37556  EMPTY_CONST 176  688s
+   38700/136830  EMPTY_GB 889  EMPTY_BOX 37631  EMPTY_CONST 180  689s
+   38800/136830  EMPTY_GB 924  EMPTY_BOX 37690  EMPTY_CONST 186  689s
+   38900/136830  EMPTY_GB 934  EMPTY_BOX 37778  EMPTY_CONST 188  691s
+   39000/136830  EMPTY_GB 935  EMPTY_BOX 37877  EMPTY_CONST 188  692s
+   39100/136830  EMPTY_GB 981  EMPTY_BOX 37931  EMPTY_CONST 188  693s
+   39200/136830  EMPTY_GB 1002  EMPTY_BOX 38010  EMPTY_CONST 188  693s
+   39300/136830  EMPTY_GB 1009  EMPTY_BOX 38103  EMPTY_CONST 188  695s
+   39400/136830  EMPTY_GB 1009  EMPTY_BOX 38203  EMPTY_CONST 188  697s
+   39500/136830  EMPTY_GB 1009  EMPTY_BOX 38303  EMPTY_CONST 188  699s
+   39600/136830  EMPTY_GB 1009  EMPTY_BOX 38403  EMPTY_CONST 188  701s
+   39700/136830  EMPTY_GB 1009  EMPTY_BOX 38503  EMPTY_CONST 188  704s
+   39800/136830  EMPTY_GB 1009  EMPTY_BOX 38603  EMPTY_CONST 188  707s
+   39900/136830  EMPTY_GB 1009  EMPTY_BOX 38703  EMPTY_CONST 188  709s
+   40000/136830  EMPTY_GB 1009  EMPTY_BOX 38803  EMPTY_CONST 188  711s
+   40100/136830  EMPTY_GB 1009  EMPTY_BOX 38903  EMPTY_CONST 188  713s
+   40200/136830  EMPTY_GB 1009  EMPTY_BOX 39003  EMPTY_CONST 188  716s
+   40300/136830  EMPTY_GB 1009  EMPTY_BOX 39103  EMPTY_CONST 188  718s
+   40400/136830  EMPTY_GB 1009  EMPTY_BOX 39203  EMPTY_CONST 188  721s
+   40500/136830  EMPTY_GB 1009  EMPTY_BOX 39303  EMPTY_CONST 188  723s
+   40600/136830  EMPTY_GB 1009  EMPTY_BOX 39403  EMPTY_CONST 188  726s
+   40700/136830  EMPTY_GB 1009  EMPTY_BOX 39503  EMPTY_CONST 188  728s
+   40800/136830  EMPTY_GB 1009  EMPTY_BOX 39603  EMPTY_CONST 188  730s
+   40900/136830  EMPTY_GB 1009  EMPTY_BOX 39703  EMPTY_CONST 188  732s
+   41000/136830  EMPTY_GB 1009  EMPTY_BOX 39803  EMPTY_CONST 188  734s
+   41100/136830  EMPTY_GB 1009  EMPTY_BOX 39903  EMPTY_CONST 188  736s
+   41200/136830  EMPTY_GB 1009  EMPTY_BOX 40003  EMPTY_CONST 188  738s
+   41300/136830  EMPTY_GB 1009  EMPTY_BOX 40103  EMPTY_CONST 188  740s
+   41400/136830  EMPTY_GB 1009  EMPTY_BOX 40203  EMPTY_CONST 188  741s
+   41500/136830  EMPTY_GB 1009  EMPTY_BOX 40303  EMPTY_CONST 188  744s
+   41600/136830  EMPTY_GB 1009  EMPTY_BOX 40403  EMPTY_CONST 188  746s
+   41700/136830  EMPTY_GB 1009  EMPTY_BOX 40503  EMPTY_CONST 188  748s
+   41800/136830  EMPTY_GB 1009  EMPTY_BOX 40603  EMPTY_CONST 188  750s
+   41900/136830  EMPTY_GB 1009  EMPTY_BOX 40703  EMPTY_CONST 188  752s
+   42000/136830  EMPTY_GB 1009  EMPTY_BOX 40803  EMPTY_CONST 188  754s
+   42100/136830  EMPTY_GB 1009  EMPTY_BOX 40903  EMPTY_CONST 188  755s
+   42200/136830  EMPTY_GB 1009  EMPTY_BOX 41003  EMPTY_CONST 188  757s
+   42300/136830  EMPTY_GB 1009  EMPTY_BOX 41103  EMPTY_CONST 188  759s
+   42400/136830  EMPTY_GB 1009  EMPTY_BOX 41203  EMPTY_CONST 188  761s
+   42500/136830  EMPTY_GB 1009  EMPTY_BOX 41303  EMPTY_CONST 188  763s
+   42600/136830  EMPTY_GB 1009  EMPTY_BOX 41403  EMPTY_CONST 188  765s
+   42700/136830  EMPTY_GB 1009  EMPTY_BOX 41503  EMPTY_CONST 188  767s
+   42800/136830  EMPTY_GB 1009  EMPTY_BOX 41603  EMPTY_CONST 188  768s
+   42900/136830  EMPTY_GB 1009  EMPTY_BOX 41703  EMPTY_CONST 188  770s
+   43000/136830  EMPTY_GB 1009  EMPTY_BOX 41803  EMPTY_CONST 188  772s
+   43100/136830  EMPTY_GB 1009  EMPTY_BOX 41903  EMPTY_CONST 188  775s
+   43200/136830  EMPTY_GB 1009  EMPTY_BOX 42003  EMPTY_CONST 188  777s
+   43300/136830  EMPTY_GB 1009  EMPTY_BOX 42103  EMPTY_CONST 188  779s
+   43400/136830  EMPTY_GB 1010  EMPTY_BOX 42202  EMPTY_CONST 188  781s
+   43500/136830  EMPTY_GB 1010  EMPTY_BOX 42302  EMPTY_CONST 188  782s
+   43600/136830  EMPTY_GB 1010  EMPTY_BOX 42402  EMPTY_CONST 188  784s
+   43700/136830  EMPTY_GB 1010  EMPTY_BOX 42502  EMPTY_CONST 188  786s
+   43800/136830  EMPTY_GB 1050  EMPTY_BOX 42559  EMPTY_CONST 191  787s
+   43900/136830  EMPTY_GB 1101  EMPTY_BOX 42608  EMPTY_CONST 191  788s
+   44000/136830  EMPTY_GB 1161  EMPTY_BOX 42641  EMPTY_CONST 198  788s
+   44100/136830  EMPTY_GB 1164  EMPTY_BOX 42738  EMPTY_CONST 198  789s
+   44200/136830  EMPTY_GB 1173  EMPTY_BOX 42818  EMPTY_CONST 209  790s
+   44300/136830  EMPTY_GB 1179  EMPTY_BOX 42912  EMPTY_CONST 209  792s
+   44400/136830  EMPTY_GB 1179  EMPTY_BOX 43012  EMPTY_CONST 209  793s
+   44500/136830  EMPTY_GB 1179  EMPTY_BOX 43112  EMPTY_CONST 209  795s
+   44600/136830  EMPTY_GB 1179  EMPTY_BOX 43212  EMPTY_CONST 209  796s
+   44700/136830  EMPTY_GB 1179  EMPTY_BOX 43312  EMPTY_CONST 209  798s
+   44800/136830  EMPTY_GB 1209  EMPTY_BOX 43382  EMPTY_CONST 209  799s
+   44900/136830  EMPTY_GB 1214  EMPTY_BOX 43477  EMPTY_CONST 209  800s
+   45000/136830  EMPTY_GB 1228  EMPTY_BOX 43563  EMPTY_CONST 209  801s
+   45100/136830  EMPTY_GB 1228  EMPTY_BOX 43663  EMPTY_CONST 209  802s
+   45200/136830  EMPTY_GB 1228  EMPTY_BOX 43763  EMPTY_CONST 209  804s
+   45300/136830  EMPTY_GB 1232  EMPTY_BOX 43859  EMPTY_CONST 209  805s
+   45400/136830  EMPTY_GB 1233  EMPTY_BOX 43958  EMPTY_CONST 209  806s
+   45500/136830  EMPTY_GB 1254  EMPTY_BOX 44037  EMPTY_CONST 209  808s
+   45600/136830  EMPTY_GB 1274  EMPTY_BOX 44117  EMPTY_CONST 209  809s
+   45700/136830  EMPTY_GB 1279  EMPTY_BOX 44206  EMPTY_CONST 215  810s
+   45800/136830  EMPTY_GB 1279  EMPTY_BOX 44306  EMPTY_CONST 215  811s
+   45900/136830  EMPTY_GB 1279  EMPTY_BOX 44406  EMPTY_CONST 215  813s
+   46000/136830  EMPTY_GB 1279  EMPTY_BOX 44506  EMPTY_CONST 215  814s
+   46100/136830  EMPTY_GB 1279  EMPTY_BOX 44606  EMPTY_CONST 215  817s
+   46200/136830  EMPTY_GB 1280  EMPTY_BOX 44701  EMPTY_CONST 219  818s
+   46300/136830  EMPTY_GB 1282  EMPTY_BOX 44799  EMPTY_CONST 219  819s
+   46400/136830  EMPTY_GB 1282  EMPTY_BOX 44899  EMPTY_CONST 219  821s
+   46500/136830  EMPTY_GB 1282  EMPTY_BOX 44999  EMPTY_CONST 219  823s
+   46600/136830  EMPTY_GB 1282  EMPTY_BOX 45098  EMPTY_CONST 220  824s
+   46700/136830  EMPTY_GB 1297  EMPTY_BOX 45174  EMPTY_CONST 229  825s
+   46800/136830  EMPTY_GB 1299  EMPTY_BOX 45272  EMPTY_CONST 229  827s
+   46900/136830  EMPTY_GB 1299  EMPTY_BOX 45372  EMPTY_CONST 229  829s
+   47000/136830  EMPTY_GB 1300  EMPTY_BOX 45471  EMPTY_CONST 229  830s
+   47100/136830  EMPTY_GB 1311  EMPTY_BOX 45560  EMPTY_CONST 229  831s
+   47200/136830  EMPTY_GB 1311  EMPTY_BOX 45660  EMPTY_CONST 229  833s
+   47300/136830  EMPTY_GB 1311  EMPTY_BOX 45760  EMPTY_CONST 229  835s
+   47400/136830  EMPTY_GB 1311  EMPTY_BOX 45860  EMPTY_CONST 229  837s
+   47500/136830  EMPTY_GB 1311  EMPTY_BOX 45960  EMPTY_CONST 229  839s
+   47600/136830  EMPTY_GB 1311  EMPTY_BOX 46060  EMPTY_CONST 229  840s
+   47700/136830  EMPTY_GB 1312  EMPTY_BOX 46159  EMPTY_CONST 229  842s
+   47800/136830  EMPTY_GB 1312  EMPTY_BOX 46259  EMPTY_CONST 229  844s
+   47900/136830  EMPTY_GB 1312  EMPTY_BOX 46359  EMPTY_CONST 229  845s
+   48000/136830  EMPTY_GB 1312  EMPTY_BOX 46459  EMPTY_CONST 229  846s
+   48100/136830  EMPTY_GB 1312  EMPTY_BOX 46559  EMPTY_CONST 229  848s
+   48200/136830  EMPTY_GB 1312  EMPTY_BOX 46659  EMPTY_CONST 229  849s
+   48300/136830  EMPTY_GB 1320  EMPTY_BOX 46751  EMPTY_CONST 229  851s
+   48400/136830  EMPTY_GB 1326  EMPTY_BOX 46845  EMPTY_CONST 229  852s
+   48500/136830  EMPTY_GB 1327  EMPTY_BOX 46944  EMPTY_CONST 229  853s
+   48600/136830  EMPTY_GB 1327  EMPTY_BOX 47044  EMPTY_CONST 229  854s
+   48700/136830  EMPTY_GB 1327  EMPTY_BOX 47144  EMPTY_CONST 229  856s
+   48800/136830  EMPTY_GB 1328  EMPTY_BOX 47242  EMPTY_CONST 230  857s
+   48900/136830  EMPTY_GB 1333  EMPTY_BOX 47333  EMPTY_CONST 234  859s
+   49000/136830  EMPTY_GB 1333  EMPTY_BOX 47433  EMPTY_CONST 234  860s
+   49100/136830  EMPTY_GB 1333  EMPTY_BOX 47533  EMPTY_CONST 234  862s
+   49200/136830  EMPTY_GB 1333  EMPTY_BOX 47633  EMPTY_CONST 234  863s
+   49300/136830  EMPTY_GB 1349  EMPTY_BOX 47714  EMPTY_CONST 237  864s
+   49400/136830  EMPTY_GB 1363  EMPTY_BOX 47800  EMPTY_CONST 237  866s
+   49500/136830  EMPTY_GB 1364  EMPTY_BOX 47899  EMPTY_CONST 237  867s
+   49600/136830  EMPTY_GB 1364  EMPTY_BOX 47995  EMPTY_CONST 241  869s
+   49700/136830  EMPTY_GB 1364  EMPTY_BOX 48094  EMPTY_CONST 242  870s
+   49800/136830  EMPTY_GB 1364  EMPTY_BOX 48193  EMPTY_CONST 243  872s
+   49900/136830  EMPTY_GB 1364  EMPTY_BOX 48293  EMPTY_CONST 243  874s
+   50000/136830  EMPTY_GB 1364  EMPTY_BOX 48393  EMPTY_CONST 243  876s
+   50100/136830  EMPTY_GB 1379  EMPTY_BOX 48478  EMPTY_CONST 243  878s
+   50200/136830  EMPTY_GB 1394  EMPTY_BOX 48563  EMPTY_CONST 243  878s
+   50300/136830  EMPTY_GB 1415  EMPTY_BOX 48642  EMPTY_CONST 243  879s
+   50400/136830  EMPTY_GB 1415  EMPTY_BOX 48742  EMPTY_CONST 243  881s
+   50500/136830  EMPTY_GB 1415  EMPTY_BOX 48842  EMPTY_CONST 243  883s
+   50600/136830  EMPTY_GB 1415  EMPTY_BOX 48942  EMPTY_CONST 243  885s
+   50700/136830  EMPTY_GB 1415  EMPTY_BOX 49042  EMPTY_CONST 243  887s
+   50800/136830  EMPTY_GB 1415  EMPTY_BOX 49142  EMPTY_CONST 243  888s
+   50900/136830  EMPTY_GB 1415  EMPTY_BOX 49242  EMPTY_CONST 243  890s
+   51000/136830  EMPTY_GB 1415  EMPTY_BOX 49342  EMPTY_CONST 243  891s
+   51100/136830  EMPTY_GB 1415  EMPTY_BOX 49442  EMPTY_CONST 243  893s
+   51200/136830  EMPTY_GB 1415  EMPTY_BOX 49542  EMPTY_CONST 243  894s
+   51300/136830  EMPTY_GB 1415  EMPTY_BOX 49642  EMPTY_CONST 243  896s
+   51400/136830  EMPTY_GB 1415  EMPTY_BOX 49742  EMPTY_CONST 243  897s
+   51500/136830  EMPTY_GB 1415  EMPTY_BOX 49842  EMPTY_CONST 243  899s
+   51600/136830  EMPTY_GB 1415  EMPTY_BOX 49942  EMPTY_CONST 243  901s
+   51700/136830  EMPTY_GB 1415  EMPTY_BOX 50042  EMPTY_CONST 243  903s
+   51800/136830  EMPTY_GB 1427  EMPTY_BOX 50130  EMPTY_CONST 243  904s
+   51900/136830  EMPTY_GB 1429  EMPTY_BOX 50228  EMPTY_CONST 243  905s
+   52000/136830  EMPTY_GB 1435  EMPTY_BOX 50322  EMPTY_CONST 243  907s
+   52100/136830  EMPTY_GB 1435  EMPTY_BOX 50422  EMPTY_CONST 243  908s
+   52200/136830  EMPTY_GB 1435  EMPTY_BOX 50522  EMPTY_CONST 243  910s
+   52300/136830  EMPTY_GB 1435  EMPTY_BOX 50622  EMPTY_CONST 243  911s
+   52400/136830  EMPTY_GB 1435  EMPTY_BOX 50722  EMPTY_CONST 243  913s
+   52500/136830  EMPTY_GB 1435  EMPTY_BOX 50822  EMPTY_CONST 243  914s
+   52600/136830  EMPTY_GB 1435  EMPTY_BOX 50922  EMPTY_CONST 243  915s
+   52700/136830  EMPTY_GB 1435  EMPTY_BOX 51022  EMPTY_CONST 243  917s
+   52800/136830  EMPTY_GB 1464  EMPTY_BOX 51082  EMPTY_CONST 254  918s
+   52900/136830  EMPTY_GB 1473  EMPTY_BOX 51173  EMPTY_CONST 254  919s
+   53000/136830  EMPTY_GB 1485  EMPTY_BOX 51261  EMPTY_CONST 254  920s
+   53100/136830  EMPTY_GB 1485  EMPTY_BOX 51361  EMPTY_CONST 254  922s
+   53200/136830  EMPTY_GB 1485  EMPTY_BOX 51461  EMPTY_CONST 254  923s
+   53300/136830  EMPTY_GB 1485  EMPTY_BOX 51561  EMPTY_CONST 254  925s
+   53400/136830  EMPTY_GB 1505  EMPTY_BOX 51641  EMPTY_CONST 254  927s
+   53500/136830  EMPTY_GB 1508  EMPTY_BOX 51738  EMPTY_CONST 254  928s
+   53600/136830  EMPTY_GB 1508  EMPTY_BOX 51838  EMPTY_CONST 254  930s
+   53700/136830  EMPTY_GB 1508  EMPTY_BOX 51938  EMPTY_CONST 254  932s
+   53800/136830  EMPTY_GB 1508  EMPTY_BOX 52038  EMPTY_CONST 254  934s
+   53900/136830  EMPTY_GB 1508  EMPTY_BOX 52138  EMPTY_CONST 254  936s
+   54000/136830  EMPTY_GB 1508  EMPTY_BOX 52238  EMPTY_CONST 254  938s
+   54100/136830  EMPTY_GB 1508  EMPTY_BOX 52338  EMPTY_CONST 254  940s
+   54200/136830  EMPTY_GB 1508  EMPTY_BOX 52438  EMPTY_CONST 254  941s
+   54300/136830  EMPTY_GB 1508  EMPTY_BOX 52538  EMPTY_CONST 254  943s
+   54400/136830  EMPTY_GB 1508  EMPTY_BOX 52638  EMPTY_CONST 254  945s
+   54500/136830  EMPTY_GB 1508  EMPTY_BOX 52738  EMPTY_CONST 254  946s
+   54600/136830  EMPTY_GB 1508  EMPTY_BOX 52838  EMPTY_CONST 254  947s
+   54700/136830  EMPTY_GB 1508  EMPTY_BOX 52938  EMPTY_CONST 254  949s
+   54800/136830  EMPTY_GB 1509  EMPTY_BOX 53037  EMPTY_CONST 254  951s
+   54900/136830  EMPTY_GB 1519  EMPTY_BOX 53127  EMPTY_CONST 254  952s
+   55000/136830  EMPTY_GB 1527  EMPTY_BOX 53219  EMPTY_CONST 254  953s
+   55100/136830  EMPTY_GB 1530  EMPTY_BOX 53316  EMPTY_CONST 254  954s
+   55200/136830  EMPTY_GB 1534  EMPTY_BOX 53412  EMPTY_CONST 254  955s
+   55300/136830  EMPTY_GB 1534  EMPTY_BOX 53512  EMPTY_CONST 254  957s
+   55400/136830  EMPTY_GB 1534  EMPTY_BOX 53612  EMPTY_CONST 254  958s
+   55500/136830  EMPTY_GB 1540  EMPTY_BOX 53706  EMPTY_CONST 254  960s
+   55600/136830  EMPTY_GB 1542  EMPTY_BOX 53804  EMPTY_CONST 254  961s
+   55700/136830  EMPTY_GB 1542  EMPTY_BOX 53904  EMPTY_CONST 254  963s
+   55800/136830  EMPTY_GB 1542  EMPTY_BOX 54004  EMPTY_CONST 254  964s
+   55900/136830  EMPTY_GB 1569  EMPTY_BOX 54066  EMPTY_CONST 265  965s
+   56000/136830  EMPTY_GB 1572  EMPTY_BOX 54163  EMPTY_CONST 265  967s
+   56100/136830  EMPTY_GB 1575  EMPTY_BOX 54260  EMPTY_CONST 265  968s
+   56200/136830  EMPTY_GB 1575  EMPTY_BOX 54360  EMPTY_CONST 265  970s
+   56300/136830  EMPTY_GB 1575  EMPTY_BOX 54460  EMPTY_CONST 265  972s
+   56400/136830  EMPTY_GB 1575  EMPTY_BOX 54560  EMPTY_CONST 265  974s
+   56500/136830  EMPTY_GB 1575  EMPTY_BOX 54660  EMPTY_CONST 265  976s
+   56600/136830  EMPTY_GB 1594  EMPTY_BOX 54741  EMPTY_CONST 265  978s
+   56700/136830  EMPTY_GB 1600  EMPTY_BOX 54835  EMPTY_CONST 265  979s
+   56800/136830  EMPTY_GB 1600  EMPTY_BOX 54935  EMPTY_CONST 265  981s
+   56900/136830  EMPTY_GB 1600  EMPTY_BOX 55035  EMPTY_CONST 265  983s
+   57000/136830  EMPTY_GB 1600  EMPTY_BOX 55135  EMPTY_CONST 265  985s
+   57100/136830  EMPTY_GB 1600  EMPTY_BOX 55235  EMPTY_CONST 265  987s
+   57200/136830  EMPTY_GB 1600  EMPTY_BOX 55335  EMPTY_CONST 265  988s
+   57300/136830  EMPTY_GB 1601  EMPTY_BOX 55432  EMPTY_CONST 267  990s
+   57400/136830  EMPTY_GB 1601  EMPTY_BOX 55532  EMPTY_CONST 267  991s
+   57500/136830  EMPTY_GB 1601  EMPTY_BOX 55632  EMPTY_CONST 267  993s
+   57600/136830  EMPTY_GB 1601  EMPTY_BOX 55732  EMPTY_CONST 267  995s
+   57700/136830  EMPTY_GB 1607  EMPTY_BOX 55826  EMPTY_CONST 267  996s
+   57800/136830  EMPTY_GB 1607  EMPTY_BOX 55926  EMPTY_CONST 267  998s
+   57900/136830  EMPTY_GB 1616  EMPTY_BOX 56017  EMPTY_CONST 267  999s
+   58000/136830  EMPTY_GB 1616  EMPTY_BOX 56117  EMPTY_CONST 267  1001s
+   58100/136830  EMPTY_GB 1616  EMPTY_BOX 56217  EMPTY_CONST 267  1002s
+   58200/136830  EMPTY_GB 1619  EMPTY_BOX 56307  EMPTY_CONST 274  1004s
+   58300/136830  EMPTY_GB 1622  EMPTY_BOX 56401  EMPTY_CONST 277  1005s
+   58400/136830  EMPTY_GB 1622  EMPTY_BOX 56501  EMPTY_CONST 277  1006s
+   58500/136830  EMPTY_GB 1628  EMPTY_BOX 56595  EMPTY_CONST 277  1008s
+   58600/136830  EMPTY_GB 1638  EMPTY_BOX 56685  EMPTY_CONST 277  1009s
+   58700/136830  EMPTY_GB 1638  EMPTY_BOX 56785  EMPTY_CONST 277  1011s
+   58800/136830  EMPTY_GB 1638  EMPTY_BOX 56885  EMPTY_CONST 277  1014s
+   58900/136830  EMPTY_GB 1638  EMPTY_BOX 56985  EMPTY_CONST 277  1016s
+   59000/136830  EMPTY_GB 1638  EMPTY_BOX 57085  EMPTY_CONST 277  1018s
+   59100/136830  EMPTY_GB 1638  EMPTY_BOX 57185  EMPTY_CONST 277  1020s
+   59200/136830  EMPTY_GB 1638  EMPTY_BOX 57285  EMPTY_CONST 277  1022s
+   59300/136830  EMPTY_GB 1638  EMPTY_BOX 57385  EMPTY_CONST 277  1024s
+   59400/136830  EMPTY_GB 1638  EMPTY_BOX 57485  EMPTY_CONST 277  1027s
+   59500/136830  EMPTY_GB 1638  EMPTY_BOX 57585  EMPTY_CONST 277  1028s
+   59600/136830  EMPTY_GB 1638  EMPTY_BOX 57685  EMPTY_CONST 277  1030s
+   59700/136830  EMPTY_GB 1638  EMPTY_BOX 57785  EMPTY_CONST 277  1032s
+   59800/136830  EMPTY_GB 1652  EMPTY_BOX 57871  EMPTY_CONST 277  1033s
+   59900/136830  EMPTY_GB 1662  EMPTY_BOX 57961  EMPTY_CONST 277  1034s
+   60000/136830  EMPTY_GB 1682  EMPTY_BOX 58041  EMPTY_CONST 277  1035s
+   60100/136830  EMPTY_GB 1682  EMPTY_BOX 58141  EMPTY_CONST 277  1037s
+   60200/136830  EMPTY_GB 1682  EMPTY_BOX 58241  EMPTY_CONST 277  1039s
+   60300/136830  EMPTY_GB 1682  EMPTY_BOX 58341  EMPTY_CONST 277  1041s
+   60400/136830  EMPTY_GB 1682  EMPTY_BOX 58441  EMPTY_CONST 277  1043s
+   60500/136830  EMPTY_GB 1684  EMPTY_BOX 58539  EMPTY_CONST 277  1045s
+   60600/136830  EMPTY_GB 1684  EMPTY_BOX 58639  EMPTY_CONST 277  1046s
+   60700/136830  EMPTY_GB 1684  EMPTY_BOX 58739  EMPTY_CONST 277  1047s
+   60800/136830  EMPTY_GB 1684  EMPTY_BOX 58839  EMPTY_CONST 277  1049s
+   60900/136830  EMPTY_GB 1684  EMPTY_BOX 58939  EMPTY_CONST 277  1051s
+   61000/136830  EMPTY_GB 1684  EMPTY_BOX 59039  EMPTY_CONST 277  1053s
+   61100/136830  EMPTY_GB 1684  EMPTY_BOX 59139  EMPTY_CONST 277  1055s
+   61200/136830  EMPTY_GB 1684  EMPTY_BOX 59239  EMPTY_CONST 277  1057s
+   61300/136830  EMPTY_GB 1684  EMPTY_BOX 59339  EMPTY_CONST 277  1059s
+   61400/136830  EMPTY_GB 1684  EMPTY_BOX 59439  EMPTY_CONST 277  1060s
+   61500/136830  EMPTY_GB 1694  EMPTY_BOX 59526  EMPTY_CONST 280  1062s
+   61600/136830  EMPTY_GB 1697  EMPTY_BOX 59623  EMPTY_CONST 280  1063s
+   61700/136830  EMPTY_GB 1697  EMPTY_BOX 59723  EMPTY_CONST 280  1065s
+   61800/136830  EMPTY_GB 1697  EMPTY_BOX 59823  EMPTY_CONST 280  1066s
+   61900/136830  EMPTY_GB 1702  EMPTY_BOX 59917  EMPTY_CONST 281  1067s
+   62000/136830  EMPTY_GB 1703  EMPTY_BOX 60016  EMPTY_CONST 281  1069s
+   62100/136830  EMPTY_GB 1708  EMPTY_BOX 60105  EMPTY_CONST 287  1071s
+   62200/136830  EMPTY_GB 1712  EMPTY_BOX 60199  EMPTY_CONST 289  1072s
+   62300/136830  EMPTY_GB 1712  EMPTY_BOX 60299  EMPTY_CONST 289  1074s
+   62400/136830  EMPTY_GB 1712  EMPTY_BOX 60399  EMPTY_CONST 289  1076s
+   62500/136830  EMPTY_GB 1714  EMPTY_BOX 60497  EMPTY_CONST 289  1078s
+   62600/136830  EMPTY_GB 1714  EMPTY_BOX 60597  EMPTY_CONST 289  1080s
+   62700/136830  EMPTY_GB 1714  EMPTY_BOX 60697  EMPTY_CONST 289  1082s
+   62800/136830  EMPTY_GB 1714  EMPTY_BOX 60797  EMPTY_CONST 289  1084s
+   62900/136830  EMPTY_GB 1714  EMPTY_BOX 60897  EMPTY_CONST 289  1087s
+   63000/136830  EMPTY_GB 1714  EMPTY_BOX 60997  EMPTY_CONST 289  1089s
+   63100/136830  EMPTY_GB 1714  EMPTY_BOX 61097  EMPTY_CONST 289  1092s
+   63200/136830  EMPTY_GB 1714  EMPTY_BOX 61197  EMPTY_CONST 289  1094s
+   63300/136830  EMPTY_GB 1714  EMPTY_BOX 61297  EMPTY_CONST 289  1096s
+   63400/136830  EMPTY_GB 1714  EMPTY_BOX 61397  EMPTY_CONST 289  1098s
+   63500/136830  EMPTY_GB 1714  EMPTY_BOX 61497  EMPTY_CONST 289  1100s
+   63600/136830  EMPTY_GB 1714  EMPTY_BOX 61597  EMPTY_CONST 289  1102s
+   63700/136830  EMPTY_GB 1714  EMPTY_BOX 61697  EMPTY_CONST 289  1104s
+   63800/136830  EMPTY_GB 1714  EMPTY_BOX 61797  EMPTY_CONST 289  1105s
+   63900/136830  EMPTY_GB 1714  EMPTY_BOX 61897  EMPTY_CONST 289  1107s
+   64000/136830  EMPTY_GB 1714  EMPTY_BOX 61997  EMPTY_CONST 289  1109s
+   64100/136830  EMPTY_GB 1714  EMPTY_BOX 62097  EMPTY_CONST 289  1111s
+   64200/136830  EMPTY_GB 1714  EMPTY_BOX 62197  EMPTY_CONST 289  1113s
+   64300/136830  EMPTY_GB 1715  EMPTY_BOX 62296  EMPTY_CONST 289  1115s
+   64400/136830  EMPTY_GB 1716  EMPTY_BOX 62395  EMPTY_CONST 289  1116s
+   64500/136830  EMPTY_GB 1716  EMPTY_BOX 62495  EMPTY_CONST 289  1118s
+   64600/136830  EMPTY_GB 1716  EMPTY_BOX 62595  EMPTY_CONST 289  1119s
+   64700/136830  EMPTY_GB 1716  EMPTY_BOX 62695  EMPTY_CONST 289  1121s
+   64800/136830  EMPTY_GB 1716  EMPTY_BOX 62795  EMPTY_CONST 289  1123s
+   64900/136830  EMPTY_GB 1716  EMPTY_BOX 62895  EMPTY_CONST 289  1125s
+   65000/136830  EMPTY_GB 1716  EMPTY_BOX 62995  EMPTY_CONST 289  1126s
+   65100/136830  EMPTY_GB 1716  EMPTY_BOX 63095  EMPTY_CONST 289  1129s
+   65200/136830  EMPTY_GB 1717  EMPTY_BOX 63194  EMPTY_CONST 289  1131s
+   65300/136830  EMPTY_GB 1719  EMPTY_BOX 63288  EMPTY_CONST 293  1132s
+   65400/136830  EMPTY_GB 1720  EMPTY_BOX 63385  EMPTY_CONST 295  1134s
+   65500/136830  EMPTY_GB 1720  EMPTY_BOX 63485  EMPTY_CONST 295  1136s
+   65600/136830  EMPTY_GB 1720  EMPTY_BOX 63585  EMPTY_CONST 295  1138s
+   65700/136830  EMPTY_GB 1721  EMPTY_BOX 63684  EMPTY_CONST 295  1141s
+   65800/136830  EMPTY_GB 1721  EMPTY_BOX 63784  EMPTY_CONST 295  1143s
+   65900/136830  EMPTY_GB 1721  EMPTY_BOX 63884  EMPTY_CONST 295  1145s
+   66000/136830  EMPTY_GB 1721  EMPTY_BOX 63984  EMPTY_CONST 295  1148s
+   66100/136830  EMPTY_GB 1721  EMPTY_BOX 64084  EMPTY_CONST 295  1150s
+   66200/136830  EMPTY_GB 1721  EMPTY_BOX 64184  EMPTY_CONST 295  1153s
+   66300/136830  EMPTY_GB 1721  EMPTY_BOX 64284  EMPTY_CONST 295  1156s
+   66400/136830  EMPTY_GB 1721  EMPTY_BOX 64384  EMPTY_CONST 295  1159s
+   66500/136830  EMPTY_GB 1721  EMPTY_BOX 64484  EMPTY_CONST 295  1162s
+   66600/136830  EMPTY_GB 1721  EMPTY_BOX 64584  EMPTY_CONST 295  1165s
+   66700/136830  EMPTY_GB 1721  EMPTY_BOX 64684  EMPTY_CONST 295  1167s
+   66800/136830  EMPTY_GB 1721  EMPTY_BOX 64784  EMPTY_CONST 295  1170s
+   66900/136830  EMPTY_GB 1721  EMPTY_BOX 64884  EMPTY_CONST 295  1173s
+   67000/136830  EMPTY_GB 1721  EMPTY_BOX 64984  EMPTY_CONST 295  1176s
+   67100/136830  EMPTY_GB 1721  EMPTY_BOX 65084  EMPTY_CONST 295  1179s
+   67200/136830  EMPTY_GB 1721  EMPTY_BOX 65184  EMPTY_CONST 295  1182s
+   67300/136830  EMPTY_GB 1721  EMPTY_BOX 65284  EMPTY_CONST 295  1185s
+   67400/136830  EMPTY_GB 1721  EMPTY_BOX 65384  EMPTY_CONST 295  1188s
+   67500/136830  EMPTY_GB 1721  EMPTY_BOX 65484  EMPTY_CONST 295  1191s
+   67600/136830  EMPTY_GB 1721  EMPTY_BOX 65584  EMPTY_CONST 295  1193s
+   67700/136830  EMPTY_GB 1721  EMPTY_BOX 65684  EMPTY_CONST 295  1196s
+   67800/136830  EMPTY_GB 1721  EMPTY_BOX 65784  EMPTY_CONST 295  1198s
+   67900/136830  EMPTY_GB 1721  EMPTY_BOX 65884  EMPTY_CONST 295  1201s
+   68000/136830  EMPTY_GB 1721  EMPTY_BOX 65984  EMPTY_CONST 295  1203s
+   68100/136830  EMPTY_GB 1721  EMPTY_BOX 66084  EMPTY_CONST 295  1205s
+   68200/136830  EMPTY_GB 1721  EMPTY_BOX 66184  EMPTY_CONST 295  1208s
+   68300/136830  EMPTY_GB 1721  EMPTY_BOX 66284  EMPTY_CONST 295  1211s
+   68400/136830  EMPTY_GB 1721  EMPTY_BOX 66384  EMPTY_CONST 295  1213s
+   68500/136830  EMPTY_GB 1721  EMPTY_BOX 66484  EMPTY_CONST 295  1216s
+   68600/136830  EMPTY_GB 1721  EMPTY_BOX 66584  EMPTY_CONST 295  1218s
+   68700/136830  EMPTY_GB 1721  EMPTY_BOX 66684  EMPTY_CONST 295  1220s
+   68800/136830  EMPTY_GB 1721  EMPTY_BOX 66784  EMPTY_CONST 295  1223s
+   68900/136830  EMPTY_GB 1721  EMPTY_BOX 66884  EMPTY_CONST 295  1225s
+   69000/136830  EMPTY_GB 1721  EMPTY_BOX 66984  EMPTY_CONST 295  1227s
+   69100/136830  EMPTY_GB 1721  EMPTY_BOX 67084  EMPTY_CONST 295  1230s
+   69200/136830  EMPTY_GB 1721  EMPTY_BOX 67184  EMPTY_CONST 295  1232s
+   69300/136830  EMPTY_GB 1721  EMPTY_BOX 67284  EMPTY_CONST 295  1234s
+   69400/136830  EMPTY_GB 1721  EMPTY_BOX 67384  EMPTY_CONST 295  1236s
+   69500/136830  EMPTY_GB 1721  EMPTY_BOX 67484  EMPTY_CONST 295  1239s
+   69600/136830  EMPTY_GB 1721  EMPTY_BOX 67584  EMPTY_CONST 295  1241s
+   69700/136830  EMPTY_GB 1721  EMPTY_BOX 67684  EMPTY_CONST 295  1244s
+   69800/136830  EMPTY_GB 1721  EMPTY_BOX 67784  EMPTY_CONST 295  1247s
+   69900/136830  EMPTY_GB 1721  EMPTY_BOX 67884  EMPTY_CONST 295  1250s
+   70000/136830  EMPTY_GB 1721  EMPTY_BOX 67984  EMPTY_CONST 295  1253s
+   70100/136830  EMPTY_GB 1721  EMPTY_BOX 68084  EMPTY_CONST 295  1255s
+   70200/136830  EMPTY_GB 1721  EMPTY_BOX 68184  EMPTY_CONST 295  1257s
+   70300/136830  EMPTY_GB 1732  EMPTY_BOX 68272  EMPTY_CONST 296  1259s
+   70400/136830  EMPTY_GB 1732  EMPTY_BOX 68371  EMPTY_CONST 297  1261s
+   70500/136830  EMPTY_GB 1732  EMPTY_BOX 68471  EMPTY_CONST 297  1263s
+   70600/136830  EMPTY_GB 1740  EMPTY_BOX 68563  EMPTY_CONST 297  1265s
+   70700/136830  EMPTY_GB 1748  EMPTY_BOX 68654  EMPTY_CONST 298  1266s
+   70800/136830  EMPTY_GB 1761  EMPTY_BOX 68740  EMPTY_CONST 299  1268s
+   70900/136830  EMPTY_GB 1761  EMPTY_BOX 68840  EMPTY_CONST 299  1269s
+   71000/136830  EMPTY_GB 1761  EMPTY_BOX 68940  EMPTY_CONST 299  1271s
+   71100/136830  EMPTY_GB 1761  EMPTY_BOX 69040  EMPTY_CONST 299  1274s
+   71200/136830  EMPTY_GB 1761  EMPTY_BOX 69140  EMPTY_CONST 299  1276s
+   71300/136830  EMPTY_GB 1761  EMPTY_BOX 69240  EMPTY_CONST 299  1279s
+   71400/136830  EMPTY_GB 1761  EMPTY_BOX 69340  EMPTY_CONST 299  1281s
+   71500/136830  EMPTY_GB 1761  EMPTY_BOX 69440  EMPTY_CONST 299  1282s
+   71600/136830  EMPTY_GB 1761  EMPTY_BOX 69540  EMPTY_CONST 299  1285s
+   71700/136830  EMPTY_GB 1761  EMPTY_BOX 69640  EMPTY_CONST 299  1287s
+   71800/136830  EMPTY_GB 1761  EMPTY_BOX 69740  EMPTY_CONST 299  1288s
+   71900/136830  EMPTY_GB 1761  EMPTY_BOX 69840  EMPTY_CONST 299  1290s
+   72000/136830  EMPTY_GB 1761  EMPTY_BOX 69940  EMPTY_CONST 299  1293s
+   72100/136830  EMPTY_GB 1762  EMPTY_BOX 70039  EMPTY_CONST 299  1295s
+   72200/136830  EMPTY_GB 1762  EMPTY_BOX 70137  EMPTY_CONST 301  1296s
+   72300/136830  EMPTY_GB 1762  EMPTY_BOX 70237  EMPTY_CONST 301  1298s
+   72400/136830  EMPTY_GB 1762  EMPTY_BOX 70335  EMPTY_CONST 303  1299s
+   72500/136830  EMPTY_GB 1765  EMPTY_BOX 70432  EMPTY_CONST 303  1300s
+   72600/136830  EMPTY_GB 1765  EMPTY_BOX 70532  EMPTY_CONST 303  1302s
+   72700/136830  EMPTY_GB 1765  EMPTY_BOX 70632  EMPTY_CONST 303  1304s
+   72800/136830  EMPTY_GB 1765  EMPTY_BOX 70732  EMPTY_CONST 303  1307s
+   72900/136830  EMPTY_GB 1765  EMPTY_BOX 70832  EMPTY_CONST 303  1309s
+   73000/136830  EMPTY_GB 1765  EMPTY_BOX 70932  EMPTY_CONST 303  1311s
+   73100/136830  EMPTY_GB 1765  EMPTY_BOX 71032  EMPTY_CONST 303  1313s
+   73200/136830  EMPTY_GB 1765  EMPTY_BOX 71132  EMPTY_CONST 303  1315s
+   73300/136830  EMPTY_GB 1765  EMPTY_BOX 71232  EMPTY_CONST 303  1316s
+   73400/136830  EMPTY_GB 1765  EMPTY_BOX 71332  EMPTY_CONST 303  1318s
+   73500/136830  EMPTY_GB 1770  EMPTY_BOX 71426  EMPTY_CONST 304  1320s
+   73600/136830  EMPTY_GB 1772  EMPTY_BOX 71524  EMPTY_CONST 304  1321s
+   73700/136830  EMPTY_GB 1772  EMPTY_BOX 71624  EMPTY_CONST 304  1323s
+   73800/136830  EMPTY_GB 1772  EMPTY_BOX 71724  EMPTY_CONST 304  1325s
+   73900/136830  EMPTY_GB 1772  EMPTY_BOX 71824  EMPTY_CONST 304  1326s
+   74000/136830  EMPTY_GB 1779  EMPTY_BOX 71912  EMPTY_CONST 309  1328s
+   74100/136830  EMPTY_GB 1780  EMPTY_BOX 72011  EMPTY_CONST 309  1330s
+   74200/136830  EMPTY_GB 1780  EMPTY_BOX 72111  EMPTY_CONST 309  1332s
+   74300/136830  EMPTY_GB 1781  EMPTY_BOX 72209  EMPTY_CONST 310  1334s
+   74400/136830  EMPTY_GB 1784  EMPTY_BOX 72306  EMPTY_CONST 310  1336s
+   74500/136830  EMPTY_GB 1787  EMPTY_BOX 72401  EMPTY_CONST 312  1338s
+   74600/136830  EMPTY_GB 1787  EMPTY_BOX 72501  EMPTY_CONST 312  1340s
+   74700/136830  EMPTY_GB 1787  EMPTY_BOX 72601  EMPTY_CONST 312  1343s
+   74800/136830  EMPTY_GB 1787  EMPTY_BOX 72701  EMPTY_CONST 312  1346s
+   74900/136830  EMPTY_GB 1787  EMPTY_BOX 72801  EMPTY_CONST 312  1348s
+   75000/136830  EMPTY_GB 1787  EMPTY_BOX 72901  EMPTY_CONST 312  1350s
+   75100/136830  EMPTY_GB 1787  EMPTY_BOX 73001  EMPTY_CONST 312  1352s
+   75200/136830  EMPTY_GB 1787  EMPTY_BOX 73101  EMPTY_CONST 312  1354s
+   75300/136830  EMPTY_GB 1787  EMPTY_BOX 73201  EMPTY_CONST 312  1356s
+   75400/136830  EMPTY_GB 1787  EMPTY_BOX 73301  EMPTY_CONST 312  1358s
+   75500/136830  EMPTY_GB 1787  EMPTY_BOX 73401  EMPTY_CONST 312  1360s
+   75600/136830  EMPTY_GB 1787  EMPTY_BOX 73501  EMPTY_CONST 312  1361s
+   75700/136830  EMPTY_GB 1787  EMPTY_BOX 73601  EMPTY_CONST 312  1363s
+   75800/136830  EMPTY_GB 1787  EMPTY_BOX 73701  EMPTY_CONST 312  1365s
+   75900/136830  EMPTY_GB 1787  EMPTY_BOX 73801  EMPTY_CONST 312  1368s
+   76000/136830  EMPTY_GB 1787  EMPTY_BOX 73901  EMPTY_CONST 312  1371s
+   76100/136830  EMPTY_GB 1787  EMPTY_BOX 74001  EMPTY_CONST 312  1374s
+   76200/136830  EMPTY_GB 1787  EMPTY_BOX 74101  EMPTY_CONST 312  1376s
+   76300/136830  EMPTY_GB 1787  EMPTY_BOX 74201  EMPTY_CONST 312  1379s
+   76400/136830  EMPTY_GB 1787  EMPTY_BOX 74301  EMPTY_CONST 312  1381s
+   76500/136830  EMPTY_GB 1787  EMPTY_BOX 74401  EMPTY_CONST 312  1383s
+   76600/136830  EMPTY_GB 1787  EMPTY_BOX 74501  EMPTY_CONST 312  1385s
+   76700/136830  EMPTY_GB 1787  EMPTY_BOX 74601  EMPTY_CONST 312  1387s
+   76800/136830  EMPTY_GB 1787  EMPTY_BOX 74701  EMPTY_CONST 312  1389s
+   76900/136830  EMPTY_GB 1787  EMPTY_BOX 74801  EMPTY_CONST 312  1392s
+   77000/136830  EMPTY_GB 1787  EMPTY_BOX 74901  EMPTY_CONST 312  1394s
+   77100/136830  EMPTY_GB 1787  EMPTY_BOX 75001  EMPTY_CONST 312  1398s
+   77200/136830  EMPTY_GB 1787  EMPTY_BOX 75101  EMPTY_CONST 312  1401s
+   77300/136830  EMPTY_GB 1787  EMPTY_BOX 75201  EMPTY_CONST 312  1404s
+   77400/136830  EMPTY_GB 1787  EMPTY_BOX 75301  EMPTY_CONST 312  1407s
+   77500/136830  EMPTY_GB 1787  EMPTY_BOX 75401  EMPTY_CONST 312  1410s
+   77600/136830  EMPTY_GB 1787  EMPTY_BOX 75501  EMPTY_CONST 312  1412s
+   77700/136830  EMPTY_GB 1787  EMPTY_BOX 75601  EMPTY_CONST 312  1415s
+   77800/136830  EMPTY_GB 1787  EMPTY_BOX 75701  EMPTY_CONST 312  1418s
+   77900/136830  EMPTY_GB 1787  EMPTY_BOX 75801  EMPTY_CONST 312  1421s
+   78000/136830  EMPTY_GB 1787  EMPTY_BOX 75901  EMPTY_CONST 312  1424s
+   78100/136830  EMPTY_GB 1787  EMPTY_BOX 76001  EMPTY_CONST 312  1426s
+   78200/136830  EMPTY_GB 1787  EMPTY_BOX 76101  EMPTY_CONST 312  1429s
+   78300/136830  EMPTY_GB 1787  EMPTY_BOX 76201  EMPTY_CONST 312  1431s
+   78400/136830  EMPTY_GB 1787  EMPTY_BOX 76301  EMPTY_CONST 312  1434s
+   78500/136830  EMPTY_GB 1787  EMPTY_BOX 76401  EMPTY_CONST 312  1436s
+   78600/136830  EMPTY_GB 1787  EMPTY_BOX 76501  EMPTY_CONST 312  1439s
+   78700/136830  EMPTY_GB 1787  EMPTY_BOX 76601  EMPTY_CONST 312  1441s
+   78800/136830  EMPTY_GB 1787  EMPTY_BOX 76701  EMPTY_CONST 312  1444s
+   78900/136830  EMPTY_GB 1787  EMPTY_BOX 76801  EMPTY_CONST 312  1446s
+   79000/136830  EMPTY_GB 1787  EMPTY_BOX 76901  EMPTY_CONST 312  1449s
+   79100/136830  EMPTY_GB 1787  EMPTY_BOX 77001  EMPTY_CONST 312  1451s
+   79200/136830  EMPTY_GB 1787  EMPTY_BOX 77101  EMPTY_CONST 312  1453s
+   79300/136830  EMPTY_GB 1787  EMPTY_BOX 77201  EMPTY_CONST 312  1455s
+   79400/136830  EMPTY_GB 1789  EMPTY_BOX 77297  EMPTY_CONST 314  1457s
+   79500/136830  EMPTY_GB 1799  EMPTY_BOX 77381  EMPTY_CONST 320  1458s
+   79600/136830  EMPTY_GB 1802  EMPTY_BOX 77477  EMPTY_CONST 321  1460s
+   79700/136830  EMPTY_GB 1802  EMPTY_BOX 77577  EMPTY_CONST 321  1462s
+   79800/136830  EMPTY_GB 1802  EMPTY_BOX 77675  EMPTY_CONST 323  1464s
+   79900/136830  EMPTY_GB 1802  EMPTY_BOX 77775  EMPTY_CONST 323  1466s
+   80000/136830  EMPTY_GB 1802  EMPTY_BOX 77875  EMPTY_CONST 323  1468s
+   80100/136830  EMPTY_GB 1802  EMPTY_BOX 77975  EMPTY_CONST 323  1471s
+   80200/136830  EMPTY_GB 1802  EMPTY_BOX 78075  EMPTY_CONST 323  1474s
+   80300/136830  EMPTY_GB 1802  EMPTY_BOX 78175  EMPTY_CONST 323  1476s
+   80400/136830  EMPTY_GB 1802  EMPTY_BOX 78275  EMPTY_CONST 323  1478s
+   80500/136830  EMPTY_GB 1802  EMPTY_BOX 78375  EMPTY_CONST 323  1480s
+   80600/136830  EMPTY_GB 1802  EMPTY_BOX 78475  EMPTY_CONST 323  1482s
+   80700/136830  EMPTY_GB 1802  EMPTY_BOX 78575  EMPTY_CONST 323  1484s
+   80800/136830  EMPTY_GB 1802  EMPTY_BOX 78675  EMPTY_CONST 323  1486s
+   80900/136830  EMPTY_GB 1802  EMPTY_BOX 78775  EMPTY_CONST 323  1489s
+   81000/136830  EMPTY_GB 1802  EMPTY_BOX 78875  EMPTY_CONST 323  1491s
+   81100/136830  EMPTY_GB 1802  EMPTY_BOX 78975  EMPTY_CONST 323  1494s
+   81200/136830  EMPTY_GB 1802  EMPTY_BOX 79075  EMPTY_CONST 323  1496s
+   81300/136830  EMPTY_GB 1802  EMPTY_BOX 79175  EMPTY_CONST 323  1498s
+   81400/136830  EMPTY_GB 1802  EMPTY_BOX 79275  EMPTY_CONST 323  1501s
+   81500/136830  EMPTY_GB 1802  EMPTY_BOX 79375  EMPTY_CONST 323  1503s
+   81600/136830  EMPTY_GB 1802  EMPTY_BOX 79475  EMPTY_CONST 323  1505s
+   81700/136830  EMPTY_GB 1802  EMPTY_BOX 79575  EMPTY_CONST 323  1506s
+   81800/136830  EMPTY_GB 1807  EMPTY_BOX 79670  EMPTY_CONST 323  1508s
+   81900/136830  EMPTY_GB 1807  EMPTY_BOX 79770  EMPTY_CONST 323  1510s
+   82000/136830  EMPTY_GB 1807  EMPTY_BOX 79870  EMPTY_CONST 323  1512s
+   82100/136830  EMPTY_GB 1807  EMPTY_BOX 79970  EMPTY_CONST 323  1515s
+   82200/136830  EMPTY_GB 1807  EMPTY_BOX 80070  EMPTY_CONST 323  1518s
+   82300/136830  EMPTY_GB 1807  EMPTY_BOX 80170  EMPTY_CONST 323  1520s
+   82400/136830  EMPTY_GB 1807  EMPTY_BOX 80270  EMPTY_CONST 323  1523s
+   82500/136830  EMPTY_GB 1807  EMPTY_BOX 80370  EMPTY_CONST 323  1525s
+   82600/136830  EMPTY_GB 1807  EMPTY_BOX 80470  EMPTY_CONST 323  1528s
+   82700/136830  EMPTY_GB 1807  EMPTY_BOX 80570  EMPTY_CONST 323  1529s
+   82800/136830  EMPTY_GB 1807  EMPTY_BOX 80670  EMPTY_CONST 323  1531s
+   82900/136830  EMPTY_GB 1807  EMPTY_BOX 80770  EMPTY_CONST 323  1533s
+   83000/136830  EMPTY_GB 1807  EMPTY_BOX 80870  EMPTY_CONST 323  1536s
+   83100/136830  EMPTY_GB 1807  EMPTY_BOX 80970  EMPTY_CONST 323  1538s
+   83200/136830  EMPTY_GB 1807  EMPTY_BOX 81070  EMPTY_CONST 323  1541s
+   83300/136830  EMPTY_GB 1807  EMPTY_BOX 81170  EMPTY_CONST 323  1543s
+   83400/136830  EMPTY_GB 1807  EMPTY_BOX 81270  EMPTY_CONST 323  1544s
+   83500/136830  EMPTY_GB 1807  EMPTY_BOX 81370  EMPTY_CONST 323  1546s
+   83600/136830  EMPTY_GB 1807  EMPTY_BOX 81470  EMPTY_CONST 323  1548s
+   83700/136830  EMPTY_GB 1807  EMPTY_BOX 81570  EMPTY_CONST 323  1550s
+   83800/136830  EMPTY_GB 1807  EMPTY_BOX 81670  EMPTY_CONST 323  1552s
+   83900/136830  EMPTY_GB 1807  EMPTY_BOX 81770  EMPTY_CONST 323  1554s
+   84000/136830  EMPTY_GB 1807  EMPTY_BOX 81870  EMPTY_CONST 323  1556s
+   84100/136830  EMPTY_GB 1809  EMPTY_BOX 81964  EMPTY_CONST 327  1558s
+   84200/136830  EMPTY_GB 1809  EMPTY_BOX 82064  EMPTY_CONST 327  1560s
+   84300/136830  EMPTY_GB 1809  EMPTY_BOX 82164  EMPTY_CONST 327  1562s
+   84400/136830  EMPTY_GB 1809  EMPTY_BOX 82264  EMPTY_CONST 327  1565s
+   84500/136830  EMPTY_GB 1809  EMPTY_BOX 82364  EMPTY_CONST 327  1567s
+   84600/136830  EMPTY_GB 1809  EMPTY_BOX 82464  EMPTY_CONST 327  1570s
+   84700/136830  EMPTY_GB 1809  EMPTY_BOX 82564  EMPTY_CONST 327  1572s
+   84800/136830  EMPTY_GB 1809  EMPTY_BOX 82664  EMPTY_CONST 327  1575s
+   84900/136830  EMPTY_GB 1809  EMPTY_BOX 82764  EMPTY_CONST 327  1577s
+   85000/136830  EMPTY_GB 1809  EMPTY_BOX 82864  EMPTY_CONST 327  1580s
+   85100/136830  EMPTY_GB 1809  EMPTY_BOX 82964  EMPTY_CONST 327  1583s
+   85200/136830  EMPTY_GB 1809  EMPTY_BOX 83064  EMPTY_CONST 327  1587s
+   85300/136830  EMPTY_GB 1809  EMPTY_BOX 83164  EMPTY_CONST 327  1589s
+   85400/136830  EMPTY_GB 1809  EMPTY_BOX 83264  EMPTY_CONST 327  1593s
+   85500/136830  EMPTY_GB 1809  EMPTY_BOX 83364  EMPTY_CONST 327  1595s
+   85600/136830  EMPTY_GB 1809  EMPTY_BOX 83464  EMPTY_CONST 327  1598s
+   85700/136830  EMPTY_GB 1809  EMPTY_BOX 83564  EMPTY_CONST 327  1601s
+   85800/136830  EMPTY_GB 1809  EMPTY_BOX 83664  EMPTY_CONST 327  1604s
+   85900/136830  EMPTY_GB 1809  EMPTY_BOX 83764  EMPTY_CONST 327  1607s
+   86000/136830  EMPTY_GB 1809  EMPTY_BOX 83864  EMPTY_CONST 327  1609s
+   86100/136830  EMPTY_GB 1809  EMPTY_BOX 83964  EMPTY_CONST 327  1612s
+   86200/136830  EMPTY_GB 1809  EMPTY_BOX 84064  EMPTY_CONST 327  1615s
+   86300/136830  EMPTY_GB 1809  EMPTY_BOX 84164  EMPTY_CONST 327  1617s
+   86400/136830  EMPTY_GB 1809  EMPTY_BOX 84264  EMPTY_CONST 327  1620s
+   86500/136830  EMPTY_GB 1809  EMPTY_BOX 84364  EMPTY_CONST 327  1622s
+   86600/136830  EMPTY_GB 1809  EMPTY_BOX 84464  EMPTY_CONST 327  1624s
+   86700/136830  EMPTY_GB 1809  EMPTY_BOX 84564  EMPTY_CONST 327  1627s
+   86800/136830  EMPTY_GB 1809  EMPTY_BOX 84664  EMPTY_CONST 327  1630s
+   86900/136830  EMPTY_GB 1809  EMPTY_BOX 84764  EMPTY_CONST 327  1633s
+   87000/136830  EMPTY_GB 1809  EMPTY_BOX 84864  EMPTY_CONST 327  1636s
+   87100/136830  EMPTY_GB 1809  EMPTY_BOX 84964  EMPTY_CONST 327  1639s
+   87200/136830  EMPTY_GB 1809  EMPTY_BOX 85064  EMPTY_CONST 327  1641s
+   87300/136830  EMPTY_GB 1809  EMPTY_BOX 85164  EMPTY_CONST 327  1644s
+   87400/136830  EMPTY_GB 1809  EMPTY_BOX 85264  EMPTY_CONST 327  1646s
+   87500/136830  EMPTY_GB 1809  EMPTY_BOX 85364  EMPTY_CONST 327  1649s
+   87600/136830  EMPTY_GB 1809  EMPTY_BOX 85464  EMPTY_CONST 327  1651s
+   87700/136830  EMPTY_GB 1809  EMPTY_BOX 85564  EMPTY_CONST 327  1654s
+   87800/136830  EMPTY_GB 1809  EMPTY_BOX 85664  EMPTY_CONST 327  1657s
+   87900/136830  EMPTY_GB 1809  EMPTY_BOX 85764  EMPTY_CONST 327  1660s
+   88000/136830  EMPTY_GB 1809  EMPTY_BOX 85864  EMPTY_CONST 327  1662s
+   88100/136830  EMPTY_GB 1809  EMPTY_BOX 85964  EMPTY_CONST 327  1666s
+   88200/136830  EMPTY_GB 1809  EMPTY_BOX 86064  EMPTY_CONST 327  1669s
+   88300/136830  EMPTY_GB 1809  EMPTY_BOX 86164  EMPTY_CONST 327  1672s
+   88400/136830  EMPTY_GB 1809  EMPTY_BOX 86264  EMPTY_CONST 327  1675s
+   88500/136830  EMPTY_GB 1809  EMPTY_BOX 86364  EMPTY_CONST 327  1677s
+   88600/136830  EMPTY_GB 1809  EMPTY_BOX 86464  EMPTY_CONST 327  1679s
+   88700/136830  EMPTY_GB 1809  EMPTY_BOX 86564  EMPTY_CONST 327  1682s
+   88800/136830  EMPTY_GB 1809  EMPTY_BOX 86662  EMPTY_CONST 329  1684s
+   88900/136830  EMPTY_GB 1811  EMPTY_BOX 86758  EMPTY_CONST 331  1686s
+   89000/136830  EMPTY_GB 1812  EMPTY_BOX 86857  EMPTY_CONST 331  1687s
+   89100/136830  EMPTY_GB 1812  EMPTY_BOX 86957  EMPTY_CONST 331  1690s
+   89200/136830  EMPTY_GB 1812  EMPTY_BOX 87057  EMPTY_CONST 331  1692s
+   89300/136830  EMPTY_GB 1820  EMPTY_BOX 87144  EMPTY_CONST 336  1694s
+   89400/136830  EMPTY_GB 1828  EMPTY_BOX 87233  EMPTY_CONST 339  1695s
+   89500/136830  EMPTY_GB 1828  EMPTY_BOX 87333  EMPTY_CONST 339  1697s
+   89600/136830  EMPTY_GB 1828  EMPTY_BOX 87433  EMPTY_CONST 339  1699s
+   89700/136830  EMPTY_GB 1828  EMPTY_BOX 87533  EMPTY_CONST 339  1701s
+   89800/136830  EMPTY_GB 1828  EMPTY_BOX 87633  EMPTY_CONST 339  1704s
+   89900/136830  EMPTY_GB 1828  EMPTY_BOX 87733  EMPTY_CONST 339  1707s
+   90000/136830  EMPTY_GB 1828  EMPTY_BOX 87833  EMPTY_CONST 339  1709s
+   90100/136830  EMPTY_GB 1828  EMPTY_BOX 87933  EMPTY_CONST 339  1713s
+   90200/136830  EMPTY_GB 1828  EMPTY_BOX 88033  EMPTY_CONST 339  1717s
+   90300/136830  EMPTY_GB 1828  EMPTY_BOX 88133  EMPTY_CONST 339  1721s
+   90400/136830  EMPTY_GB 1828  EMPTY_BOX 88233  EMPTY_CONST 339  1724s
+   90500/136830  EMPTY_GB 1828  EMPTY_BOX 88333  EMPTY_CONST 339  1727s
+   90600/136830  EMPTY_GB 1828  EMPTY_BOX 88433  EMPTY_CONST 339  1730s
+   90700/136830  EMPTY_GB 1828  EMPTY_BOX 88533  EMPTY_CONST 339  1733s
+   90800/136830  EMPTY_GB 1828  EMPTY_BOX 88633  EMPTY_CONST 339  1735s
+   90900/136830  EMPTY_GB 1828  EMPTY_BOX 88733  EMPTY_CONST 339  1739s
+   91000/136830  EMPTY_GB 1828  EMPTY_BOX 88833  EMPTY_CONST 339  1742s
+   91100/136830  EMPTY_GB 1828  EMPTY_BOX 88933  EMPTY_CONST 339  1745s
+   91200/136830  EMPTY_GB 1828  EMPTY_BOX 89033  EMPTY_CONST 339  1748s
+   91300/136830  EMPTY_GB 1828  EMPTY_BOX 89133  EMPTY_CONST 339  1750s
+   91400/136830  EMPTY_GB 1828  EMPTY_BOX 89233  EMPTY_CONST 339  1752s
+   91500/136830  EMPTY_GB 1828  EMPTY_BOX 89333  EMPTY_CONST 339  1755s
+   91600/136830  EMPTY_GB 1828  EMPTY_BOX 89433  EMPTY_CONST 339  1759s
+   91700/136830  EMPTY_GB 1828  EMPTY_BOX 89533  EMPTY_CONST 339  1762s
+   91800/136830  EMPTY_GB 1828  EMPTY_BOX 89633  EMPTY_CONST 339  1765s
+   91900/136830  EMPTY_GB 1828  EMPTY_BOX 89733  EMPTY_CONST 339  1767s
+   92000/136830  EMPTY_GB 1828  EMPTY_BOX 89833  EMPTY_CONST 339  1770s
+   92100/136830  EMPTY_GB 1828  EMPTY_BOX 89933  EMPTY_CONST 339  1773s
+   92200/136830  EMPTY_GB 1828  EMPTY_BOX 90033  EMPTY_CONST 339  1775s
+   92300/136830  EMPTY_GB 1828  EMPTY_BOX 90133  EMPTY_CONST 339  1777s
+   92400/136830  EMPTY_GB 1828  EMPTY_BOX 90233  EMPTY_CONST 339  1779s
+   92500/136830  EMPTY_GB 1828  EMPTY_BOX 90333  EMPTY_CONST 339  1782s
+   92600/136830  EMPTY_GB 1828  EMPTY_BOX 90433  EMPTY_CONST 339  1785s
+   92700/136830  EMPTY_GB 1828  EMPTY_BOX 90533  EMPTY_CONST 339  1788s
+   92800/136830  EMPTY_GB 1828  EMPTY_BOX 90633  EMPTY_CONST 339  1790s
+   92900/136830  EMPTY_GB 1828  EMPTY_BOX 90733  EMPTY_CONST 339  1792s
+   93000/136830  EMPTY_GB 1828  EMPTY_BOX 90833  EMPTY_CONST 339  1795s
+   93100/136830  EMPTY_GB 1828  EMPTY_BOX 90933  EMPTY_CONST 339  1798s
+   93200/136830  EMPTY_GB 1828  EMPTY_BOX 91033  EMPTY_CONST 339  1802s
+   93300/136830  EMPTY_GB 1828  EMPTY_BOX 91133  EMPTY_CONST 339  1805s
+   93400/136830  EMPTY_GB 1828  EMPTY_BOX 91233  EMPTY_CONST 339  1808s
+   93500/136830  EMPTY_GB 1828  EMPTY_BOX 91333  EMPTY_CONST 339  1810s
+   93600/136830  EMPTY_GB 1828  EMPTY_BOX 91433  EMPTY_CONST 339  1813s
+   93700/136830  EMPTY_GB 1828  EMPTY_BOX 91533  EMPTY_CONST 339  1815s
+   93800/136830  EMPTY_GB 1828  EMPTY_BOX 91633  EMPTY_CONST 339  1818s
+   93900/136830  EMPTY_GB 1828  EMPTY_BOX 91733  EMPTY_CONST 339  1821s
+   94000/136830  EMPTY_GB 1828  EMPTY_BOX 91833  EMPTY_CONST 339  1824s
+   94100/136830  EMPTY_GB 1828  EMPTY_BOX 91933  EMPTY_CONST 339  1826s
+   94200/136830  EMPTY_GB 1828  EMPTY_BOX 92033  EMPTY_CONST 339  1828s
+   94300/136830  EMPTY_GB 1828  EMPTY_BOX 92133  EMPTY_CONST 339  1831s
+   94400/136830  EMPTY_GB 1828  EMPTY_BOX 92233  EMPTY_CONST 339  1833s
+   94500/136830  EMPTY_GB 1828  EMPTY_BOX 92333  EMPTY_CONST 339  1836s
+   94600/136830  EMPTY_GB 1828  EMPTY_BOX 92433  EMPTY_CONST 339  1838s
+   94700/136830  EMPTY_GB 1828  EMPTY_BOX 92533  EMPTY_CONST 339  1840s
+   94800/136830  EMPTY_GB 1828  EMPTY_BOX 92633  EMPTY_CONST 339  1842s
+   94900/136830  EMPTY_GB 1829  EMPTY_BOX 92732  EMPTY_CONST 339  1844s
+   95000/136830  EMPTY_GB 1829  EMPTY_BOX 92832  EMPTY_CONST 339  1846s
+   95100/136830  EMPTY_GB 1829  EMPTY_BOX 92932  EMPTY_CONST 339  1849s
+   95200/136830  EMPTY_GB 1829  EMPTY_BOX 93032  EMPTY_CONST 339  1851s
+   95300/136830  EMPTY_GB 1829  EMPTY_BOX 93132  EMPTY_CONST 339  1854s
+   95400/136830  EMPTY_GB 1829  EMPTY_BOX 93232  EMPTY_CONST 339  1856s
+   95500/136830  EMPTY_GB 1829  EMPTY_BOX 93332  EMPTY_CONST 339  1859s
+   95600/136830  EMPTY_GB 1829  EMPTY_BOX 93432  EMPTY_CONST 339  1861s
+   95700/136830  EMPTY_GB 1829  EMPTY_BOX 93532  EMPTY_CONST 339  1863s
+   95800/136830  EMPTY_GB 1829  EMPTY_BOX 93632  EMPTY_CONST 339  1865s
+   95900/136830  EMPTY_GB 1829  EMPTY_BOX 93732  EMPTY_CONST 339  1867s
+   96000/136830  EMPTY_GB 1829  EMPTY_BOX 93832  EMPTY_CONST 339  1870s
+   96100/136830  EMPTY_GB 1829  EMPTY_BOX 93932  EMPTY_CONST 339  1872s
+   96200/136830  EMPTY_GB 1829  EMPTY_BOX 94032  EMPTY_CONST 339  1874s
+   96300/136830  EMPTY_GB 1829  EMPTY_BOX 94132  EMPTY_CONST 339  1876s
+   96400/136830  EMPTY_GB 1829  EMPTY_BOX 94232  EMPTY_CONST 339  1878s
+   96500/136830  EMPTY_GB 1829  EMPTY_BOX 94332  EMPTY_CONST 339  1881s
+   96600/136830  EMPTY_GB 1829  EMPTY_BOX 94432  EMPTY_CONST 339  1883s
+   96700/136830  EMPTY_GB 1829  EMPTY_BOX 94532  EMPTY_CONST 339  1886s
+   96800/136830  EMPTY_GB 1829  EMPTY_BOX 94632  EMPTY_CONST 339  1888s
+   96900/136830  EMPTY_GB 1829  EMPTY_BOX 94732  EMPTY_CONST 339  1891s
+   97000/136830  EMPTY_GB 1829  EMPTY_BOX 94832  EMPTY_CONST 339  1893s
+   97100/136830  EMPTY_GB 1829  EMPTY_BOX 94932  EMPTY_CONST 339  1895s
+   97200/136830  EMPTY_GB 1829  EMPTY_BOX 95032  EMPTY_CONST 339  1897s
+   97300/136830  EMPTY_GB 1829  EMPTY_BOX 95132  EMPTY_CONST 339  1899s
+   97400/136830  EMPTY_GB 1829  EMPTY_BOX 95232  EMPTY_CONST 339  1900s
+   97500/136830  EMPTY_GB 1829  EMPTY_BOX 95332  EMPTY_CONST 339  1902s
+   97600/136830  EMPTY_GB 1829  EMPTY_BOX 95432  EMPTY_CONST 339  1904s
+   97700/136830  EMPTY_GB 1829  EMPTY_BOX 95532  EMPTY_CONST 339  1905s
+   97800/136830  EMPTY_GB 1829  EMPTY_BOX 95632  EMPTY_CONST 339  1908s
+   97900/136830  EMPTY_GB 1829  EMPTY_BOX 95732  EMPTY_CONST 339  1910s
+   98000/136830  EMPTY_GB 1829  EMPTY_BOX 95832  EMPTY_CONST 339  1912s
+   98100/136830  EMPTY_GB 1829  EMPTY_BOX 95932  EMPTY_CONST 339  1914s
+   98200/136830  EMPTY_GB 1829  EMPTY_BOX 96032  EMPTY_CONST 339  1917s
+   98300/136830  EMPTY_GB 1829  EMPTY_BOX 96132  EMPTY_CONST 339  1919s
+   98400/136830  EMPTY_GB 1829  EMPTY_BOX 96232  EMPTY_CONST 339  1921s
+   98500/136830  EMPTY_GB 1829  EMPTY_BOX 96332  EMPTY_CONST 339  1923s
+   98600/136830  EMPTY_GB 1829  EMPTY_BOX 96432  EMPTY_CONST 339  1925s
+   98700/136830  EMPTY_GB 1829  EMPTY_BOX 96532  EMPTY_CONST 339  1927s
+   98800/136830  EMPTY_GB 1829  EMPTY_BOX 96632  EMPTY_CONST 339  1928s
+   98900/136830  EMPTY_GB 1829  EMPTY_BOX 96732  EMPTY_CONST 339  1930s
+   99000/136830  EMPTY_GB 1829  EMPTY_BOX 96831  EMPTY_CONST 340  1932s
+   99100/136830  EMPTY_GB 1830  EMPTY_BOX 96930  EMPTY_CONST 340  1933s
+   99200/136830  EMPTY_GB 1830  EMPTY_BOX 97030  EMPTY_CONST 340  1936s
+   99300/136830  EMPTY_GB 1830  EMPTY_BOX 97130  EMPTY_CONST 340  1937s
+   99400/136830  EMPTY_GB 1830  EMPTY_BOX 97230  EMPTY_CONST 340  1939s
+   99500/136830  EMPTY_GB 1830  EMPTY_BOX 97330  EMPTY_CONST 340  1941s
+   99600/136830  EMPTY_GB 1830  EMPTY_BOX 97430  EMPTY_CONST 340  1943s
+   99700/136830  EMPTY_GB 1831  EMPTY_BOX 97525  EMPTY_CONST 344  1944s
+   99800/136830  EMPTY_GB 1835  EMPTY_BOX 97621  EMPTY_CONST 344  1946s
+   99900/136830  EMPTY_GB 1835  EMPTY_BOX 97721  EMPTY_CONST 344  1948s
+   100000/136830  EMPTY_GB 1835  EMPTY_BOX 97821  EMPTY_CONST 344  1950s
+   100100/136830  EMPTY_GB 1835  EMPTY_BOX 97921  EMPTY_CONST 344  1953s
+   100200/136830  EMPTY_GB 1835  EMPTY_BOX 98021  EMPTY_CONST 344  1955s
+   100300/136830  EMPTY_GB 1835  EMPTY_BOX 98121  EMPTY_CONST 344  1957s
+   100400/136830  EMPTY_GB 1835  EMPTY_BOX 98221  EMPTY_CONST 344  1958s
+   100500/136830  EMPTY_GB 1837  EMPTY_BOX 98314  EMPTY_CONST 349  1960s
+   100600/136830  EMPTY_GB 1838  EMPTY_BOX 98412  EMPTY_CONST 350  1962s
+   100700/136830  EMPTY_GB 1838  EMPTY_BOX 98512  EMPTY_CONST 350  1964s
+   100800/136830  EMPTY_GB 1838  EMPTY_BOX 98612  EMPTY_CONST 350  1966s
+   100900/136830  EMPTY_GB 1840  EMPTY_BOX 98710  EMPTY_CONST 350  1967s
+   101000/136830  EMPTY_GB 1840  EMPTY_BOX 98809  EMPTY_CONST 351  1969s
+   101100/136830  EMPTY_GB 1843  EMPTY_BOX 98904  EMPTY_CONST 353  1970s
+   101200/136830  EMPTY_GB 1843  EMPTY_BOX 99004  EMPTY_CONST 353  1972s
+   101300/136830  EMPTY_GB 1843  EMPTY_BOX 99104  EMPTY_CONST 353  1974s
+   101400/136830  EMPTY_GB 1843  EMPTY_BOX 99204  EMPTY_CONST 353  1976s
+   101500/136830  EMPTY_GB 1843  EMPTY_BOX 99304  EMPTY_CONST 353  1979s
+   101600/136830  EMPTY_GB 1843  EMPTY_BOX 99404  EMPTY_CONST 353  1981s
+   101700/136830  EMPTY_GB 1843  EMPTY_BOX 99504  EMPTY_CONST 353  1984s
+   101800/136830  EMPTY_GB 1843  EMPTY_BOX 99604  EMPTY_CONST 353  1986s
+   101900/136830  EMPTY_GB 1843  EMPTY_BOX 99704  EMPTY_CONST 353  1989s
+   102000/136830  EMPTY_GB 1843  EMPTY_BOX 99804  EMPTY_CONST 353  1991s
+   102100/136830  EMPTY_GB 1843  EMPTY_BOX 99904  EMPTY_CONST 353  1993s
+   102200/136830  EMPTY_GB 1843  EMPTY_BOX 100004  EMPTY_CONST 353  1995s
+   102300/136830  EMPTY_GB 1843  EMPTY_BOX 100104  EMPTY_CONST 353  1998s
+   102400/136830  EMPTY_GB 1843  EMPTY_BOX 100204  EMPTY_CONST 353  2000s
+   102500/136830  EMPTY_GB 1843  EMPTY_BOX 100304  EMPTY_CONST 353  2002s
+   102600/136830  EMPTY_GB 1843  EMPTY_BOX 100404  EMPTY_CONST 353  2005s
+   102700/136830  EMPTY_GB 1843  EMPTY_BOX 100504  EMPTY_CONST 353  2007s
+   102800/136830  EMPTY_GB 1843  EMPTY_BOX 100604  EMPTY_CONST 353  2009s
+   102900/136830  EMPTY_GB 1843  EMPTY_BOX 100704  EMPTY_CONST 353  2011s
+   103000/136830  EMPTY_GB 1843  EMPTY_BOX 100804  EMPTY_CONST 353  2013s
+   103100/136830  EMPTY_GB 1843  EMPTY_BOX 100904  EMPTY_CONST 353  2015s
+   103200/136830  EMPTY_GB 1843  EMPTY_BOX 101004  EMPTY_CONST 353  2017s
+   103300/136830  EMPTY_GB 1843  EMPTY_BOX 101104  EMPTY_CONST 353  2020s
+   103400/136830  EMPTY_GB 1843  EMPTY_BOX 101204  EMPTY_CONST 353  2022s
+   103500/136830  EMPTY_GB 1843  EMPTY_BOX 101304  EMPTY_CONST 353  2024s
+   103600/136830  EMPTY_GB 1843  EMPTY_BOX 101404  EMPTY_CONST 353  2026s
+   103700/136830  EMPTY_GB 1843  EMPTY_BOX 101504  EMPTY_CONST 353  2028s
+   103800/136830  EMPTY_GB 1843  EMPTY_BOX 101604  EMPTY_CONST 353  2029s
+   103900/136830  EMPTY_GB 1843  EMPTY_BOX 101704  EMPTY_CONST 353  2032s
+   104000/136830  EMPTY_GB 1843  EMPTY_BOX 101804  EMPTY_CONST 353  2035s
+   104100/136830  EMPTY_GB 1843  EMPTY_BOX 101904  EMPTY_CONST 353  2037s
+   104200/136830  EMPTY_GB 1843  EMPTY_BOX 102004  EMPTY_CONST 353  2040s
+   104300/136830  EMPTY_GB 1843  EMPTY_BOX 102104  EMPTY_CONST 353  2042s
+   104400/136830  EMPTY_GB 1843  EMPTY_BOX 102204  EMPTY_CONST 353  2044s
+   104500/136830  EMPTY_GB 1843  EMPTY_BOX 102304  EMPTY_CONST 353  2046s
+   104600/136830  EMPTY_GB 1844  EMPTY_BOX 102403  EMPTY_CONST 353  2048s
+   104700/136830  EMPTY_GB 1844  EMPTY_BOX 102503  EMPTY_CONST 353  2049s
+   104800/136830  EMPTY_GB 1844  EMPTY_BOX 102603  EMPTY_CONST 353  2051s
+   104900/136830  EMPTY_GB 1844  EMPTY_BOX 102703  EMPTY_CONST 353  2054s
+   105000/136830  EMPTY_GB 1844  EMPTY_BOX 102803  EMPTY_CONST 353  2056s
+   105100/136830  EMPTY_GB 1844  EMPTY_BOX 102903  EMPTY_CONST 353  2058s
+   105200/136830  EMPTY_GB 1844  EMPTY_BOX 103003  EMPTY_CONST 353  2060s
+   105300/136830  EMPTY_GB 1844  EMPTY_BOX 103103  EMPTY_CONST 353  2062s
+   105400/136830  EMPTY_GB 1844  EMPTY_BOX 103203  EMPTY_CONST 353  2064s
+   105500/136830  EMPTY_GB 1844  EMPTY_BOX 103303  EMPTY_CONST 353  2066s
+   105600/136830  EMPTY_GB 1844  EMPTY_BOX 103403  EMPTY_CONST 353  2067s
+   105700/136830  EMPTY_GB 1844  EMPTY_BOX 103503  EMPTY_CONST 353  2069s
+   105800/136830  EMPTY_GB 1844  EMPTY_BOX 103603  EMPTY_CONST 353  2071s
+   105900/136830  EMPTY_GB 1844  EMPTY_BOX 103703  EMPTY_CONST 353  2074s
+   106000/136830  EMPTY_GB 1844  EMPTY_BOX 103803  EMPTY_CONST 353  2076s
+   106100/136830  EMPTY_GB 1844  EMPTY_BOX 103903  EMPTY_CONST 353  2078s
+   106200/136830  EMPTY_GB 1844  EMPTY_BOX 104003  EMPTY_CONST 353  2080s
+   106300/136830  EMPTY_GB 1844  EMPTY_BOX 104103  EMPTY_CONST 353  2082s
+   106400/136830  EMPTY_GB 1844  EMPTY_BOX 104203  EMPTY_CONST 353  2084s
+   106500/136830  EMPTY_GB 1845  EMPTY_BOX 104302  EMPTY_CONST 353  2086s
+   106600/136830  EMPTY_GB 1845  EMPTY_BOX 104400  EMPTY_CONST 355  2088s
+   106700/136830  EMPTY_GB 1845  EMPTY_BOX 104498  EMPTY_CONST 357  2090s
+   106800/136830  EMPTY_GB 1845  EMPTY_BOX 104598  EMPTY_CONST 357  2092s
+   106900/136830  EMPTY_GB 1846  EMPTY_BOX 104697  EMPTY_CONST 357  2094s
+   107000/136830  EMPTY_GB 1846  EMPTY_BOX 104797  EMPTY_CONST 357  2096s
+   107100/136830  EMPTY_GB 1846  EMPTY_BOX 104897  EMPTY_CONST 357  2098s
+   107200/136830  EMPTY_GB 1846  EMPTY_BOX 104997  EMPTY_CONST 357  2100s
+   107300/136830  EMPTY_GB 1846  EMPTY_BOX 105097  EMPTY_CONST 357  2103s
+   107400/136830  EMPTY_GB 1846  EMPTY_BOX 105197  EMPTY_CONST 357  2105s
+   107500/136830  EMPTY_GB 1846  EMPTY_BOX 105297  EMPTY_CONST 357  2107s
+   107600/136830  EMPTY_GB 1846  EMPTY_BOX 105397  EMPTY_CONST 357  2110s
+   107700/136830  EMPTY_GB 1846  EMPTY_BOX 105497  EMPTY_CONST 357  2112s
+   107800/136830  EMPTY_GB 1846  EMPTY_BOX 105597  EMPTY_CONST 357  2114s
+   107900/136830  EMPTY_GB 1846  EMPTY_BOX 105697  EMPTY_CONST 357  2116s
+   108000/136830  EMPTY_GB 1846  EMPTY_BOX 105797  EMPTY_CONST 357  2119s
+   108100/136830  EMPTY_GB 1846  EMPTY_BOX 105897  EMPTY_CONST 357  2121s
+   108200/136830  EMPTY_GB 1846  EMPTY_BOX 105997  EMPTY_CONST 357  2123s
+   108300/136830  EMPTY_GB 1846  EMPTY_BOX 106097  EMPTY_CONST 357  2125s
+   108400/136830  EMPTY_GB 1846  EMPTY_BOX 106197  EMPTY_CONST 357  2127s
+   108500/136830  EMPTY_GB 1846  EMPTY_BOX 106297  EMPTY_CONST 357  2129s
+   108600/136830  EMPTY_GB 1846  EMPTY_BOX 106397  EMPTY_CONST 357  2132s
+   108700/136830  EMPTY_GB 1846  EMPTY_BOX 106497  EMPTY_CONST 357  2134s
+   108800/136830  EMPTY_GB 1846  EMPTY_BOX 106597  EMPTY_CONST 357  2136s
+   108900/136830  EMPTY_GB 1846  EMPTY_BOX 106697  EMPTY_CONST 357  2138s
+   109000/136830  EMPTY_GB 1846  EMPTY_BOX 106797  EMPTY_CONST 357  2139s
+   109100/136830  EMPTY_GB 1846  EMPTY_BOX 106897  EMPTY_CONST 357  2142s
+   109200/136830  EMPTY_GB 1846  EMPTY_BOX 106997  EMPTY_CONST 357  2144s
+   109300/136830  EMPTY_GB 1846  EMPTY_BOX 107097  EMPTY_CONST 357  2146s
+   109400/136830  EMPTY_GB 1846  EMPTY_BOX 107197  EMPTY_CONST 357  2148s
+   109500/136830  EMPTY_GB 1846  EMPTY_BOX 107297  EMPTY_CONST 357  2150s
+   109600/136830  EMPTY_GB 1846  EMPTY_BOX 107397  EMPTY_CONST 357  2152s
+   109700/136830  EMPTY_GB 1846  EMPTY_BOX 107497  EMPTY_CONST 357  2154s
+   109800/136830  EMPTY_GB 1846  EMPTY_BOX 107597  EMPTY_CONST 357  2157s
+   109900/136830  EMPTY_GB 1846  EMPTY_BOX 107697  EMPTY_CONST 357  2161s
+   110000/136830  EMPTY_GB 1846  EMPTY_BOX 107797  EMPTY_CONST 357  2165s
+   110100/136830  EMPTY_GB 1846  EMPTY_BOX 107897  EMPTY_CONST 357  2168s
+   110200/136830  EMPTY_GB 1846  EMPTY_BOX 107997  EMPTY_CONST 357  2172s
+   110300/136830  EMPTY_GB 1846  EMPTY_BOX 108097  EMPTY_CONST 357  2175s
+   110400/136830  EMPTY_GB 1846  EMPTY_BOX 108197  EMPTY_CONST 357  2178s
+   110500/136830  EMPTY_GB 1846  EMPTY_BOX 108297  EMPTY_CONST 357  2182s
+   110600/136830  EMPTY_GB 1846  EMPTY_BOX 108397  EMPTY_CONST 357  2185s
+   110700/136830  EMPTY_GB 1846  EMPTY_BOX 108497  EMPTY_CONST 357  2188s
+   110800/136830  EMPTY_GB 1846  EMPTY_BOX 108597  EMPTY_CONST 357  2191s
+   110900/136830  EMPTY_GB 1846  EMPTY_BOX 108697  EMPTY_CONST 357  2193s
+   111000/136830  EMPTY_GB 1846  EMPTY_BOX 108797  EMPTY_CONST 357  2196s
+   111100/136830  EMPTY_GB 1846  EMPTY_BOX 108897  EMPTY_CONST 357  2198s
+   111200/136830  EMPTY_GB 1846  EMPTY_BOX 108997  EMPTY_CONST 357  2200s
+   111300/136830  EMPTY_GB 1846  EMPTY_BOX 109097  EMPTY_CONST 357  2203s
+   111400/136830  EMPTY_GB 1846  EMPTY_BOX 109197  EMPTY_CONST 357  2206s
+   111500/136830  EMPTY_GB 1846  EMPTY_BOX 109297  EMPTY_CONST 357  2209s
+   111600/136830  EMPTY_GB 1846  EMPTY_BOX 109397  EMPTY_CONST 357  2212s
+   111700/136830  EMPTY_GB 1846  EMPTY_BOX 109497  EMPTY_CONST 357  2214s
+   111800/136830  EMPTY_GB 1846  EMPTY_BOX 109597  EMPTY_CONST 357  2217s
+   111900/136830  EMPTY_GB 1846  EMPTY_BOX 109697  EMPTY_CONST 357  2220s
+   112000/136830  EMPTY_GB 1846  EMPTY_BOX 109797  EMPTY_CONST 357  2222s
+   112100/136830  EMPTY_GB 1846  EMPTY_BOX 109897  EMPTY_CONST 357  2224s
+   112200/136830  EMPTY_GB 1846  EMPTY_BOX 109997  EMPTY_CONST 357  2226s
+   112300/136830  EMPTY_GB 1846  EMPTY_BOX 110097  EMPTY_CONST 357  2229s
+   112400/136830  EMPTY_GB 1846  EMPTY_BOX 110197  EMPTY_CONST 357  2232s
+   112500/136830  EMPTY_GB 1846  EMPTY_BOX 110297  EMPTY_CONST 357  2234s
+   112600/136830  EMPTY_GB 1846  EMPTY_BOX 110397  EMPTY_CONST 357  2237s
+   112700/136830  EMPTY_GB 1846  EMPTY_BOX 110497  EMPTY_CONST 357  2239s
+   112800/136830  EMPTY_GB 1846  EMPTY_BOX 110597  EMPTY_CONST 357  2242s
+   112900/136830  EMPTY_GB 1846  EMPTY_BOX 110697  EMPTY_CONST 357  2244s
+   113000/136830  EMPTY_GB 1846  EMPTY_BOX 110797  EMPTY_CONST 357  2247s
+   113100/136830  EMPTY_GB 1846  EMPTY_BOX 110897  EMPTY_CONST 357  2249s
+   113200/136830  EMPTY_GB 1846  EMPTY_BOX 110997  EMPTY_CONST 357  2251s
+   113300/136830  EMPTY_GB 1846  EMPTY_BOX 111097  EMPTY_CONST 357  2253s
+   113400/136830  EMPTY_GB 1846  EMPTY_BOX 111197  EMPTY_CONST 357  2255s
+   113500/136830  EMPTY_GB 1846  EMPTY_BOX 111297  EMPTY_CONST 357  2257s
+   113600/136830  EMPTY_GB 1846  EMPTY_BOX 111397  EMPTY_CONST 357  2260s
+   113700/136830  EMPTY_GB 1846  EMPTY_BOX 111497  EMPTY_CONST 357  2262s
+   113800/136830  EMPTY_GB 1846  EMPTY_BOX 111597  EMPTY_CONST 357  2264s
+   113900/136830  EMPTY_GB 1846  EMPTY_BOX 111697  EMPTY_CONST 357  2266s
+   114000/136830  EMPTY_GB 1846  EMPTY_BOX 111797  EMPTY_CONST 357  2269s
+   114100/136830  EMPTY_GB 1846  EMPTY_BOX 111897  EMPTY_CONST 357  2271s
+   114200/136830  EMPTY_GB 1846  EMPTY_BOX 111997  EMPTY_CONST 357  2273s
+   114300/136830  EMPTY_GB 1846  EMPTY_BOX 112097  EMPTY_CONST 357  2276s
+   114400/136830  EMPTY_GB 1846  EMPTY_BOX 112197  EMPTY_CONST 357  2278s
+   114500/136830  EMPTY_GB 1846  EMPTY_BOX 112297  EMPTY_CONST 357  2280s
+   114600/136830  EMPTY_GB 1846  EMPTY_BOX 112397  EMPTY_CONST 357  2282s
+   114700/136830  EMPTY_GB 1846  EMPTY_BOX 112497  EMPTY_CONST 357  2284s
+   114800/136830  EMPTY_GB 1846  EMPTY_BOX 112597  EMPTY_CONST 357  2286s
+   114900/136830  EMPTY_GB 1846  EMPTY_BOX 112697  EMPTY_CONST 357  2288s
+   115000/136830  EMPTY_GB 1846  EMPTY_BOX 112797  EMPTY_CONST 357  2290s
+   115100/136830  EMPTY_GB 1846  EMPTY_BOX 112897  EMPTY_CONST 357  2293s
+   115200/136830  EMPTY_GB 1846  EMPTY_BOX 112997  EMPTY_CONST 357  2295s
+   115300/136830  EMPTY_GB 1846  EMPTY_BOX 113097  EMPTY_CONST 357  2298s
+   115400/136830  EMPTY_GB 1846  EMPTY_BOX 113197  EMPTY_CONST 357  2300s
+   115500/136830  EMPTY_GB 1846  EMPTY_BOX 113297  EMPTY_CONST 357  2302s
+   115600/136830  EMPTY_GB 1846  EMPTY_BOX 113397  EMPTY_CONST 357  2304s
+   115700/136830  EMPTY_GB 1846  EMPTY_BOX 113497  EMPTY_CONST 357  2306s
+   115800/136830  EMPTY_GB 1846  EMPTY_BOX 113597  EMPTY_CONST 357  2308s
+   115900/136830  EMPTY_GB 1846  EMPTY_BOX 113697  EMPTY_CONST 357  2311s
+   116000/136830  EMPTY_GB 1846  EMPTY_BOX 113797  EMPTY_CONST 357  2313s
+   116100/136830  EMPTY_GB 1846  EMPTY_BOX 113897  EMPTY_CONST 357  2316s
+   116200/136830  EMPTY_GB 1846  EMPTY_BOX 113997  EMPTY_CONST 357  2319s
+   116300/136830  EMPTY_GB 1846  EMPTY_BOX 114097  EMPTY_CONST 357  2322s
+   116400/136830  EMPTY_GB 1846  EMPTY_BOX 114197  EMPTY_CONST 357  2324s
+   116500/136830  EMPTY_GB 1846  EMPTY_BOX 114297  EMPTY_CONST 357  2327s
+   116600/136830  EMPTY_GB 1846  EMPTY_BOX 114397  EMPTY_CONST 357  2329s
+   116700/136830  EMPTY_GB 1846  EMPTY_BOX 114497  EMPTY_CONST 357  2332s
+   116800/136830  EMPTY_GB 1846  EMPTY_BOX 114597  EMPTY_CONST 357  2335s
+   116900/136830  EMPTY_GB 1846  EMPTY_BOX 114697  EMPTY_CONST 357  2337s
+   117000/136830  EMPTY_GB 1846  EMPTY_BOX 114797  EMPTY_CONST 357  2339s
+   117100/136830  EMPTY_GB 1846  EMPTY_BOX 114897  EMPTY_CONST 357  2342s
+   117200/136830  EMPTY_GB 1846  EMPTY_BOX 114997  EMPTY_CONST 357  2344s
+   117300/136830  EMPTY_GB 1846  EMPTY_BOX 115097  EMPTY_CONST 357  2346s
+   117400/136830  EMPTY_GB 1846  EMPTY_BOX 115197  EMPTY_CONST 357  2349s
+   117500/136830  EMPTY_GB 1846  EMPTY_BOX 115297  EMPTY_CONST 357  2351s
+   117600/136830  EMPTY_GB 1846  EMPTY_BOX 115397  EMPTY_CONST 357  2353s
+   117700/136830  EMPTY_GB 1846  EMPTY_BOX 115497  EMPTY_CONST 357  2355s
+   117800/136830  EMPTY_GB 1846  EMPTY_BOX 115597  EMPTY_CONST 357  2357s
+   117900/136830  EMPTY_GB 1846  EMPTY_BOX 115697  EMPTY_CONST 357  2359s
+   118000/136830  EMPTY_GB 1846  EMPTY_BOX 115797  EMPTY_CONST 357  2361s
+   118100/136830  EMPTY_GB 1846  EMPTY_BOX 115897  EMPTY_CONST 357  2364s
+   118200/136830  EMPTY_GB 1846  EMPTY_BOX 115997  EMPTY_CONST 357  2367s
+   118300/136830  EMPTY_GB 1846  EMPTY_BOX 116097  EMPTY_CONST 357  2369s
+   118400/136830  EMPTY_GB 1846  EMPTY_BOX 116197  EMPTY_CONST 357  2372s
+   118500/136830  EMPTY_GB 1846  EMPTY_BOX 116297  EMPTY_CONST 357  2374s
+   118600/136830  EMPTY_GB 1846  EMPTY_BOX 116397  EMPTY_CONST 357  2376s
+   118700/136830  EMPTY_GB 1846  EMPTY_BOX 116497  EMPTY_CONST 357  2379s
+   118800/136830  EMPTY_GB 1846  EMPTY_BOX 116597  EMPTY_CONST 357  2381s
+   118900/136830  EMPTY_GB 1846  EMPTY_BOX 116697  EMPTY_CONST 357  2383s
+   119000/136830  EMPTY_GB 1846  EMPTY_BOX 116797  EMPTY_CONST 357  2385s
+   119100/136830  EMPTY_GB 1846  EMPTY_BOX 116897  EMPTY_CONST 357  2387s
+   119200/136830  EMPTY_GB 1846  EMPTY_BOX 116997  EMPTY_CONST 357  2390s
+   119300/136830  EMPTY_GB 1846  EMPTY_BOX 117097  EMPTY_CONST 357  2392s
+   119400/136830  EMPTY_GB 1846  EMPTY_BOX 117197  EMPTY_CONST 357  2395s
+   119500/136830  EMPTY_GB 1846  EMPTY_BOX 117297  EMPTY_CONST 357  2397s
+   119600/136830  EMPTY_GB 1846  EMPTY_BOX 117397  EMPTY_CONST 357  2399s
+   119700/136830  EMPTY_GB 1846  EMPTY_BOX 117497  EMPTY_CONST 357  2402s
+   119800/136830  EMPTY_GB 1846  EMPTY_BOX 117597  EMPTY_CONST 357  2404s
+   119900/136830  EMPTY_GB 1846  EMPTY_BOX 117697  EMPTY_CONST 357  2406s
+   120000/136830  EMPTY_GB 1846  EMPTY_BOX 117797  EMPTY_CONST 357  2408s
+   120100/136830  EMPTY_GB 1846  EMPTY_BOX 117897  EMPTY_CONST 357  2410s
+   120200/136830  EMPTY_GB 1846  EMPTY_BOX 117997  EMPTY_CONST 357  2412s
+   120300/136830  EMPTY_GB 1846  EMPTY_BOX 118097  EMPTY_CONST 357  2415s
+   120400/136830  EMPTY_GB 1846  EMPTY_BOX 118197  EMPTY_CONST 357  2417s
+   120500/136830  EMPTY_GB 1846  EMPTY_BOX 118297  EMPTY_CONST 357  2419s
+   120600/136830  EMPTY_GB 1846  EMPTY_BOX 118397  EMPTY_CONST 357  2422s
+   120700/136830  EMPTY_GB 1846  EMPTY_BOX 118497  EMPTY_CONST 357  2425s
+   120800/136830  EMPTY_GB 1846  EMPTY_BOX 118597  EMPTY_CONST 357  2428s
+   120900/136830  EMPTY_GB 1846  EMPTY_BOX 118697  EMPTY_CONST 357  2430s
+   121000/136830  EMPTY_GB 1846  EMPTY_BOX 118797  EMPTY_CONST 357  2433s
+   121100/136830  EMPTY_GB 1846  EMPTY_BOX 118897  EMPTY_CONST 357  2435s
+   121200/136830  EMPTY_GB 1846  EMPTY_BOX 118997  EMPTY_CONST 357  2437s
+   121300/136830  EMPTY_GB 1846  EMPTY_BOX 119097  EMPTY_CONST 357  2439s
+   121400/136830  EMPTY_GB 1846  EMPTY_BOX 119197  EMPTY_CONST 357  2441s
+   121500/136830  EMPTY_GB 1846  EMPTY_BOX 119297  EMPTY_CONST 357  2444s
+   121600/136830  EMPTY_GB 1846  EMPTY_BOX 119397  EMPTY_CONST 357  2446s
+   121700/136830  EMPTY_GB 1846  EMPTY_BOX 119497  EMPTY_CONST 357  2449s
+   121800/136830  EMPTY_GB 1846  EMPTY_BOX 119597  EMPTY_CONST 357  2451s
+   121900/136830  EMPTY_GB 1846  EMPTY_BOX 119697  EMPTY_CONST 357  2454s
+   122000/136830  EMPTY_GB 1846  EMPTY_BOX 119797  EMPTY_CONST 357  2456s
+   122100/136830  EMPTY_GB 1846  EMPTY_BOX 119897  EMPTY_CONST 357  2458s
+   122200/136830  EMPTY_GB 1846  EMPTY_BOX 119997  EMPTY_CONST 357  2461s
+   122300/136830  EMPTY_GB 1846  EMPTY_BOX 120097  EMPTY_CONST 357  2463s
+   122400/136830  EMPTY_GB 1846  EMPTY_BOX 120197  EMPTY_CONST 357  2465s
+   122500/136830  EMPTY_GB 1846  EMPTY_BOX 120297  EMPTY_CONST 357  2467s
+   122600/136830  EMPTY_GB 1846  EMPTY_BOX 120397  EMPTY_CONST 357  2469s
+   122700/136830  EMPTY_GB 1846  EMPTY_BOX 120497  EMPTY_CONST 357  2471s
+   122800/136830  EMPTY_GB 1846  EMPTY_BOX 120597  EMPTY_CONST 357  2474s
+   122900/136830  EMPTY_GB 1846  EMPTY_BOX 120697  EMPTY_CONST 357  2476s
+   123000/136830  EMPTY_GB 1846  EMPTY_BOX 120797  EMPTY_CONST 357  2479s
+   123100/136830  EMPTY_GB 1846  EMPTY_BOX 120897  EMPTY_CONST 357  2483s
+   123200/136830  EMPTY_GB 1846  EMPTY_BOX 120997  EMPTY_CONST 357  2485s
+   123300/136830  EMPTY_GB 1846  EMPTY_BOX 121097  EMPTY_CONST 357  2488s
+   123400/136830  EMPTY_GB 1846  EMPTY_BOX 121197  EMPTY_CONST 357  2491s
+   123500/136830  EMPTY_GB 1846  EMPTY_BOX 121297  EMPTY_CONST 357  2494s
+   123600/136830  EMPTY_GB 1846  EMPTY_BOX 121397  EMPTY_CONST 357  2497s
+   123700/136830  EMPTY_GB 1846  EMPTY_BOX 121497  EMPTY_CONST 357  2500s
+   123800/136830  EMPTY_GB 1846  EMPTY_BOX 121597  EMPTY_CONST 357  2502s
+   123900/136830  EMPTY_GB 1846  EMPTY_BOX 121697  EMPTY_CONST 357  2504s
+   124000/136830  EMPTY_GB 1846  EMPTY_BOX 121797  EMPTY_CONST 357  2508s
+   124100/136830  EMPTY_GB 1846  EMPTY_BOX 121897  EMPTY_CONST 357  2510s
+   124200/136830  EMPTY_GB 1846  EMPTY_BOX 121997  EMPTY_CONST 357  2513s
+   124300/136830  EMPTY_GB 1846  EMPTY_BOX 122097  EMPTY_CONST 357  2515s
+   124400/136830  EMPTY_GB 1846  EMPTY_BOX 122197  EMPTY_CONST 357  2517s
+   124500/136830  EMPTY_GB 1846  EMPTY_BOX 122297  EMPTY_CONST 357  2519s
+   124600/136830  EMPTY_GB 1846  EMPTY_BOX 122397  EMPTY_CONST 357  2521s
+   124700/136830  EMPTY_GB 1846  EMPTY_BOX 122497  EMPTY_CONST 357  2523s
+   124800/136830  EMPTY_GB 1846  EMPTY_BOX 122597  EMPTY_CONST 357  2525s
+   124900/136830  EMPTY_GB 1846  EMPTY_BOX 122697  EMPTY_CONST 357  2528s
+   125000/136830  EMPTY_GB 1846  EMPTY_BOX 122797  EMPTY_CONST 357  2531s
+   125100/136830  EMPTY_GB 1846  EMPTY_BOX 122897  EMPTY_CONST 357  2533s
+   125200/136830  EMPTY_GB 1846  EMPTY_BOX 122997  EMPTY_CONST 357  2536s
+   125300/136830  EMPTY_GB 1846  EMPTY_BOX 123097  EMPTY_CONST 357  2539s
+   125400/136830  EMPTY_GB 1846  EMPTY_BOX 123197  EMPTY_CONST 357  2541s
+   125500/136830  EMPTY_GB 1846  EMPTY_BOX 123297  EMPTY_CONST 357  2543s
+   125600/136830  EMPTY_GB 1846  EMPTY_BOX 123397  EMPTY_CONST 357  2545s
+   125700/136830  EMPTY_GB 1846  EMPTY_BOX 123497  EMPTY_CONST 357  2548s
+   125800/136830  EMPTY_GB 1846  EMPTY_BOX 123597  EMPTY_CONST 357  2550s
+   125900/136830  EMPTY_GB 1846  EMPTY_BOX 123697  EMPTY_CONST 357  2553s
+   126000/136830  EMPTY_GB 1846  EMPTY_BOX 123797  EMPTY_CONST 357  2554s
+   126100/136830  EMPTY_GB 1846  EMPTY_BOX 123897  EMPTY_CONST 357  2556s
+   126200/136830  EMPTY_GB 1846  EMPTY_BOX 123997  EMPTY_CONST 357  2558s
+   126300/136830  EMPTY_GB 1846  EMPTY_BOX 124097  EMPTY_CONST 357  2560s
+   126400/136830  EMPTY_GB 1846  EMPTY_BOX 124197  EMPTY_CONST 357  2562s
+   126500/136830  EMPTY_GB 1846  EMPTY_BOX 124297  EMPTY_CONST 357  2564s
+   126600/136830  EMPTY_GB 1846  EMPTY_BOX 124397  EMPTY_CONST 357  2566s
+   126700/136830  EMPTY_GB 1846  EMPTY_BOX 124497  EMPTY_CONST 357  2569s
+   126800/136830  EMPTY_GB 1846  EMPTY_BOX 124597  EMPTY_CONST 357  2571s
+   126900/136830  EMPTY_GB 1846  EMPTY_BOX 124697  EMPTY_CONST 357  2573s
+   127000/136830  EMPTY_GB 1846  EMPTY_BOX 124797  EMPTY_CONST 357  2576s
+   127100/136830  EMPTY_GB 1846  EMPTY_BOX 124897  EMPTY_CONST 357  2577s
+   127200/136830  EMPTY_GB 1846  EMPTY_BOX 124997  EMPTY_CONST 357  2580s
+   127300/136830  EMPTY_GB 1846  EMPTY_BOX 125097  EMPTY_CONST 357  2582s
+   127400/136830  EMPTY_GB 1846  EMPTY_BOX 125197  EMPTY_CONST 357  2583s
+   127500/136830  EMPTY_GB 1846  EMPTY_BOX 125297  EMPTY_CONST 357  2585s
+   127600/136830  EMPTY_GB 1846  EMPTY_BOX 125397  EMPTY_CONST 357  2587s
+   127700/136830  EMPTY_GB 1846  EMPTY_BOX 125497  EMPTY_CONST 357  2590s
+   127800/136830  EMPTY_GB 1846  EMPTY_BOX 125597  EMPTY_CONST 357  2592s
+   127900/136830  EMPTY_GB 1846  EMPTY_BOX 125697  EMPTY_CONST 357  2595s
+   128000/136830  EMPTY_GB 1846  EMPTY_BOX 125797  EMPTY_CONST 357  2598s
+   128100/136830  EMPTY_GB 1846  EMPTY_BOX 125897  EMPTY_CONST 357  2600s
+   128200/136830  EMPTY_GB 1846  EMPTY_BOX 125997  EMPTY_CONST 357  2602s
+   128300/136830  EMPTY_GB 1846  EMPTY_BOX 126097  EMPTY_CONST 357  2605s
+   128400/136830  EMPTY_GB 1846  EMPTY_BOX 126197  EMPTY_CONST 357  2607s
+   128500/136830  EMPTY_GB 1846  EMPTY_BOX 126297  EMPTY_CONST 357  2609s
+   128600/136830  EMPTY_GB 1846  EMPTY_BOX 126397  EMPTY_CONST 357  2611s
+   128700/136830  EMPTY_GB 1846  EMPTY_BOX 126496  EMPTY_CONST 358  2613s
+   128800/136830  EMPTY_GB 1846  EMPTY_BOX 126595  EMPTY_CONST 359  2615s
+   128900/136830  EMPTY_GB 1846  EMPTY_BOX 126695  EMPTY_CONST 359  2617s
+   129000/136830  EMPTY_GB 1846  EMPTY_BOX 126795  EMPTY_CONST 359  2620s
+   129100/136830  EMPTY_GB 1846  EMPTY_BOX 126895  EMPTY_CONST 359  2622s
+   129200/136830  EMPTY_GB 1846  EMPTY_BOX 126995  EMPTY_CONST 359  2624s
+   129300/136830  EMPTY_GB 1846  EMPTY_BOX 127095  EMPTY_CONST 359  2626s
+   129400/136830  EMPTY_GB 1846  EMPTY_BOX 127195  EMPTY_CONST 359  2629s
+   129500/136830  EMPTY_GB 1846  EMPTY_BOX 127295  EMPTY_CONST 359  2632s
+   129600/136830  EMPTY_GB 1846  EMPTY_BOX 127395  EMPTY_CONST 359  2634s
+   129700/136830  EMPTY_GB 1846  EMPTY_BOX 127495  EMPTY_CONST 359  2637s
+   129800/136830  EMPTY_GB 1846  EMPTY_BOX 127595  EMPTY_CONST 359  2641s
+   129900/136830  EMPTY_GB 1846  EMPTY_BOX 127695  EMPTY_CONST 359  2644s
+   130000/136830  EMPTY_GB 1846  EMPTY_BOX 127795  EMPTY_CONST 359  2647s
+   130100/136830  EMPTY_GB 1846  EMPTY_BOX 127895  EMPTY_CONST 359  2650s
+   130200/136830  EMPTY_GB 1846  EMPTY_BOX 127995  EMPTY_CONST 359  2654s
+   130300/136830  EMPTY_GB 1846  EMPTY_BOX 128095  EMPTY_CONST 359  2657s
+   130400/136830  EMPTY_GB 1846  EMPTY_BOX 128195  EMPTY_CONST 359  2660s
+   130500/136830  EMPTY_GB 1846  EMPTY_BOX 128295  EMPTY_CONST 359  2663s
+   130600/136830  EMPTY_GB 1846  EMPTY_BOX 128395  EMPTY_CONST 359  2666s
+   130700/136830  EMPTY_GB 1846  EMPTY_BOX 128495  EMPTY_CONST 359  2669s
+   130800/136830  EMPTY_GB 1846  EMPTY_BOX 128595  EMPTY_CONST 359  2672s
+   130900/136830  EMPTY_GB 1846  EMPTY_BOX 128695  EMPTY_CONST 359  2675s
+   131000/136830  EMPTY_GB 1846  EMPTY_BOX 128795  EMPTY_CONST 359  2677s
+   131100/136830  EMPTY_GB 1846  EMPTY_BOX 128895  EMPTY_CONST 359  2680s
+   131200/136830  EMPTY_GB 1846  EMPTY_BOX 128995  EMPTY_CONST 359  2683s
+   131300/136830  EMPTY_GB 1846  EMPTY_BOX 129095  EMPTY_CONST 359  2686s
+   131400/136830  EMPTY_GB 1846  EMPTY_BOX 129195  EMPTY_CONST 359  2690s
+   131500/136830  EMPTY_GB 1846  EMPTY_BOX 129295  EMPTY_CONST 359  2694s
+   131600/136830  EMPTY_GB 1846  EMPTY_BOX 129395  EMPTY_CONST 359  2697s
+   131700/136830  EMPTY_GB 1846  EMPTY_BOX 129495  EMPTY_CONST 359  2701s
+   131800/136830  EMPTY_GB 1846  EMPTY_BOX 129595  EMPTY_CONST 359  2704s
+   131900/136830  EMPTY_GB 1846  EMPTY_BOX 129695  EMPTY_CONST 359  2707s
+   132000/136830  EMPTY_GB 1846  EMPTY_BOX 129795  EMPTY_CONST 359  2710s
+   132100/136830  EMPTY_GB 1846  EMPTY_BOX 129895  EMPTY_CONST 359  2714s
+   132200/136830  EMPTY_GB 1846  EMPTY_BOX 129995  EMPTY_CONST 359  2717s
+   132300/136830  EMPTY_GB 1846  EMPTY_BOX 130095  EMPTY_CONST 359  2720s
+   132400/136830  EMPTY_GB 1846  EMPTY_BOX 130195  EMPTY_CONST 359  2723s
+   132500/136830  EMPTY_GB 1846  EMPTY_BOX 130295  EMPTY_CONST 359  2725s
+   132600/136830  EMPTY_GB 1846  EMPTY_BOX 130395  EMPTY_CONST 359  2728s
+   132700/136830  EMPTY_GB 1846  EMPTY_BOX 130495  EMPTY_CONST 359  2732s
+   132800/136830  EMPTY_GB 1846  EMPTY_BOX 130595  EMPTY_CONST 359  2735s
+   132900/136830  EMPTY_GB 1846  EMPTY_BOX 130695  EMPTY_CONST 359  2738s
+   133000/136830  EMPTY_GB 1846  EMPTY_BOX 130795  EMPTY_CONST 359  2741s
+   133100/136830  EMPTY_GB 1846  EMPTY_BOX 130895  EMPTY_CONST 359  2744s
+   133200/136830  EMPTY_GB 1846  EMPTY_BOX 130995  EMPTY_CONST 359  2746s
+   133300/136830  EMPTY_GB 1846  EMPTY_BOX 131095  EMPTY_CONST 359  2748s
+   133400/136830  EMPTY_GB 1846  EMPTY_BOX 131195  EMPTY_CONST 359  2751s
+   133500/136830  EMPTY_GB 1846  EMPTY_BOX 131295  EMPTY_CONST 359  2754s
+   133600/136830  EMPTY_GB 1846  EMPTY_BOX 131395  EMPTY_CONST 359  2758s
+   133700/136830  EMPTY_GB 1846  EMPTY_BOX 131495  EMPTY_CONST 359  2761s
+   133800/136830  EMPTY_GB 1846  EMPTY_BOX 131595  EMPTY_CONST 359  2764s
+   133900/136830  EMPTY_GB 1846  EMPTY_BOX 131695  EMPTY_CONST 359  2767s
+   134000/136830  EMPTY_GB 1846  EMPTY_BOX 131795  EMPTY_CONST 359  2769s
+   134100/136830  EMPTY_GB 1846  EMPTY_BOX 131895  EMPTY_CONST 359  2772s
+   134200/136830  EMPTY_GB 1846  EMPTY_BOX 131995  EMPTY_CONST 359  2774s
+   134300/136830  EMPTY_GB 1846  EMPTY_BOX 132095  EMPTY_CONST 359  2777s
+   134400/136830  EMPTY_GB 1846  EMPTY_BOX 132195  EMPTY_CONST 359  2780s
+   134500/136830  EMPTY_GB 1846  EMPTY_BOX 132295  EMPTY_CONST 359  2782s
+   134600/136830  EMPTY_GB 1846  EMPTY_BOX 132395  EMPTY_CONST 359  2785s
+   134700/136830  EMPTY_GB 1846  EMPTY_BOX 132495  EMPTY_CONST 359  2788s
+   134800/136830  EMPTY_GB 1846  EMPTY_BOX 132595  EMPTY_CONST 359  2790s
+   134900/136830  EMPTY_GB 1846  EMPTY_BOX 132695  EMPTY_CONST 359  2793s
+   135000/136830  EMPTY_GB 1846  EMPTY_BOX 132795  EMPTY_CONST 359  2795s
+   135100/136830  EMPTY_GB 1846  EMPTY_BOX 132895  EMPTY_CONST 359  2797s
+   135200/136830  EMPTY_GB 1846  EMPTY_BOX 132995  EMPTY_CONST 359  2800s
+   135300/136830  EMPTY_GB 1846  EMPTY_BOX 133095  EMPTY_CONST 359  2802s
+   135400/136830  EMPTY_GB 1846  EMPTY_BOX 133195  EMPTY_CONST 359  2804s
+   135500/136830  EMPTY_GB 1846  EMPTY_BOX 133295  EMPTY_CONST 359  2806s
+   135600/136830  EMPTY_GB 1846  EMPTY_BOX 133395  EMPTY_CONST 359  2809s
+   135700/136830  EMPTY_GB 1846  EMPTY_BOX 133495  EMPTY_CONST 359  2812s
+   135800/136830  EMPTY_GB 1846  EMPTY_BOX 133595  EMPTY_CONST 359  2815s
+   135900/136830  EMPTY_GB 1846  EMPTY_BOX 133695  EMPTY_CONST 359  2818s
+   136000/136830  EMPTY_GB 1846  EMPTY_BOX 133795  EMPTY_CONST 359  2821s
+   136100/136830  EMPTY_GB 1846  EMPTY_BOX 133895  EMPTY_CONST 359  2824s
+   136200/136830  EMPTY_GB 1846  EMPTY_BOX 133995  EMPTY_CONST 359  2827s
+   136300/136830  EMPTY_GB 1846  EMPTY_BOX 134095  EMPTY_CONST 359  2829s
+   136400/136830  EMPTY_GB 1846  EMPTY_BOX 134195  EMPTY_CONST 359  2832s
+   136500/136830  EMPTY_GB 1846  EMPTY_BOX 134295  EMPTY_CONST 359  2834s
+   136600/136830  EMPTY_GB 1846  EMPTY_BOX 134395  EMPTY_CONST 359  2837s
+   136700/136830  EMPTY_GB 1846  EMPTY_BOX 134495  EMPTY_CONST 359  2840s
+   136800/136830  EMPTY_GB 1846  EMPTY_BOX 134595  EMPTY_CONST 359  2842s
+   136830/136830  EMPTY_GB 1846  EMPTY_BOX 134625  EMPTY_CONST 359  2843s
+
+TOTAL 136830 leaves:  EMPTY_GB 1846  EMPTY_MIX 0  EMPTY_BOX 134625  EMPTY_CONST 359  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   2843s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enum6.py a11:0,a21:MIX,a31:0,a41:0 16 b_0_M_0_0
+mode seq (weak rules)
+a11:0,a21:MIX,a31:0,a41:0: top expansion -> 744 subtrees, 0 complete, 3547 nodes, 50s
+   200/744 subtrees  nodes 15198  leaves 3735  aborted 0  69s
+   400/744 subtrees  nodes 38455  leaves 10317  aborted 0  140s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:0,a21:MIX,a31:0,a41:0 16 b_0_M_0_0 4
+mode seq (weak rules)   layer depth 4
+a11:0,a21:MIX,a31:0,a41:0: top expansion -> 4602 subtrees, 42 complete, 405s
+a11:0,a21:MIX,a31:0,a41:0: exact frontier filter -> 0 subtrees survive (408s)
+a11:0,a21:MIX,a31:0,a41:0: 42 leaves, 0 exact tests (0 killed), 408s  -> enum6_pat_b_0_M_0_0.npy
+a11:0,a21:MIX,a31:0,a41:0: leaf verdicts {'EMPTY_BOX': 42}   410s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_0_M_0_0 16 - 0 300
+tag b_0_M_0_0  leaves 42  workers 16  maxnodes 300  timeout 180s
+   resumed: 42 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 42  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:0,a21:0,a31:0,a41:MIX 16 b_0_0_0_M 4
+mode seq (weak rules)   layer depth 4
+a11:0,a21:0,a31:0,a41:MIX: top expansion -> 3931 subtrees, 0 complete, 37s
+a11:0,a21:0,a31:0,a41:MIX: exact frontier filter -> 0 subtrees survive (41s)
+a11:0,a21:0,a31:0,a41:MIX: 0 leaves, 0 exact tests (0 killed), 41s  -> enum6_pat_b_0_0_0_M.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:0,a21:0,a31:MIX,a41:0 16 b_0_0_M_0 4
+mode seq (weak rules)   layer depth 4
+a11:0,a21:0,a31:MIX,a41:0: top expansion -> 4806 subtrees, 0 complete, 301s
+a11:0,a21:0,a31:MIX,a41:0: exact frontier filter -> 37 subtrees survive (306s)
+   jobs 37 done (0 queued, 0 running, 0 handed back)  exact tests 1643  killed 1252 (76.2%)  leaves 235  329s
+a11:0,a21:0,a31:MIX,a41:0: 235 leaves, 1643 exact tests (1252 killed), 330s  -> enum6_pat_b_0_0_M_0.npy
+a11:0,a21:0,a31:MIX,a41:0: leaf verdicts {'EMPTY_GB': 1, 'EMPTY_BOX': 232, 'EMPTY_CONST': 2}   338s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_0_0_M_0 16 - 0 300
+tag b_0_0_M_0  leaves 235  workers 16  maxnodes 300  timeout 180s
+   resumed: 235 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 1  EMPTY_MIX 0  EMPTY_BOX 232  EMPTY_CONST 2  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:0,a31:0,a41:0 16 b_M_0_0_0 4
+mode seq (weak rules)   layer depth 4
+a11:MIX,a21:0,a31:0,a41:0: top expansion -> 3327 subtrees, 0 complete, 254s
+a11:MIX,a21:0,a31:0,a41:0: exact frontier filter -> 0 subtrees survive (257s)
+a11:MIX,a21:0,a31:0,a41:0: 0 leaves, 0 exact tests (0 killed), 257s  -> enum6_pat_b_M_0_0_0.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:MIX,a31:0,a41:0 16 b_M_M_0_0 4
+mode seq (weak rules)   layer depth 4
+a11:MIX,a21:MIX,a31:0,a41:0: top expansion -> 3327 subtrees, 0 complete, 272s
+a11:MIX,a21:MIX,a31:0,a41:0: exact frontier filter -> 0 subtrees survive (274s)
+a11:MIX,a21:MIX,a31:0,a41:0: 0 leaves, 0 exact tests (0 killed), 274s  -> enum6_pat_b_M_M_0_0.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:MIX,a31:0,a41:MIX 16 b_M_M_0_M 4
+mode seq (weak rules)   layer depth 4
+a11:MIX,a21:MIX,a31:0,a41:MIX: top expansion -> 5651 subtrees, 0 complete, 275s
+a11:MIX,a21:MIX,a31:0,a41:MIX: exact frontier filter -> 60 subtrees survive (318s)
+   jobs 155 done (0 queued, 0 running, 95 handed back)  exact tests 2306  killed 1913 (83.0%)  leaves 940  376s
+a11:MIX,a21:MIX,a31:0,a41:MIX: 940 leaves, 2306 exact tests (1913 killed), 376s  -> enum6_pat_b_M_M_0_M.npy
+a11:MIX,a21:MIX,a31:0,a41:MIX: leaf verdicts {'EMPTY_BOX': 940}   411s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_M_M_0_M 16 - 0 300
+tag b_M_M_0_M  leaves 940  workers 16  maxnodes 300  timeout 180s
+   resumed: 940 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 940  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:0,a21:0,a31:MIX,a41:MIX 16 b_0_0_M_M 4
+mode seq (weak rules)   layer depth 4
+a11:0,a21:0,a31:MIX,a41:MIX: top expansion -> 3931 subtrees, 0 complete, 39s
+a11:0,a21:0,a31:MIX,a41:MIX: exact frontier filter -> 0 subtrees survive (42s)
+a11:0,a21:0,a31:MIX,a41:MIX: 0 leaves, 0 exact tests (0 killed), 42s  -> enum6_pat_b_0_0_M_M.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:0,a31:0,a41:MIX 16 b_M_0_0_M 4
+mode seq (weak rules)   layer depth 4
+a11:MIX,a21:0,a31:0,a41:MIX: top expansion -> 4454 subtrees, 0 complete, 233s
+a11:MIX,a21:0,a31:0,a41:MIX: exact frontier filter -> 123 subtrees survive (259s)
+   jobs 153 done (0 queued, 0 running, 30 handed back)  exact tests 2769  killed 2567 (92.7%)  leaves 393  320s
+a11:MIX,a21:0,a31:0,a41:MIX: 393 leaves, 2769 exact tests (2567 killed), 320s  -> enum6_pat_b_M_0_0_M.npy
+a11:MIX,a21:0,a31:0,a41:MIX: leaf verdicts {'EMPTY_BOX': 393}   330s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_M_0_0_M 16 - 0 300
+tag b_M_0_0_M  leaves 393  workers 16  maxnodes 300  timeout 180s
+   resumed: 393 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 393  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:0,a21:MIX,a31:0,a41:MIX 16 b_0_M_0_M 4
+mode seq (weak rules)   layer depth 4
+a11:0,a21:MIX,a31:0,a41:MIX: top expansion -> 3496 subtrees, 0 complete, 47s
+a11:0,a21:MIX,a31:0,a41:MIX: exact frontier filter -> 6 subtrees survive (51s)
+   jobs 108 done (0 queued, 6 running, 108 handed back)  exact tests 1935  killed 1442 (74.5%)  leaves 1703  111s
+   jobs 256 done (0 queued, 0 running, 250 handed back)  exact tests 3689  killed 2493 (67.6%)  leaves 4593  171s
+a11:0,a21:MIX,a31:0,a41:MIX: 4593 leaves, 3689 exact tests (2493 killed), 171s  -> enum6_pat_b_0_M_0_M.npy
+a11:0,a21:MIX,a31:0,a41:MIX: leaf verdicts {'EMPTY_BOX': 4593}   485s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u symleaf.py b_0_M_0_M 16 - 0 300
+tag b_0_M_0_M  leaves 4593  workers 16  maxnodes 300  timeout 180s
+   resumed: 4593 leaves already decided, 0 to go
+
+TOTAL 0 leaves:  EMPTY_GB 0  EMPTY_MIX 0  EMPTY_BOX 4593  EMPTY_CONST 0  FAMILY 0  OPEN 0  ERROR 0  TIMEOUT 0  FAMILY_WIDE 0   0s
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:0,a21:MIX,a31:MIX,a41:0 16 b_0_M_M_0 4
+mode seq (weak rules)   layer depth 4
+a11:0,a21:MIX,a31:MIX,a41:0: top expansion -> 4293 subtrees, 0 complete, 28s
+a11:0,a21:MIX,a31:MIX,a41:0: exact frontier filter -> 0 subtrees survive (32s)
+a11:0,a21:MIX,a31:MIX,a41:0: 0 leaves, 0 exact tests (0 killed), 33s  -> enum6_pat_b_0_M_M_0.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:0,a31:MIX,a41:0 16 b_M_0_M_0 4
+mode seq (weak rules)   layer depth 4
+a11:MIX,a21:0,a31:MIX,a41:0: top expansion -> 5930 subtrees, 0 complete, 358s
+a11:MIX,a21:0,a31:MIX,a41:0: exact frontier filter -> 0 subtrees survive (362s)
+a11:MIX,a21:0,a31:MIX,a41:0: 0 leaves, 0 exact tests (0 killed), 363s  -> enum6_pat_b_M_0_M_0.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:MIX,a31:MIX,a41:0 16 b_M_M_M_0 4
+mode seq (weak rules)   layer depth 4
+a11:MIX,a21:MIX,a31:MIX,a41:0: top expansion -> 5930 subtrees, 0 complete, 382s
+a11:MIX,a21:MIX,a31:MIX,a41:0: exact frontier filter -> 0 subtrees survive (386s)
+a11:MIX,a21:MIX,a31:MIX,a41:0: 0 leaves, 0 exact tests (0 killed), 387s  -> enum6_pat_b_M_M_M_0.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:0,a21:MIX,a31:MIX,a41:MIX 16 b_0_M_M_M 4
+mode seq (weak rules)   layer depth 4
+a11:0,a21:MIX,a31:MIX,a41:MIX: top expansion -> 3496 subtrees, 0 complete, 49s
+a11:0,a21:MIX,a31:MIX,a41:MIX: exact frontier filter -> 0 subtrees survive (54s)
+a11:0,a21:MIX,a31:MIX,a41:MIX: 0 leaves, 0 exact tests (0 killed), 54s  -> enum6_pat_b_0_M_M_M.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:0,a31:MIX,a41:MIX 16 b_M_0_M_M 4
+mode seq (weak rules)   layer depth 4
+a11:MIX,a21:0,a31:MIX,a41:MIX: top expansion -> 6295 subtrees, 0 complete, 312s
+a11:MIX,a21:0,a31:MIX,a41:MIX: exact frontier filter -> 0 subtrees survive (330s)
+a11:MIX,a21:0,a31:MIX,a41:MIX: 0 leaves, 0 exact tests (0 killed), 330s  -> enum6_pat_b_M_0_M_M.npy
+
+$ C:\Users\raosa\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\python.exe -u enuml.py a11:MIX,a21:MIX,a31:MIX,a41:MIX 16 b_M_M_M_M 4
+mode seq (weak rules)   layer depth 4
+a11:MIX,a21:MIX,a31:MIX,a41:MIX: top expansion -> 3690 subtrees, 0 complete, 224s
+a11:MIX,a21:MIX,a31:MIX,a41:MIX: exact frontier filter -> 0 subtrees survive (237s)
+a11:MIX,a21:MIX,a31:MIX,a41:MIX: 0 leaves, 0 exact tests (0 killed), 237s  -> enum6_pat_b_M_M_M_M.npy
