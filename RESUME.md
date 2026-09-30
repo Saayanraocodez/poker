@@ -1,3 +1,19 @@
+# RESTARTED 2026-09-28 20:40 after a power loss (2026-09-26 ~21:00)
+
+Both runs died with the box; neither resumes mid-branch, so each restarts its current branch.
+- **`PokerRetryPartial`** (`retry_partial.py 1 20 28800 enumc3.py 2`): branch 1
+  `a11:0,a21:MIX,a31:0,a41:MIX` had finished before the outage (PARTIAL, 790 float-unsure, in the
+  ledger). The dead run had already moved the other five PARTIAL lines to the history, so a plain
+  relaunch would have retried only branch 1. `retry_partial.py` now retries the branches ABSENT
+  from the ledger when there are any (the 5), in the old order: `M_M_0_M`, `M_0_0_M`, `0_0_M_0`,
+  `M_M_0_1`, `0_M_M_1`. That's 8 h cap each, so ~40 h.
+- **`PokerEnumc4Test`** (enumc4, 8 workers, `run_c4test_0_M_0_MN.env`): restarted from zero.
+  Pre-outage log kept as `log_enumc3_c4test_0_M_0_MN_preoutage.txt`. At 1431 s it had
+  kill 665, split 603, **float-unsure 339**, so it was not curing float-unsure at that point.
+  Compare against enumc3 on the same branch (`log_enumc_c_0_M_0_MN.txt`: 76 unsure at 3 h,
+  790 at 8 h).
+- `PokerKeepAwake` relaunched.
+
 # Where things stand — 2026-09-24 19:00
 
 ## DONE — the paper's results are all written up; no placeholders left in MASTER_DATA
@@ -8,13 +24,13 @@
   PAPER_KIT §7.1–7.2, MASTER_DATA §16.7–16.10.
 - **Theorem 6 — refinements decided exactly** (PAPER_KIT §7.3, MASTER_DATA §16.13):
   - every information set is binary ⟹ extensive-form proper = perfect (Lemma R1);
-  - 8 coordinates fall to dominance (`D_v = c·R_v`, c = −1 or +5), six of them free in all of
-    [0,1] over the Nash set; the per-leaf closure adds 7–12 more;
+  - 18 coordinates fall to exact dominance (`D_v = c·R_v`, c = −1, +4 or +5 — an earlier count of 8
+    used a coefficient-sign test that misses mixed-sign reaches); 13 have a nontrivial Nash window;
   - the belief system in closed form: `lim D_v/R_v = A_v/B_v`, seven linear forms **identical at
     all twelve leaves** (each verified symbolically against the tree);
   - forced in every sequential equilibrium: `b32 = b22 = c13 = c34 = 0`, `c43 = 1`, `c33 ≥ 1/2`
     and `c33` interior; only `c23` keeps freedom, and only with trembles of different orders;
-  - enumeration **complete**: 398 patterns, **377 killed with certificates, 21 sequential
+  - enumeration **complete**: every pattern decided; **637 kill records + 3,554 box certificates + 21 witnesses, all replayed by the independent `checkseqcert.py` (12/12 leaves, 0 failed)**; 21 sequential
     witnesses (21/21 verified by the independent `checkseq.py`), 0 undecided**; exactly three
     patterns survive (two at the generic leaves, one at the corners, where refinement pins
     `a33 = c33 = 1/2`);

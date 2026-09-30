@@ -2392,6 +2392,25 @@ worker (~3 KB per killed node, hundreds of thousands of nodes per mode). (ii) Th
 certificates; an exact replay in Fractions of every float-killed node is possible with the
 recursion in `test_ivl_directed.py` but was not run. (iii) `tree.py` is the game.
 
+### 16.8.1 A gap in the checker, closed, and everything re-verified (2026-09-26)
+
+`check_box_cert` replayed a certificate from the starting box the certificate *declared* and
+never compared that box with the node's labels.  A certificate proves that its system has no
+point INSIDE its box, so a box tighter than the labels allow could "prove" a false kill by
+simply excluding the solutions, and the independent checker would have accepted it.  The
+prover always passed the labels' box, so this was a gap in the checking, not (as it turned
+out) an error in any result -- but an independent checker must not take the box on trust.
+It now requires the starting box to contain everything the labels allow (or, for the
+inherited-box enumeration of §16.9, everything the node's *replayed* certified box allows);
+a certificate with a tampered box is rejected.  Every stored certificate was re-verified under
+the new rule (`recheck_all.py`, `recheck_summary.txt`):
+
+| certificates | verified | failed |
+|---|---|---|
+| support leaves (Theorem 4) | 66,699 | 0 |
+| ranges of the complete Nash set (Theorem 5) + witnesses | 522 + 322 | 0 |
+| certificate trees of the third pass | 71 branches, 4,394,323 nodes | 0 |
+
 ## 16.9 Third pass: the betting side as one replayable certificate tree (2026-09-21)
 
 **What it is.** Leaf certificates (§16.8) cover the silent branch and every leaf-bearing
@@ -2450,9 +2469,46 @@ The six PARTIAL branches, with their state at the cap:
 Five are simply large (the verified branches run up to 148k nodes, and these were still
 producing kills at the cap); only the first is pathological -- 228 nodes that the float
 propagation kills but no certificate in the ladder reproduces, each forcing a split and a
-subtree.  They are being retried at a 12 h cap, three at a time (`retry_partial.py`; the lines
-they replace are kept in `enumc_partial_history.txt`).  The cap wants choosing with care: a 1 h
-cap threw away a branch that needed 4,283 s with its queue already empty.
+subtree.  The cap wants choosing with care: a 1 h cap threw away a branch that needed 4,283 s
+with its queue already empty.
+
+**A retry that went backwards (2026-09-24/25).**  Retrying the six at a 12 h cap, three at a time
+with 9 workers each, finished none of them -- and with far MORE float-unsure nodes than the
+first attempt (234 to 1,073, against 0 to 62 in 2 h with 20 workers), and fewer kills in 12 h
+than the first run made in 2.  The float-unsure count is not a property of the branch alone:
+it depends on how the tree is cut into jobs (the top expansion stops at `KUHN_FRONTIER x nw`
+subtrees, so fewer workers means shallower subtree roots and longer float-propagated paths below
+them).  Splitting the machine across branches is therefore the wrong trade for `enumc2`: the
+six are now run one at a time with 26 workers each at an 8 h cap, nearest-to-done first and the
+pathological branch last (`retry_partial.py 1 26 28800`; replaced lines are kept in
+`enumc_partial_history.txt`).
+
+**Inherited certified boxes (`enumc3.py`, 2026-09-26).**  The cause of float-unsure nodes is
+structural: the float propagation kills a node using a box contracted along the whole path
+from the root, while every `enumc2` certificate starts again from the node's bare LABEL box.
+`enumc3` certifies the contraction itself: at every split it runs `certbox.contract_traced` on
+the node's own system from the node's certified box and records the steps; the children start
+from the contracted box (the split coordinate set by the child's label) and every kill
+certificate starts from the node's certified box.  `checkenum.py` replays each split's
+contraction from the box it has itself computed for that node and requires every kill to start
+from a box containing it -- sound because a child's feasible set lies inside its parent's (the
+parent's DC pair is the union of the three labels) and contraction only removes infeasible
+points.  Files without contraction records check exactly as before.
+
+On a verified branch (`a11:MIX,a21:0,a31:MIX,a41:1`) the tree shrank from 43,433 nodes
+(`enumc2`, 521 s) to **356 nodes (30 s)**, replayed OK.  On the six hard branches it is mixed:
+on `a11:MIX,a21:MIX,a31:0,a41:MIX` 76 of 80 subtrees closed within two minutes with 574 kills
+(where `enumc2` passed 113,000 kills without finishing), but on `a11:0,a21:MIX,a31:0,a41:MIX`
+it went PARTIAL at 8 h with 790 float-unsure nodes -- there the float kills use more than
+interval contraction (tree-structured bounds on `D`, the chord contractor), which the inherited
+box does not yet carry.  The retry of the six is still running; the ledger records its outcome.
+
+**What the six PARTIAL branches rest on.**  Their support leaves are not in question: all
+25,636 of them (581 + 613 + 8,681 + 4,433 + 3,055 + 8,273) are among the 66,699 leaf
+certificates replayed by `checkcert.py`.  Only the pruning *above* the leaves -- which nodes the
+enumeration discarded before reaching a support -- rests, for these six branches, on the
+directed-rounding interval arithmetic of §16.7, which is sound (every operation rounded
+outward) but not replayed by a checker.
 
 ## 16.10 The complete Nash set, off path included (2026-09-21)
 
@@ -2572,19 +2628,30 @@ CONDITION ON `A_v`, polynomial in the profile and linear in `r`.  So:
     (PAPER_KIT Lemma R1), so one computation decides all three, and only NORMAL-form properness
     (Theorem 3) can select more.
 
-**Belief-free forcing (dominance).**  Eight coordinates are settled with no tremble analysis at
-all, by the sign of the coefficients of `D_v` on the open cube, and seven of them are exact
-dominance -- `D_v = c * R_v` identically, i.e. the same value difference at every node of the
-set, under every belief and against every profile:
+**Belief-free forcing (dominance).**  *Corrected 2026-09-26: an earlier version said eight.*
+EIGHTEEN coordinates are settled with no tremble analysis at all, by exact dominance --
+`D_v = c * R_v` identically as polynomials, i.e. the same value difference at every node of the
+set, under every belief and against every profile.  The first version of this section tested
+for one-signed coefficients of `D_v`, which misses every case where the reach `R_v` itself has
+mixed-sign coefficients (its `1 - x` factors); testing the identity directly (`seqcert.dominance`,
+`checkseqcert` re-derives it from the tree) finds the full set.  It is the same six decisions for
+each player:
 
-| coordinate | `D_v / R_v` | forced | Nash window (Table 4) |
+| coordinates | `D_v / R_v` | forced | Nash window (Table 4) |
 |---|---|---|---|
-| `a14`, `a24`, `c14`, `c24`, `b12` | `-1` (one chip) | `= 0` | `[0,1]`, `[0,1]`, `[0,1]`, `[0,1]`, `[0, 0.4173]` |
-| `a44`, `c44` | `+5` | `= 1` | `[0,1]`, `[0,1]` |
-| `b42` | `(8 + c14 r + ...) / 2 >= 4` | `= 1` | `[31/40, 1]` |
+| `a12`, `a13`, `b13`, `c12` | `-1` | `= 0` | already pinned to 0 by Nash |
+| `a14`, `a24`, `c14`, `c24` | `-1` | `= 0` | `[0, 1]` each |
+| `b14`, `b24` | `-1` | `= 0` | `[0, 1]` (private: in no Nash inequality) |
+| `b12`, `c13` | `-1` | `= 0` | `[0, 0.4173]`, `[0, 0.5269]` |
+| `a43` | `+4` | `= 1` | already pinned to 1 by Nash |
+| `b43`, `c43` | `+4` | `= 1` | `[0, 1]`, `[0.7750, 1]` |
+| `a44`, `c44` | `+5` | `= 1` | `[0, 1]` each |
+| `b44` | `+5` | `= 1` | `[17/32, 1]` |
 
-Six of the eight are free in the WHOLE of `[0,1]` over the Nash set: sequential rationality
-alone -- any refinement at all -- collapses eight dimensions of the equilibrium set to points.
+Thirteen of the eighteen have a nontrivial Nash window and eight of them the WHOLE of `[0,1]`:
+sequential rationality alone -- any refinement at all -- collapses thirteen dimensions of the
+equilibrium set to points.  (`b42 = 1` is not exact dominance but follows the same way:
+`D_{b42} / R_{b42} >= 4` everywhere, a robustly one-signed leading form.)
 
 **Per-leaf closure** (`refine.closure`: substitute what is forced, recompute the leading
 coefficients, repeat).  7 to 12 coordinates per leaf, including `b44 = 1` everywhere,
@@ -2614,10 +2681,9 @@ off-path structure:
     `{a11, a21}`, `{a41}` is strictly larger the surviving form of `A_b32` is one-signed, so
     `b32` is never interior; `b32 = 1` is outside the Nash window (`b32 <= 15/16`).  Checked
     exhaustively over all 75 orderings of P1's four openings (`seq_orderings`).
-  * **`c43 = 1`.**  `b22 <= 1` makes `A_c43 > 0` whatever survives.
-  * **`c13 = 0`.**  `b22 <= 0.5841 < 1` (Table 4) makes `A_c13 < 0`.
-    Both are mechanised in `forcecheck.py`: bound every coefficient of the leading form over
-    Table 4's windows and read off the common sign -- all 12 leaves, one sign each.
+  * **`c43 = 1`, `c13 = 0`** -- exact dominance (`D = 4R`, `D = -R`); no belief argument is
+    needed.  (An earlier version derived them from coefficient bounds of the leading forms over
+    Table 4's windows, `forcecheck.py`; that is correct but unnecessary.)
   * **`c34 = 0`.**  If `c34 = 1` then `A_b22 = -(2 r_a11 + 2 r_a31 + 2 r_a41)/24 < 0`, forcing
     `b22 = 0`, and then `A_c34 = -(r_a11 + r_a21)/24 < 0`, contradicting `c34 = 1`.
   * **`c33 >= 1/2`, always.**  With those four settled, P1's deterrence at card 2 reads
@@ -2671,7 +2737,7 @@ conjectured.**
 coordinates, kills a pattern with a `certbox` emptiness certificate or witnesses it with an
 exact profile plus an exact positive belief vector (`seq_<leaf>.json`, `seq_summary.txt`):
 
-| | patterns | killed (certificate) | sequential (exact witness) | undecided |
+| | patterns (first run) | excluded | sequential (exact witness) | undecided |
 |---|---|---|---|---|
 | 9 generic leaves (`b22`, `c23`, `c33` decided) | 99 | 81 | 18 | 0 |
 | 3 corner leaves (10 coordinates decided) | 299 | 296 | 3 | 0 |
@@ -2689,6 +2755,38 @@ Every witness is a profile in exact rationals together with an exact belief vect
 needs them, the relative tremble orders; `checkseq.py` -- an independent checker that rebuilds
 the leading coefficients from the tree and re-tests every condition in Fractions -- verifies
 **21 / 21, 0 failed**.
+
+**Independently replayed** (2026-09-26, `seqcert.py` + `checkseqcert.py`).  An earlier version
+of this section said "killed with certificates" when the exclusions were in fact prover-only:
+their certificates had never been stored, and only the witnesses were replayed.  The enumeration
+was therefore re-run so that every step leaves evidence, **with no forcing injected**, and an
+independent checker replays all of it -- no sympy, no prover code: the belief forms are rebuilt
+from the game tree in Fractions (`seqforms.py`, which agrees with the sympy route on all 48
+gradients and every leading form tested) and box certificates by `checkcert.check_box_cert`.
+
+| evidence | count | what the checker does |
+|---|---|---|
+| closure: exact dominance | 18 coordinates (per leaf, those left free) | re-derives `D_v - c R_v = 0` from the tree |
+| closure: robust one-signed form | the rest of 140 closure steps | rebuilds the form, checks it is linear in one set's ratios, one-signed, and nonvanishing at every ordering |
+| kill: one-signed contradiction | 191 | the same test against the assigned value |
+| kill: certificate | 404 | rebuilds every named row from its origin and replays the branch and bound |
+| kill: all 75 orderings of a tremble group | 42 (3,150 certificates) | enumerates the orderings itself and replays one certificate per ordering |
+| witness | 21 | an exact Nash point, and along an explicit tremble curve `x_w = eps^e rho` the sign of `lim D_v / R_v` for every coordinate |
+
+Coverage is checked too: every 0 / 1 / interior assignment of the decided coordinates extends a
+killed record or is witnessed.  **12 / 12 leaves replay, 0 failed; 637 kill records and 3,554
+box certificates.**  The surviving patterns are exactly the three above -- and `b32 = c34 = 0`
+now come out of the enumeration with replayed evidence, not from an injected argument.
+
+Two restrictions keep the relaxation sound, and both prover and checker enforce them: a belief
+row is used only if it is MULTI-HOMOGENEOUS in the information sets' ratios (then scaling each
+set separately is harmless, and a form evaluated at the per-set lowest-class ratios is either 0
+or the true leading term); and a one-signed form settles a coordinate only if it is linear in
+ONE set's ratios with every ratio appearing in a term whose profile factors are interior (so it
+cannot vanish under any tremble ordering).  An earlier draft asserted per-set normalisation was
+WLOG in general; it is not for forms that mix sets or degrees.  Witnesses are checked as concrete
+curves, which also covers the case the earlier LP check skipped: a leading form that collapses,
+where the next order decides.
 
 **How the last 28 were closed** (`resolve_seq2.py`, `witC.py`, 2026-09-24).  The corner leaves
 are the generic structure *mirrored*: with `b11 = b21 = 0` it is P2's bet that is unreached,
