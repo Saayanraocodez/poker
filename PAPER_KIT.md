@@ -72,8 +72,10 @@ game theory; Applied computing → Computer games.
 
 2. **Proofs a reader can replay.** Every verdict is a stored certificate checked by an
    independent ~450-line Fraction checker with no solver in it: 66,699 / 66,699 support leaves,
-   and the enumeration's node kills for 71 of the 77 betting branches (4,394,323 nodes), 0
-   failures; the remaining interval prunes use outward rounding. **[E]**
+   and the enumeration's node kills for **all 77** betting branches, with 0 failures. 71 are
+   label-box certificate trees (4,394,323 nodes). The last 6 are exact-propagation certificate
+   trees (26,223 nodes), replayed by a second, independently written exact checker. No float
+   arithmetic remains in any proof. **[E]**
 
 3. **Refinements decided exactly, and the properness question answered.** *Theorem 6*: beliefs in
    closed form as leading coefficients along a tremble; eighteen coordinates settled by exact
@@ -565,9 +567,14 @@ supports: 656 certified empty, 12 FAMILY — sub-families A (4 leaves), B (3), C
 every corner. Every leaf verdict is a stored certificate replayed by an independent
 Fraction-only checker (`checkcert.py`: 66,699 of 66,699 leaves — 668 silent, 45,276 nash-mode
 betting, 20,755 seq-mode betting — verified, 0 failed; `cert_summary_R.txt`). The *node
-kills* above the leaves are certified too for 71 of the 77 betting cells: each is re-derived as
-a tree in which every pruned node carries its own exact certificate, and `checkenum.py` replays
-all 4,394,323 nodes with 0 failures (MASTER_DATA §16.9). Lemma 5 finishes. ∎
+kills* above the leaves are certified too, for all 77 betting cells. Each cell is re-derived as a
+tree in which every pruned node carries its own exact certificate.
+- 71 cells: `checkenum.py` replays all 4,394,323 nodes with 0 failures (MASTER_DATA §16.9).
+- The last 6: every node also carries its exact propagated box and a certificate of that box.
+  `checkenum2.py` replays all 26,223 nodes with an independent exact implementation, with 0
+  failures (§16.9.1).
+
+Lemma 5 finishes. ∎
 **[E,P]**
 
 **Corollary 4.1.** In every Nash equilibrium P1 checks with every card (`a_j1 = 0`,
@@ -765,16 +772,28 @@ containing everything the node's labels allow (added 2026-09-26; all 66,699 leaf
 and 4.4M tree certificates re-verified under it, 0 failed). Nothing depends on sympy or scipy having been right: they
 only *found* the certificates.
 
-Item (ii) is the one a reader has to take on the arithmetic's word rather than on a
-certificate's, and a third pass is removing it branch by branch: `enumc2.py` re-derives a
-betting branch as a *certificate tree* in which every node the float propagation kills carries
-its own `certbox` certificate (or is kept alive and split), and `checkenum.py` replays the whole
-tree in Fractions. **71 of the 77 betting branches are now verified end to end** — 4,394,323 certified
-nodes, 1,877 support leaves all certified empty, **0 failed** — so for those branches item (ii)
-is no longer trusted at all. For the other six, every support leaf is certified and replayed
-(25,636 of them, all among the 66,699), and only the pruning *above* the leaves rests on the
-directed-rounding enumeration — sound, since outward rounding makes every prune a rigorous
-interval statement, but not replayed (MASTER_DATA §16.9).
+Item (ii) was the one a reader had to take on the arithmetic's word rather than on a
+certificate's, and the third pass has removed it.
+
+- **71 branches (`enumc2.py`).**  A betting branch is re-derived as a *certificate tree* in which
+  every node the float propagation kills carries its own `certbox` certificate (or is kept alive
+  and split), and `checkenum.py` replays the whole tree in Fractions.  4,394,323 certified nodes,
+  1,877 support leaves all certified empty, **0 failed**.
+- **The six that resisted (`enumc7.py`).**  Their pruning comes from interval propagation
+  contracted along the whole path, which no certificate starting from a label box reproduces.
+  `enumc7` carries out that propagation itself in EXACT rational arithmetic and records a
+  certificate for every step.  Each certificate is a forced value, a chord narrowing justified
+  by the convexity of the interval bound, or a contradiction.  `checkenum2.py`, written
+  independently of the prover, replays every node from its parent's record.  26,223 nodes, 461
+  support leaves all certified empty, **0 failed** (MASTER_DATA §16.9.1).
+
+Controls for the new method:
+- the silent branch reproduces the R ledger's 12 FAMILY leaves label for label;
+- 64 certified equilibria survive the exact tree;
+- every one of 2,463 tampered certificates is rejected.
+
+So item (ii) is no longer trusted for any branch: **all 77 betting branches are verified end to
+end, with no float arithmetic in any proof.**
 
 ---
 

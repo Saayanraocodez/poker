@@ -17,7 +17,7 @@ independent and run in a pool.
 
 usage:  python checkenum.py enumc_<tag>.jsonl.gz [workers]
 """
-import sys, json, gzip, time
+import sys, os, json, gzip, time
 import checkcert as C
 
 U, MIX, DC = 9, 2, 3
@@ -106,6 +106,21 @@ def main(path, nw=8):
     labs = {}; seen = set(); kinds = {"kill": 0, "split": 0, "leaf": 0}; leafverd = {}; bad = 0; nodes = 0
     boxes = {}; ncontract = 0
     jobs = []
+    # 2026-09-30: certificates are checked in bounded batches WHILE reading (the checks are the
+    # same).  Holding every certificate first would need tens of GB for the million-record trees
+    # of the six long branches (a 1.1 GB .gz holds ~830k records).
+    BATCH = int(os.environ.get("KUHN_CHECK_BATCH", "20000"))
+    pool = Pool(nw)
+
+    def drain():
+        nonlocal bad
+        for nid, kind, v, err in pool.imap_unordered(_check_one, jobs, chunksize=4):
+            if err: bad += 1; print("node %d (%s): %s" % (nid, kind, err))
+            else:
+                kinds[kind] += 1
+                if kind == "leaf": leafverd[v] = leafverd.get(v, 0) + 1
+        jobs.clear()
+
     with gzip.open(path, "rt") as f:
         for line in f:
             r = json.loads(line); nodes += 1
@@ -137,13 +152,9 @@ def main(path, nw=8):
                     jobs.append((nid, "leaf", lab, r["leafcert"]))
             except C.Bad as ex:
                 bad += 1; print("node %d (%s): FAILED %s" % (nid, r["kind"], ex))
+            if len(jobs) >= BATCH: drain()
     missing = len(labs)
-    with Pool(nw) as pool:
-        for nid, kind, v, err in pool.imap_unordered(_check_one, jobs, chunksize=4):
-            if err: bad += 1; print("node %d (%s): %s" % (nid, kind, err))
-            else:
-                kinds[kind] += 1
-                if kind == "leaf": leafverd[v] = leafverd.get(v, 0) + 1
+    drain(); pool.close(); pool.join()
     print("%s: %d nodes  kill %d  split %d  leaf %d %s  failed %d  children never seen %d   (%.0fs)  %s"
           % (path, nodes, kinds["kill"], kinds["split"], kinds["leaf"], leafverd, bad, missing, time.time() - t0, "OK" if bad == 0 and missing == 0 else "*** NOT VERIFIED"))
     return bad == 0 and missing == 0

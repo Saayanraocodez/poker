@@ -2510,6 +2510,128 @@ enumeration discarded before reaching a support -- rests, for these six branches
 directed-rounding interval arithmetic of §16.7, which is sound (every operation rounded
 outward) but not replayed by a checker.
 
+### 16.9.1 Exact propagation certificates: the six branches closed (2026-10-05)
+
+**Why the certified enumeration stalled.**  Every `enumc2`–`enumc6` certificate starts from the
+node's LABEL box, while the float enumeration (the R ledger) killed nodes with
+`treesize6.propagate`, whose chord contractor narrows the box along the whole path from the root.
+On the six branches that path contraction does the pruning.  Without it, the certified trees
+reached 0.15–1.3 million kills per 8 h slice with growing queues (§16.9, RESUME), and no amount
+of grinding closed them.
+
+**The method (`xprop.py`, `enumc7.py`).**  The same propagation, in EXACT rational arithmetic
+(Fractions, no float anywhere), and certified.  A node's box is derived from its parent's box with
+the split coordinate set by the node's label.  Every step that narrows or closes it is recorded:
+
+- forced values `["F", ...]`;
+- chord narrowings `["C", v, [side, condition, new bound]]`;
+- the closing contradiction `["K", ...]`.
+
+Every node record carries its labels, its exact box and that certificate.  Children that
+propagation closes are `pkill` records.  Every four levels a `certbox` certificate from the
+node's exact box (the full ladder) may kill the node.  Leaves get `certleaf` certificates.  The
+only arithmetic shortcut is that a chord's new endpoint is rounded OUTWARD to the grid 2^-60, a
+weaker bound that keeps the rationals small.
+
+**Soundness.**  Each step is a necessary condition for every Nash equilibrium in the box whose
+support labels are the node's.  So no equilibrium is ever discarded.
+
+1. *Enclosure.*  The tree recursion with exact interval arithmetic encloses V for every player at
+   every node.  It also encloses the reach of every node, and `du_i` (x24) over the box.
+2. *Box semantics.*  x_i > 0 forces du_i >= 0 at a Nash equilibrium (utility is linear in a
+   player's own x_i).  So lo_i > 0 or label MIX requires du_i >= 0, and symmetrically for hi_i < 1.
+   A violated requirement closes the box.
+3. *Strong rules.*  du_i > 0 on the whole box forces x_i = 1, and du_i < 0 forces x_i = 0.
+4. *Weak rules, only where the labels prove the set reached.*  Some node of the set has a path
+   whose aggressive edges are labelled 1/MIX and passive edges 0/MIX, so its reach is positive.
+   If the per-node value difference is > 0 at all 6 nodes, then du_i > 0, hence x_i = 1.  Sound
+   for every Nash equilibrium.
+5. *Chord (convexity lemma).*  Pin x_v = lo_v + w t, t in [0, 1], and let U_i(t) be the
+   recursion's upper bound on du_i.  Then U_i is convex in t.  In one deal a coordinate occurs at
+   most once on a root-to-leaf path (each player meets each situation once).  So:
+   - at x_v's own node, the value bound is affine in t;
+   - above it, each value bound is a nonnegative combination of the children's bounds, maximised
+     over the other coordinate's endpoints.  Upper bounds stay convex and lower bounds concave;
+   - Dh = Ahi − Plo is therefore convex;
+   - a reach bound below x_v's node is affine and nonnegative in t;
+   - each node's term is f(Dh), with f(D) = rh·D for D >= 0 and rl·D for D < 0 (rh >= rl >= 0).
+     Above x_v's node, f is convex and nondecreasing and Dh is convex, so the term is convex.
+     Below it, the term is affine.  A sum of convex terms is convex.
+
+   So U_i lies below its chord on [0, 1].  Where the chord through (0, U_i(0)) and (1, U_i(1)) is
+   negative, du_i >= 0 is impossible.  If both ends are negative, it is impossible on the whole
+   box.  Symmetrically, the lower bound is concave, which handles du_i <= 0.
+6. *Labels.*  lo_i >= 1 implies label 1, and hi_i <= 0 implies label 0.  A coordinate whose reach
+   bound is 0 at all six nodes is marked DC (Lemma 2).  A MIX coordinate whose box has no
+   interior is a contradiction.
+
+*Propagation and D-certificates together.*  Propagation uses the reach-weighted Nash conditions,
+and box certificates the own-reach-stripped D-system.  Take any Nash equilibrium p.  Re-choosing p
+optimally at the information sets its owner never reaches gives a p' with the same on-path play.
+p' is still Nash, so propagation keeps it.  p' satisfies the D-system everywhere, so no
+certificate excludes it.  The labels' tree covers p''s labels.  Hence p' lies in a leaf, and the
+on-path conclusions (Theorem 4) hold for p.
+
+**The independent checker (`xcheck.py`, `checkenum2.py`).**  It is written separately from the
+prover.  It imports only the game definition (`tree.py`) and Fractions: not `ivl`, `bnb6`,
+`treesize6` or `xprop`.  Its interval recursion runs over an explicit per-deal game tree.  Every
+node is checked from its parent's record alone, so the checks run in parallel:
+
+- the propagation certificate must replay from the parent's box, as the node's label sets it, to
+  a box CONTAINED in the recorded one (or close it, for `pkill`);
+- the node's labels must be exactly those the box implies, plus its DC marks;
+- a kill's `certbox` certificate must start from a box CONTAINING the node's box;
+- coverage: every child of every split must be seen exactly once.
+
+By induction down the tree, every recorded box is sound.
+
+**Controls.**
+
+| control | result |
+|---|---|
+| prover and checker on 417 children along random walks of three hard branches | identical verdict and box for **417 / 417** |
+| exact against float propagation along random paths | every float kill reproduced (**178 / 178**); exact box always inside the float box; exact stronger at 83 further children |
+| tampered certificates, each confirmed invalid by the PROVER's engine as oracle: a chord bound pushed one grid step, a chord or kill attributed to another condition, a flipped force, an invented force | **2,463 / 2,463 rejected** |
+| 64 certified equilibria (`certified_eq_all.npy`) followed down the exact tree | none discarded; every box contains its point; no layer certificate kills its node: **PASS** |
+| the P1-silent branch, `enumc7` + `checkenum2` | 4,723 nodes, **OK**; 79 leaves = 67 EMPTY_BOX + **12 FAMILY**: the R ledger's 12 FAMILY leaves, **identical label patterns, one to one** |
+| small branch `a11:MIX,a21:1,a31:MIX,a41:0` | 40 nodes (enumc2: 3,188), **OK** |
+
+**The six branches** (`run_enumc7.py 20 branches_enumc7.txt`, ledger `enumc7_summary_nash.txt`):
+
+| branch | nodes | split | pkill | kill | support leaves | checker | enum | check |
+|---|---|---|---|---|---|---|---|---|
+| `a11:0,a21:MIX,a31:MIX,a41:1` | 97 | 32 | 8 | 57 | 0 | **OK** | 126 s | 1 s |
+| `a11:MIX,a21:MIX,a31:0,a41:1` | 2,722 | 907 | 1,186 | 629 | 0 | **OK** | 1,039 s | 53 s |
+| `a11:0,a21:0,a31:MIX,a41:0` | 2,167 | 722 | 614 | 831 | 0 | **OK** | 703 s | 39 s |
+| `a11:MIX,a21:0,a31:0,a41:MIX` | 9,205 | 3,068 | 3,369 | 2,676 | 92, all `EMPTY_BOX` | **OK** | 2,256 s | 175 s |
+| `a11:MIX,a21:MIX,a31:0,a41:MIX` | 5,362 | 1,787 | 1,806 | 1,656 | 113, all `EMPTY_BOX` | **OK** | 1,599 s | 109 s |
+| `a11:0,a21:MIX,a31:0,a41:MIX` | 6,670 | 2,223 | 2,051 | 2,140 | 256, all `EMPTY_BOX` | **OK** | 2,435 s | 214 s |
+| **total** | **26,223** | 8,739 | 9,034 | 7,989 | 461, all empty | **6 / 6 OK** | 2.3 h | 10 min |
+
+Every node is verified, with 0 failed and 0 children never seen.  The `enumc2`–`enumc6` label-box
+enumerations had reached up to 1.3 million kills on single branches without finishing.  The exact
+propagated box is what closes them.  The failure of 2026-09-24 to 10-05 was the starting box, not
+the size of the problem.
+
+**The betting side is now closed with no float arithmetic anywhere.**  71 of the 77 nash-mode
+branches are verified by `enumc2` + `checkenum` (§16.9) and the remaining 6 by `enumc7` +
+`checkenum2`.  Every claim in every tree is an exact certificate replayed by a Fraction-only
+checker.  The paragraph above on "what the six PARTIAL branches rest on" is superseded: they no
+longer rest on directed-rounding interval arithmetic.
+
+**Cross-check: all 77 by the second method too (2026-10-05/06).**  `run_enumc7.py 26
+branches_enumc7_all.txt` re-derived the 71 `enumc2`-verified branches with `enumc7` + `checkenum2`.
+Over all 77 betting branches (`enumc7_summary_nash.txt`):
+
+| | branches | nodes | support leaves | failed | missing | enum | check |
+|---|---|---|---|---|---|---|---|
+| `enumc7` + `checkenum2` | **77 / 77 OK** | 33,104 | 462, all `EMPTY_BOX` | 0 | 0 | 3.7 h | 0.2 h |
+
+The 71 took 6,881 nodes, against `enumc2`'s 4,394,323 for the same branches.  So every betting
+branch is now closed by **two independent certified methods**, each with its own checker:
+label-box certificate trees (`checkenum`, 71 branches) and exact propagation certificate trees
+(`checkenum2`, all 77).  Both say the same thing: no Nash equilibrium has P1 betting.
+
 ## 16.10 The complete Nash set, off path included (2026-09-21)
 
 The 12 FAMILY leaves' D-systems are the whole Nash set (PAPER_KIT Theorem 5): `S_ℓ` = the leaf's
