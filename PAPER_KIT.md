@@ -136,6 +136,11 @@ game theory; Applied computing → Computer games.
     independent reasons — no third party to receive a transfer, and no deterrence slack in the
     first place. **[E,G]**
 
+14. **P1's silence is a minimal-deck phenomenon, now at the level of theorems.** In (3, 4)
+    every equilibrium has P1 silent (Theorem 4). In (3, 5) there is an exact equilibrium in which
+    P1 bets cards 1, 2, 3 and 5. It was found by polishing MCCFR and proved by an exact-arithmetic
+    Krawczyk existence test, re-checked independently (MASTER_DATA §16.11.1). **[E]**
+
 ---
 
 ## 3. Positioning and related work
@@ -1591,9 +1596,28 @@ abstract or Section 1 — they are the two numbers that convince a reader nothin
    cap (mean 223 s) and none of them carries an equilibrium in which P1 bets**; 49 time out.
    A Knuth estimate says why — those cells are 2.5e6 to 1.2e7 nodes against the 4-card silent
    branch's 1.6e4, i.e. 150× to 760×, so they need days each rather than minutes, and in the
-   one measured the estimator found no surviving leaf in 200 walks. (3, 5) is therefore
-   reachable cell by cell with this code and a longer clock; an exhaustive sweep needs a faster
-   per-node step or a cluster. Related: is there a vector analogue of the residue identity
+   one measured the estimator found no surviving leaf in 200 walks. The exact-propagation method
+   that closed the 4-card betting side ports faithfully (60/60 float kills reproduced) but does
+   not close these cells. One measured cell extrapolates to ~3.6 million nodes, about two months
+   on one desktop (MASTER_DATA §16.11). An exhaustive (3, 5) certification needs a stronger
+   per-node bound, not a longer clock.
+
+   **Answered for (3, 5) on the positive side (2026-10-07, MASTER_DATA §16.11.1):** (3, 5)-Kuhn
+   HAS an exact Nash equilibrium in which P1 bets:
+   - P1 opens cards 1 and 2 with probability ≈ 0.1615 each, card 3 ≈ 0.0404 and card 5 ≈ 0.8478;
+   - payoffs ≈ (−0.0350, −0.0013, +0.0363).
+
+   The equilibrium was found by polishing MCCFR (7 of 20 seeds reach it), and proved by an
+   exact-arithmetic Krawczyk (interval-Newton) existence test:
+   - on a 14-equation reduction justified by polynomial identities;
+   - with every one-shot D-condition checked over a box of radius 10⁻³⁰;
+   - re-checked by an independent sympy-free implementation;
+   - with negative controls rejected.
+
+   Some coordinates are irrational (`b₁₁ = (11 + √13)/72`, `c₃₂ = 4 − √13`), others algebraic of
+   degree > 8, so the theorem is an existence statement with a certified enclosure, not a closed
+   form. So the N = n+1 separation is a theorem at (3, 4) (P1 silent in every equilibrium) and at
+   (3, 5) (P1 bets in some equilibrium). Related: is there a vector analogue of the residue identity
    `R = t/D′` for n ≥ 4, where the residue becomes a vector on the (n−2)-simplex?
 4. **Is there a general theorem?** Conjecture: in any n-player constant-sum extensive game
    with n ≥ 3, an equilibrium component with an attainable deterrence boundary produces an

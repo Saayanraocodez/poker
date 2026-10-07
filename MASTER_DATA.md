@@ -2696,6 +2696,96 @@ rich.  (3, 5) is reachable cell by cell with this code and a longer clock; an ex
 needs a faster per-node step (the propagation is 60 coordinates over 60 deals) or a cluster.
 The 15-minute cap, not the method, is what leaves the 49 cells undecided.
 
+**The exact-propagation method on (3, 5) (2026-10-06).**  The method that closed the 4-card
+betting side (§16.9.1) ports to `k35/` (`xprop.py`, `enumc7.py`; NP = 60 coordinates):
+
+- with `KUHN_CARDS=4`, it reproduces the 4-card `xprop` bit for bit, certificates included (87
+  children);
+- with 5 cards, the dependency and certainly-reached sets match `bnb6` / `treesize6`;
+- exact propagation reproduces every float kill (60 / 60) with every exact box inside the float
+  box, at 1.8 s per child.
+
+It does NOT bring the 49 cells into reach.  On `a11:MIX,a21:0,a31:0,a41:0,a51:1` (the cell
+above, Knuth 1.21e7 nodes), three layer-test policies ran side by side for 90 min on 9 workers
+each (`ab_k5.py`):
+
+| layer ladder | nodes | open jobs at 90 min | failed layer tests |
+|---|---|---|---|
+| full | 1,190 | 327, growing ~200/h | 61, ~500 s each |
+| rung 0 | 5,038 | 1,705, growing faster | 350 |
+| rungs 0, 2 | 3,711 | 1,514, growing faster | 269 |
+
+None finished, and no support leaf was reached in any of them.  On 4 cards `enumc7` needed about
+0.3x the Knuth node estimate (4,723 against 1.59e4 on the silent branch).  That puts this cell at
+roughly 3.6 million nodes, which at the full arm's rate (~2,350 nodes/h on 26 workers) is about
+two months, and the other 48 cells at weeks each.  The 5-card propagation is as faithful as the
+4-card one but much less decisive: interval bounds over 60 deals are looser, and a failed
+full-ladder layer test costs ~500 s with 60 coordinates.  **An exhaustive (3, 5) certification
+needs a stronger per-node bound, not more time on one desktop.**
+
+### 16.11.1 (3, 5) HAS an exact Nash equilibrium in which P1 bets (2026-10-07)
+
+**Search (evidence only).**  `polish35.py` regenerated Part 9's MCCFR (`cfrGen` on
+`kuhnGen.Kuhn(3, 5)`, 20 seeds × 10^7 iterations, 1,317 s; P1 opening up to 0.85).  It then
+polished each seed: Newton on the interior support with greedy support repair.  **7 of the 20
+seeds** (0, 3, 6, 8, 12, 13, 14) reach the SAME equilibrium at float exploitability ~1e-16:
+
+- 17 interior coordinates, the other 43 exactly 0 or 1;
+- **P1 opens cards 1 and 2 at 0.1615, card 3 at 0.0404, card 5 at 0.8478, and never card 4.**
+
+The other 13 seeds lost their support in the crude greedy repair.  At 420 digits (`hiprec35.py`)
+the Jacobian has exactly one null direction, (c11, c21) ∝ (1, −1): P3's card-1 and card-2 openings
+matter only through their sum.  With c11 = 3/10 the rest is determined:
+
+- `b11 = b21 = (11 + √13)/72` and `c32 = 4 − √13`;
+- the other 12 coordinates are algebraic of degree > 8 (no minimal polynomial of degree ≤ 8 with
+  coefficients ≤ 10^45, none in ℚ(√13) with coefficients ≤ 10^120).
+
+So there is no closed form, and the proof is an existence proof.
+
+**The certificate (`k35/cert35.py`), exact rational arithmetic throughout.**
+
+1. Every condition is built from k35's tree as an exact polynomial over the 17 interior
+   coordinates, with the 43 pure coordinates at 0/1.
+2. Checked as polynomial identities: on the subspace a21 = a11, b21 = b11, every condition depends
+   on c11, c21 only through s = c11 + c21, and the conditions of a11/a21, b11/b21 and c11/c21
+   coincide.  So the 17 conditions are exactly 14 equations G(y) = 0 in the 14 unknowns
+   y = (A = a11 = a21, B = b11 = b21, s, a31, a32, a43, a44, a51, b33, b42, b44, c32, c33, c41).
+   The game's card-1/card-2 symmetry holds here because nobody calls with card 1 or 2, so the two
+   never meet at showdown.
+3. **Krawczyk** on the box Y = m ± 10^-30 (m = the 73-digit solution, rational), with an exact
+   interval enclosure of the Jacobian over Y: **K(Y) ⊂ int(Y)** (contraction ratio 3.5e-29).  So G
+   has exactly one zero y* in Y.
+4. **Nash.**  For all 60 coordinates the one-shot D-condition holds at y*.  The 17 interior ones
+   satisfy du_i = 0 (the equations) with own reach > 0 on Y, hence D_i = 0.  All 43 pure ones have
+   D_i < 0 (at 0) or > 0 (at 1) on the whole of Y, by exact interval evaluation, with 0 violations.
+   D-conditions at every information set imply Nash (one-shot deviation principle in each
+   player's own tree).
+5. **P1 bets:** a11 = a21, a31 and a51 are bounded away from 0 on Y.
+
+**Re-checked independently** by `k35/cert35check.py`, with no sympy.  It uses its own Fraction
+dict-polynomials built from the tree, its own substitution, differentiation and interval
+evaluation.  The identities, Krawczyk, 0 D-violations and P1 > 0 all agree.  **Negative
+controls:** the box centre moved by 10^-25, and a pure coordinate flipped (a42: 1 → 0), are both
+REJECTED by Krawczyk.  **Positive control** of the exact Nash verifier `xeq35.py`: the 4-card
+off-path witness gives exploitability exactly (0, 0, 0), and its `b12 := 0` variant exactly
+(1/300, 0, 0).  The kuhnGen → k35 coordinate mapping is checked to 1e-15 on random profiles.
+
+**The equilibrium** (`k35/cert35_equilibrium.txt`):
+
+- payoffs u = (−0.0350070, −0.0013126, +0.0363196);
+- P1: bluffs cards 1–2 at 0.1615, card 3 at 0.0404, value-bets card 5 at 0.8478, never bets 4;
+- P2: bets cards 1 and 2 after a check at 0.2029;
+- P3: opens card 1 at 3/10 and card 2 at 0.3295 (only their sum is pinned), and always with card 5.
+
+It lies in the cell `a11:MIX,a21:MIX,a31:MIX,a41:0,a51:MIX`, one of the 49 the exhaustive sweep
+left undecided.
+
+**What this settles.**  Open problem 3 (the N = n + 1 law), for (3, 5).  With a non-minimal deck,
+P1 DOES bet in equilibrium, as Part 9's MCCFR separation (P1 opening 0.76–0.85 when N > n + 1)
+suggested, now as an exact theorem.  Not settled: whether (3, 5) also has equilibria with P1
+silent, or how many betting equilibria it has.
+
 ## 16.12 Refinements — what the machinery decides and what it does not
 
 The seq-mode ledger (weak rules: an action strictly better at every node of its information

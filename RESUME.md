@@ -1,3 +1,39 @@
+# 2026-10-07: (3,5) HAS an exact equilibrium with P1 BETTING (certified)
+
+`polish35.py`: MCCFR at 20 seeds x 10^7, then Newton + support repair. 7 seeds reach one
+equilibrium with P1 opening cards 1,2 at 0.1615, card 3 at 0.0404, card 5 at 0.8478. The (c11, c21)
+split is free.
+
+- `k35/hiprec35.py` + the 400-digit runs: `b11 = (11 + √13)/72`, `c32 = 4 − √13`; the rest is
+  degree > 8.
+- `k35/cert35.py`: exact Krawczyk on a 14x14 reduction justified by polynomial identities, plus
+  the D-conditions on all 60 coordinates. CERTIFIED.
+- `k35/cert35check.py`: independent, no sympy. CONFIRMED.
+- Negative controls (shifted box, flipped `a42`) are rejected.
+- `k35/xeq35.py`: exact Nash verifier, positive and negative controls on the 4-card witness.
+- Equilibrium: `k35/cert35_equilibrium.txt`. MASTER_DATA §16.11.1; PAPER_KIT contribution 14 and
+  open problem 3.
+- Not done: whether (3,5) also has P1-silent equilibria, and how many betting equilibria it has.
+  Nothing is committed since 84dbfcf.
+
+# 2026-10-06 21:00: (3,5) with exact propagation: faithful, but out of reach exhaustively
+
+The `k35/` ports (`xprop.py`, `enumc7.py`, `test_xprop_port.py`) pass:
+- regression at 4 cards, bit for bit;
+- the structure checks at 5 cards;
+- 60/60 float kills reproduced.
+
+The 49 timed-out cells are still out of reach. The 90-min A/B of layer ladders (`ab_k5.py`, logs
+`log_enumc7_k5ab_*`) left every arm open with a growing frontier. Extrapolated, that is ~3.6M
+nodes and about two months for the probed cell (MASTER_DATA §16.11). The checker port
+(`checkcert`/`certleaf`/`xcheck`/`checkenum2` at 60 coordinates, plus an INDEPENDENT check of
+`D_all5.pkl`; `makeD.py` used the `checkD` recursion itself) was NOT done; only do it if
+something closes cells.
+
+Proposed next step (not started): regenerate the (3,5) MCCFR runs (`cfrGen.py`; Part 9 has P1
+opening up to 0.83) and try to polish them into EXACT rational equilibria with P1 betting. One
+success would settle open problem 3 for (3,5) positively.
+
 # 2026-10-05 22:30: ALL 77 BETTING BRANCHES VERIFIED END TO END, no float arithmetic anywhere
 
 `enumc7` + `checkenum2` closed the six branches the grind could not: 26,223 nodes, 461 support
