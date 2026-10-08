@@ -1617,7 +1617,23 @@ abstract or Section 1 — they are the two numbers that convince a reader nothin
    Some coordinates are irrational (`b₁₁ = (11 + √13)/72`, `c₃₂ = 4 − √13`), others algebraic of
    degree > 8, so the theorem is an existence statement with a certified enclosure, not a closed
    form. So the N = n+1 separation is a theorem at (3, 4) (P1 silent in every equilibrium) and at
-   (3, 5) (P1 bets in some equilibrium). Related: is there a vector analogue of the residue identity
+   (3, 5) (P1 bets in some equilibrium).
+
+   **More (MASTER_DATA §16.11.2–3).** The (3, 5) betting equilibria are not a single point, and
+   their payoffs differ.  All three components below are certified exactly:
+
+   | component | what P1 does | P2's payoff |
+   |---|---|---|
+   | I: a whole segment | same play along it; only P3 shifts weight between opening with cards 1 and 2 | −0.0013 |
+   | III: a branch leaving I, a one-parameter family | close to I | about −0.0011, varying along the branch |
+   | II: isolated | bluffs only with card 1 | **+0.0016** |
+
+   With 4 cards P2 gets −1/48 in every equilibrium, so **equilibrium payoffs are unique at (3, 4)
+   and not at (3, 5)**.  P1-silent equilibria: none found.  For all 7 polished check-subgame
+   equilibria, no choice of responses to a bet deters P1, by a margin of +0.026 (calling deters
+   bluffs but feeds value bets).  That is evidence, not proof; the exhaustive silent-cell
+   enumeration that would prove it is running.  Still open: whether I–III are all the betting
+   equilibria. Related: is there a vector analogue of the residue identity
    `R = t/D′` for n ≥ 4, where the residue becomes a vector on the (n−2)-simplex?
 4. **Is there a general theorem?** Conjecture: in any n-player constant-sum extensive game
    with n ≥ 3, an equilibrium component with an attainable deterrence boundary produces an

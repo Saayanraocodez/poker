@@ -1,3 +1,22 @@
+# 2026-10-07 20:10: (3,5) open questions, partly answered (MASTER_DATA §16.11.2–3)
+
+- **How many betting equilibria:** continua, with different payoffs. All three are certified with
+  `k35/cert35seg.py` and `k35/cert35gen.py`; the latter takes `name=p/q` for off-path fixes and
+  `name:=p/q` for free parameters, and `k35/degen35.py` finds the degeneracies.
+  - I: segment c11 in [0, 29/50].
+  - III: a branch, certified at b11 = 27/200.
+  - II: isolated, only card 1 bluffs; P2's payoff is +0.0016 versus −0.0013 on I.
+  - II's mirror is NOT an equilibrium.
+  - Inputs: `q2_polish35.py` → `q2_polish35.json`; `q2_polish35_plus.json` adds the mirror.
+- **P1-silent:** none found. `silent35.py` (restricted MCCFR) + `silent35b.py` (check-subgame
+  polish + deterrence via `silent35_deter.py`): 7 check-subgame equilibria, deterrence impossible
+  with margin +0.0263. This is evidence only.
+- **RUNNING:** `k35/enumc7.py` on the silent cell `a11:0,...,a51:0` (22 workers, tag `k5c7_silentN`,
+  log `k35/log_enumc7_k5c7_silentN.txt`), started from a tool call, so it dies if the app closes.
+  It is resumable: rerun the same command. If it closes with 0 leaves, port the 5-card checker
+  (`checkcert` / `certleaf` / `xcheck` / `checkenum2` at 60 coordinates, plus an INDEPENDENT check of
+  `D_all5.pkl`). That would prove no P1-silent equilibrium.
+
 # 2026-10-07: (3,5) HAS an exact equilibrium with P1 BETTING (certified)
 
 `polish35.py`: MCCFR at 20 seeds x 10^7, then Newton + support repair. 7 seeds reach one

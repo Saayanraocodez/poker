@@ -2783,8 +2783,63 @@ left undecided.
 
 **What this settles.**  Open problem 3 (the N = n + 1 law), for (3, 5).  With a non-minimal deck,
 P1 DOES bet in equilibrium, as Part 9's MCCFR separation (P1 opening 0.76–0.85 when N > n + 1)
-suggested, now as an exact theorem.  Not settled: whether (3, 5) also has equilibria with P1
-silent, or how many betting equilibria it has.
+suggested, now as an exact theorem.
+
+### 16.11.2 (3, 5): the betting equilibria form continua, with DIFFERENT payoffs (2026-10-07)
+
+`q2_polish35.py` re-polished all 20 MCCFR seeds: Newton on the certified support, else a
+distance-ordered support search around the seed's own reading.  15 of 20 float-certify, showing
+three P1 behaviours.  Each was then certified EXACTLY:
+
+- `k35/cert35gen.py`: general Krawczyk.  Conditions that are identical polynomials, or identically
+  0, are dropped and re-derived.  Off-path coordinates are fixed by their D-sign (`name=p/q`).
+  Free directions are fixed as parameters whose conditions stay equations (`name:=p/q`).
+- `k35/degen35.py` finds the degeneracies (null rows and columns) that tell which to use.
+
+| component | P1 opens (cards 1–5) | payoffs (u1, u2, u3) | exact status |
+|---|---|---|---|
+| **I** | 0.1615, 0.1615, 0.0404, 0, 0.8478 | (−0.03501, −0.00131, +0.03632) | **a segment**: c11 ∈ [0, 29/50] with c21 = s* − c11, s* ≈ 0.6295, all certified (`cert35seg.py`).  P1 and P2 play identically along it.  The control c11 ≤ 3/5 FAILS on a22 as predicted (the end is at c11 ≈ 0.5838) |
+| **III** | 0.1592, 0.1592, 0.0390, 0, 0.8341 | (−0.03629, −0.00108, +0.03737) | a branch leaving I at c11 = 0, on which b11 ≠ b21.  A one-parameter family: free direction b11 − b21, and P1's card-1 and card-2 conditions are identical polynomials.  Certified at b11 = 27/200 |
+| **II** | **0.3227, 0, 0.0365, 0, 0.8381** (only card 1 bluffs) | (−0.03921, **+0.00160**, +0.03762) | isolated (up to P2's off-path b53, b54, set to 1 by D-sign).  Certified; D_a21 ≡ D_a11 as polynomials, so a21 = 0 is exactly indifferent |
+
+Two observations:
+
+- **The equilibrium payoffs of (3, 5) are not unique.**  P2 gets −0.00131 on I, −0.00108 at the
+  certified point of III, and +0.00160 at II, and they vary continuously along III.  With 4 cards
+  every equilibrium pays P2 exactly −1/48.
+- **The betting set is not symmetric under swapping cards 1 and 2.**  II's mirror image (only
+  card 2 bluffs) is NOT an equilibrium: exploitability 9.2e-4 and 6.5e-3 after polishing.  Card 2
+  beats card 1 at showdown.
+
+Not settled:
+- whether these are ALL the betting equilibria.  Five seeds stayed at exploitability ~1e-3, two
+  of them near II's mirror, and an exhaustive answer needs the 49 cells (§16.11);
+- where III's branch ends.
+
+### 16.11.3 (3, 5): no P1-silent equilibrium found -- deterrence fails by a fixed margin (2026-10-07)
+
+MCCFR on the RESTRICTED game (P1's openings fixed at 0; `silent35.py`, 20 seeds × 10^7), then
+Newton on the check-subgame (`silent35b.py`).  This replaces a first attempt whose support repair
+judged the full-game exploitability, which was dominated by P1's undeterred opening, and so
+destroyed every support.  Results:
+
+- **7 of 20 seeds reach a check-subgame equilibrium** to float precision: P1's exploitability among
+  never-opening plans, and P2's and P3's, all ~1e-16.
+- **For every one of them, no responses to a bet deter P1.**  In a P1-silent profile the 15
+  responses to a bet are off-path, so Nash leaves them free to be chosen to deter.  Minimising P1's
+  best opening gain over them (multistart SLSQP) leaves **+0.02631**, the same from every seed and
+  start.  At the optimum P1's gains with cards 1, 2 and 5 are balanced at +0.0263: calling deters
+  bluffs and feeds the value bet, and folding does the reverse.
+- Sanity check: the same gain function gives exactly 0 on the opened cards of the certified
+  betting equilibrium, and −0.0207 on its closed card 4.
+
+**Status: evidence, not proof.**  A proof that (3, 5) has NO P1-silent equilibrium must cover
+every check-subgame equilibrium.  The exact label enumeration of the silent cell does exactly that,
+because P1's opening D-condition with the off-path responses as variables is part of its system.
+It is running (`k35/enumc7.py` on `a11:0,a21:0,a31:0,a41:0,a51:0`) and needs the 5-card checker
+port to be a certificate.  For a GIVEN check-subgame equilibrium, infeasibility of deterrence has a
+finite exact certificate: the gains are multilinear in the 15 responses, so a weighted sum is
+minimised at one of the 2^15 vertices of the cube.
 
 ## 16.12 Refinements — what the machinery decides and what it does not
 
