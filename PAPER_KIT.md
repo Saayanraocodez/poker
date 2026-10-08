@@ -140,6 +140,17 @@ game theory; Applied computing → Computer games.
     every equilibrium has P1 silent (Theorem 4). In (3, 5) there is an exact equilibrium in which
     P1 bets cards 1, 2, 3 and 5. It was found by polishing MCCFR and proved by an exact-arithmetic
     Krawczyk existence test, re-checked independently (MASTER_DATA §16.11.1). **[E]**
+    **And in (3, 5) P1 bets in EVERY equilibrium** (MASTER_DATA §16.11.4–5). The proof has three steps:
+    - **Reduction:** a P1-silent equilibrium would need P1's value with the top card, when checking,
+      to be ≥ 19/8. Otherwise "open 5, bluff 1 at rate 3/8" beats every response (an exact vertex
+      certificate over all 2¹⁵ responses).
+    - **Certificate:** a correlated-equilibrium (Lagrangian) certificate shows that no equilibrium of
+      the restricted game reaches 19/8. Twenty-four "no profitable deviation" inequalities bound that
+      value by 28071283/12000000 ≈ 2.3393.
+    - **Check:** the bound is verified exactly over all 2⁴⁰ pure profiles by two independent
+      checkers.
+
+    So the deck size flips the answer: silent always at N = 4, never at N = 5. **[E]**
 
 ---
 
@@ -1617,7 +1628,7 @@ abstract or Section 1 — they are the two numbers that convince a reader nothin
    Some coordinates are irrational (`b₁₁ = (11 + √13)/72`, `c₃₂ = 4 − √13`), others algebraic of
    degree > 8, so the theorem is an existence statement with a certified enclosure, not a closed
    form. So the N = n+1 separation is a theorem at (3, 4) (P1 silent in every equilibrium) and at
-   (3, 5) (P1 bets in some equilibrium).
+   (3, 5) (P1 bets in some equilibrium, and, by §16.11.5, in every equilibrium).
 
    **More (MASTER_DATA §16.11.2–3).** The (3, 5) betting equilibria are not a single point, and
    their payoffs differ.  All three components below are certified exactly:
@@ -1629,11 +1640,20 @@ abstract or Section 1 — they are the two numbers that convince a reader nothin
    | II: isolated | bluffs only with card 1 | **+0.0016** |
 
    With 4 cards P2 gets −1/48 in every equilibrium, so **equilibrium payoffs are unique at (3, 4)
-   and not at (3, 5)**.  P1-silent equilibria: none found.  For all 7 polished check-subgame
-   equilibria, no choice of responses to a bet deters P1, by a margin of +0.026 (calling deters
-   bluffs but feeds value bets).  That is evidence, not proof; the exhaustive silent-cell
-   enumeration that would prove it is running.  Still open: whether I–III are all the betting
-   equilibria. Related: is there a vector analogue of the residue identity
+   and not at (3, 5)**.  **P1-silent equilibria: NONE, proved (MASTER_DATA §16.11.5).**  For all 7
+   polished check-subgame equilibria, no choice of responses to a bet deters P1, by a margin of
+   +0.026 (calling deters bluffs but feeds value bets).  The proof below covers every equilibrium.  **Exact reduction (MASTER_DATA
+   §16.11.4):** a P1-silent equilibrium exists only if the restricted game (P1 forced to check) has
+   an equilibrium in which **P1's value with the top card is at least 19/8**, i.e. opponents put in
+   at least 3/8 chip on average against P1's nuts; the known restricted family has 0.194.
+   Equivalently, P1's deviation "open 5 always, open 1 at rate 3/8" beats every response unless
+   V₅ ≥ 19/8 (vertex certificate over all 2¹⁵ responses, exact).  The exhaustive enumeration of
+   either the silent cell (2.6e7 nodes) or the restricted game (1.2e8) is out of reach.  **Closed
+   by a certificate (§16.11.5):** multipliers on 24 deviation inequalities give
+   L = u_1(·|5) + Σ μ_τ (u_a − u_a(τ)) ≤ 28071283/12000000 ≈ 2.3393 < 19/8 over the whole cube.  L is
+   multilinear, so a check over the 2⁴⁰ pure profiles suffices.  Two independent exact checkers
+   (`k35/ceverify.py`, `k35/ceverify2.py`) give the same maximum.  Still open: whether I–III are all the
+   betting equilibria. Related: is there a vector analogue of the residue identity
    `R = t/D′` for n ≥ 4, where the residue becomes a vector on the (n−2)-simplex?
 4. **Is there a general theorem?** Conjecture: in any n-player constant-sum extensive game
    with n ≥ 3, an equilibrium component with an attainable deterrence boundary produces an
@@ -1648,6 +1668,8 @@ abstract or Section 1 — they are the two numbers that convince a reader nothin
 
 | ✗ do not write | ✓ write instead |
 |---|---|
+| "P1 never bets in Kuhn-type 3-player games" | "P1 is silent in every equilibrium at (3, 4) and bets in every equilibrium at (3, 5)" (Theorem 4; MASTER_DATA §16.11.5) |
+| "we enumerated every (3, 5) equilibrium" | "no (3, 5) equilibrium has P1 silent, by a deterrence cut plus a correlated-equilibrium certificate checked exactly over all 2⁴⁰ pure profiles of the restricted game; the betting equilibria are not enumerated" |
 | "ρ is undefined on a measure-zero set" | "ρ is undefined on 19 of 48 coordinate directions everywhere, and on part of the family for 21 more" |
 | "P1 is the only player exposed to this" | "P1 is the only player whose poles are located by off-path parameters, and the only player whose ρ changes sign; P3 also has poles" |
 | "we verified the zero-sum identity" | "the zero-sum identity is structural and cannot fail; we confirm it numerically as an implementation check" |

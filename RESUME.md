@@ -1,3 +1,30 @@
+# 2026-10-08 (later): (3,5) has NO P1-silent equilibrium -- PROVED (MASTER_DATA §16.11.5)
+
+- Correlated-equilibrium (Lagrangian) certificate `k35/silent35_cert.json`: 24 deviation multipliers
+  with L = u_1(.|5) + sum mu_tau (u_a - u_a(tau)) <= 28071283/12000000 = 2.3393 < 19/8 on the whole cube.
+  Proposed by `k35/cceprop35.py` (float LP, decides nothing); checked EXACTLY over all 2^40 pure profiles
+  by `k35/ceverify.py` (tree payoffs) and `k35/ceverify2.py` (independent pot simulation), same max.
+  Controls `k35/cecontrol.py`.  Logs `k35/log_ceverify35.txt`, `k35/log_ceverify2_35.txt`,
+  `k35/log_cecontrol35.txt`, `k35/log_cceprop35.txt`.
+- Theorem: P1 bets in every (3,5) equilibrium (silent in every (3,4) one).
+- The PokerK35Silent task had relaunched itself at 23:50 on 10-07 (one-time trigger) and ran
+  until about 10:00 on 10-08: 0 leaves.  Ended + process tree killed; superseded.  Nothing is running.
+- NOT committed yet (waiting for the user's go-ahead).
+
+# 2026-10-08: (3,5) silent question reduced to ONE inequality on the restricted game (MASTER_DATA §16.11.4)
+
+- `k35/deter35.py` (exact, all 2^15 response vertices, tree = closed-form table at every vertex):
+  min[3 Ebet(1) + 8 Ebet(5)] = 16 and min[3 Ebet(2) + 8 Ebet(5)] = 16.  With V_1 = -1 (P1 never
+  bets in the restricted game G_c, so card 1 only loses showdowns), a P1-silent equilibrium needs a
+  G_c equilibrium with **V_5 >= 19/8** (top card wins >= 3/8 chip beyond the antes).  Known family:
+  V = (-1, -1, -0.676, 0.155, 2.194111), so 0.194 vs 0.375.
+- Exhaustive G_c is out of reach too: `k35/estrestrict.py` (Knuth, float) 1.2e8 nodes with or
+  without the cut (kill or contractor); seq mode 9.4e7; `k35/estline.py`: the KB / KK lines alone
+  keep 1.5e5 / 1.5e6 partial supports.
+- Open: prove "every NE of G_c has V_5 < 19/8" analytically (plan in the 2026-10-08 chat), or find
+  a stronger bound.  A Lagrangian (coarse-correlated) certificate was being explored in the
+  session scratchpad (`lagr2.py`), not in the repo.
+
 # 2026-10-07 20:10: (3,5) open questions, partly answered (MASTER_DATA §16.11.2–3)
 
 - **How many betting equilibria:** continua, with different payoffs. All three are certified with

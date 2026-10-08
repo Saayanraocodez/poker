@@ -2818,6 +2818,8 @@ Not settled:
 
 ### 16.11.3 (3, 5): no P1-silent equilibrium found -- deterrence fails by a fixed margin (2026-10-07)
 
+> **Superseded by §16.11.5 (2026-10-08): there is NO P1-silent equilibrium, proved exactly.**
+
 MCCFR on the RESTRICTED game (P1's openings fixed at 0; `silent35.py`, 20 seeds × 10^7), then
 Newton on the check-subgame (`silent35b.py`).  This replaces a first attempt whose support repair
 judged the full-game exploitability, which was dominated by P1's undeterred opening, and so
@@ -2857,6 +2859,135 @@ So "(3, 5) has no P1-silent equilibrium" stays a well-supported CONJECTURE:
 Proving it needs either a much stronger per-node bound, or an analytic reduction of the
 check-subgame equilibria (as Table 2/3 did for 4 cards) followed by the finite vertex certificate
 of deterrence infeasibility.
+
+### 16.11.4 (3, 5) silent question reduced EXACTLY to one inequality on the restricted game (2026-10-08)
+
+**Restricted game G_c.**  P1's openings frozen at "check" (no choice, no condition).  Its 40 live
+coordinates are P1's three calls (KKB, KBF, KBC), P2's bet after K and two calls after KKB (KKBF,
+KKBC), P3's bet after KK and call after KB, per card.  The 15 responses to a P1 bet are unreached.
+
+**Decomposition (elementary).**  A P1-silent profile is a Nash equilibrium of (3, 5) iff
+(a) its check part is a Nash equilibrium of G_c, and (b) some responses y to a bet deter every
+opening: `Ebet(j; y) <= V_j` for j = 1..5, where V_j is P1's value of checking with card j.
+Reason: after a P1 bet nobody P2/P3 cares about is reached, so their incentives are those of G_c.
+P1's payoff separates by card, and with card j P1's best deviation is max(Ebet(j; y), V_j).
+
+**Deterrence cut (exact, `k35/deter35.py`).**  Ebet(j; y) is affine in each of the 15 responses
+separately, so any non-negative combination of the Ebet's is minimised at a vertex.  All 2^15 vertices
+in exact rationals, from the tree and independently from the closed-form payoff table, which agree
+at every vertex:
+
+    min_y [ 3 Ebet(1; y) + 8 Ebet(5; y) ] = 16      (attained at 334 vertices)
+    min_y [ 3 Ebet(2; y) + 8 Ebet(5; y) ] = 16      (146 vertices)
+
+In G_c P1 never bets, so with card 1 P1 only reaches showdowns, which it loses: V_1 = -1 exactly.
+So (b) forces 8 V_5 >= 16 + 3:
+
+> **Theorem (reduction).**  If (3, 5) has a P1-silent Nash equilibrium, then G_c has a Nash
+> equilibrium with **V_5 >= 19/8**, i.e. P1 holding the top card wins at least 3/8 of a chip beyond
+> the antes on average.  Equivalently: P1's deviation "open 5 always, open 1 at rate 3/8" gains at
+> least (19 - 8 V_5)/40 against EVERY response to a bet.
+
+The weights come from the LP over vertices at the polished family (below); the claim itself does
+not depend on that.  Single-card thresholds from the same LP (V_1 = -1 only): V_2 >= -2, V_3 >= -4/3,
+V_4 >= 0 (none binding), **V_5 >= 19/8**.  So the obstruction is entirely at the top card.
+
+**The G_c family.**  The 7 polished restricted equilibria (`silent35b.json`) are one family with
+CONSTANT values V = (-1, -1, -0.676, 0.155, 2.194111).  P2 bluffs cards 1 and 2 at 3/16 each and
+bets 5.  P3 (after KK) bluffs 1 and 2 with c11 + c21 = 0.40571 and bets 5.  P3 calls a P2 bet only
+with 5.  P1 calls KBF with 3 and 4 at f3 + f4 = 3/2, KKB with 3 at 0.394 and with 4 and 5 always.
+Its V_5 - 2 = 0.194 against the 0.375 needed; the minimax deterrence gap 0.1316 = 5 x 0.02631 is
+exactly the LP value (no duality gap).  Margins of the unplayed actions at the family (gain per
+unit reach): P2 bet with 3 -0.036, with 4 -0.206; P3 bet with 3 -0.403, with 4 -0.252; P3 call
+after KB with 3 or 4 -0.091.
+
+**What remains: one theorem about G_c alone.**  "Every Nash equilibrium of G_c has V_5 < 19/8."
+Here V_5 - 2 = (1/12) sum over k != l in {1..4} of [ b_k (1 + q_l) + (1 - b_k) c_l (1 + r_k) ],
+with b = P2's bet, q = P3's call after KB, c = P3's bet after KK, r = P2's call after KKB-C.
+
+**What does NOT close it (Knuth estimates, `k35/estrestrict.py`, `k35/estline.py`, float):**
+
+| search | nodes |
+|---|---|
+| G_c label DFS, nash mode, no cut | 1.18e8 +/- 7e7 (3e4 leaves) |
+| + the cut as a kill on boxes | 1.18e8 (it almost never fires: MIX boxes stay wide) |
+| + the cut as a chord contractor | 1.17e8 |
+| V_5 cut, V_5's 16 coordinates split first | 1.6e8 |
+| seq mode (weak rules everywhere) | 9.4e7 |
+| the KB line alone (after P2's bets) / the KK line alone | 2.4e5 / 3.0e6 partial nodes, 1.5e5 / 1.5e6 partial leaves |
+
+The cut does not prune because the interval bound on V_5 only bites once the opponents' bets are
+narrowed, and MIX labels leave them wide until the support system is solved.  The line
+decomposition does not help either: each line on its own keeps too many partial supports.  So the
+exhaustive route on G_c costs about as much as on the full silent cell.  (§16.11.5 closes it
+another way.)
+
+### 16.11.5 (3, 5) has NO P1-silent Nash equilibrium — PROVED (2026-10-08)
+
+**Theorem.**  In every Nash equilibrium of (3, 5)-Kuhn poker, P1 opens with positive probability
+with some card.  With §16.11.1 ((3, 5) has equilibria): P1 bets in **all** of them.  At (3, 4), P1
+is silent in **every** equilibrium, so the two games are on opposite sides of this question.
+
+**Proof.**  By §16.11.4 it suffices that every Nash equilibrium of G_c has V_5 < 19/8.  That comes
+from a **correlated-equilibrium (Lagrangian) certificate**: rationals mu_tau >= 0, one per pure plan
+tau of an agent a = (player, card), such that
+
+    L(s) = u_1(s | 5) + sum_tau mu_tau * ( u_a(s | c) - u_a(tau, s_-a | c) )
+
+satisfies **max over [0,1]^40 of L = 28071283/12000000 = 2.339274... < 19/8**.
+
+1. **NE terms are non-negative.**  At a Nash equilibrium no agent gains by switching to any fixed
+   plan tau, so every bracket is >= 0.  Hence V_5 = u_1(s|5) <= L(s) <= max L < 19/8.
+2. **Pure profiles suffice.**  L is multilinear, so its maximum over the cube is attained at a pure
+   profile.  Each coordinate occurs once per root-to-leaf path of a deal, and the agent's own
+   coordinates are absent from u_a(tau, s_-a).
+3. **The pure-profile check is finite and exact.**  At a pure profile, L is a sum over the 60 deals of
+   terms that each depend only on the 3 agents dealt.  So the maximum over all 2^40 pure profiles is
+   found by exhaustion with one decoupling: fixing two players' plans, the third player's five agents
+   separate.  The arithmetic is integer: one common denominator 12·10^6, numpy int64 under a 2^62
+   guard.
+4. **CE form.**  Written as CE terms mu[rho, tau] P_s(rho) (u_a(rho, s_-a) - u_a(tau, s_-a)) with
+   mu[rho, tau] = mu_tau (`k35/silent35_cert.json`, 136 rows), since u_a(s) = sum_rho P_s(rho)
+   u_a(rho, s_-a).  At a NE, every plan in the support of a best-responding behavioural strategy is a
+   best response.
+
+| file | role |
+|---|---|
+| `k35/deter35.py` | the cut V_5 >= 19/8 (§16.11.4), exact, tree = payoff table at all 2^15 vertices |
+| `k35/cceprop35.py` | PROPOSER, float: cutting-plane LP over mu, separation by local search; 22 rounds, LP value 2.31534.  Decides nothing. |
+| `k35/silent35_cert.json` | the certificate (multipliers on the grid 10^-6) |
+| `k35/ceverify.py` | exact check 1: payoffs from `tree.py`; exhausts P3 x P1 plans, P2 decoupled |
+| `k35/ceverify2.py` | exact check 2, INDEPENDENT: payoffs by direct simulation of the pot (antes, bets, showdown); no `tree.py` / `kuhn3p.py`; exhausts P3 x P2 plans, P1 decoupled |
+| `k35/cecontrol.py` | controls |
+
+Both checks print the same maximum, 28071283/12000000 (logs `k35/log_ceverify35.txt`,
+`k35/log_ceverify2_35.txt`).  The proposer's local search missed the exact maximiser (2.3393 vs
+2.3153), which is why only the exhaustive checks count.  Controls (`k35/log_cecontrol35.txt`):
+- the two payoff implementations agree on all 15,360 (deal, plan triple) cases;
+- the empty certificate gives max L = 4 in both checks (P2 bets 1-4, P3 calls, P1's 5 collects);
+- the proposer's float L and the checkers' exact L agree to 6e-14 at 300 random pure profiles;
+- at the 7 polished restricted equilibria, V_5 = 2.194111 <= L = 2.268 <= max = 2.339.
+  The certificate cannot bound V_5 below a genuine equilibrium, and it does not.
+
+**What the certificate says.**  24 deviation plans carry weight, among them:
+- P1 folding everything with cards 1-3;
+- P1 calling KKB and KBF with card 4;
+- P2 checking with cards 1-3, or checking and calling KKBF with card 4;
+- P3 checking with cards 1-4, or (card 4) checking and calling KB;
+- the "always call" plans with the top card.
+
+If opponents put enough chips into P1's check to make the 5 worth 19/8, one of these simple
+deviations pays.  Since the max is over pure profiles, the bound even holds for every agent-form
+coarse correlated equilibrium of G_c: E[u_1 | 5] <= 2.3393 there too.
+
+**Why this works where enumeration did not.**  The cut turns "deterrence impossible" into one
+linear bound on one equilibrium payoff.  Bounds on payoffs over the equilibrium set have LP-dual
+certificates made of incentive constraints, and those can be checked on pure profiles exactly.  The
+label enumeration has to separate supports instead (1.2e8 nodes).
+
+The silent-cell `enumc7` run turned out to have been relaunched by its one-time task trigger at
+23:50 on 2026-10-07, after the 23:40 stop.  It ran until 10:00 on 2026-10-08 (2,151 jobs done, 0
+leaves, 4,779 queued), was stopped, and is superseded by this proof.
 
 ## 16.12 Refinements — what the machinery decides and what it does not
 
