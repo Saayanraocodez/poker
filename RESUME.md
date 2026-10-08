@@ -11,7 +11,11 @@
 - **P1-silent:** none found. `silent35.py` (restricted MCCFR) + `silent35b.py` (check-subgame
   polish + deterrence via `silent35_deter.py`): 7 check-subgame equilibria, deterrence impossible
   with margin +0.0263. This is evidence only.
-- **RUNNING:** `k35/enumc7.py` on the silent cell `a11:0,...,a51:0` (22 workers, tag `k5c7_silentN`,
+- **STOPPED 23:40 (out of reach):** Knuth puts the silent cell at 2.6e7 ± 1.7e7 float nodes, about
+  3 months for `enumc7`. The run reached 12,853 nodes with 0 leaves and is resumable via
+  `schtasks /run /tn PokerK35Silent`. "No P1-silent equilibrium" stays a conjecture with strong
+  evidence. Keep-awake is released.
+- (previously) **RUNNING:** `k35/enumc7.py` on the silent cell `a11:0,...,a51:0` (22 workers, tag `k5c7_silentN`,
   log `k35/log_enumc7_k5c7_silentN.txt`), started from a tool call, so it dies if the app closes.
   It is resumable: rerun the same command. If it closes with 0 leaves, port the 5-card checker
   (`checkcert` / `certleaf` / `xcheck` / `checkenum2` at 60 coordinates, plus an INDEPENDENT check of

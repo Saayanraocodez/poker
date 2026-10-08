@@ -2841,6 +2841,23 @@ port to be a certificate.  For a GIVEN check-subgame equilibrium, infeasibility 
 finite exact certificate: the gains are multilinear in the 15 responses, so a weighted sum is
 minimised at one of the 2^15 vertices of the cube.
 
+**The exhaustive route is out of reach (2026-10-07 night).**  The silent cell ran under `enumc7` for
+12,707 s on 22 workers (task `PokerK35Silent`, resumable from `k35/enumc_k5c7_silentN.ckpt`): 12,853
+nodes (5,208 splits, 3,626 propagation kills, 4,019 certificate kills) and **0 support leaves**,
+but the queue was still growing (2,729 jobs).  A Knuth estimate on the float label DFS (`estcells.py`,
+300 walks) puts the cell at **2.6e7 ± 1.7e7 nodes**, larger than the betting cell probed in §16.11
+(1.2e7).  At `enumc7`'s ~0.3 of the float tree and ~3,600 nodes/h that is about three months, so the
+run was stopped.
+
+So "(3, 5) has no P1-silent equilibrium" stays a well-supported CONJECTURE:
+- every one of 20 restricted MCCFR runs (7 polished to float precision) leaves P1 a deterrence gap
+  of ~+0.026;
+- the exhaustive enumeration met no support leaf in its first 12,853 nodes.
+
+Proving it needs either a much stronger per-node bound, or an analytic reduction of the
+check-subgame equilibria (as Table 2/3 did for 4 cards) followed by the finite vertex certificate
+of deterrence infeasibility.
+
 ## 16.12 Refinements — what the machinery decides and what it does not
 
 The seq-mode ledger (weak rules: an action strictly better at every node of its information
