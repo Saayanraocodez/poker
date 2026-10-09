@@ -1,3 +1,17 @@
+# 2026-10-08 (night): (3,5) completeness -- partial structure proved (MASTER_DATA §16.11.6)
+
+- Full-game region certificates: `k35/fullprop35v2.py` (float proposer, `KUHN_CE=1` for plan-dependent
+  multipliers) + exact `k35/fullcheck35.py` / `k35/fullcheck35b.py` (independent, threshold B&B).
+  Certificates + logs in `k35/fullcert/`.
+- Proved: a51 > 0; a11, a21, a31, a41 < 1; and with a11 = a21 = 0, 0 < a51 < 1 and a31 > 0.
+- No certificate (relaxation too weak): open4pos, open3zero, open1zero, open5one, open1zero_open2zero
+  (coarse), and 24/30 opening cells.  CE versions of the five crept toward 0 (-0.0007..-0.0019 at
+  ~100 rounds), so they were stopped: the CE relaxation looks too weak as well.
+- Exploration: `explore35.py` seeds 20-35 -> only I and II; `cell35.py` (P1 never opens 3, 4) -> P1
+  always gains 0.017-0.061 by deviating.  "I-III are all" stays OPEN.
+- Throttling trap: processes detached with `nohup ... &` from Git Bash get ~1/6 of a core on this box;
+  run long jobs under a waiting shell (`... & wait`) via run_in_background, or Task Scheduler.
+
 # 2026-10-08 (later): (3,5) has NO P1-silent equilibrium -- PROVED (MASTER_DATA §16.11.5)
 
 - Correlated-equilibrium (Lagrangian) certificate `k35/silent35_cert.json`: 24 deviation multipliers

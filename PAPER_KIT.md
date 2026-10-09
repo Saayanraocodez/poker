@@ -1652,7 +1652,15 @@ abstract or Section 1 — they are the two numbers that convince a reader nothin
    by a certificate (§16.11.5):** multipliers on 24 deviation inequalities give
    L = u_1(·|5) + Σ μ_τ (u_a − u_a(τ)) ≤ 28071283/12000000 ≈ 2.3393 < 19/8 over the whole cube.  L is
    multilinear, so a check over the 2⁴⁰ pure profiles suffices.  Two independent exact checkers
-   (`k35/ceverify.py`, `k35/ceverify2.py`) give the same maximum.  Still open: whether I–III are all the
+   (`k35/ceverify.py`, `k35/ceverify2.py`) give the same maximum.  **Toward "I–III are all"
+   (MASTER_DATA §16.11.6):** the same certificates on the FULL game (two independent exact
+   checkers, `k35/fullcheck35.py` / `fullcheck35b.py`) prove that in every equilibrium:
+   - P1 opens 5 with positive probability;
+   - P1 never opens any of 1–4 with certainty;
+   - if P1 never bluffs with 1 or 2, it opens 3 sometimes and mixes 5.
+
+   Completeness stays open: the coarse relaxation is too weak in 24 of the 30 opening cells holding
+   no known component.  36 MCCFR seeds find only I, II, III.  Still open: whether I–III are all the
    betting equilibria. Related: is there a vector analogue of the residue identity
    `R = t/D′` for n ≥ 4, where the residue becomes a vector on the (n−2)-simplex?
 4. **Is there a general theorem?** Conjecture: in any n-player constant-sum extensive game

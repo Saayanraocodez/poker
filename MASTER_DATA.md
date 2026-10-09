@@ -2986,7 +2986,82 @@ certificates made of incentive constraints, and those can be checked on pure pro
 label enumeration has to separate supports instead (1.2e8 nodes).
 
 The silent-cell `enumc7` run turned out to have been relaunched by its one-time task trigger at
-23:50 on 2026-10-07, after the 23:40 stop.  It ran until 10:00 on 2026-10-08 (2,151 jobs done, 0
+23:50 on 2026-10-07, after the 23:40 stop.
+
+### 16.11.6 (3, 5): which openings can P1 use?  Region certificates on the FULL game (2026-10-08)
+
+**Question.**  Are components I, II, III (§16.11.2) all the equilibria?  Not answered.  But the
+certificate method of §16.11.5 extends to the full game.  It decides "no equilibrium in region R"
+for any R built from:
+- **faces:** an agent (player, card) restricted to a subset of its 16 pure plans, e.g. P1 never
+  opens 5 = agent (P1, 5) on its 8 check plans;
+- **best-response terms:** "agent a plays plan rho with positive probability" gives
+  u_a(rho, s_-a) - u_a(tau, s_-a) >= 0 for every tau.
+
+If max over the face of  sum mu_t Delta_t + sum lam_r BR_r  is < 0 (Delta = coarse-correlated deviation
+terms, mu, lam >= 0, normalised to sum 1), R holds no Nash equilibrium.  The function is multilinear,
+so a check over pure profiles suffices.
+
+| file | role |
+|---|---|
+| `k35/fullprop35v2.py` | PROPOSER, float (decides nothing): cutting-plane LP; profiles = 15 plan indices, payoffs from a precomputed table, local search moves one agent's plan.  `KUHN_CE=1` gives plan-dependent (correlated-equilibrium) multipliers.  Same terms as `fullprop35.py` (checked: identical at 200 profiles). |
+| `k35/fullcheck35.py` | exact check 1: tree payoffs.  Payoff-equivalent plans merged (P1 9 classes, P2 10, P3 16 per card).  All P1 combinations, then P2's agents level by level, each branch closed when its EXACT bound sum_l max_c sum_{k != l} (H_kl[b_k, c] or max_b H_kl) is < 0; P3 decouples.  Integers, int64 under a 2^62 guard. |
+| `k35/fullcheck35b.py` | exact check 2, INDEPENDENT: payoffs by direct simulation of the full game (no `tree.py`), own classes, mirrored order (P2 combinations outside, P1 level by level). |
+
+Controls:
+- the two full-game payoff implementations agree on all 245,760 (deal, plan triple) cases;
+- unfinished test certificates are rejected by both checkers with the same violating values as a
+  plain enumeration;
+- regions that CONTAIN known equilibria ("P1 never opens 4": I; "P1 never opens 2": II) end with no
+  certificate.
+
+**Certified by BOTH checkers (no Nash equilibrium in the region):**
+
+| region | meaning |
+|---|---|
+| a51 = 0 | P1 opens card 5 with positive probability in EVERY equilibrium |
+| a11 = 1, a21 = 1, a31 = 1, a41 = 1 (four certificates) | P1 never opens any of cards 1-4 with certainty |
+| 6 opening cells with a11 = a21 = 0 | if P1 never bluffs with 1 or 2, then 0 < a51 < 1 and a31 > 0 |
+
+All the coarse certificates are tiny (20-30 nonzero multipliers) and check in under a minute.
+
+**Not certifiable this way (LP value exactly 0, i.e. no certificate):**
+- "P1 opens 4 with positive probability", "P1 never opens 3", "P1 never opens 1", "P1 always
+  opens 5", "P1 never opens 1 or 2";
+- 24 of the 30 opening cells that contain no known component.
+
+The value 0 is the relaxation's floor: every region has an identically zero term (a plan
+deviating to itself).  So it means "the coarse-correlated relaxation is too weak here", NOT "there is
+an equilibrium here".  The plan-dependent (correlated-equilibrium) version was run on the five
+single regions.  After ~60 rounds its LP values were still creeping toward 0 (-0.002 to -0.004) with
+violations remaining.  At ~100 rounds the values were:
+
+| region | LP value |
+|---|---|
+| open5one | -0.0007 (round 109) |
+| open3zero | -0.0014 |
+| open1zero_open2zero | -0.0017 |
+| open1zero | -0.0018 |
+| open4pos | -0.0019 |
+
+All were still rising.  The same held for the two remaining cells with a11 = a21 = 0 (-0.005 at
+round 35).  The trajectories point to 0, so the CE relaxation also appears too weak here.  The runs
+were stopped; the logs are `k35/fullcert/log_ce_*.txt` and `log_cecell_*.txt`.
+
+**Exploration (float, evidence only):**
+- `explore35.py`: 16 new MCCFR seeds (20-35, 10^7 iterations).  11 polish to equilibria: 10 x I,
+  1 x II.  5 do not polish; seed 26 opens (0.17, 0.17, 0, 0, 0.81) but stays at exploitability
+  9.6e-4 even with a 4,000-support search.  Over 36 seeds: only I, II, III ever appear.
+- `cell35.py` (restricted MCCFR, P1 never opens 3 or 4, 8 seeds): P1's full-game exploitability is
+  0.017-0.061 at every seed (P2, P3 <= 0.0075).  The restricted equilibria are not full
+  equilibria: P1 wants to open 3.
+
+**Status.**  P1's opening behaviour in any equilibrium is now constrained (5 sometimes; 1-4 never
+for sure; at least one of {1, 2, 3} sometimes, and with no bluff on 1/2 both 3 and a mixed 5).  The
+known components realise (M, M, M, 0, M) and (M, 0, M, 0, M).  Completeness ("I-III are all") stays
+open.  Two ways forward:
+- **stronger relaxations:** CE terms; products of terms with faces, i.e. Sherali-Adams style;
+- **cell-wise exact enumeration (`enumc7`):** with the certified facts as extra pruning.  It ran until 10:00 on 2026-10-08 (2,151 jobs done, 0
 leaves, 4,779 queued), was stopped, and is superseded by this proof.
 
 ## 16.12 Refinements — what the machinery decides and what it does not
