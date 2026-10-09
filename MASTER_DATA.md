@@ -3056,6 +3056,46 @@ were stopped; the logs are `k35/fullcert/log_ce_*.txt` and `log_cecell_*.txt`.
   0.017-0.061 at every seed (P2, P3 <= 0.0075).  The restricted equilibria are not full
   equilibria: P1 wants to open 3.
 
+**Both routes to completeness tried (2026-10-09).**
+
+*Exhaustive search, measured (`k35/estcells.py`, Knuth, 300 walks, nash mode, bet-first order):*
+
+| cell | holds | nodes |
+|---|---|---|
+| (M, M, M, 0, M) | I and III | 7.1e11 +/- 6.5e11 |
+| (M, 0, M, 0, M) | II | 6.2e10 +/- 4.1e10 |
+| (0, M, M, M, M) | nothing known | 7.1e11 +/- 7.0e11 |
+
+That is 10^4-10^6 times the silent cell's 2.6e7, so it is out of reach by any margin (log
+`k35/log_estcells_known.txt`).
+
+*Tighter relaxation, built (`k35/fullprop35p.py`):*
+- **Independence products.**  Every CCE / region term of agent a is multiplied by the plan
+  indicator of each agent b that never shares a deal with a: same player other card, or other
+  player same card.  The product stays MULTILINEAR, so pure profiles still suffice, and it is >= 0
+  at every NE.
+- **What it forbids:** correlating an agent's incentives with the plans of agents it never meets.
+- **What it leaves free:** P2-k vs P3-l correlation (players who DO meet).  That would need
+  non-multilinear products and verification off the vertices.
+- **Size:** about 17,800 product columns on top of the 256 base columns.
+- **Result on the five hard regions:** values still creep toward 0, the same pattern as the CE
+  version.  P1-partner-only products (the only form the existing checkers can verify) reach 0
+  faster.
+
+| region | value (round) |
+|---|---|
+| open3zero | -0.006 (34) |
+| open1zero | -0.006 (39) |
+| open1zero_open2zero | -0.005 (52) |
+| open5one | -0.009 (26) |
+| open4pos | -0.028 (10; its LP solves became slow) |
+
+No new certificate; runs stopped.  Logs: `k35/fullcert/log_p_*.txt`, `log_p1_*.txt`.
+
+So the hierarchy has to reach correlation between players who meet, P2-k with P3-l, to make progress.
+That means degree-2 products checked by interval branch-and-bound off the vertices: a substantially
+bigger instrument.
+
 **Status.**  P1's opening behaviour in any equilibrium is now constrained (5 sometimes; 1-4 never
 for sure; at least one of {1, 2, 3} sometimes, and with no bluff on 1/2 both 3 and a mixed 5).  The
 known components realise (M, M, M, 0, M) and (M, 0, M, 0, M).  Completeness ("I-III are all") stays

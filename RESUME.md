@@ -1,3 +1,12 @@
+# 2026-10-09: both routes to (3,5) completeness tried -- neither closes it (MASTER_DATA §16.11.6)
+
+- Exhaustive: Knuth puts the opening cells at 6e10-7e11 nodes (`k35/log_estcells_known.txt`): out.
+- Tighter relaxation: `k35/fullprop35p.py` adds multilinear independence products (each term times
+  the plan indicator of every agent it never meets).  The five hard regions still creep toward 0
+  (-0.005..-0.009 at rounds 26-54); P1-partner-only products reach 0 faster.  Runs stopped.
+- The next level must constrain P2-k / P3-l correlation (players who meet): degree-2 products with
+  off-vertex (interval) verification.  "I-III are all" stays OPEN.
+
 # 2026-10-08 (night): (3,5) completeness -- partial structure proved (MASTER_DATA §16.11.6)
 
 - Full-game region certificates: `k35/fullprop35v2.py` (float proposer, `KUHN_CE=1` for plan-dependent
