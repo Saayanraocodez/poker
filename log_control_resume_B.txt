@@ -1,0 +1,19 @@
+B1 kill in the top expansion: KILLED
+B2 kill in the pool phase:    KILLED
+B3 kill again:                finished rc=0
+   appended 5000 junk bytes past the checkpoint
+B4 resume over junk, kill:    finished rc=0
+   deleted the .ckpt (forces the migration path)
+B5 migrate, resume, kill:     finished rc=0
+   simulated a kill between the migration's renames (output moved aside, no .ckpt)
+B6 resume to the end:         finished rc=0 206s
+   check: ['enumc_c6ctlB.jsonl.gz: 9566 nodes  kill 6377  split 3188  leaf 0 {}  failed 0  children never seen 0   (8s)  OK']  records/dups: (9565, 0)
+resume lines:
+migrated enumc_c6ctlB.jsonl.gz (0 records, tail: no header); original kept as enumc_c6ctlB.jsonl.gz.premigrate
+a11:MIX,a21:0,a31:1,a41:1: enumc_c6ctlB.jsonl.gz has no complete header (cut off before the first checkpoint) -- starting afresh
+a11:MIX,a21:0,a31:1,a41:1: RESUMED from enumc_c6ctlB.jsonl.gz: 9223 records (kill 6035 split 3188 leaf 0), tail clean; 342 unfinished nodes, 240 ancestor splits replayed and matched in 21s
+migrated enumc_c6ctlB.jsonl.gz (9565 records, tail: truncated stream (BadGzipFile)); original kept as enumc_c6ctlB.jsonl.gz.premigrate
+a11:MIX,a21:0,a31:1,a41:1: RESUMED from enumc_c6ctlB.jsonl.gz: 9565 records (kill 6377 split 3188 leaf 0), tail truncated stream (BadGzipFile); 0 unfinished nodes, 0 ancestor splits replayed and matched in 0s
+restored enumc_c6ctlB.jsonl.gz from an interrupted migration
+migrated enumc_c6ctlB.jsonl.gz (9565 records, tail: clean); original kept as enumc_c6ctlB.jsonl.gz.premigrate
+a11:MIX,a21:0,a31:1,a41:1: RESUMED from enumc_c6ctlB.jsonl.gz: 9565 records (kill 6377 split 3188 leaf 0), tail clean; 0 unfinished nodes, 0 ancestor splits replayed and matched in 0s

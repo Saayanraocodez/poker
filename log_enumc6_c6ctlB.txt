@@ -1,0 +1,56 @@
+----- run (limit 4)
+----- run (limit 170)
+migrated enumc_c6ctlB.jsonl.gz (0 records, tail: no header); original kept as enumc_c6ctlB.jsonl.gz.premigrate
+a11:MIX,a21:MIX,a31:MIX,a41:1: enumc_c6ctlB.jsonl.gz has no complete header (cut off before the first checkpoint) -- starting afresh
+a11:MIX,a21:MIX,a31:MIX,a41:1: top expansion -> 393 subtrees, 82s
+   rungs {'layer': (0,), 'fdead': (0, 1, 2, 3), 'fdeadu': (0,)}  job budget 100 nodes / 60 s  checkpoint every 15s
+   jobs 13 done (373 queued, 7 running, 0 handed back)  kill 913 split 450 leaf 0 {}  float-unsure 0  152s  | fdead 656 calls 0 fail 73s (0s in fails)  layer 257 calls 0 fail 33s (0s in fails)
+----- run (limit 90)
+a11:MIX,a21:MIX,a31:MIX,a41:1: RESUMED from enumc_c6ctlB.jsonl.gz: 2087 records (kill 1265 split 822 leaf 0), tail clean; 380 unfinished nodes, 365 ancestor splits replayed and matched in 61s
+   rungs {'layer': (0,), 'fdead': (0, 1, 2, 3), 'fdeadu': (0,)}  job budget 100 nodes / 60 s  checkpoint every 15s
+----- run (limit 90)
+a11:MIX,a21:MIX,a31:MIX,a41:1: RESUMED from enumc_c6ctlB.jsonl.gz: 2673 records (kill 1671 split 1002 leaf 0), tail clean; 334 unfinished nodes, 322 ancestor splits replayed and matched in 41s
+   rungs {'layer': (0,), 'fdead': (0, 1, 2, 3), 'fdeadu': (0,)}  job budget 100 nodes / 60 s  checkpoint every 15s
+----- run (limit 90)
+migrated enumc_c6ctlB.jsonl.gz (3903 records, tail: clean); original kept as enumc_c6ctlB.jsonl.gz.premigrate
+a11:MIX,a21:MIX,a31:MIX,a41:1: RESUMED from enumc_c6ctlB.jsonl.gz: 3903 records (kill 2525 split 1378 leaf 0), tail clean; 232 unfinished nodes, 209 ancestor splits replayed and matched in 33s
+   rungs {'layer': (0,), 'fdead': (0, 1, 2, 3), 'fdeadu': (0,)}  job budget 100 nodes / 60 s  checkpoint every 15s
+----- run (limit None)
+restored enumc_c6ctlB.jsonl.gz from an interrupted migration
+migrated enumc_c6ctlB.jsonl.gz (5334 records, tail: truncated stream (EOFError)); original kept as enumc_c6ctlB.jsonl.gz.premigrate
+a11:MIX,a21:MIX,a31:MIX,a41:1: RESUMED from enumc_c6ctlB.jsonl.gz: 5334 records (kill 3515 split 1819 leaf 0), tail truncated stream (EOFError); 124 unfinished nodes, 105 ancestor splits replayed and matched in 17s
+   rungs {'layer': (0,), 'fdead': (0, 1, 2, 3), 'fdeadu': (0,)}  job budget 100 nodes / 60 s  checkpoint every 15s
+   jobs 114 done (3 queued, 7 running, 0 handed back)  kill 4487 split 2248 leaf 0 {}  float-unsure 0  78s  | fdead 324 calls 0 fail 15s (0s in fails)  layer 648 calls 0 fail 80s (0s in fails)
+   jobs 124 done (29 queued, 0 running, 29 handed back)  kill 4570 split 2299 leaf 0 {}  float-unsure 1  140s  | fdead 327 calls 1 fail 96s (57s in fails)  layer 733 calls 4 fail 97s (3s in fails)
+   jobs 134 done (19 queued, 7 running, 36 handed back)  kill 4677 split 2351 leaf 0 {}  float-unsure 1  208s  | fdead 395 calls 1 fail 151s (57s in fails)  layer 781 calls 13 fail 108s (7s in fails)
+   jobs 137 done (56 queued, 7 running, 76 handed back)  kill 4688 split 2375 leaf 0 {}  float-unsure 2  270s  | fdead 407 calls 2 fail 380s (137s in fails)  layer 786 calls 18 fail 110s (9s in fails)
+   jobs 140 done (102 queued, 7 running, 125 handed back)  kill 4704 split 2406 leaf 0 {}  float-unsure 5  342s  | fdead 424 calls 5 fail 694s (329s in fails)  layer 796 calls 26 fail 115s (14s in fails)
+   jobs 144 done (128 queued, 7 running, 155 handed back)  kill 4750 split 2442 leaf 0 {}  float-unsure 6  409s  | fdead 470 calls 6 fail 1008s (385s in fails)  layer 807 calls 36 fail 120s (19s in fails)
+   jobs 148 done (132 queued, 7 running, 163 handed back)  kill 4830 split 2484 leaf 0 {}  float-unsure 7  493s  | fdead 548 calls 7 fail 1195s (455s in fails)  layer 819 calls 45 fail 124s (23s in fails)
+   jobs 153 done (144 queued, 7 running, 180 handed back)  kill 4988 split 2569 leaf 0 {}  float-unsure 82  553s  | fdead 571 calls 9 fail 1499s (633s in fails)  fdeadu 207 calls 73 fail 42s (27s in fails)  layer 864 calls 87 fail 140s (38s in fails)
+   jobs 160 done (146 queued, 7 running, 189 handed back)  kill 5180 split 2666 leaf 0 {}  float-unsure 82  614s  | fdead 763 calls 9 fail 1750s (633s in fails)  fdeadu 207 calls 73 fail 42s (27s in fails)  layer 895 calls 118 fail 154s (51s in fails)
+   jobs 162 done (162 queued, 7 running, 207 handed back)  kill 5212 split 2690 leaf 0 {}  float-unsure 82  677s  | fdead 793 calls 9 fail 1869s (633s in fails)  fdeadu 207 calls 73 fail 42s (27s in fails)  layer 902 calls 123 fail 156s (53s in fails)
+   jobs 166 done (196 queued, 7 running, 245 handed back)  kill 5240 split 2721 leaf 0 {}  float-unsure 84  748s  | fdead 823 calls 11 fail 2174s (759s in fails)  fdeadu 207 calls 73 fail 42s (27s in fails)  layer 909 calls 130 fail 159s (56s in fails)
+   jobs 169 done (203 queued, 7 running, 255 handed back)  kill 5263 split 2736 leaf 0 {}  float-unsure 84  811s  | fdead 846 calls 11 fail 2399s (759s in fails)  fdeadu 207 calls 73 fail 42s (27s in fails)  layer 913 calls 134 fail 161s (58s in fails)
+   jobs 174 done (210 queued, 7 running, 267 handed back)  kill 5301 split 2759 leaf 1 {'EMPTY_BOX': 1}  float-unsure 86  883s  | fdead 886 calls 13 fail 2748s (895s in fails)  fdeadu 207 calls 73 fail 42s (27s in fails)  layer 918 calls 139 fail 162s (60s in fails)
+   jobs 178 done (228 queued, 7 running, 289 handed back)  kill 5567 split 2901 leaf 1 {'EMPTY_BOX': 1}  float-unsure 187  947s  | fdead 950 calls 13 fail 2934s (895s in fails)  fdeadu 507 calls 174 fail 92s (58s in fails)  layer 936 calls 154 fail 169s (66s in fails)
+   jobs 182 done (247 queued, 7 running, 312 handed back)  kill 5662 split 2958 leaf 1 {'EMPTY_BOX': 1}  float-unsure 187  1017s  | fdead 1042 calls 13 fail 3147s (895s in fails)  fdeadu 507 calls 174 fail 92s (58s in fails)  layer 952 calls 167 fail 174s (71s in fails)
+   jobs 188 done (257 queued, 7 running, 328 handed back)  kill 5745 split 3005 leaf 2 {'EMPTY_BOX': 2}  float-unsure 187  1082s  | fdead 1122 calls 13 fail 3446s (895s in fails)  fdeadu 507 calls 174 fail 92s (58s in fails)  layer 965 calls 177 fail 179s (75s in fails)
+   jobs 192 done (273 queued, 7 running, 348 handed back)  kill 5891 split 3086 leaf 2 {'EMPTY_BOX': 2}  float-unsure 187  1144s  | fdead 1248 calls 13 fail 3686s (895s in fails)  fdeadu 507 calls 174 fail 92s (58s in fails)  layer 1001 calls 193 fail 189s (82s in fails)
+   jobs 197 done (286 queued, 7 running, 366 handed back)  kill 6052 split 3173 leaf 2 {'EMPTY_BOX': 2}  float-unsure 187  1218s  | fdead 1389 calls 13 fail 3875s (895s in fails)  fdeadu 507 calls 174 fail 92s (58s in fails)  layer 1039 calls 211 fail 200s (90s in fails)
+   jobs 209 done (294 queued, 7 running, 386 handed back)  kill 6218 split 3260 leaf 2 {'EMPTY_BOX': 2}  float-unsure 187  1290s  | fdead 1493 calls 13 fail 4118s (895s in fails)  fdeadu 507 calls 174 fail 92s (58s in fails)  layer 1113 calls 223 fail 213s (95s in fails)
+   jobs 213 done (334 queued, 7 running, 430 handed back)  kill 6285 split 3314 leaf 3 {'EMPTY_BOX': 3}  float-unsure 189  1364s  | fdead 1561 calls 15 fail 4373s (1000s in fails)  fdeadu 507 calls 174 fail 92s (58s in fails)  layer 1127 calls 236 fail 218s (100s in fails)
+   jobs 217 done (361 queued, 7 running, 461 handed back)  kill 6325 split 3348 leaf 4 {'EMPTY_BOX': 4}  float-unsure 191  1438s  | fdead 1603 calls 17 fail 4684s (1117s in fails)  fdeadu 507 calls 174 fail 92s (58s in fails)  layer 1136 calls 245 fail 222s (104s in fails)
+   jobs 225 done (371 queued, 7 running, 479 handed back)  kill 6510 split 3447 leaf 7 {'EMPTY_BOX': 7}  float-unsure 242  1514s  | fdead 1691 calls 20 fail 5054s (1292s in fails)  fdeadu 654 calls 222 fail 113s (72s in fails)  layer 1152 calls 260 fail 227s (109s in fails)
+   jobs 230 done (393 queued, 7 running, 506 handed back)  kill 6604 split 3511 leaf 19 {'EMPTY_BOX': 19}  float-unsure 294  1579s  | fdead 1726 calls 20 fail 5246s (1292s in fails)  fdeadu 765 calls 274 fail 133s (87s in fails)  layer 1166 calls 274 fail 233s (115s in fails)
+   jobs 233 done (406 queued, 7 running, 522 handed back)  kill 6627 split 3529 leaf 19 {'EMPTY_BOX': 19}  float-unsure 294  1639s  | fdead 1749 calls 20 fail 5464s (1292s in fails)  fdeadu 765 calls 274 fail 133s (87s in fails)  layer 1170 calls 278 fail 235s (116s in fails)
+   jobs 237 done (405 queued, 7 running, 525 handed back)  kill 6710 split 3570 leaf 19 {'EMPTY_BOX': 19}  float-unsure 294  1710s  | fdead 1830 calls 20 fail 5701s (1292s in fails)  fdeadu 765 calls 274 fail 133s (87s in fails)  layer 1182 calls 288 fail 239s (120s in fails)
+   jobs 240 done (422 queued, 7 running, 545 handed back)  kill 6749 split 3598 leaf 19 {'EMPTY_BOX': 19}  float-unsure 295  1779s  | fdead 1869 calls 21 fail 5911s (1355s in fails)  fdeadu 765 calls 274 fail 133s (87s in fails)  layer 1191 calls 296 fail 243s (124s in fails)
+   jobs 245 done (432 queued, 7 running, 560 handed back)  kill 6815 split 3636 leaf 19 {'EMPTY_BOX': 19}  float-unsure 296  1857s  | fdead 1934 calls 22 fail 6176s (1429s in fails)  fdeadu 765 calls 274 fail 133s (87s in fails)  layer 1202 calls 305 fail 247s (128s in fails)
+   jobs 249 done (444 queued, 7 running, 576 handed back)  kill 6943 split 3706 leaf 19 {'EMPTY_BOX': 19}  float-unsure 365  1920s  | fdead 1945 calls 25 fail 6468s (1637s in fails)  fdeadu 951 calls 340 fail 176s (116s in fails)  layer 1233 calls 336 fail 260s (141s in fails)
+   jobs 255 done (450 queued, 7 running, 588 handed back)  kill 7079 split 3777 leaf 19 {'EMPTY_BOX': 19}  float-unsure 365  1980s  | fdead 2078 calls 25 fail 6716s (1637s in fails)  fdeadu 951 calls 340 fail 176s (116s in fails)  layer 1252 calls 352 fail 267s (148s in fails)
+   jobs 258 done (462 queued, 7 running, 603 handed back)  kill 7127 split 3807 leaf 19 {'EMPTY_BOX': 19}  float-unsure 366  2089s  | fdead 2126 calls 26 fail 6916s (1702s in fails)  fdeadu 951 calls 340 fail 176s (116s in fails)  layer 1260 calls 359 fail 270s (151s in fails)
+   jobs 264 done (476 queued, 7 running, 623 handed back)  kill 7369 split 3935 leaf 19 {'EMPTY_BOX': 19}  float-unsure 443  2177s  | fdead 2225 calls 30 fail 7334s (1983s in fails)  fdeadu 1167 calls 413 fail 218s (142s in fails)  layer 1320 calls 415 fail 291s (172s in fails)
+   jobs 268 done (488 queued, 7 running, 639 handed back)  kill 7397 split 3955 leaf 19 {'EMPTY_BOX': 19}  float-unsure 443  2238s  | fdead 2253 calls 30 fail 7616s (1983s in fails)  fdeadu 1167 calls 413 fail 218s (142s in fails)  layer 1324 calls 419 fail 293s (174s in fails)
+   jobs 274 done (490 queued, 7 running, 647 handed back)  kill 7539 split 4027 leaf 19 {'EMPTY_BOX': 19}  float-unsure 444  2340s  | fdead 2391 calls 31 fail 7911s (2020s in fails)  fdeadu 1167 calls 413 fail 218s (142s in fails)  layer 1347 calls 437 fail 300s (181s in fails)
+   jobs 277 done (498 queued, 7 running, 658 handed back)  kill 7545 split 4034 leaf 19 {'EMPTY_BOX': 19}  float-unsure 446  2453s  | fdead 2399 calls 33 fail 8197s (2165s in fails)  fdeadu 1167 calls 413 fail 218s (142s in fails)  layer 1348 calls 438 fail 301s (181s in fails)

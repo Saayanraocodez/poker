@@ -315,6 +315,27 @@ def parse_box(b): return [[fr(x[0]), fr(x[1]), bool(x[2]), bool(x[3])] for x in 
 def box_empty(b): return b[0] > b[1] or (b[0] == b[1] and (b[2] or b[3]))
 
 
+def label_box(lab, gens):
+    """The box the node's LABELS allow for each variable of a certificate: a 0/1 label is
+    the point, MIX is the open interval (0,1), anything else (DC, U) is [0,1]."""
+    out = []
+    for i in gens:
+        v = int(lab[i])
+        if v == 0: out.append([fr(0), fr(0), False, False])
+        elif v == 1: out.append([fr(1), fr(1), False, False])
+        elif v == MIX: out.append([fr(0), fr(1), True, True])
+        else: out.append([fr(0), fr(1), False, False])
+    return out
+
+
+def box_contains(outer, inner):
+    """outer contains inner, openness included."""
+    for (a, b, ao, bo), (c, d, co, do) in zip(outer, inner):
+        if a > c or (a == c and ao and not co): return False
+        if b < d or (b == d and bo and not do): return False
+    return True
+
+
 def apply_lo(b, v, strict):
     if v > b[0]: b[0] = v; b[2] = strict
     elif v == b[0] and strict: b[2] = True
@@ -446,7 +467,7 @@ def check_lp(polys, kinds, box, lp, nv):
     need(bnd <= 1, "dual bound %s exceeds 1" % bnd)
 
 
-def check_box_cert(cert, rowof, lab=None):
+def check_box_cert(cert, rowof, lab=None, outer=None):
     """cert: certbox certificate.  rowof(origin) -> (poly over the cert's gens, kind): the
     checker's own construction of the row the certificate names.  -> number of nodes."""
     if "trivial" in cert: return 0
@@ -461,6 +482,16 @@ def check_box_cert(cert, rowof, lab=None):
         need(bool(p), "row polynomial is zero")
         polys.append(p)
     bounds = parse_box(cert["bounds"])
+    # 2026-09-26: the declared starting box used to be taken on trust.  A certificate proves
+    # emptiness of {system} INSIDE its box, so the box must contain everything the labels
+    # allow -- otherwise a box that simply excludes the solutions "proves" a false kill.
+    # the reference is the box the NODE is known to lie in: a certified inherited box when the
+    # caller has one (enumc3: contraction replayed down the tree), else the labels' box
+    if outer is not None:
+        need(box_contains(bounds, outer), "certificate starts from a box tighter than the node's certified box")
+    elif lab is not None:
+        need(box_contains(bounds, label_box(lab, gens)),
+             "certificate starts from a box tighter than the node's labels allow")
     nodes = cert["nodes"]
     final = [None] * len(nodes); children = {}; closed = [False] * len(nodes)
     for idx, rec in enumerate(nodes):

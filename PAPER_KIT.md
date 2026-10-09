@@ -36,7 +36,7 @@ unless "properness" is read as normal-form properness, which Corollary 6.1 makes
 > cofactors, rational LP duals, interval steps under outward rounding — replayed by a
 > solver-free rational checker. We then decide the equilibrium refinements exactly on this set,
 > writing Kreps–Wilson beliefs in closed form as leading coefficients along a tremble.
-> Sequential rationality pins every off-path coordinate but two — eight of them by belief-free
+> Sequential rationality pins every off-path coordinate but two — eighteen of them by exact
 > dominance — and halves the window of the third player's call frequency `c₃₃` to `[½, 15/16]`.
 > Every information set is binary, so extensive-form properness coincides with perfection, and
 > it still leaves `c₃₃` an interval; only normal-form properness selects a point. We define an
@@ -72,14 +72,18 @@ game theory; Applied computing → Computer games.
 
 2. **Proofs a reader can replay.** Every verdict is a stored certificate checked by an
    independent ~450-line Fraction checker with no solver in it: 66,699 / 66,699 support leaves,
-   and the enumeration's node kills for 71 of the 77 betting branches (4,394,323 nodes), 0
-   failures; the remaining interval prunes use outward rounding. **[E]**
+   and the enumeration's node kills for **all 77** betting branches, with 0 failures. 71 are
+   label-box certificate trees (4,394,323 nodes). The last 6 are exact-propagation certificate
+   trees (26,223 nodes), replayed by a second, independently written exact checker. No float
+   arithmetic remains in any proof. **[E]**
 
 3. **Refinements decided exactly, and the properness question answered.** *Theorem 6*: beliefs in
-   closed form as leading coefficients along a tremble; eight coordinates settled by belief-free
+   closed form as leading coefficients along a tremble; eighteen coordinates settled by exact
    dominance; in every sequential equilibrium every off-path coordinate is pinned except `c₂₃`
    and `c₃₃` (all of them at the corner sub-families), and `c₃₃ ∈ [½, 15/16]`; all 398 off-path
-   support patterns decided (377 certified empty, 21 witnessed with exact profiles and beliefs).
+   support patterns decided, every exclusion and every witness replayed by an independent
+   Fraction checker (637 kill records, 3,554 box certificates, 21 witnesses on concrete tremble
+   curves; 12 / 12 leaves, 0 failed).
    Because every information set is binary, extensive-form properness equals perfection, and it
    leaves `c₃₃` an interval — so the selection below is a property of the normal form
    (*Corollary 6.1*). **[P,E]**
@@ -131,6 +135,22 @@ game theory; Applied computing → Computer games.
 13. **A two-player control** showing the phenomenon requires three players for two logically
     independent reasons — no third party to receive a transfer, and no deterrence slack in the
     first place. **[E,G]**
+
+14. **P1's silence is a minimal-deck phenomenon, now at the level of theorems.** In (3, 4)
+    every equilibrium has P1 silent (Theorem 4). In (3, 5) there is an exact equilibrium in which
+    P1 bets cards 1, 2, 3 and 5. It was found by polishing MCCFR and proved by an exact-arithmetic
+    Krawczyk existence test, re-checked independently (MASTER_DATA §16.11.1). **[E]**
+    **And in (3, 5) P1 bets in EVERY equilibrium** (MASTER_DATA §16.11.4–5). The proof has three steps:
+    - **Reduction:** a P1-silent equilibrium would need P1's value with the top card, when checking,
+      to be ≥ 19/8. Otherwise "open 5, bluff 1 at rate 3/8" beats every response (an exact vertex
+      certificate over all 2¹⁵ responses).
+    - **Certificate:** a correlated-equilibrium (Lagrangian) certificate shows that no equilibrium of
+      the restricted game reaches 19/8. Twenty-four "no profitable deviation" inequalities bound that
+      value by 28071283/12000000 ≈ 2.3393.
+    - **Check:** the bound is verified exactly over all 2⁴⁰ pure profiles by two independent
+      checkers.
+
+    So the deck size flips the answer: silent always at N = 4, never at N = 5. **[E]**
 
 ---
 
@@ -563,9 +583,14 @@ supports: 656 certified empty, 12 FAMILY — sub-families A (4 leaves), B (3), C
 every corner. Every leaf verdict is a stored certificate replayed by an independent
 Fraction-only checker (`checkcert.py`: 66,699 of 66,699 leaves — 668 silent, 45,276 nash-mode
 betting, 20,755 seq-mode betting — verified, 0 failed; `cert_summary_R.txt`). The *node
-kills* above the leaves are certified too for 71 of the 77 betting cells: each is re-derived as
-a tree in which every pruned node carries its own exact certificate, and `checkenum.py` replays
-all 4,394,323 nodes with 0 failures (MASTER_DATA §16.9). Lemma 5 finishes. ∎
+kills* above the leaves are certified too, for all 77 betting cells. Each cell is re-derived as a
+tree in which every pruned node carries its own exact certificate.
+- 71 cells: `checkenum.py` replays all 4,394,323 nodes with 0 failures (MASTER_DATA §16.9).
+- The last 6: every node also carries its exact propagated box and a certificate of that box.
+  `checkenum2.py` replays all 26,223 nodes with an independent exact implementation, with 0
+  failures (§16.9.1).
+
+Lemma 5 finishes. ∎
 **[E,P]**
 
 **Corollary 4.1.** In every Nash equilibrium P1 checks with every card (`a_j1 = 0`,
@@ -683,11 +708,13 @@ Kreps–Wilson consistency in closed form.
 
 **Theorem 6 (sequential = proper set).** Over the complete Nash set of Theorem 5:
 
-1. *(dominance, belief-free)* `a14 = a24 = c14 = c24 = b12 = 0` and `a44 = c44 = 1` in every
-   sequential equilibrium, because `D_v = c·R_v` identically with `c = −1` resp. `+5` — the
-   same chip difference at **every node** of the set, under every belief; and `b42 = 1`
-   because `D_{b42}/R_{b42} ≥ 4 > 0` everywhere. Six of these are free in all of `[0,1]` over
-   the Nash set (Table 4): the refinement collapses eight dimensions to points.
+1. *(dominance, belief-free)* Eighteen coordinates satisfy `D_v = c·R_v` identically, with
+   `c = −1` (calling with the worst cards: `x12, x13, x14, x24` for each player `x`), `+4`
+   (`x43`) or `+5` (`x44`) — the same chip difference at **every node** of the set, under every
+   belief — so each is pinned in every sequential equilibrium; and `b42 = 1` because
+   `D_{b42}/R_{b42} ≥ 4 > 0` everywhere. Thirteen of the eighteen have a nontrivial Nash window
+   (Table 4), eight of them all of `[0,1]`: the refinement collapses thirteen dimensions to
+   points.
 2. *(closure)* Substituting those and recomputing the leading coefficients settles 7–12
    coordinates per leaf, including `b44 = 1` and the "private" `b24 = b14 = 0` that appear in
    no Nash inequality at all.
@@ -722,10 +749,11 @@ Kreps–Wilson consistency in closed form.
    Jacobian of rank 8 — the implicit function theorem then gives the ε-perfect curve. The two
    endpoints are the two poles of ρ and are undecided at first order.
 
-**The enumeration behind (3).** `seqrun.py` enumerates the 0 / 1 / interior patterns of the
-unreached coordinates leaf by leaf — **398 patterns: 377 killed with certificates, 21 witnessed
-sequential (exact profile + exact positive beliefs, all 21 re-verified by the independent
-`checkseq.py`), 0 undecided.** Exactly three patterns survive, each identical at every leaf of
+**The enumeration behind (3).** The 0 / 1 / interior patterns of the unreached coordinates are
+enumerated leaf by leaf with no forcing injected, and **every pattern is decided with evidence an
+independent checker replays** (`seqcert.py`, `checkseqcert.py`: 637 kill records, 3,554 box
+certificates, 21 witnesses — each an exact Nash point with an explicit tremble curve; 12 / 12
+leaves, 0 failed, 0 undecided). Exactly three patterns survive, each identical at every leaf of
 its kind: at the nine generic leaves `b22 = 0, c23 = 0, c33` interior and `b22 = 0, c23`
 interior, `c33` interior (the latter needing trembles of different orders); at the three corner
 leaves (`b11 = b21 = 0`) `a34 = c32 = b22 = c23 = 0` with `a33`, `c33` interior. The corners are
@@ -736,6 +764,10 @@ the last cases: a leading form one-signed in its own ratios settles its coordina
 order, and a kill over all 75 orderings of a tremble group in which each class is normalised on
 its own with strictly positive ratios. `perfwit.py` certifies a perfect equilibrium in the
 `c23 = 0` pattern at three leaves.
+*Trust:* Theorem 6 now meets the standard of Theorems 4 and 5 — every exclusion and every
+witness is replayed by an independent checker. Its relaxation is sound under two restrictions
+the checker enforces: belief rows multi-homogeneous in the sets' ratios, and one-signed kills
+only for forms linear in one set's ratios (MASTER_DATA §16.13).
 
 **Corollary 6.1 (open problem 2, for this game).** Extensive-form properness leaves `c33` an
 interval of width `7/32`; normal-form properness (Theorem 3) selects the single interior point
@@ -751,18 +783,33 @@ belief ratios with a Farkas certificate when it fails, and an exact witness when
 and the 48 gradients `D_i` recomputed from it independently (`checkD.py`); (ii) IEEE-754
 round-to-nearest without fused multiply-add in numpy's elementwise ufuncs, for the interval
 prunes (`ivl.py` rounds every operation outward); (iii) the checker itself, ~450 lines of
-Fraction arithmetic with no solver. Nothing depends on sympy or scipy having been right: they
+Fraction arithmetic with no solver — which checks that every certificate starts from a box
+containing everything the node's labels allow (added 2026-09-26; all 66,699 leaf, 522 range
+and 4.4M tree certificates re-verified under it, 0 failed). Nothing depends on sympy or scipy having been right: they
 only *found* the certificates.
 
-Item (ii) is the one a reader has to take on the arithmetic's word rather than on a
-certificate's, and a third pass is removing it branch by branch: `enumc2.py` re-derives a
-betting branch as a *certificate tree* in which every node the float propagation kills carries
-its own `certbox` certificate (or is kept alive and split), and `checkenum.py` replays the whole
-tree in Fractions. **71 of the 77 betting branches are now verified end to end** — 4,394,323 certified
-nodes, 1,877 support leaves all certified empty, **0 failed** — so for those branches item (ii)
-is no longer trusted at all. The six that hit the cap keep the directed-rounding enumeration —
-sound, since outward rounding makes every prune a rigorous interval statement — as their proof
-while a longer-clock retry runs (MASTER_DATA §16.9).
+Item (ii) was the one a reader had to take on the arithmetic's word rather than on a
+certificate's, and the third pass has removed it.
+
+- **71 branches (`enumc2.py`).**  A betting branch is re-derived as a *certificate tree* in which
+  every node the float propagation kills carries its own `certbox` certificate (or is kept alive
+  and split), and `checkenum.py` replays the whole tree in Fractions.  4,394,323 certified nodes,
+  1,877 support leaves all certified empty, **0 failed**.
+- **The six that resisted (`enumc7.py`).**  Their pruning comes from interval propagation
+  contracted along the whole path, which no certificate starting from a label box reproduces.
+  `enumc7` carries out that propagation itself in EXACT rational arithmetic and records a
+  certificate for every step.  Each certificate is a forced value, a chord narrowing justified
+  by the convexity of the interval bound, or a contradiction.  `checkenum2.py`, written
+  independently of the prover, replays every node from its parent's record.  26,223 nodes, 461
+  support leaves all certified empty, **0 failed** (MASTER_DATA §16.9.1).
+
+Controls for the new method:
+- the silent branch reproduces the R ledger's 12 FAMILY leaves label for label;
+- 64 certified equilibria survive the exact tree;
+- every one of 2,463 tampered certificates is rejected.
+
+So item (ii) is no longer trusted for any branch: **all 77 betting branches are verified end to
+end, with no float arithmetic in any proof.**
 
 ---
 
@@ -1501,6 +1548,8 @@ random draws are used only to sample validation points, with fixed seeds.
 | `checkseq.py` | §7.3: independent Fraction-only checker for the sequential witnesses (17/17 verified) |
 | `resolve_seq.py`, `perfwit.py` | §7.3: second pass on undecided patterns; search for a perfect witness in each surviving pattern |
 | `forcecheck.py` | §7.3: the mechanised part of the forcing chain — coefficient bounds of the leading forms over Table 4's windows, all 12 leaves |
+| `seqforms.py` | §7.3: the belief forms rebuilt from the game tree in Fractions (no sympy) — the checker's foundation |
+| `seqcert.py`, `checkseqcert.py` | §7.3: Theorem 6's enumeration with stored evidence for every step, and its independent replay (12/12 leaves, 637 kills, 3,554 certificates, 21 witnesses on concrete tremble curves) |
 | `resolve_seq2.py`, `witC.py` | §7.3: close the last 28 patterns — one-signed forms on assigned coordinates, the exhaustive 75-ordering kill with strictly positive in-class ratios, and sub-family-C witnesses (small `b23`) |
 | `enumc2.py`, `checkenum.py`, `runenumc.py`, `retry_partial.py` | §7.1 / MASTER_DATA §16.9: the betting branches as certificate trees and their Fraction replay; `retry_partial.py` re-runs capped branches at a long clock |
 | `k35/runcells.py`, `k35/estcells.py` | MASTER_DATA §16.11: the (3,5) cell sweep, and Knuth leaf **and node** estimates (the node count is what predicts runtime) |
@@ -1558,9 +1607,61 @@ abstract or Section 1 — they are the two numbers that convince a reader nothin
    cap (mean 223 s) and none of them carries an equilibrium in which P1 bets**; 49 time out.
    A Knuth estimate says why — those cells are 2.5e6 to 1.2e7 nodes against the 4-card silent
    branch's 1.6e4, i.e. 150× to 760×, so they need days each rather than minutes, and in the
-   one measured the estimator found no surviving leaf in 200 walks. (3, 5) is therefore
-   reachable cell by cell with this code and a longer clock; an exhaustive sweep needs a faster
-   per-node step or a cluster. Related: is there a vector analogue of the residue identity
+   one measured the estimator found no surviving leaf in 200 walks. The exact-propagation method
+   that closed the 4-card betting side ports faithfully (60/60 float kills reproduced) but does
+   not close these cells. One measured cell extrapolates to ~3.6 million nodes, about two months
+   on one desktop (MASTER_DATA §16.11). An exhaustive (3, 5) certification needs a stronger
+   per-node bound, not a longer clock.
+
+   **Answered for (3, 5) on the positive side (2026-10-07, MASTER_DATA §16.11.1):** (3, 5)-Kuhn
+   HAS an exact Nash equilibrium in which P1 bets:
+   - P1 opens cards 1 and 2 with probability ≈ 0.1615 each, card 3 ≈ 0.0404 and card 5 ≈ 0.8478;
+   - payoffs ≈ (−0.0350, −0.0013, +0.0363).
+
+   The equilibrium was found by polishing MCCFR (7 of 20 seeds reach it), and proved by an
+   exact-arithmetic Krawczyk (interval-Newton) existence test:
+   - on a 14-equation reduction justified by polynomial identities;
+   - with every one-shot D-condition checked over a box of radius 10⁻³⁰;
+   - re-checked by an independent sympy-free implementation;
+   - with negative controls rejected.
+
+   Some coordinates are irrational (`b₁₁ = (11 + √13)/72`, `c₃₂ = 4 − √13`), others algebraic of
+   degree > 8, so the theorem is an existence statement with a certified enclosure, not a closed
+   form. So the N = n+1 separation is a theorem at (3, 4) (P1 silent in every equilibrium) and at
+   (3, 5) (P1 bets in some equilibrium, and, by §16.11.5, in every equilibrium).
+
+   **More (MASTER_DATA §16.11.2–3).** The (3, 5) betting equilibria are not a single point, and
+   their payoffs differ.  All three components below are certified exactly:
+
+   | component | what P1 does | P2's payoff |
+   |---|---|---|
+   | I: a whole segment | same play along it; only P3 shifts weight between opening with cards 1 and 2 | −0.0013 |
+   | III: a branch leaving I, a one-parameter family | close to I | about −0.0011, varying along the branch |
+   | II: isolated | bluffs only with card 1 | **+0.0016** |
+
+   With 4 cards P2 gets −1/48 in every equilibrium, so **equilibrium payoffs are unique at (3, 4)
+   and not at (3, 5)**.  **P1-silent equilibria: NONE, proved (MASTER_DATA §16.11.5).**  For all 7
+   polished check-subgame equilibria, no choice of responses to a bet deters P1, by a margin of
+   +0.026 (calling deters bluffs but feeds value bets).  The proof below covers every equilibrium.  **Exact reduction (MASTER_DATA
+   §16.11.4):** a P1-silent equilibrium exists only if the restricted game (P1 forced to check) has
+   an equilibrium in which **P1's value with the top card is at least 19/8**, i.e. opponents put in
+   at least 3/8 chip on average against P1's nuts; the known restricted family has 0.194.
+   Equivalently, P1's deviation "open 5 always, open 1 at rate 3/8" beats every response unless
+   V₅ ≥ 19/8 (vertex certificate over all 2¹⁵ responses, exact).  The exhaustive enumeration of
+   either the silent cell (2.6e7 nodes) or the restricted game (1.2e8) is out of reach.  **Closed
+   by a certificate (§16.11.5):** multipliers on 24 deviation inequalities give
+   L = u_1(·|5) + Σ μ_τ (u_a − u_a(τ)) ≤ 28071283/12000000 ≈ 2.3393 < 19/8 over the whole cube.  L is
+   multilinear, so a check over the 2⁴⁰ pure profiles suffices.  Two independent exact checkers
+   (`k35/ceverify.py`, `k35/ceverify2.py`) give the same maximum.  **Toward "I–III are all"
+   (MASTER_DATA §16.11.6):** the same certificates on the FULL game (two independent exact
+   checkers, `k35/fullcheck35.py` / `fullcheck35b.py`) prove that in every equilibrium:
+   - P1 opens 5 with positive probability;
+   - P1 never opens any of 1–4 with certainty;
+   - if P1 never bluffs with 1 or 2, it opens 3 sometimes and mixes 5.
+
+   Completeness stays open: the coarse relaxation is too weak in 24 of the 30 opening cells holding
+   no known component.  36 MCCFR seeds find only I, II, III.  Still open: whether I–III are all the
+   betting equilibria. Related: is there a vector analogue of the residue identity
    `R = t/D′` for n ≥ 4, where the residue becomes a vector on the (n−2)-simplex?
 4. **Is there a general theorem?** Conjecture: in any n-player constant-sum extensive game
    with n ≥ 3, an equilibrium component with an attainable deterrence boundary produces an
@@ -1575,6 +1676,8 @@ abstract or Section 1 — they are the two numbers that convince a reader nothin
 
 | ✗ do not write | ✓ write instead |
 |---|---|
+| "P1 never bets in Kuhn-type 3-player games" | "P1 is silent in every equilibrium at (3, 4) and bets in every equilibrium at (3, 5)" (Theorem 4; MASTER_DATA §16.11.5) |
+| "we enumerated every (3, 5) equilibrium" | "no (3, 5) equilibrium has P1 silent, by a deterrence cut plus a correlated-equilibrium certificate checked exactly over all 2⁴⁰ pure profiles of the restricted game; the betting equilibria are not enumerated" |
 | "ρ is undefined on a measure-zero set" | "ρ is undefined on 19 of 48 coordinate directions everywhere, and on part of the family for 21 more" |
 | "P1 is the only player exposed to this" | "P1 is the only player whose poles are located by off-path parameters, and the only player whose ρ changes sign; P3 also has poles" |
 | "we verified the zero-sum identity" | "the zero-sum identity is structural and cannot fail; we confirm it numerically as an implementation check" |
@@ -1585,7 +1688,7 @@ abstract or Section 1 — they are the two numbers that convince a reader nothin
 | "CFR converges to the family" | "MCCFR reaches median exploitability 3.6% of κ, but 99/150 outputs lie in none of the three sub-families" |
 | "a refinement fixes the indeterminacy" | "sequential rationality pins every off-path coordinate except c₂₃ and c₃₃ and removes ρ's sign ambiguity, but leaves c₃₃ ∈ [½, 15/16] and both poles; only normal-form properness picks a point" |
 | "we checked the results numerically" | "every verdict is a stored exact certificate replayed by an independent Fraction checker (66,699 leaves; 4.4M enumeration nodes on 71 of 77 betting branches)" |
-| "the refinement analysis covers the family" | "the refinement is decided on the complete Nash set of Theorem 5: all 398 off-path support patterns, 377 certified empty and 21 witnessed" |
+| "the refinement analysis covers the family" | "the refinement is decided on the complete Nash set of Theorem 5: all off-path support patterns, every exclusion and witness replayed by an independent checker (637 kills, 3,554 certificates) and 21 witnessed" |
 | "c₃₄ and c₄₄ are irrelevant" | "c₃₄ and c₄₄ are unconstrained by every player's incentive, but not inert: they set the numerator of P1's ρ" |
 | "ρ diverges near the boundary" | "ρ has a simple pole at the boundary with residue R = t/D′" |
 | "the family is a continuum of equilibria with the same value" | "the family is a continuum of equilibria whose values differ: u₁ and u₃ each vary by κ/4 across it" |

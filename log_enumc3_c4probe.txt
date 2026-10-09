@@ -1,0 +1,16 @@
+a11:0,a21:MIX,a31:0,a41:MIX: top expansion -> 9 subtrees, 0 complete leaves, 1s
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=26988, pipe_handle=1464)
+                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\Lib\multiprocessing\spawn.py", line 113, in spawn_main
+    new_handle = reduction.duplicate(pipe_handle,
+                                     source_process=source_process)
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\Lib\multiprocessing\reduction.py", line 79, in duplicate
+    return _winapi.DuplicateHandle(
+           ~~~~~~~~~~~~~~~~~~~~~~~^
+        source_process, handle, target_process,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        0, inheritable, _winapi.DUPLICATE_SAME_ACCESS)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [WinError 5] Access is denied

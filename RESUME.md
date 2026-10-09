@@ -1,3 +1,296 @@
+# 2026-10-09: both routes to (3,5) completeness tried -- neither closes it (MASTER_DATA §16.11.6)
+
+- Exhaustive: Knuth puts the opening cells at 6e10-7e11 nodes (`k35/log_estcells_known.txt`): out.
+- Tighter relaxation: `k35/fullprop35p.py` adds multilinear independence products (each term times
+  the plan indicator of every agent it never meets).  The five hard regions still creep toward 0
+  (-0.005..-0.009 at rounds 26-54); P1-partner-only products reach 0 faster.  Runs stopped.
+- The next level must constrain P2-k / P3-l correlation (players who meet): degree-2 products with
+  off-vertex (interval) verification.  "I-III are all" stays OPEN.
+
+# 2026-10-08 (night): (3,5) completeness -- partial structure proved (MASTER_DATA §16.11.6)
+
+- Full-game region certificates: `k35/fullprop35v2.py` (float proposer, `KUHN_CE=1` for plan-dependent
+  multipliers) + exact `k35/fullcheck35.py` / `k35/fullcheck35b.py` (independent, threshold B&B).
+  Certificates + logs in `k35/fullcert/`.
+- Proved: a51 > 0; a11, a21, a31, a41 < 1; and with a11 = a21 = 0, 0 < a51 < 1 and a31 > 0.
+- No certificate (relaxation too weak): open4pos, open3zero, open1zero, open5one, open1zero_open2zero
+  (coarse), and 24/30 opening cells.  CE versions of the five crept toward 0 (-0.0007..-0.0019 at
+  ~100 rounds), so they were stopped: the CE relaxation looks too weak as well.
+- Exploration: `explore35.py` seeds 20-35 -> only I and II; `cell35.py` (P1 never opens 3, 4) -> P1
+  always gains 0.017-0.061 by deviating.  "I-III are all" stays OPEN.
+- Throttling trap: processes detached with `nohup ... &` from Git Bash get ~1/6 of a core on this box;
+  run long jobs under a waiting shell (`... & wait`) via run_in_background, or Task Scheduler.
+
+# 2026-10-08 (later): (3,5) has NO P1-silent equilibrium -- PROVED (MASTER_DATA §16.11.5)
+
+- Correlated-equilibrium (Lagrangian) certificate `k35/silent35_cert.json`: 24 deviation multipliers
+  with L = u_1(.|5) + sum mu_tau (u_a - u_a(tau)) <= 28071283/12000000 = 2.3393 < 19/8 on the whole cube.
+  Proposed by `k35/cceprop35.py` (float LP, decides nothing); checked EXACTLY over all 2^40 pure profiles
+  by `k35/ceverify.py` (tree payoffs) and `k35/ceverify2.py` (independent pot simulation), same max.
+  Controls `k35/cecontrol.py`.  Logs `k35/log_ceverify35.txt`, `k35/log_ceverify2_35.txt`,
+  `k35/log_cecontrol35.txt`, `k35/log_cceprop35.txt`.
+- Theorem: P1 bets in every (3,5) equilibrium (silent in every (3,4) one).
+- The PokerK35Silent task had relaunched itself at 23:50 on 10-07 (one-time trigger) and ran
+  until about 10:00 on 10-08: 0 leaves.  Ended + process tree killed; superseded.  Nothing is running.
+- NOT committed yet (waiting for the user's go-ahead).
+
+# 2026-10-08: (3,5) silent question reduced to ONE inequality on the restricted game (MASTER_DATA §16.11.4)
+
+- `k35/deter35.py` (exact, all 2^15 response vertices, tree = closed-form table at every vertex):
+  min[3 Ebet(1) + 8 Ebet(5)] = 16 and min[3 Ebet(2) + 8 Ebet(5)] = 16.  With V_1 = -1 (P1 never
+  bets in the restricted game G_c, so card 1 only loses showdowns), a P1-silent equilibrium needs a
+  G_c equilibrium with **V_5 >= 19/8** (top card wins >= 3/8 chip beyond the antes).  Known family:
+  V = (-1, -1, -0.676, 0.155, 2.194111), so 0.194 vs 0.375.
+- Exhaustive G_c is out of reach too: `k35/estrestrict.py` (Knuth, float) 1.2e8 nodes with or
+  without the cut (kill or contractor); seq mode 9.4e7; `k35/estline.py`: the KB / KK lines alone
+  keep 1.5e5 / 1.5e6 partial supports.
+- Open: prove "every NE of G_c has V_5 < 19/8" analytically (plan in the 2026-10-08 chat), or find
+  a stronger bound.  A Lagrangian (coarse-correlated) certificate was being explored in the
+  session scratchpad (`lagr2.py`), not in the repo.
+
+# 2026-10-07 20:10: (3,5) open questions, partly answered (MASTER_DATA §16.11.2–3)
+
+- **How many betting equilibria:** continua, with different payoffs. All three are certified with
+  `k35/cert35seg.py` and `k35/cert35gen.py`; the latter takes `name=p/q` for off-path fixes and
+  `name:=p/q` for free parameters, and `k35/degen35.py` finds the degeneracies.
+  - I: segment c11 in [0, 29/50].
+  - III: a branch, certified at b11 = 27/200.
+  - II: isolated, only card 1 bluffs; P2's payoff is +0.0016 versus −0.0013 on I.
+  - II's mirror is NOT an equilibrium.
+  - Inputs: `q2_polish35.py` → `q2_polish35.json`; `q2_polish35_plus.json` adds the mirror.
+- **P1-silent:** none found. `silent35.py` (restricted MCCFR) + `silent35b.py` (check-subgame
+  polish + deterrence via `silent35_deter.py`): 7 check-subgame equilibria, deterrence impossible
+  with margin +0.0263. This is evidence only.
+- **STOPPED 23:40 (out of reach):** Knuth puts the silent cell at 2.6e7 ± 1.7e7 float nodes, about
+  3 months for `enumc7`. The run reached 12,853 nodes with 0 leaves and is resumable via
+  `schtasks /run /tn PokerK35Silent`. "No P1-silent equilibrium" stays a conjecture with strong
+  evidence. Keep-awake is released.
+- (previously) **RUNNING:** `k35/enumc7.py` on the silent cell `a11:0,...,a51:0` (22 workers, tag `k5c7_silentN`,
+  log `k35/log_enumc7_k5c7_silentN.txt`), started from a tool call, so it dies if the app closes.
+  It is resumable: rerun the same command. If it closes with 0 leaves, port the 5-card checker
+  (`checkcert` / `certleaf` / `xcheck` / `checkenum2` at 60 coordinates, plus an INDEPENDENT check of
+  `D_all5.pkl`). That would prove no P1-silent equilibrium.
+
+# 2026-10-07: (3,5) HAS an exact equilibrium with P1 BETTING (certified)
+
+`polish35.py`: MCCFR at 20 seeds x 10^7, then Newton + support repair. 7 seeds reach one
+equilibrium with P1 opening cards 1,2 at 0.1615, card 3 at 0.0404, card 5 at 0.8478. The (c11, c21)
+split is free.
+
+- `k35/hiprec35.py` + the 400-digit runs: `b11 = (11 + √13)/72`, `c32 = 4 − √13`; the rest is
+  degree > 8.
+- `k35/cert35.py`: exact Krawczyk on a 14x14 reduction justified by polynomial identities, plus
+  the D-conditions on all 60 coordinates. CERTIFIED.
+- `k35/cert35check.py`: independent, no sympy. CONFIRMED.
+- Negative controls (shifted box, flipped `a42`) are rejected.
+- `k35/xeq35.py`: exact Nash verifier, positive and negative controls on the 4-card witness.
+- Equilibrium: `k35/cert35_equilibrium.txt`. MASTER_DATA §16.11.1; PAPER_KIT contribution 14 and
+  open problem 3.
+- Not done: whether (3,5) also has P1-silent equilibria, and how many betting equilibria it has.
+  Nothing is committed since 84dbfcf.
+
+# 2026-10-06 21:00: (3,5) with exact propagation: faithful, but out of reach exhaustively
+
+The `k35/` ports (`xprop.py`, `enumc7.py`, `test_xprop_port.py`) pass:
+- regression at 4 cards, bit for bit;
+- the structure checks at 5 cards;
+- 60/60 float kills reproduced.
+
+The 49 timed-out cells are still out of reach. The 90-min A/B of layer ladders (`ab_k5.py`, logs
+`log_enumc7_k5ab_*`) left every arm open with a growing frontier. Extrapolated, that is ~3.6M
+nodes and about two months for the probed cell (MASTER_DATA §16.11). The checker port
+(`checkcert`/`certleaf`/`xcheck`/`checkenum2` at 60 coordinates, plus an INDEPENDENT check of
+`D_all5.pkl`; `makeD.py` used the `checkD` recursion itself) was NOT done; only do it if
+something closes cells.
+
+Proposed next step (not started): regenerate the (3,5) MCCFR runs (`cfrGen.py`; Part 9 has P1
+opening up to 0.83) and try to polish them into EXACT rational equilibria with P1 betting. One
+success would settle open problem 3 for (3,5) positively.
+
+# 2026-10-05 22:30: ALL 77 BETTING BRANCHES VERIFIED END TO END, no float arithmetic anywhere
+
+`enumc7` + `checkenum2` closed the six branches the grind could not: 26,223 nodes, 461 support
+leaves all `EMPTY_BOX`, 0 failed, 0 missing, 2.3 h enum + 10 min check. Per-branch table in
+MASTER_DATA §16.9.1; `enumc7_summary_nash.txt`.
+
+- `enumc_summary_nash.txt` now has 77 OK lines; the six are tagged `[enumc7]`, and the replaced
+  PARTIAL lines are in the history.
+- PAPER_KIT updated: contribution 2, the Theorem 4 proof note, and "what the proof trusts"
+  (item (ii) removed for every branch).
+- **Cross-check DONE (10-06 00:00):** `enumc7` + `checkenum2` on all 77 betting branches gives
+  77/77 OK, 33,104 nodes, 462 leaves all `EMPTY_BOX`, 0 failed. Every betting branch is closed
+  by two independent certified methods (MASTER_DATA §16.9.1). Nothing is running except
+  keep-awake, which can be stopped with `schtasks /end /tn PokerKeepAwake`.
+- **The `enumc6` grind is retired** (`PokerRetryPartial` would find nothing to do). Its outputs
+  `enumc_c_*N.jsonl.gz` (~6.5 GB) are superseded partial trees, kept unless the user wants them
+  deleted.
+
+# 2026-10-05 20:00: OPTION 2 built and controlled; the six branches running under `enumc7`
+
+The user reopened option 2 on condition of exact arithmetic and credibility. The method:
+
+- **Prover (`xprop.py` + `enumc7.py`):** the float enumeration's propagation (`bnb6` +
+  `treesize6`), but EXACT (Fractions; chord endpoints rounded outward to 2^-60). It records a
+  certificate for every narrowing or kill. Every node record carries its labels, exact box and
+  that certificate. Layer kills are `certbox` certificates from the exact box.
+- **Independent checker (`xcheck.py` + `checkenum2.py`):** imports only `tree.py`; nothing from
+  ivl/bnb6/treesize6/xprop. It replays each node from its parent's record, in parallel.
+- **Soundness lemmas and controls:** MASTER_DATA §16.9.1. Agreement 417/417; oracle-confirmed
+  tampering 2,463/2,463 rejected; 64/64 certified equilibria survive the exact tree; the silent
+  branch reproduces the R ledger's 12 FAMILY leaves identically (4,723 nodes, OK).
+- **The six branches:** `PokerEnumc7` task = `run_enumc7.py 20 branches_enumc7.txt`, ledger
+  `enumc7_summary_nash.txt`. Each output is checked by `checkenum2` as it finishes.
+  `a11:0,a21:MIX,a31:MIX,a41:1`: 97 nodes, 126 s, **OK**. The grind on that branch had made
+  156k kills per 8 h slice without finishing.
+- **The `enumc6` grind is PAUSED, not deleted.** It resumes with `schtasks /run /tn
+  PokerRetryPartial`. Retire it once all six are verified under `enumc7`.
+
+# 2026-10-05: round 1 complete, none finished; user decision: keep grinding, no float trust
+
+Round 1 slice results (the last slice of each):
+
+| branch | kills | float-unsure | queue at end | trend |
+|---|---|---|---|---|
+| `M_M_0_M` | 1.32M | 350k | 32.5k | growing |
+| `0_M_0_M` | 781k | 349k | 14.5k | growing ~1,800/h (fresh, corrected policy) |
+| `M_0_0_M` | 585k | 251k | 19k | growing |
+| `0_0_M_0` | 402k | 187k | 3.9k | growing slowly |
+| `M_M_0_1` | 483k | 218k | 4.4k | flat |
+| `0_M_M_1` | 156k | 40k | 2.1k | flat |
+
+The uncertifiable regime dominates the cost: on `0_M_0_M`, 478k s went to `fdeadu` checks against
+91k s for layer checks.
+
+**Decision (user):** keep all six rotating under `enumc6`. No step may trust float arithmetic, so
+the checker will NOT replay the float propagation. Speed-ups must come from exact means only.
+Round 2 started 10-05 12:20 with `M_M_0_M`.
+
+# 2026-10-04 20:20: restarted after 2.9 days asleep
+
+Task Scheduler's default 72 h `ExecutionTimeLimit` killed `PokerKeepAwake` at 10/01 20:40. The box
+idle-slept at 23:30 and stayed asleep until the user woke it at 10/04 20:18. Nothing on disk was
+lost (all outputs checkpointed). Both tasks are now `PT0S` and were restarted.
+
+Round 1 so far, one `enumc6` slice each, none finished:
+
+| branch | kills | float-unsure | queue at end |
+|---|---|---|---|
+| `M_M_0_M` | 1,316k | 350k | 32.5k |
+| `M_M_0_1` | 483k | 218k | ~4.4k (flat for the last 3 h) |
+| `0_M_M_1` | 156k | 40k | ~2.1k (flat) |
+| `M_0_0_M` | 585k | 251k | 19k |
+
+`M_0_0_M`'s slice was cut off by the restart, so it has no ledger line; it is checkpointed and
+retried as "missing". Now running `0_0_M_0`, migrated from the 9/29 `enumc3` leftovers: 22,997
+records, 95 ancestors matched, 80 unfinished nodes. Then `0_M_0_M` (fresh), then round 2.
+Order: `retry_order.txt`.
+
+# 2026-09-30 13:30: the six PARTIAL branches grind under `enumc6` (resumable), round-robin 8 h slices
+
+The user picked "keep grinding, made resumable" (option 1) over replaying the float tree in the
+checker. At 8 h both `enumc5` branches still had growing queues (~+1,700 jobs/h, linear): `0_M_0_M`
+reached kill 688k, float-unsure 293k (its output was DELETED by the cap at 04:52, since the old
+retry deleted capped output). `M_M_0_M` reached 590k kills; it was detached from its cap at 12:32
+and salvaged.
+
+- **`enumc6.py`** = `enumc5` workers plus a durable driver. The output is a chain of complete gzip
+  members. Every `KUHN_CKPT` s the member is sealed and fsynced, and only then is the offset written
+  atomically to `enumc_<tag>.ckpt`. RESUME replays the float propagation down the ancestors of the
+  unfinished nodes (children of splits with no record), checking each against its stored split
+  record, with work-shared pool replay. A file without a `.ckpt` is migrated (complete records
+  rewritten; original kept as `.premigrate`).
+- **Controls:**
+  - `control_resume.py` (kills in the top expansion and mid-pool, junk past the checkpoint,
+    forced migration, a kill between the migration's renames): resumed trees replay OK in
+    `checkenum`, with no duplicate ids.
+  - `control_replay.py`: serial and parallel replay give bit-identical states.
+  - Real run: branch 2's 1.25 GB `enumc5` file migrated to 900,911 records, and 19,429 ancestors
+    were replayed and matched.
+- **`checkenum.py`** now checks certificates in bounded batches while reading
+  (`KUHN_CHECK_BATCH`, default 20,000). Holding every certificate would need tens of GB for these
+  trees. Regression: a verified branch re-checks to its ledger numbers exactly, and swapped
+  certificates in a middle batch are still caught.
+- **`retry_partial.py`** for `enumc6`:
+  - round-robin until every branch is verified; a capped slice keeps its output;
+  - one current ledger line per branch;
+  - finished means rc 0 AND a `.ckpt` that says complete, anything else is an ERROR line (never a
+    check of a partial file);
+  - order from `retry_order.txt`; `run_retry.env` is re-read per slice (from the next driver start).
+- **A/B of the layer test (`ab_layer.py`):** `enumc5`'s cheap layer test was WRONG. It was run
+  on the verified branch `a11:MIX,a21:MIX,a31:MIX,a41:1` with 4 workers per arm:
+  - full ladder: done in 1,440 s, 30,983 nodes, 0 float-unsure, `checkenum` OK. All 9,439 layer
+    tests killed their node.
+  - rung 0 only: not done at 7,200 s, 53k+ nodes, 1,303 float-unsure. The 1,373 layer nodes it
+    failed to kill are where the uncertifiable subtrees start.
+
+  2026-10-01: the layer test below an uncertifiable node is now SKIPPED (`KUHN_RUNGS_LAYERU=none`;
+  use the token, because an empty env value can be dropped on Windows). It made 0 kills in 90,956
+  calls on M_M_0_M and M_M_0_1 and wasted 68,493 s in one slice. Effective from the 07:44 slice.
+  M_M_0_1 under the corrected policy:
+  - at 2,311 s: 2,543/2,524 top subtrees done, 48,754 kills;
+  - then still into the uncertifiable regime: 23,458 float-unsure at 7,014 s, seeded by 51
+    float-dead children that the full ladder could not certify;
+  - its full-ladder layer failures cost ~152 s each (37,000 s in 2 h).
+
+  Policy since 15:44 (`run_retry.env`): layer test and float-dead children use the full ladder.
+  Below an uncertifiable node, a new `layeru` context plus `fdeadu`, both rung 0 (the full ladder
+  essentially never succeeds there). Branch 2 resumed under it: 1,015,120 records, 20,079
+  unfinished nodes, 23,110 ancestors replayed and matched in 392 s.
+- On a power loss: `schtasks /run /tn PokerKeepAwake`, then `schtasks /run /tn PokerRetryPartial`.
+  It resumes; nothing is lost past the last checkpoint.
+
+# 2026-09-29 20:52: the six PARTIAL branches now run under `enumc5`
+
+`enumc3` (inherited certified boxes) and `enumc4` were dead ends on these branches. `enumc3` made
+30-60x fewer kills per hour than `enumc2`. `enumc4` had 16,092 float-unsure nodes after 23.5 h with
+a growing queue. Both were stopped. The 3 `enumc3` PARTIAL lines are in `enumc_partial_history.txt`,
+and the retry log says where `0_0_M_0` was when it was stopped.
+
+**Where enumc2's time actually goes** (`probe_knuth.py`: Knuth-weighted random walks that follow
+`enumc2.subtree` exactly, including descent into uncertifiable children; `probe_knuth_sum.py`).
+Across the six branches:
+
+| context | est. ladder time | in failures | saved by rung 0 only | kills lost |
+|---|---|---|---|---|
+| layer test (depth % 4) | 5,323 s | 5,008 s | 5,006 s | 2 |
+| layer test below an uncertifiable node | 26,064 s | 26,064 s | 25,800 s | 0 |
+| float-dead child | 1,110 s | 984 s | 1,049 s | 20 |
+| float-dead child below an uncertifiable node | 127,720 s | 89,405 s | 126,190 s | 1,465 |
+
+The layer test ran the full ladder (1 LP, 1 chord, 20 LP, 40 chord nodes) on nodes that are
+alive: 61-129 s per failure, and nearly all its kills come at rung 0. Below an uncertifiable node,
+the float declares every child dead, so every child paid about 35 s. That is the straggler
+regime: the first `enumc2` runs finished ~99 % of their subtrees in an hour, then sat on 10-40
+jobs until the cap.
+
+**`enumc5.py`** = `enumc2` with per-context rungs (`KUHN_RUNGS_LAYER=0`, `KUHN_RUNGS_FDEAD=0,1,2,3`,
+`KUHN_RUNGS_FDEADU=0`) and time-based hand-back (`KUHN_JOBSECS=300`). The progress lines carry
+per-context ladder stats. The output format is unchanged. Test on `a11:MIX,a21:1,a31:MIX,a41:0`:
+the same 3,188-node tree as `enumc2`, `checkenum` OK, 192 s vs 290 s.
+
+**Running:** task `PokerRetryPartial` = `retry_partial.py 1 26 28800 enumc5.py`, settings in
+`run_retry.env`. It retries all six in order `0_M_0_M`, `M_M_0_M`, `M_0_0_M`, `0_0_M_0`,
+`M_M_0_1`, `0_M_M_1`, 8 h cap each. It now retries every branch that is PARTIAL by another script
+or absent from the ledger, and keeps a PARTIAL line tagged with its own script (so a restart after
+a power loss resumes correctly). Ledger lines are tagged `[enumc5]`. On a power loss, just
+`schtasks /run /tn PokerKeepAwake` and `schtasks /run /tn PokerRetryPartial`.
+
+# RESTARTED 2026-09-28 20:40 after a power loss (2026-09-26 ~21:00)
+
+Both runs died with the box; neither resumes mid-branch, so each restarts its current branch.
+- **`PokerRetryPartial`** (`retry_partial.py 1 20 28800 enumc3.py 2`): branch 1
+  `a11:0,a21:MIX,a31:0,a41:MIX` had finished before the outage (PARTIAL, 790 float-unsure, in the
+  ledger). The dead run had already moved the other five PARTIAL lines to the history, so a plain
+  relaunch would have retried only branch 1. `retry_partial.py` now retries the branches ABSENT
+  from the ledger when there are any (the 5), in the old order: `M_M_0_M`, `M_0_0_M`, `0_0_M_0`,
+  `M_M_0_1`, `0_M_M_1`. That's 8 h cap each, so ~40 h.
+- **`PokerEnumc4Test`** (enumc4, 8 workers, `run_c4test_0_M_0_MN.env`): restarted from zero.
+  Pre-outage log kept as `log_enumc3_c4test_0_M_0_MN_preoutage.txt`. At 1431 s it had
+  kill 665, split 603, **float-unsure 339**, so it was not curing float-unsure at that point.
+  Compare against enumc3 on the same branch (`log_enumc_c_0_M_0_MN.txt`: 76 unsure at 3 h,
+  790 at 8 h).
+- `PokerKeepAwake` relaunched.
+
 # Where things stand — 2026-09-24 19:00
 
 ## DONE — the paper's results are all written up; no placeholders left in MASTER_DATA
@@ -8,13 +301,13 @@
   PAPER_KIT §7.1–7.2, MASTER_DATA §16.7–16.10.
 - **Theorem 6 — refinements decided exactly** (PAPER_KIT §7.3, MASTER_DATA §16.13):
   - every information set is binary ⟹ extensive-form proper = perfect (Lemma R1);
-  - 8 coordinates fall to dominance (`D_v = c·R_v`, c = −1 or +5), six of them free in all of
-    [0,1] over the Nash set; the per-leaf closure adds 7–12 more;
+  - 18 coordinates fall to exact dominance (`D_v = c·R_v`, c = −1, +4 or +5 — an earlier count of 8
+    used a coefficient-sign test that misses mixed-sign reaches); 13 have a nontrivial Nash window;
   - the belief system in closed form: `lim D_v/R_v = A_v/B_v`, seven linear forms **identical at
     all twelve leaves** (each verified symbolically against the tree);
   - forced in every sequential equilibrium: `b32 = b22 = c13 = c34 = 0`, `c43 = 1`, `c33 ≥ 1/2`
     and `c33` interior; only `c23` keeps freedom, and only with trembles of different orders;
-  - enumeration **complete**: 398 patterns, **377 killed with certificates, 21 sequential
+  - enumeration **complete**: every pattern decided; **637 kill records + 3,554 box certificates + 21 witnesses, all replayed by the independent `checkseqcert.py` (12/12 leaves, 0 failed)**; 21 sequential
     witnesses (21/21 verified by the independent `checkseq.py`), 0 undecided**; exactly three
     patterns survive (two at the generic leaves, one at the corners, where refinement pins
     `a33 = c33 = 1/2`);

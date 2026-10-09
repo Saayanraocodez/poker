@@ -2392,6 +2392,25 @@ worker (~3 KB per killed node, hundreds of thousands of nodes per mode). (ii) Th
 certificates; an exact replay in Fractions of every float-killed node is possible with the
 recursion in `test_ivl_directed.py` but was not run. (iii) `tree.py` is the game.
 
+### 16.8.1 A gap in the checker, closed, and everything re-verified (2026-09-26)
+
+`check_box_cert` replayed a certificate from the starting box the certificate *declared* and
+never compared that box with the node's labels.  A certificate proves that its system has no
+point INSIDE its box, so a box tighter than the labels allow could "prove" a false kill by
+simply excluding the solutions, and the independent checker would have accepted it.  The
+prover always passed the labels' box, so this was a gap in the checking, not (as it turned
+out) an error in any result -- but an independent checker must not take the box on trust.
+It now requires the starting box to contain everything the labels allow (or, for the
+inherited-box enumeration of §16.9, everything the node's *replayed* certified box allows);
+a certificate with a tampered box is rejected.  Every stored certificate was re-verified under
+the new rule (`recheck_all.py`, `recheck_summary.txt`):
+
+| certificates | verified | failed |
+|---|---|---|
+| support leaves (Theorem 4) | 66,699 | 0 |
+| ranges of the complete Nash set (Theorem 5) + witnesses | 522 + 322 | 0 |
+| certificate trees of the third pass | 71 branches, 4,394,323 nodes | 0 |
+
 ## 16.9 Third pass: the betting side as one replayable certificate tree (2026-09-21)
 
 **What it is.** Leaf certificates (§16.8) cover the silent branch and every leaf-bearing
@@ -2450,9 +2469,168 @@ The six PARTIAL branches, with their state at the cap:
 Five are simply large (the verified branches run up to 148k nodes, and these were still
 producing kills at the cap); only the first is pathological -- 228 nodes that the float
 propagation kills but no certificate in the ladder reproduces, each forcing a split and a
-subtree.  They are being retried at a 12 h cap, three at a time (`retry_partial.py`; the lines
-they replace are kept in `enumc_partial_history.txt`).  The cap wants choosing with care: a 1 h
-cap threw away a branch that needed 4,283 s with its queue already empty.
+subtree.  The cap wants choosing with care: a 1 h cap threw away a branch that needed 4,283 s
+with its queue already empty.
+
+**A retry that went backwards (2026-09-24/25).**  Retrying the six at a 12 h cap, three at a time
+with 9 workers each, finished none of them -- and with far MORE float-unsure nodes than the
+first attempt (234 to 1,073, against 0 to 62 in 2 h with 20 workers), and fewer kills in 12 h
+than the first run made in 2.  The float-unsure count is not a property of the branch alone:
+it depends on how the tree is cut into jobs (the top expansion stops at `KUHN_FRONTIER x nw`
+subtrees, so fewer workers means shallower subtree roots and longer float-propagated paths below
+them).  Splitting the machine across branches is therefore the wrong trade for `enumc2`: the
+six are now run one at a time with 26 workers each at an 8 h cap, nearest-to-done first and the
+pathological branch last (`retry_partial.py 1 26 28800`; replaced lines are kept in
+`enumc_partial_history.txt`).
+
+**Inherited certified boxes (`enumc3.py`, 2026-09-26).**  The cause of float-unsure nodes is
+structural: the float propagation kills a node using a box contracted along the whole path
+from the root, while every `enumc2` certificate starts again from the node's bare LABEL box.
+`enumc3` certifies the contraction itself: at every split it runs `certbox.contract_traced` on
+the node's own system from the node's certified box and records the steps; the children start
+from the contracted box (the split coordinate set by the child's label) and every kill
+certificate starts from the node's certified box.  `checkenum.py` replays each split's
+contraction from the box it has itself computed for that node and requires every kill to start
+from a box containing it -- sound because a child's feasible set lies inside its parent's (the
+parent's DC pair is the union of the three labels) and contraction only removes infeasible
+points.  Files without contraction records check exactly as before.
+
+On a verified branch (`a11:MIX,a21:0,a31:MIX,a41:1`) the tree shrank from 43,433 nodes
+(`enumc2`, 521 s) to **356 nodes (30 s)**, replayed OK.  On the six hard branches it is mixed:
+on `a11:MIX,a21:MIX,a31:0,a41:MIX` 76 of 80 subtrees closed within two minutes with 574 kills
+(where `enumc2` passed 113,000 kills without finishing), but on `a11:0,a21:MIX,a31:0,a41:MIX`
+it went PARTIAL at 8 h with 790 float-unsure nodes -- there the float kills use more than
+interval contraction (tree-structured bounds on `D`, the chord contractor), which the inherited
+box does not yet carry.  The retry of the six is still running; the ledger records its outcome.
+
+**What the six PARTIAL branches rest on.**  Their support leaves are not in question: all
+25,636 of them (581 + 613 + 8,681 + 4,433 + 3,055 + 8,273) are among the 66,699 leaf
+certificates replayed by `checkcert.py`.  Only the pruning *above* the leaves -- which nodes the
+enumeration discarded before reaching a support -- rests, for these six branches, on the
+directed-rounding interval arithmetic of §16.7, which is sound (every operation rounded
+outward) but not replayed by a checker.
+
+### 16.9.1 Exact propagation certificates: the six branches closed (2026-10-05)
+
+**Why the certified enumeration stalled.**  Every `enumc2`–`enumc6` certificate starts from the
+node's LABEL box, while the float enumeration (the R ledger) killed nodes with
+`treesize6.propagate`, whose chord contractor narrows the box along the whole path from the root.
+On the six branches that path contraction does the pruning.  Without it, the certified trees
+reached 0.15–1.3 million kills per 8 h slice with growing queues (§16.9, RESUME), and no amount
+of grinding closed them.
+
+**The method (`xprop.py`, `enumc7.py`).**  The same propagation, in EXACT rational arithmetic
+(Fractions, no float anywhere), and certified.  A node's box is derived from its parent's box with
+the split coordinate set by the node's label.  Every step that narrows or closes it is recorded:
+
+- forced values `["F", ...]`;
+- chord narrowings `["C", v, [side, condition, new bound]]`;
+- the closing contradiction `["K", ...]`.
+
+Every node record carries its labels, its exact box and that certificate.  Children that
+propagation closes are `pkill` records.  Every four levels a `certbox` certificate from the
+node's exact box (the full ladder) may kill the node.  Leaves get `certleaf` certificates.  The
+only arithmetic shortcut is that a chord's new endpoint is rounded OUTWARD to the grid 2^-60, a
+weaker bound that keeps the rationals small.
+
+**Soundness.**  Each step is a necessary condition for every Nash equilibrium in the box whose
+support labels are the node's.  So no equilibrium is ever discarded.
+
+1. *Enclosure.*  The tree recursion with exact interval arithmetic encloses V for every player at
+   every node.  It also encloses the reach of every node, and `du_i` (x24) over the box.
+2. *Box semantics.*  x_i > 0 forces du_i >= 0 at a Nash equilibrium (utility is linear in a
+   player's own x_i).  So lo_i > 0 or label MIX requires du_i >= 0, and symmetrically for hi_i < 1.
+   A violated requirement closes the box.
+3. *Strong rules.*  du_i > 0 on the whole box forces x_i = 1, and du_i < 0 forces x_i = 0.
+4. *Weak rules, only where the labels prove the set reached.*  Some node of the set has a path
+   whose aggressive edges are labelled 1/MIX and passive edges 0/MIX, so its reach is positive.
+   If the per-node value difference is > 0 at all 6 nodes, then du_i > 0, hence x_i = 1.  Sound
+   for every Nash equilibrium.
+5. *Chord (convexity lemma).*  Pin x_v = lo_v + w t, t in [0, 1], and let U_i(t) be the
+   recursion's upper bound on du_i.  Then U_i is convex in t.  In one deal a coordinate occurs at
+   most once on a root-to-leaf path (each player meets each situation once).  So:
+   - at x_v's own node, the value bound is affine in t;
+   - above it, each value bound is a nonnegative combination of the children's bounds, maximised
+     over the other coordinate's endpoints.  Upper bounds stay convex and lower bounds concave;
+   - Dh = Ahi − Plo is therefore convex;
+   - a reach bound below x_v's node is affine and nonnegative in t;
+   - each node's term is f(Dh), with f(D) = rh·D for D >= 0 and rl·D for D < 0 (rh >= rl >= 0).
+     Above x_v's node, f is convex and nondecreasing and Dh is convex, so the term is convex.
+     Below it, the term is affine.  A sum of convex terms is convex.
+
+   So U_i lies below its chord on [0, 1].  Where the chord through (0, U_i(0)) and (1, U_i(1)) is
+   negative, du_i >= 0 is impossible.  If both ends are negative, it is impossible on the whole
+   box.  Symmetrically, the lower bound is concave, which handles du_i <= 0.
+6. *Labels.*  lo_i >= 1 implies label 1, and hi_i <= 0 implies label 0.  A coordinate whose reach
+   bound is 0 at all six nodes is marked DC (Lemma 2).  A MIX coordinate whose box has no
+   interior is a contradiction.
+
+*Propagation and D-certificates together.*  Propagation uses the reach-weighted Nash conditions,
+and box certificates the own-reach-stripped D-system.  Take any Nash equilibrium p.  Re-choosing p
+optimally at the information sets its owner never reaches gives a p' with the same on-path play.
+p' is still Nash, so propagation keeps it.  p' satisfies the D-system everywhere, so no
+certificate excludes it.  The labels' tree covers p''s labels.  Hence p' lies in a leaf, and the
+on-path conclusions (Theorem 4) hold for p.
+
+**The independent checker (`xcheck.py`, `checkenum2.py`).**  It is written separately from the
+prover.  It imports only the game definition (`tree.py`) and Fractions: not `ivl`, `bnb6`,
+`treesize6` or `xprop`.  Its interval recursion runs over an explicit per-deal game tree.  Every
+node is checked from its parent's record alone, so the checks run in parallel:
+
+- the propagation certificate must replay from the parent's box, as the node's label sets it, to
+  a box CONTAINED in the recorded one (or close it, for `pkill`);
+- the node's labels must be exactly those the box implies, plus its DC marks;
+- a kill's `certbox` certificate must start from a box CONTAINING the node's box;
+- coverage: every child of every split must be seen exactly once.
+
+By induction down the tree, every recorded box is sound.
+
+**Controls.**
+
+| control | result |
+|---|---|
+| prover and checker on 417 children along random walks of three hard branches | identical verdict and box for **417 / 417** |
+| exact against float propagation along random paths | every float kill reproduced (**178 / 178**); exact box always inside the float box; exact stronger at 83 further children |
+| tampered certificates, each confirmed invalid by the PROVER's engine as oracle: a chord bound pushed one grid step, a chord or kill attributed to another condition, a flipped force, an invented force | **2,463 / 2,463 rejected** |
+| 64 certified equilibria (`certified_eq_all.npy`) followed down the exact tree | none discarded; every box contains its point; no layer certificate kills its node: **PASS** |
+| the P1-silent branch, `enumc7` + `checkenum2` | 4,723 nodes, **OK**; 79 leaves = 67 EMPTY_BOX + **12 FAMILY**: the R ledger's 12 FAMILY leaves, **identical label patterns, one to one** |
+| small branch `a11:MIX,a21:1,a31:MIX,a41:0` | 40 nodes (enumc2: 3,188), **OK** |
+
+**The six branches** (`run_enumc7.py 20 branches_enumc7.txt`, ledger `enumc7_summary_nash.txt`):
+
+| branch | nodes | split | pkill | kill | support leaves | checker | enum | check |
+|---|---|---|---|---|---|---|---|---|
+| `a11:0,a21:MIX,a31:MIX,a41:1` | 97 | 32 | 8 | 57 | 0 | **OK** | 126 s | 1 s |
+| `a11:MIX,a21:MIX,a31:0,a41:1` | 2,722 | 907 | 1,186 | 629 | 0 | **OK** | 1,039 s | 53 s |
+| `a11:0,a21:0,a31:MIX,a41:0` | 2,167 | 722 | 614 | 831 | 0 | **OK** | 703 s | 39 s |
+| `a11:MIX,a21:0,a31:0,a41:MIX` | 9,205 | 3,068 | 3,369 | 2,676 | 92, all `EMPTY_BOX` | **OK** | 2,256 s | 175 s |
+| `a11:MIX,a21:MIX,a31:0,a41:MIX` | 5,362 | 1,787 | 1,806 | 1,656 | 113, all `EMPTY_BOX` | **OK** | 1,599 s | 109 s |
+| `a11:0,a21:MIX,a31:0,a41:MIX` | 6,670 | 2,223 | 2,051 | 2,140 | 256, all `EMPTY_BOX` | **OK** | 2,435 s | 214 s |
+| **total** | **26,223** | 8,739 | 9,034 | 7,989 | 461, all empty | **6 / 6 OK** | 2.3 h | 10 min |
+
+Every node is verified, with 0 failed and 0 children never seen.  The `enumc2`–`enumc6` label-box
+enumerations had reached up to 1.3 million kills on single branches without finishing.  The exact
+propagated box is what closes them.  The failure of 2026-09-24 to 10-05 was the starting box, not
+the size of the problem.
+
+**The betting side is now closed with no float arithmetic anywhere.**  71 of the 77 nash-mode
+branches are verified by `enumc2` + `checkenum` (§16.9) and the remaining 6 by `enumc7` +
+`checkenum2`.  Every claim in every tree is an exact certificate replayed by a Fraction-only
+checker.  The paragraph above on "what the six PARTIAL branches rest on" is superseded: they no
+longer rest on directed-rounding interval arithmetic.
+
+**Cross-check: all 77 by the second method too (2026-10-05/06).**  `run_enumc7.py 26
+branches_enumc7_all.txt` re-derived the 71 `enumc2`-verified branches with `enumc7` + `checkenum2`.
+Over all 77 betting branches (`enumc7_summary_nash.txt`):
+
+| | branches | nodes | support leaves | failed | missing | enum | check |
+|---|---|---|---|---|---|---|---|
+| `enumc7` + `checkenum2` | **77 / 77 OK** | 33,104 | 462, all `EMPTY_BOX` | 0 | 0 | 3.7 h | 0.2 h |
+
+The 71 took 6,881 nodes, against `enumc2`'s 4,394,323 for the same branches.  So every betting
+branch is now closed by **two independent certified methods**, each with its own checker:
+label-box certificate trees (`checkenum`, 71 branches) and exact propagation certificate trees
+(`checkenum2`, all 77).  Both say the same thing: no Nash equilibrium has P1 betting.
 
 ## 16.10 The complete Nash set, off path included (2026-09-21)
 
@@ -2518,6 +2696,414 @@ rich.  (3, 5) is reachable cell by cell with this code and a longer clock; an ex
 needs a faster per-node step (the propagation is 60 coordinates over 60 deals) or a cluster.
 The 15-minute cap, not the method, is what leaves the 49 cells undecided.
 
+**The exact-propagation method on (3, 5) (2026-10-06).**  The method that closed the 4-card
+betting side (§16.9.1) ports to `k35/` (`xprop.py`, `enumc7.py`; NP = 60 coordinates):
+
+- with `KUHN_CARDS=4`, it reproduces the 4-card `xprop` bit for bit, certificates included (87
+  children);
+- with 5 cards, the dependency and certainly-reached sets match `bnb6` / `treesize6`;
+- exact propagation reproduces every float kill (60 / 60) with every exact box inside the float
+  box, at 1.8 s per child.
+
+It does NOT bring the 49 cells into reach.  On `a11:MIX,a21:0,a31:0,a41:0,a51:1` (the cell
+above, Knuth 1.21e7 nodes), three layer-test policies ran side by side for 90 min on 9 workers
+each (`ab_k5.py`):
+
+| layer ladder | nodes | open jobs at 90 min | failed layer tests |
+|---|---|---|---|
+| full | 1,190 | 327, growing ~200/h | 61, ~500 s each |
+| rung 0 | 5,038 | 1,705, growing faster | 350 |
+| rungs 0, 2 | 3,711 | 1,514, growing faster | 269 |
+
+None finished, and no support leaf was reached in any of them.  On 4 cards `enumc7` needed about
+0.3x the Knuth node estimate (4,723 against 1.59e4 on the silent branch).  That puts this cell at
+roughly 3.6 million nodes, which at the full arm's rate (~2,350 nodes/h on 26 workers) is about
+two months, and the other 48 cells at weeks each.  The 5-card propagation is as faithful as the
+4-card one but much less decisive: interval bounds over 60 deals are looser, and a failed
+full-ladder layer test costs ~500 s with 60 coordinates.  **An exhaustive (3, 5) certification
+needs a stronger per-node bound, not more time on one desktop.**
+
+### 16.11.1 (3, 5) HAS an exact Nash equilibrium in which P1 bets (2026-10-07)
+
+**Search (evidence only).**  `polish35.py` regenerated Part 9's MCCFR (`cfrGen` on
+`kuhnGen.Kuhn(3, 5)`, 20 seeds × 10^7 iterations, 1,317 s; P1 opening up to 0.85).  It then
+polished each seed: Newton on the interior support with greedy support repair.  **7 of the 20
+seeds** (0, 3, 6, 8, 12, 13, 14) reach the SAME equilibrium at float exploitability ~1e-16:
+
+- 17 interior coordinates, the other 43 exactly 0 or 1;
+- **P1 opens cards 1 and 2 at 0.1615, card 3 at 0.0404, card 5 at 0.8478, and never card 4.**
+
+The other 13 seeds lost their support in the crude greedy repair.  At 420 digits (`hiprec35.py`)
+the Jacobian has exactly one null direction, (c11, c21) ∝ (1, −1): P3's card-1 and card-2 openings
+matter only through their sum.  With c11 = 3/10 the rest is determined:
+
+- `b11 = b21 = (11 + √13)/72` and `c32 = 4 − √13`;
+- the other 12 coordinates are algebraic of degree > 8 (no minimal polynomial of degree ≤ 8 with
+  coefficients ≤ 10^45, none in ℚ(√13) with coefficients ≤ 10^120).
+
+So there is no closed form, and the proof is an existence proof.
+
+**The certificate (`k35/cert35.py`), exact rational arithmetic throughout.**
+
+1. Every condition is built from k35's tree as an exact polynomial over the 17 interior
+   coordinates, with the 43 pure coordinates at 0/1.
+2. Checked as polynomial identities: on the subspace a21 = a11, b21 = b11, every condition depends
+   on c11, c21 only through s = c11 + c21, and the conditions of a11/a21, b11/b21 and c11/c21
+   coincide.  So the 17 conditions are exactly 14 equations G(y) = 0 in the 14 unknowns
+   y = (A = a11 = a21, B = b11 = b21, s, a31, a32, a43, a44, a51, b33, b42, b44, c32, c33, c41).
+   The game's card-1/card-2 symmetry holds here because nobody calls with card 1 or 2, so the two
+   never meet at showdown.
+3. **Krawczyk** on the box Y = m ± 10^-30 (m = the 73-digit solution, rational), with an exact
+   interval enclosure of the Jacobian over Y: **K(Y) ⊂ int(Y)** (contraction ratio 3.5e-29).  So G
+   has exactly one zero y* in Y.
+4. **Nash.**  For all 60 coordinates the one-shot D-condition holds at y*.  The 17 interior ones
+   satisfy du_i = 0 (the equations) with own reach > 0 on Y, hence D_i = 0.  All 43 pure ones have
+   D_i < 0 (at 0) or > 0 (at 1) on the whole of Y, by exact interval evaluation, with 0 violations.
+   D-conditions at every information set imply Nash (one-shot deviation principle in each
+   player's own tree).
+5. **P1 bets:** a11 = a21, a31 and a51 are bounded away from 0 on Y.
+
+**Re-checked independently** by `k35/cert35check.py`, with no sympy.  It uses its own Fraction
+dict-polynomials built from the tree, its own substitution, differentiation and interval
+evaluation.  The identities, Krawczyk, 0 D-violations and P1 > 0 all agree.  **Negative
+controls:** the box centre moved by 10^-25, and a pure coordinate flipped (a42: 1 → 0), are both
+REJECTED by Krawczyk.  **Positive control** of the exact Nash verifier `xeq35.py`: the 4-card
+off-path witness gives exploitability exactly (0, 0, 0), and its `b12 := 0` variant exactly
+(1/300, 0, 0).  The kuhnGen → k35 coordinate mapping is checked to 1e-15 on random profiles.
+
+**The equilibrium** (`k35/cert35_equilibrium.txt`):
+
+- payoffs u = (−0.0350070, −0.0013126, +0.0363196);
+- P1: bluffs cards 1–2 at 0.1615, card 3 at 0.0404, value-bets card 5 at 0.8478, never bets 4;
+- P2: bets cards 1 and 2 after a check at 0.2029;
+- P3: opens card 1 at 3/10 and card 2 at 0.3295 (only their sum is pinned), and always with card 5.
+
+It lies in the cell `a11:MIX,a21:MIX,a31:MIX,a41:0,a51:MIX`, one of the 49 the exhaustive sweep
+left undecided.
+
+**What this settles.**  Open problem 3 (the N = n + 1 law), for (3, 5).  With a non-minimal deck,
+P1 DOES bet in equilibrium, as Part 9's MCCFR separation (P1 opening 0.76–0.85 when N > n + 1)
+suggested, now as an exact theorem.
+
+### 16.11.2 (3, 5): the betting equilibria form continua, with DIFFERENT payoffs (2026-10-07)
+
+`q2_polish35.py` re-polished all 20 MCCFR seeds: Newton on the certified support, else a
+distance-ordered support search around the seed's own reading.  15 of 20 float-certify, showing
+three P1 behaviours.  Each was then certified EXACTLY:
+
+- `k35/cert35gen.py`: general Krawczyk.  Conditions that are identical polynomials, or identically
+  0, are dropped and re-derived.  Off-path coordinates are fixed by their D-sign (`name=p/q`).
+  Free directions are fixed as parameters whose conditions stay equations (`name:=p/q`).
+- `k35/degen35.py` finds the degeneracies (null rows and columns) that tell which to use.
+
+| component | P1 opens (cards 1–5) | payoffs (u1, u2, u3) | exact status |
+|---|---|---|---|
+| **I** | 0.1615, 0.1615, 0.0404, 0, 0.8478 | (−0.03501, −0.00131, +0.03632) | **a segment**: c11 ∈ [0, 29/50] with c21 = s* − c11, s* ≈ 0.6295, all certified (`cert35seg.py`).  P1 and P2 play identically along it.  The control c11 ≤ 3/5 FAILS on a22 as predicted (the end is at c11 ≈ 0.5838) |
+| **III** | 0.1592, 0.1592, 0.0390, 0, 0.8341 | (−0.03629, −0.00108, +0.03737) | a branch leaving I at c11 = 0, on which b11 ≠ b21.  A one-parameter family: free direction b11 − b21, and P1's card-1 and card-2 conditions are identical polynomials.  Certified at b11 = 27/200 |
+| **II** | **0.3227, 0, 0.0365, 0, 0.8381** (only card 1 bluffs) | (−0.03921, **+0.00160**, +0.03762) | isolated (up to P2's off-path b53, b54, set to 1 by D-sign).  Certified; D_a21 ≡ D_a11 as polynomials, so a21 = 0 is exactly indifferent |
+
+Two observations:
+
+- **The equilibrium payoffs of (3, 5) are not unique.**  P2 gets −0.00131 on I, −0.00108 at the
+  certified point of III, and +0.00160 at II, and they vary continuously along III.  With 4 cards
+  every equilibrium pays P2 exactly −1/48.
+- **The betting set is not symmetric under swapping cards 1 and 2.**  II's mirror image (only
+  card 2 bluffs) is NOT an equilibrium: exploitability 9.2e-4 and 6.5e-3 after polishing.  Card 2
+  beats card 1 at showdown.
+
+Not settled:
+- whether these are ALL the betting equilibria.  Five seeds stayed at exploitability ~1e-3, two
+  of them near II's mirror, and an exhaustive answer needs the 49 cells (§16.11);
+- where III's branch ends.
+
+### 16.11.3 (3, 5): no P1-silent equilibrium found -- deterrence fails by a fixed margin (2026-10-07)
+
+> **Superseded by §16.11.5 (2026-10-08): there is NO P1-silent equilibrium, proved exactly.**
+
+MCCFR on the RESTRICTED game (P1's openings fixed at 0; `silent35.py`, 20 seeds × 10^7), then
+Newton on the check-subgame (`silent35b.py`).  This replaces a first attempt whose support repair
+judged the full-game exploitability, which was dominated by P1's undeterred opening, and so
+destroyed every support.  Results:
+
+- **7 of 20 seeds reach a check-subgame equilibrium** to float precision: P1's exploitability among
+  never-opening plans, and P2's and P3's, all ~1e-16.
+- **For every one of them, no responses to a bet deter P1.**  In a P1-silent profile the 15
+  responses to a bet are off-path, so Nash leaves them free to be chosen to deter.  Minimising P1's
+  best opening gain over them (multistart SLSQP) leaves **+0.02631**, the same from every seed and
+  start.  At the optimum P1's gains with cards 1, 2 and 5 are balanced at +0.0263: calling deters
+  bluffs and feeds the value bet, and folding does the reverse.
+- Sanity check: the same gain function gives exactly 0 on the opened cards of the certified
+  betting equilibrium, and −0.0207 on its closed card 4.
+
+**Status: evidence, not proof.**  A proof that (3, 5) has NO P1-silent equilibrium must cover
+every check-subgame equilibrium.  The exact label enumeration of the silent cell does exactly that,
+because P1's opening D-condition with the off-path responses as variables is part of its system.
+It is running (`k35/enumc7.py` on `a11:0,a21:0,a31:0,a41:0,a51:0`) and needs the 5-card checker
+port to be a certificate.  For a GIVEN check-subgame equilibrium, infeasibility of deterrence has a
+finite exact certificate: the gains are multilinear in the 15 responses, so a weighted sum is
+minimised at one of the 2^15 vertices of the cube.
+
+**The exhaustive route is out of reach (2026-10-07 night).**  The silent cell ran under `enumc7` for
+12,707 s on 22 workers (task `PokerK35Silent`, resumable from `k35/enumc_k5c7_silentN.ckpt`): 12,853
+nodes (5,208 splits, 3,626 propagation kills, 4,019 certificate kills) and **0 support leaves**,
+but the queue was still growing (2,729 jobs).  A Knuth estimate on the float label DFS (`estcells.py`,
+300 walks) puts the cell at **2.6e7 ± 1.7e7 nodes**, larger than the betting cell probed in §16.11
+(1.2e7).  At `enumc7`'s ~0.3 of the float tree and ~3,600 nodes/h that is about three months, so the
+run was stopped.
+
+So "(3, 5) has no P1-silent equilibrium" stays a well-supported CONJECTURE:
+- every one of 20 restricted MCCFR runs (7 polished to float precision) leaves P1 a deterrence gap
+  of ~+0.026;
+- the exhaustive enumeration met no support leaf in its first 12,853 nodes.
+
+Proving it needs either a much stronger per-node bound, or an analytic reduction of the
+check-subgame equilibria (as Table 2/3 did for 4 cards) followed by the finite vertex certificate
+of deterrence infeasibility.
+
+### 16.11.4 (3, 5) silent question reduced EXACTLY to one inequality on the restricted game (2026-10-08)
+
+**Restricted game G_c.**  P1's openings frozen at "check" (no choice, no condition).  Its 40 live
+coordinates are P1's three calls (KKB, KBF, KBC), P2's bet after K and two calls after KKB (KKBF,
+KKBC), P3's bet after KK and call after KB, per card.  The 15 responses to a P1 bet are unreached.
+
+**Decomposition (elementary).**  A P1-silent profile is a Nash equilibrium of (3, 5) iff
+(a) its check part is a Nash equilibrium of G_c, and (b) some responses y to a bet deter every
+opening: `Ebet(j; y) <= V_j` for j = 1..5, where V_j is P1's value of checking with card j.
+Reason: after a P1 bet nobody P2/P3 cares about is reached, so their incentives are those of G_c.
+P1's payoff separates by card, and with card j P1's best deviation is max(Ebet(j; y), V_j).
+
+**Deterrence cut (exact, `k35/deter35.py`).**  Ebet(j; y) is affine in each of the 15 responses
+separately, so any non-negative combination of the Ebet's is minimised at a vertex.  All 2^15 vertices
+in exact rationals, from the tree and independently from the closed-form payoff table, which agree
+at every vertex:
+
+    min_y [ 3 Ebet(1; y) + 8 Ebet(5; y) ] = 16      (attained at 334 vertices)
+    min_y [ 3 Ebet(2; y) + 8 Ebet(5; y) ] = 16      (146 vertices)
+
+In G_c P1 never bets, so with card 1 P1 only reaches showdowns, which it loses: V_1 = -1 exactly.
+So (b) forces 8 V_5 >= 16 + 3:
+
+> **Theorem (reduction).**  If (3, 5) has a P1-silent Nash equilibrium, then G_c has a Nash
+> equilibrium with **V_5 >= 19/8**, i.e. P1 holding the top card wins at least 3/8 of a chip beyond
+> the antes on average.  Equivalently: P1's deviation "open 5 always, open 1 at rate 3/8" gains at
+> least (19 - 8 V_5)/40 against EVERY response to a bet.
+
+The weights come from the LP over vertices at the polished family (below); the claim itself does
+not depend on that.  Single-card thresholds from the same LP (V_1 = -1 only): V_2 >= -2, V_3 >= -4/3,
+V_4 >= 0 (none binding), **V_5 >= 19/8**.  So the obstruction is entirely at the top card.
+
+**The G_c family.**  The 7 polished restricted equilibria (`silent35b.json`) are one family with
+CONSTANT values V = (-1, -1, -0.676, 0.155, 2.194111).  P2 bluffs cards 1 and 2 at 3/16 each and
+bets 5.  P3 (after KK) bluffs 1 and 2 with c11 + c21 = 0.40571 and bets 5.  P3 calls a P2 bet only
+with 5.  P1 calls KBF with 3 and 4 at f3 + f4 = 3/2, KKB with 3 at 0.394 and with 4 and 5 always.
+Its V_5 - 2 = 0.194 against the 0.375 needed; the minimax deterrence gap 0.1316 = 5 x 0.02631 is
+exactly the LP value (no duality gap).  Margins of the unplayed actions at the family (gain per
+unit reach): P2 bet with 3 -0.036, with 4 -0.206; P3 bet with 3 -0.403, with 4 -0.252; P3 call
+after KB with 3 or 4 -0.091.
+
+**What remains: one theorem about G_c alone.**  "Every Nash equilibrium of G_c has V_5 < 19/8."
+Here V_5 - 2 = (1/12) sum over k != l in {1..4} of [ b_k (1 + q_l) + (1 - b_k) c_l (1 + r_k) ],
+with b = P2's bet, q = P3's call after KB, c = P3's bet after KK, r = P2's call after KKB-C.
+
+**What does NOT close it (Knuth estimates, `k35/estrestrict.py`, `k35/estline.py`, float):**
+
+| search | nodes |
+|---|---|
+| G_c label DFS, nash mode, no cut | 1.18e8 +/- 7e7 (3e4 leaves) |
+| + the cut as a kill on boxes | 1.18e8 (it almost never fires: MIX boxes stay wide) |
+| + the cut as a chord contractor | 1.17e8 |
+| V_5 cut, V_5's 16 coordinates split first | 1.6e8 |
+| seq mode (weak rules everywhere) | 9.4e7 |
+| the KB line alone (after P2's bets) / the KK line alone | 2.4e5 / 3.0e6 partial nodes, 1.5e5 / 1.5e6 partial leaves |
+
+The cut does not prune because the interval bound on V_5 only bites once the opponents' bets are
+narrowed, and MIX labels leave them wide until the support system is solved.  The line
+decomposition does not help either: each line on its own keeps too many partial supports.  So the
+exhaustive route on G_c costs about as much as on the full silent cell.  (§16.11.5 closes it
+another way.)
+
+### 16.11.5 (3, 5) has NO P1-silent Nash equilibrium — PROVED (2026-10-08)
+
+**Theorem.**  In every Nash equilibrium of (3, 5)-Kuhn poker, P1 opens with positive probability
+with some card.  With §16.11.1 ((3, 5) has equilibria): P1 bets in **all** of them.  At (3, 4), P1
+is silent in **every** equilibrium, so the two games are on opposite sides of this question.
+
+**Proof.**  By §16.11.4 it suffices that every Nash equilibrium of G_c has V_5 < 19/8.  That comes
+from a **correlated-equilibrium (Lagrangian) certificate**: rationals mu_tau >= 0, one per pure plan
+tau of an agent a = (player, card), such that
+
+    L(s) = u_1(s | 5) + sum_tau mu_tau * ( u_a(s | c) - u_a(tau, s_-a | c) )
+
+satisfies **max over [0,1]^40 of L = 28071283/12000000 = 2.339274... < 19/8**.
+
+1. **NE terms are non-negative.**  At a Nash equilibrium no agent gains by switching to any fixed
+   plan tau, so every bracket is >= 0.  Hence V_5 = u_1(s|5) <= L(s) <= max L < 19/8.
+2. **Pure profiles suffice.**  L is multilinear, so its maximum over the cube is attained at a pure
+   profile.  Each coordinate occurs once per root-to-leaf path of a deal, and the agent's own
+   coordinates are absent from u_a(tau, s_-a).
+3. **The pure-profile check is finite and exact.**  At a pure profile, L is a sum over the 60 deals of
+   terms that each depend only on the 3 agents dealt.  So the maximum over all 2^40 pure profiles is
+   found by exhaustion with one decoupling: fixing two players' plans, the third player's five agents
+   separate.  The arithmetic is integer: one common denominator 12·10^6, numpy int64 under a 2^62
+   guard.
+4. **CE form.**  Written as CE terms mu[rho, tau] P_s(rho) (u_a(rho, s_-a) - u_a(tau, s_-a)) with
+   mu[rho, tau] = mu_tau (`k35/silent35_cert.json`, 136 rows), since u_a(s) = sum_rho P_s(rho)
+   u_a(rho, s_-a).  At a NE, every plan in the support of a best-responding behavioural strategy is a
+   best response.
+
+| file | role |
+|---|---|
+| `k35/deter35.py` | the cut V_5 >= 19/8 (§16.11.4), exact, tree = payoff table at all 2^15 vertices |
+| `k35/cceprop35.py` | PROPOSER, float: cutting-plane LP over mu, separation by local search; 22 rounds, LP value 2.31534.  Decides nothing. |
+| `k35/silent35_cert.json` | the certificate (multipliers on the grid 10^-6) |
+| `k35/ceverify.py` | exact check 1: payoffs from `tree.py`; exhausts P3 x P1 plans, P2 decoupled |
+| `k35/ceverify2.py` | exact check 2, INDEPENDENT: payoffs by direct simulation of the pot (antes, bets, showdown); no `tree.py` / `kuhn3p.py`; exhausts P3 x P2 plans, P1 decoupled |
+| `k35/cecontrol.py` | controls |
+
+Both checks print the same maximum, 28071283/12000000 (logs `k35/log_ceverify35.txt`,
+`k35/log_ceverify2_35.txt`).  The proposer's local search missed the exact maximiser (2.3393 vs
+2.3153), which is why only the exhaustive checks count.  Controls (`k35/log_cecontrol35.txt`):
+- the two payoff implementations agree on all 15,360 (deal, plan triple) cases;
+- the empty certificate gives max L = 4 in both checks (P2 bets 1-4, P3 calls, P1's 5 collects);
+- the proposer's float L and the checkers' exact L agree to 6e-14 at 300 random pure profiles;
+- at the 7 polished restricted equilibria, V_5 = 2.194111 <= L = 2.268 <= max = 2.339.
+  The certificate cannot bound V_5 below a genuine equilibrium, and it does not.
+
+**What the certificate says.**  24 deviation plans carry weight, among them:
+- P1 folding everything with cards 1-3;
+- P1 calling KKB and KBF with card 4;
+- P2 checking with cards 1-3, or checking and calling KKBF with card 4;
+- P3 checking with cards 1-4, or (card 4) checking and calling KB;
+- the "always call" plans with the top card.
+
+If opponents put enough chips into P1's check to make the 5 worth 19/8, one of these simple
+deviations pays.  Since the max is over pure profiles, the bound even holds for every agent-form
+coarse correlated equilibrium of G_c: E[u_1 | 5] <= 2.3393 there too.
+
+**Why this works where enumeration did not.**  The cut turns "deterrence impossible" into one
+linear bound on one equilibrium payoff.  Bounds on payoffs over the equilibrium set have LP-dual
+certificates made of incentive constraints, and those can be checked on pure profiles exactly.  The
+label enumeration has to separate supports instead (1.2e8 nodes).
+
+The silent-cell `enumc7` run turned out to have been relaunched by its one-time task trigger at
+23:50 on 2026-10-07, after the 23:40 stop.
+
+### 16.11.6 (3, 5): which openings can P1 use?  Region certificates on the FULL game (2026-10-08)
+
+**Question.**  Are components I, II, III (§16.11.2) all the equilibria?  Not answered.  But the
+certificate method of §16.11.5 extends to the full game.  It decides "no equilibrium in region R"
+for any R built from:
+- **faces:** an agent (player, card) restricted to a subset of its 16 pure plans, e.g. P1 never
+  opens 5 = agent (P1, 5) on its 8 check plans;
+- **best-response terms:** "agent a plays plan rho with positive probability" gives
+  u_a(rho, s_-a) - u_a(tau, s_-a) >= 0 for every tau.
+
+If max over the face of  sum mu_t Delta_t + sum lam_r BR_r  is < 0 (Delta = coarse-correlated deviation
+terms, mu, lam >= 0, normalised to sum 1), R holds no Nash equilibrium.  The function is multilinear,
+so a check over pure profiles suffices.
+
+| file | role |
+|---|---|
+| `k35/fullprop35v2.py` | PROPOSER, float (decides nothing): cutting-plane LP; profiles = 15 plan indices, payoffs from a precomputed table, local search moves one agent's plan.  `KUHN_CE=1` gives plan-dependent (correlated-equilibrium) multipliers.  Same terms as `fullprop35.py` (checked: identical at 200 profiles). |
+| `k35/fullcheck35.py` | exact check 1: tree payoffs.  Payoff-equivalent plans merged (P1 9 classes, P2 10, P3 16 per card).  All P1 combinations, then P2's agents level by level, each branch closed when its EXACT bound sum_l max_c sum_{k != l} (H_kl[b_k, c] or max_b H_kl) is < 0; P3 decouples.  Integers, int64 under a 2^62 guard. |
+| `k35/fullcheck35b.py` | exact check 2, INDEPENDENT: payoffs by direct simulation of the full game (no `tree.py`), own classes, mirrored order (P2 combinations outside, P1 level by level). |
+
+Controls:
+- the two full-game payoff implementations agree on all 245,760 (deal, plan triple) cases;
+- unfinished test certificates are rejected by both checkers with the same violating values as a
+  plain enumeration;
+- regions that CONTAIN known equilibria ("P1 never opens 4": I; "P1 never opens 2": II) end with no
+  certificate.
+
+**Certified by BOTH checkers (no Nash equilibrium in the region):**
+
+| region | meaning |
+|---|---|
+| a51 = 0 | P1 opens card 5 with positive probability in EVERY equilibrium |
+| a11 = 1, a21 = 1, a31 = 1, a41 = 1 (four certificates) | P1 never opens any of cards 1-4 with certainty |
+| 6 opening cells with a11 = a21 = 0 | if P1 never bluffs with 1 or 2, then 0 < a51 < 1 and a31 > 0 |
+
+All the coarse certificates are tiny (20-30 nonzero multipliers) and check in under a minute.
+
+**Not certifiable this way (LP value exactly 0, i.e. no certificate):**
+- "P1 opens 4 with positive probability", "P1 never opens 3", "P1 never opens 1", "P1 always
+  opens 5", "P1 never opens 1 or 2";
+- 24 of the 30 opening cells that contain no known component.
+
+The value 0 is the relaxation's floor: every region has an identically zero term (a plan
+deviating to itself).  So it means "the coarse-correlated relaxation is too weak here", NOT "there is
+an equilibrium here".  The plan-dependent (correlated-equilibrium) version was run on the five
+single regions.  After ~60 rounds its LP values were still creeping toward 0 (-0.002 to -0.004) with
+violations remaining.  At ~100 rounds the values were:
+
+| region | LP value |
+|---|---|
+| open5one | -0.0007 (round 109) |
+| open3zero | -0.0014 |
+| open1zero_open2zero | -0.0017 |
+| open1zero | -0.0018 |
+| open4pos | -0.0019 |
+
+All were still rising.  The same held for the two remaining cells with a11 = a21 = 0 (-0.005 at
+round 35).  The trajectories point to 0, so the CE relaxation also appears too weak here.  The runs
+were stopped; the logs are `k35/fullcert/log_ce_*.txt` and `log_cecell_*.txt`.
+
+**Exploration (float, evidence only):**
+- `explore35.py`: 16 new MCCFR seeds (20-35, 10^7 iterations).  11 polish to equilibria: 10 x I,
+  1 x II.  5 do not polish; seed 26 opens (0.17, 0.17, 0, 0, 0.81) but stays at exploitability
+  9.6e-4 even with a 4,000-support search.  Over 36 seeds: only I, II, III ever appear.
+- `cell35.py` (restricted MCCFR, P1 never opens 3 or 4, 8 seeds): P1's full-game exploitability is
+  0.017-0.061 at every seed (P2, P3 <= 0.0075).  The restricted equilibria are not full
+  equilibria: P1 wants to open 3.
+
+**Both routes to completeness tried (2026-10-09).**
+
+*Exhaustive search, measured (`k35/estcells.py`, Knuth, 300 walks, nash mode, bet-first order):*
+
+| cell | holds | nodes |
+|---|---|---|
+| (M, M, M, 0, M) | I and III | 7.1e11 +/- 6.5e11 |
+| (M, 0, M, 0, M) | II | 6.2e10 +/- 4.1e10 |
+| (0, M, M, M, M) | nothing known | 7.1e11 +/- 7.0e11 |
+
+That is 10^4-10^6 times the silent cell's 2.6e7, so it is out of reach by any margin (log
+`k35/log_estcells_known.txt`).
+
+*Tighter relaxation, built (`k35/fullprop35p.py`):*
+- **Independence products.**  Every CCE / region term of agent a is multiplied by the plan
+  indicator of each agent b that never shares a deal with a: same player other card, or other
+  player same card.  The product stays MULTILINEAR, so pure profiles still suffice, and it is >= 0
+  at every NE.
+- **What it forbids:** correlating an agent's incentives with the plans of agents it never meets.
+- **What it leaves free:** P2-k vs P3-l correlation (players who DO meet).  That would need
+  non-multilinear products and verification off the vertices.
+- **Size:** about 17,800 product columns on top of the 256 base columns.
+- **Result on the five hard regions:** values still creep toward 0, the same pattern as the CE
+  version.  P1-partner-only products (the only form the existing checkers can verify) reach 0
+  faster.
+
+| region | value (round) |
+|---|---|
+| open3zero | -0.006 (34) |
+| open1zero | -0.006 (39) |
+| open1zero_open2zero | -0.005 (52) |
+| open5one | -0.009 (26) |
+| open4pos | -0.028 (10; its LP solves became slow) |
+
+No new certificate; runs stopped.  Logs: `k35/fullcert/log_p_*.txt`, `log_p1_*.txt`.
+
+So the hierarchy has to reach correlation between players who meet, P2-k with P3-l, to make progress.
+That means degree-2 products checked by interval branch-and-bound off the vertices: a substantially
+bigger instrument.
+
+**Status.**  P1's opening behaviour in any equilibrium is now constrained (5 sometimes; 1-4 never
+for sure; at least one of {1, 2, 3} sometimes, and with no bluff on 1/2 both 3 and a mixed 5).  The
+known components realise (M, M, M, 0, M) and (M, 0, M, 0, M).  Completeness ("I-III are all") stays
+open.  Two ways forward:
+- **stronger relaxations:** CE terms; products of terms with faces, i.e. Sherali-Adams style;
+- **cell-wise exact enumeration (`enumc7`):** with the certified facts as extra pruning.  It ran until 10:00 on 2026-10-08 (2,151 jobs done, 0
+leaves, 4,779 queued), was stopped, and is superseded by this proof.
+
 ## 16.12 Refinements — what the machinery decides and what it does not
 
 The seq-mode ledger (weak rules: an action strictly better at every node of its information
@@ -2572,19 +3158,30 @@ CONDITION ON `A_v`, polynomial in the profile and linear in `r`.  So:
     (PAPER_KIT Lemma R1), so one computation decides all three, and only NORMAL-form properness
     (Theorem 3) can select more.
 
-**Belief-free forcing (dominance).**  Eight coordinates are settled with no tremble analysis at
-all, by the sign of the coefficients of `D_v` on the open cube, and seven of them are exact
-dominance -- `D_v = c * R_v` identically, i.e. the same value difference at every node of the
-set, under every belief and against every profile:
+**Belief-free forcing (dominance).**  *Corrected 2026-09-26: an earlier version said eight.*
+EIGHTEEN coordinates are settled with no tremble analysis at all, by exact dominance --
+`D_v = c * R_v` identically as polynomials, i.e. the same value difference at every node of the
+set, under every belief and against every profile.  The first version of this section tested
+for one-signed coefficients of `D_v`, which misses every case where the reach `R_v` itself has
+mixed-sign coefficients (its `1 - x` factors); testing the identity directly (`seqcert.dominance`,
+`checkseqcert` re-derives it from the tree) finds the full set.  It is the same six decisions for
+each player:
 
-| coordinate | `D_v / R_v` | forced | Nash window (Table 4) |
+| coordinates | `D_v / R_v` | forced | Nash window (Table 4) |
 |---|---|---|---|
-| `a14`, `a24`, `c14`, `c24`, `b12` | `-1` (one chip) | `= 0` | `[0,1]`, `[0,1]`, `[0,1]`, `[0,1]`, `[0, 0.4173]` |
-| `a44`, `c44` | `+5` | `= 1` | `[0,1]`, `[0,1]` |
-| `b42` | `(8 + c14 r + ...) / 2 >= 4` | `= 1` | `[31/40, 1]` |
+| `a12`, `a13`, `b13`, `c12` | `-1` | `= 0` | already pinned to 0 by Nash |
+| `a14`, `a24`, `c14`, `c24` | `-1` | `= 0` | `[0, 1]` each |
+| `b14`, `b24` | `-1` | `= 0` | `[0, 1]` (private: in no Nash inequality) |
+| `b12`, `c13` | `-1` | `= 0` | `[0, 0.4173]`, `[0, 0.5269]` |
+| `a43` | `+4` | `= 1` | already pinned to 1 by Nash |
+| `b43`, `c43` | `+4` | `= 1` | `[0, 1]`, `[0.7750, 1]` |
+| `a44`, `c44` | `+5` | `= 1` | `[0, 1]` each |
+| `b44` | `+5` | `= 1` | `[17/32, 1]` |
 
-Six of the eight are free in the WHOLE of `[0,1]` over the Nash set: sequential rationality
-alone -- any refinement at all -- collapses eight dimensions of the equilibrium set to points.
+Thirteen of the eighteen have a nontrivial Nash window and eight of them the WHOLE of `[0,1]`:
+sequential rationality alone -- any refinement at all -- collapses thirteen dimensions of the
+equilibrium set to points.  (`b42 = 1` is not exact dominance but follows the same way:
+`D_{b42} / R_{b42} >= 4` everywhere, a robustly one-signed leading form.)
 
 **Per-leaf closure** (`refine.closure`: substitute what is forced, recompute the leading
 coefficients, repeat).  7 to 12 coordinates per leaf, including `b44 = 1` everywhere,
@@ -2614,10 +3211,9 @@ off-path structure:
     `{a11, a21}`, `{a41}` is strictly larger the surviving form of `A_b32` is one-signed, so
     `b32` is never interior; `b32 = 1` is outside the Nash window (`b32 <= 15/16`).  Checked
     exhaustively over all 75 orderings of P1's four openings (`seq_orderings`).
-  * **`c43 = 1`.**  `b22 <= 1` makes `A_c43 > 0` whatever survives.
-  * **`c13 = 0`.**  `b22 <= 0.5841 < 1` (Table 4) makes `A_c13 < 0`.
-    Both are mechanised in `forcecheck.py`: bound every coefficient of the leading form over
-    Table 4's windows and read off the common sign -- all 12 leaves, one sign each.
+  * **`c43 = 1`, `c13 = 0`** -- exact dominance (`D = 4R`, `D = -R`); no belief argument is
+    needed.  (An earlier version derived them from coefficient bounds of the leading forms over
+    Table 4's windows, `forcecheck.py`; that is correct but unnecessary.)
   * **`c34 = 0`.**  If `c34 = 1` then `A_b22 = -(2 r_a11 + 2 r_a31 + 2 r_a41)/24 < 0`, forcing
     `b22 = 0`, and then `A_c34 = -(r_a11 + r_a21)/24 < 0`, contradicting `c34 = 1`.
   * **`c33 >= 1/2`, always.**  With those four settled, P1's deterrence at card 2 reads
@@ -2671,7 +3267,7 @@ conjectured.**
 coordinates, kills a pattern with a `certbox` emptiness certificate or witnesses it with an
 exact profile plus an exact positive belief vector (`seq_<leaf>.json`, `seq_summary.txt`):
 
-| | patterns | killed (certificate) | sequential (exact witness) | undecided |
+| | patterns (first run) | excluded | sequential (exact witness) | undecided |
 |---|---|---|---|---|
 | 9 generic leaves (`b22`, `c23`, `c33` decided) | 99 | 81 | 18 | 0 |
 | 3 corner leaves (10 coordinates decided) | 299 | 296 | 3 | 0 |
@@ -2689,6 +3285,38 @@ Every witness is a profile in exact rationals together with an exact belief vect
 needs them, the relative tremble orders; `checkseq.py` -- an independent checker that rebuilds
 the leading coefficients from the tree and re-tests every condition in Fractions -- verifies
 **21 / 21, 0 failed**.
+
+**Independently replayed** (2026-09-26, `seqcert.py` + `checkseqcert.py`).  An earlier version
+of this section said "killed with certificates" when the exclusions were in fact prover-only:
+their certificates had never been stored, and only the witnesses were replayed.  The enumeration
+was therefore re-run so that every step leaves evidence, **with no forcing injected**, and an
+independent checker replays all of it -- no sympy, no prover code: the belief forms are rebuilt
+from the game tree in Fractions (`seqforms.py`, which agrees with the sympy route on all 48
+gradients and every leading form tested) and box certificates by `checkcert.check_box_cert`.
+
+| evidence | count | what the checker does |
+|---|---|---|
+| closure: exact dominance | 18 coordinates (per leaf, those left free) | re-derives `D_v - c R_v = 0` from the tree |
+| closure: robust one-signed form | the rest of 140 closure steps | rebuilds the form, checks it is linear in one set's ratios, one-signed, and nonvanishing at every ordering |
+| kill: one-signed contradiction | 191 | the same test against the assigned value |
+| kill: certificate | 404 | rebuilds every named row from its origin and replays the branch and bound |
+| kill: all 75 orderings of a tremble group | 42 (3,150 certificates) | enumerates the orderings itself and replays one certificate per ordering |
+| witness | 21 | an exact Nash point, and along an explicit tremble curve `x_w = eps^e rho` the sign of `lim D_v / R_v` for every coordinate |
+
+Coverage is checked too: every 0 / 1 / interior assignment of the decided coordinates extends a
+killed record or is witnessed.  **12 / 12 leaves replay, 0 failed; 637 kill records and 3,554
+box certificates.**  The surviving patterns are exactly the three above -- and `b32 = c34 = 0`
+now come out of the enumeration with replayed evidence, not from an injected argument.
+
+Two restrictions keep the relaxation sound, and both prover and checker enforce them: a belief
+row is used only if it is MULTI-HOMOGENEOUS in the information sets' ratios (then scaling each
+set separately is harmless, and a form evaluated at the per-set lowest-class ratios is either 0
+or the true leading term); and a one-signed form settles a coordinate only if it is linear in
+ONE set's ratios with every ratio appearing in a term whose profile factors are interior (so it
+cannot vanish under any tremble ordering).  An earlier draft asserted per-set normalisation was
+WLOG in general; it is not for forms that mix sets or degrees.  Witnesses are checked as concrete
+curves, which also covers the case the earlier LP check skipped: a leading form that collapses,
+where the next order decides.
 
 **How the last 28 were closed** (`resolve_seq2.py`, `witC.py`, 2026-09-24).  The corner leaves
 are the generic structure *mirrored*: with `b11 = b21 = 0` it is P2's bet that is unreached,
