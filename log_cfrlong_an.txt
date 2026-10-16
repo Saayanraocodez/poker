@@ -1,0 +1,19 @@
+ES-MCCFR, 24 seeds; running average p(t) (what R14 measured at t = 1e6)
+      t      expl(med)   dist(med)   dist(max)   a32(med)   |b11-b21|(med)  sub A/B/C   beta(mean)
+      1e+04   1.39e-02    0.3895      0.6705      0.2865     0.1596          20/ 2/ 2    0.2362
+      1e+05   4.04e-03    0.1219      0.3080      0.0961     0.0911          10/ 9/ 5    0.1658
+      1e+06   1.45e-03    0.0452      0.1268      0.0158     0.1079          11/11/ 2    0.1749
+      1e+07   4.99e-04    0.0142      0.0715      0.0072     0.1120           8/11/ 5    0.1631
+      1e+08   6.16e-04    0.0193      0.1061      0.0017     0.1267          10/13/ 1    0.1716
+
+window averages (play between consecutive checkpoints, ~0.25 decade each)
+      t      expl(med)   dist(med)   sub A/B/C   beta(mean)   beta sd across windows of one seed (median)
+      1e+05   1.58e-02    0.0607      11/ 9/ 4    0.1597
+      1e+06   5.41e-03    0.0315      16/ 3/ 5    0.2115
+      1e+07   8.26e-03    0.0122       9/ 5/10    0.1721
+      1e+08   7.68e-03    0.0116      17/ 4/ 3    0.1930
+
+last two decades (t > 1e6, 8 windows per seed):
+   seeds whose window sub-family changes: 18 / 24;  beta sd across a seed's windows: median 0.0717
+   distance 1e6 -> 1e+08: median 0.0452 -> 0.0193;  ratio median 0.443  (1/sqrt(100) = 0.1)
+[cfrlong_an.json written]

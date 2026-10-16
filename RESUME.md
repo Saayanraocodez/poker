@@ -1,3 +1,23 @@
+# 2026-10-16: one paper draft (PAPER_DRAFT.md), and the Oct 11-14 results written up
+
+- `PAPER_DRAFT.md` = Part I (the paper, all results to date), Part II (how everything works, code map,
+  data inventory, reproduction, errata, bibliography), Part III (this file, MASTER_DATA, PAPER_KIT,
+  REPORT, GENERALIZATION verbatim).  The user will rewrite it.
+- Oct 11-14 runs, now in PAPER_DRAFT §8.4, §11.2-11.5, §12 (were uncommitted):
+  - `qperf.py`: quasi-perfection, like perfection, holds on the whole open c33 interval (1/2, 23/32)
+    at Theorem 6(5)'s slice (symbolic minor det -95/3439853568); only normal-form properness selects.
+  - `reread14.py` / `reread14b.py`: all 150 R14 MCCFR outputs are certified off the complete Nash
+    set (min 0.0067, median 0.0444); the certified lower bound IS the distance (exact witnesses,
+    150/150).  The error is on path (a32, b11/b21); off path all inside Table 4.
+  - `mixdemo.py`: two exact equilibria with equal payoffs (A and C); their sequence-form midpoint has
+    exploitability exactly 1/320 -- the Nash set is not convex.
+  - `cfrlong.py` / `cfrlong_an.py`: 24 x 1e8 ES-MCCFR; distance 0.0452 -> 0.0193 from 1e6 to 1e8
+    (ratio 0.44, not 0.1); window averages switch sub-family in 18/24 seeds.
+  - `cfrfull.py` / `cfrfull_run.py`: full-width CFR+ and DCFR reach certified distance ~5e-6 at 2e4
+    iterations; vanilla CFR 3e-3 and Linear CFR 1.8e-2 at 1e6.  None selects a refinement (b32 ~ 0.12).
+  - `ident_probe.py`: on-path parameters are locally identifiable for every observer (exact ranks).
+- Committed and merged to master; further research on branch `holdem-incidence`.
+
 # 2026-10-09: both routes to (3,5) completeness tried -- neither closes it (MASTER_DATA §16.11.6)
 
 - Exhaustive: Knuth puts the opening cells at 6e10-7e11 nodes (`k35/log_estcells_known.txt`): out.

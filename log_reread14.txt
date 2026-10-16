@@ -1,0 +1,43 @@
+R14 RE-READ: exact lower bounds on dist_inf(MCCFR output, complete Nash set of Theorem 5)
+150 outputs (cfr_sweep.json: ES-MCCFR, 10^6 iterations each)
+
+certified lower bound vs float LP value: max |diff| = 6.94e-18 (rationalised duals lose nothing)
+distance lower bound: min 0.0067  median 0.0444  mean 0.0519  max 0.2101
+   outputs certified at distance > 0.005: 150 / 150
+   outputs certified at distance > 0.010: 147 / 150
+   outputs certified at distance > 0.020: 123 / 150
+   outputs certified at distance > 0.050:  67 / 150
+   outputs certified at distance > 0.100:  10 / 150
+exploitability (max over players): median 0.00150;  ratio dist_lb / expl: median 28.7, min 4.3
+correlation(dist_lb, expl) = +0.448
+
+nearest sub-family (by certified bound): A 54  B 76  C 20
+coordinates carrying the certificate (how often in 150):
+   a32 78  b11 41  b21 41  c11 10  a41 7  c21 6  c32 3  a22 2  b41 1  a23 1  b33 1  a33 1
+
+R14's 'in none of the three' (tolerance 0.02): 99 / 150
+   their certified distance: median 0.0557, min 0.0140;  the other 51: median 0.0285
+
+OFF PATH (P1 never bets, so P2's/P3's answers to a bet are unreached):
+   coord  Table2  Table4 window      MCCFR median   max |p - Table2|   outside Table4 (by > 0.02)
+   b12        0   [0.0000, 0.4173]       0.0000       0.0000            0
+   b22        0   [0.0000, 0.5841]       0.0000       0.0070            0
+   c13        0   [0.0000, 0.5269]       0.0000       0.0001            0
+   c23        0   [0.0000, 0.5833]       0.0000       0.1436            0
+   b42        1   [0.7750, 1.0000]       1.0000       0.0000            0
+   c43        1   [0.7750, 1.0000]       1.0000       0.0000            0
+   b44        1   [0.5312, 1.0000]       1.0000       0.0002            0
+   c44        1   [0.0000, 1.0000]       0.9995       0.2861            0
+   a44        1   [0.0000, 1.0000]       1.0000       0.0023            0
+   a14        0   [0.0000, 1.0000]       0.0000       0.0001            0
+   a24        0   [0.0000, 1.0000]       0.0000       0.0000            0
+   c14        0   [0.0000, 1.0000]       0.0000       0.0001            0
+   c24        0   [0.0000, 1.0000]       0.0000       0.0002            0
+   a13        0   [0.0000, 0.0000]       0.0000       0.0000            0
+   a23        0   [0.0000, 0.0000]       0.0000       0.0125            0
+   a43        1   [1.0000, 1.0000]       1.0000       0.0000            0
+   c12        0   [0.0000, 0.0000]       0.0000       0.0000            0
+   c22        0   [0.0000, 0.0000]       0.0000       0.0016            0
+   c42        1   [1.0000, 1.0000]       1.0000       0.0000            0
+
+[reread14.json written]
