@@ -9,15 +9,16 @@ reproduces them.
 
 ## Setup
 
-Python ≥ 3.10 with `numpy`; `matplotlib` for plots; `psutil` for the budget measurement. No other
-dependencies. The two oracle implementations used by the tests are read-only and located through
+Python ≥ 3.10 with `numpy`; `matplotlib` for plots; `psutil` for the budget measurement; `sympy` and
+`scipy` for the pot-sweep polish and the threshold (`scripts/potsweep.py`, `scripts/silent_threshold.py`).
+No other dependencies. The two oracle implementations used by the tests are read-only and located through
 `tests/_paths.py`, which can be redirected with the environment variables `KUHN3_DIR`,
 `AUDIT_PATH` and `POKER_REPO`:
 - `kuhn3.py` (the earlier exact Kuhn implementation);
 - `holdem_bridge_audit.py` (the independent best-of-21 evaluator).
 
 ```
-pip install numpy matplotlib psutil
+pip install numpy matplotlib psutil sympy scipy
 ```
 
 ## Layout
@@ -78,6 +79,7 @@ python scripts/potsweep.py polish potsweep_48k
 python scripts/potsweep.py polish_silent 61/64    # P1-silent variant with the deterrence search
 python scripts/potsweep.py summary ; python scripts/potsweep.py table ; python scripts/potsweep.py plot
 python scripts/verify_potsweep.py                 # independent re-check of every stored certificate
+python scripts/silent_threshold.py all            # exact end c* of the P1-silent branch + certificates at c* -/+ 2^-20
 ```
 
 Scratch runs: set `HINC_RESULTS=<dir>` to keep them out of `results/` (the project's scratch

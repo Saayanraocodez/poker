@@ -26,6 +26,9 @@ and observed. The mechanism needs an action that some player **never takes with 
   to **pot 759/256 ≈ 2.965**, certified by exact Nash equilibria. At **pot 381/128 ≈ 2.977**
   every DCFR seed opens. The switch sits in a window 1/256 wide in the prior contribution, just
   below Kuhn's pot of 3.
+  - The certified silent branch ends **exactly at pot 3c\* ≈ 2.970210**, with c\* an algebraic number
+    of degree 10 (§3.1). This is the end of that branch, not a proof that no other silent
+    equilibrium exists above it.
 
 These are statements about the **specified conditional river games**, not about unrestricted
 Hold'em.
@@ -318,10 +321,10 @@ run (amendment 4 records one test run made before it):
     r1 = 3.6e-4 and 1.0e-3 respectively.
 
 **What is not shown** (declared and retained):
-- **The upper end of the bracket is not a proof.** It rests on DCFR selection and on a local search.
-  It does not show that no P1-silent equilibrium exists at c ≥ 127/128. By upper hemicontinuity,
-  silent equilibria at c arbitrarily close to 1 would force one at pot 3, and OP2's local search did
-  not find one there.
+- **The upper end of the bracket is not a non-existence proof.** It rests on DCFR selection. §3.1
+  proves exactly that the certified silent branch ends at c\* ≈ 0.990070, but it does not show that
+  no P1-silent equilibrium exists at c ≥ 127/128. By upper hemicontinuity, silent equilibria at c
+  arbitrarily close to 1 would force one at pot 3, and OP2's local search did not find one there.
 - **Two points are not certified.**
   - At c = 13/16 DCFR never converged: NashConv 1.3e-3 to 2.2e-3, even at 48,000 iterations. The
     polish of the 48,000-iteration profiles found more than 12 mixed rows. The polish of the
@@ -338,8 +341,112 @@ run (amendment 4 records one test run made before it):
   residual P1 opening of 1e-5 to 1e-4, which lifts the response sets above the 1e-6 reach cutoff.
   The exact counts do not drop.
 - **The N = n + 1 analogue.** In this game, P1's silence, and with it the off-path mechanism, holds
-  only while the pot-to-bet ratio is below a threshold in (2.965, 2.977]. That plays the role of
-  Kuhn's deck-size law, in pot-to-bet ratio instead of deck size.
+  only while the pot-to-bet ratio is below a threshold in (2.965, 2.977]. For the certified branch
+  that threshold is exactly 3c\* ≈ 2.970210 (§3.1). That plays the role of Kuhn's deck-size law, in
+  pot-to-bet ratio instead of deck size.
+
+### 3.1 The exact end of the silent branch
+
+Files: `results/threshold/` (`derivation.json`, `certificates.json`, `c_lo/policy_exact.json`,
+`silent_threshold_log.txt`), the configs in `configs/threshold/`, and the script
+`scripts/silent_threshold.py`. Preregistered as amendments 7–8.
+
+"The branch" means the following profiles:
+- class-symmetric profiles in which P1 never opens;
+- the on-path support of every certificate from 15/16 to 253/256. That support has 7 mixed class
+  rows:
+  - P2's JJ bluff;
+  - P3's JJ and QQ bets after two checks;
+  - P1's QQ call after K-K-B:1;
+  - P2's KK call after K-K-B:1-F;
+  - P1's QQ and KK calls after K-B:1-F.
+- Every other on-path row is as in those certificates.
+
+**Result.**
+- **The branch stops being a Nash equilibrium at c\* = 0.99006984393951064639…** That is pot
+  3c\* = **2.97020953181853193918…**.
+  - c\* is the unique root in (1038163/2²⁰, 1038164/2²⁰) of an irreducible polynomial of degree 10:
+    ```
+    59243308056576 c^10 + 27305557622784 c^9 - 347454200540160 c^8 - 103553951433984 c^7
+      + 216450292773024 c^6 + 137358663110244 c^5 + 14929141080267 c^4 - 7740717415038 c^3
+      - 2404935493182 c^2 - 230841755667 c - 6393808520
+    ```
+  - It lies inside the sweep's bracket (759/256, 381/128]. It is where the float deterrence margins
+    above crossed zero (≈ 0.990).
+- **The branch is an exact Nash equilibrium for every c in [c_s, c\*], and for no c in (c\*, 2].**
+  - c_s = 0.90631245784857080… (pot 2.7189…) is a root of an irreducible polynomial of degree 8.
+  - Just below c_s, P2 prefers to check and call with AA, so the support changes. At c = 7/8 the
+    certificates have P2 mixing AA.
+  - The on-path part alone stays an equilibrium up to c_u = 1.10021699619527157… (pot 3.3007…),
+    where P2 starts to bet QQ. So between c\* and c_u only the deterrence of P1's opening fails.
+
+**How.** Everything is exact; the only floats are printed decimals.
+- **An independent class-level model.** It is written from the rules, not from `hinc/`:
+  - four hand classes per seat;
+  - class-triple weights out of 6480: 216 for three ranks, 36 when two seats share a rank, 0 when
+    all three do;
+  - the 13 terminal histories, with payoffs affine in c.
+
+  Checks against the engine:
+  - It equals the engine's exact utilities at all 64 stored certificates and at 6 random profiles.
+  - Its 7 indifference equations equal the engine's at all 23 polish records with this support.
+  - The game is invariant under the 24 suit permutations, so checking a class-symmetric profile at
+    class level checks it in the 24-hand game. One combo's deviation gains 1/6 of its class's.
+- **Closed form in c.**
+  - The JJ bluff is x₀ = 13/(8(3c+1)).
+  - P1's QQ and KK calls after K-B:1-F enter only through their sum, 27(2c−1)/(8(3c+1)). The split
+    is free.
+  - P1's QQ call against P3's bet is the smaller root of
+    6(48c²+106c+17)x² − (1584c²+8139c+574)x + 7(288c²+57c−260) = 0. The other root exceeds 1.
+  - Its discriminant is Δ₀(c) = 186624c⁴ + 20196000c³ + 68320809c² + 13810860c + 1072036, which is
+    irreducible.
+  - P2's KK call and P3's two bets are rational in c and that root. So the whole branch lies in
+    Q(c, √Δ₀(c)).
+  - The closed form reproduces all 16 stored 7-row certificates exactly. For example, the field
+    Q(√1696550223293641) at 253/256 is Q(√Δ₀(253/256)).
+- **Support over c.** There are 80 conditions:
+  - the mixed rows lie in [0, 1];
+  - no pure plan of any class of any player does better on path.
+
+  Each condition is an exact element of Q(c, √Δ₀). Its sign on an interval is decided by isolating
+  the real roots of its norm and its denominators, then evaluating exactly between them.
+- **Deterrence.** P1's class gains from opening are bilinear in the 12 class responses to the
+  all-in. Take the shape the float search found: P2 calls only with AA; P3 folds after B:1-C; after
+  B:1-F, P3 calls with AA and calls with KK with probability θ. Then:
+  - the JJ bluff is deterred iff θ ≥ θ_J(c) = **27(2c−1)/(8(3c+1))**. This is rational, and at
+    pot 3 it is 27/32, OP2's root.
+  - the AA value bet is deterred iff θ ≤ θ_A(c) = (180/13)(V_AA(c) − 9c/20). Here V_AA ∈ Q(c, √Δ₀) is
+    P1's AA value from checking.
+  - QQ and KK stay deterred throughout the window.
+  - θ_J < θ_A below c\* and θ_J > θ_A above it. There is a single crossing on (7/8, 2), and c\* is
+    that crossing.
+- **No other responses help.**
+  - The weights λ_JJ = 13/180 and λ_AA = 2(3c+1)/45 cancel θ.
+  - At each of the 4096 vertices of the response box, λ_JJ·gain_JJ + λ_AA·gain_AA is at least its
+    value at the shape, for every c in (7/8, 2). There are 1407 distinct polynomial differences, and
+    each is checked exactly.
+  - A multilinear function attains its minimum over a box at a vertex. So for c > c\*, every
+    class-symmetric response profile leaves the JJ bluff or the AA value bet profitable.
+
+**Exact certificates on both sides.** Both come from the engine, not the model.
+- **c_lo = 1038163/2²⁰** (pot ≈ 2.9702082): an exact P1-silent Nash equilibrium.
+  - Its residuals are (0, 0, 0) in Q(√479301108037189029117221334121).
+  - It uses θ = 1029/1235 ∈ [θ_J, θ_A] = [0.8331977, 0.8331985].
+  - It is re-checked after re-parsing the stored text (`c_lo/policy_exact.json`).
+- **c_hi = 1038164/2²⁰ = 259541/262144** (pot ≈ 2.9702110): no class-symmetric responses deter P1.
+  - From the engine's own payoff tables and values, λ_JJ·gain_JJ + λ_AA·gain_AA ≥ +1.04e-8 at all
+    4096 vertices. This is exact, in Q(√11078542211508872272280161).
+  - The on-path part alone is still an exact equilibrium: residuals (0, 0, 0) with P1's opening
+    fixed to check.
+  - With θ = 1029/1235, P1's full residual is 9.6e-8.
+
+**Scope.** c\* is the threshold of **this branch**: this on-path support, class-symmetric profiles,
+and Nash equilibrium only. It does not show that no P1-silent equilibrium exists above c\*. Three
+things are not excluded:
+- other on-path supports, for example P2 mixing AA as at 7/8;
+- combo-asymmetric responses. P1's gains are bilinear, so averaging the responses over suit
+  permutations does not preserve deterrence.
+- correlated devices.
 
 ---
 
@@ -395,14 +502,12 @@ check (`results/theory/theory_checks.json`):
 
 ## 6. Unresolved, and the most informative next experiment
 
-- **The exact pot threshold** (most informative next). §3 brackets the switch in
-  (759/256, 381/128], and the silent branch's deterrence margin crosses zero near pot 2.970.
-  - The silent branch is explicit: on-path behaviour solves in closed form, as rationals or
-    quadratic surds in c.
-  - So the pot where its deterrence window closes can be computed exactly, as an algebraic number,
-    by solving for the c at which the best deterring responses leave P1 indifferent.
-- **Prove** (or refute) "no P1-silent equilibrium at pot 3", and more generally above the bracket.
-  The method would be the correlated-equilibrium certificate that settled (3,5)-Kuhn.
+- **Prove** (or refute) "no P1-silent equilibrium above c\*" (most informative next).
+  - §3.1 settles where the certified silent branch ends: exactly at c\* ≈ 0.990070, a degree-10
+    algebraic number.
+  - Whether some other P1-silent equilibrium survives above c\* is open: another on-path support, or
+    combo-asymmetric responses. That includes pot 3.
+  - The method would be the correlated-equilibrium certificate that settled (3,5)-Kuhn.
 - **Refinement of the pot-1.5 witnesses:** which survive sequential rationality?
 - **The blocker route:** design polarised, card-overlapping ranges in which a public action is
   taken only by combos that block an opponent's hand.
@@ -426,6 +531,8 @@ python scripts/potsweep.py train 48000 potsweep_48k potsweep_c9-16_JJAA24 potswe
 python scripts/analyze_profiles.py potsweep ; python scripts/analyze_profiles.py potsweep_48k ; python scripts/theory_checks.py t8
 python scripts/potsweep.py certify ; python scripts/potsweep.py polish potsweep ; python scripts/potsweep.py polish potsweep_48k ; python scripts/potsweep.py polish_silent 61/64
 python scripts/potsweep.py summary ; python scripts/potsweep.py table ; python scripts/potsweep.py plot ; python scripts/verify_potsweep.py
+# the exact end of the silent branch (§3.1; ~1 min)
+python scripts/silent_threshold.py all
 ```
 Extend: add a config (pot, stacks, sizes, raise cap, ranges, weights) under `configs/` and point
 `hinc/plan.py` at it. Re-running any training command resumes from checkpoints.
