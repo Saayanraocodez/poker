@@ -1,0 +1,4400 @@
+{
+ "game": {
+  "name": "potsweep_c127-128_JJAA24",
+  "board": "2c 4d 6h 8s Tc",
+  "betting": {
+   "n_players": 3,
+   "prior_contrib": [
+    "127/128",
+    "127/128",
+    "127/128"
+   ],
+   "stacks": [
+    "1",
+    "1",
+    "1"
+   ],
+   "min_bet": "1",
+   "bet_sizes": [
+    "allin"
+   ],
+   "raise_sizes": [],
+   "max_raises": 0,
+   "allow_open_fold": false
+  },
+  "seats": [
+   [
+    "JJ",
+    "QQ",
+    "KK",
+    "AA"
+   ],
+   [
+    "JJ",
+    "QQ",
+    "KK",
+    "AA"
+   ],
+   [
+    "JJ",
+    "QQ",
+    "KK",
+    "AA"
+   ]
+  ],
+  "root_prior": {
+   "kind": "product",
+   "note": "specified prior: product of seat weights conditioned on card compatibility"
+  },
+  "payoff_convention": "net chips (big blinds) relative to the start of the hand: -(prior contribution + river contribution) + pot share; zero-sum at every leaf; split pots divided equally among tied best hands",
+  "scope": "conditional river continuation game; values are conditional on this root",
+  "counts": {
+   "hands_per_seat": [
+    24,
+    24,
+    24
+   ],
+   "legal_ordered_deals": 6480,
+   "decision_nodes": 12,
+   "terminal_histories_per_deal": 13,
+   "terminal_leaves": 84240,
+   "information_sets": 288,
+   "binary_information_sets": 288,
+   "deals_with_equal_strength_hands": 1296
+  },
+  "fingerprint": "e87c6dfbdc8ab619"
+ },
+ "exact": false,
+ "infosets": [
+  {
+   "id": "P1|JdJc|",
+   "player": 1,
+   "hand": "JdJc",
+   "history": "",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.7182211384087877,
+    0.28177886159121246
+   ]
+  },
+  {
+   "id": "P1|JhJc|",
+   "player": 1,
+   "hand": "JhJc",
+   "history": "",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.8221538269480316,
+    0.17784617305196837
+   ]
+  },
+  {
+   "id": "P1|JsJc|",
+   "player": 1,
+   "hand": "JsJc",
+   "history": "",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.8451518668372925,
+    0.15484813316270746
+   ]
+  },
+  {
+   "id": "P1|JhJd|",
+   "player": 1,
+   "hand": "JhJd",
+   "history": "",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.5575614088130972,
+    0.44243859118690276
+   ]
+  },
+  {
+   "id": "P1|JsJd|",
+   "player": 1,
+   "hand": "JsJd",
+   "history": "",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.8121897240589071,
+    0.1878102759410929
+   ]
+  },
+  {
+   "id": "P1|JsJh|",
+   "player": 1,
+   "hand": "JsJh",
+   "history": "",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.7690474775459104,
+    0.23095252245408956
+   ]
+  },
+  {
+   "id": "P1|QdQc|",
+   "player": 1,
+   "hand": "QdQc",
+   "history": "",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999999896467384,
+    1.0353261688451046e-08
+   ]
+  },
+  {
+   "id": "P1|QhQc|",
+   "player": 1,
+   "hand": "QhQc",
+   "history": "",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999993246302421,
+    6.753697579587957e-07
+   ]
+  },
+  {
+   "id": "P1|QsQc|",
+   "player": 1,
+   "hand": "QsQc",
+   "history": "",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999999928573748,
+    7.1426250773299286e-09
+   ]
+  },
+  {
+   "id": "P1|QhQd|",
+   "player": 1,
+   "hand": "QhQd",
+   "history": "",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999940871751178,
+    5.912824882104489e-06
+   ]
+  },
+  {
+   "id": "P1|QsQd|",
+   "player": 1,
+   "hand": "QsQd",
+   "history": "",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999997791647004,
+    2.2083529955241237e-07
+   ]
+  },
+  {
+   "id": "P1|QsQh|",
+   "player": 1,
+   "hand": "QsQh",
+   "history": "",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999992140086794,
+    7.859913205308021e-07
+   ]
+  },
+  {
+   "id": "P1|KdKc|",
+   "player": 1,
+   "hand": "KdKc",
+   "history": "",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999998956204978,
+    1.0437950216745436e-07
+   ]
+  },
+  {
+   "id": "P1|KhKc|",
+   "player": 1,
+   "hand": "KhKc",
+   "history": "",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999999604204899,
+    3.95795101149691e-08
+   ]
+  },
+  {
+   "id": "P1|KsKc|",
+   "player": 1,
+   "hand": "KsKc",
+   "history": "",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999999986198203,
+    1.3801797131724037e-09
+   ]
+  },
+  {
+   "id": "P1|KhKd|",
+   "player": 1,
+   "hand": "KhKd",
+   "history": "",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999999396374861,
+    6.036251390807476e-08
+   ]
+  },
+  {
+   "id": "P1|KsKd|",
+   "player": 1,
+   "hand": "KsKd",
+   "history": "",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999999346043615,
+    6.539563847623876e-08
+   ]
+  },
+  {
+   "id": "P1|KsKh|",
+   "player": 1,
+   "hand": "KsKh",
+   "history": "",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999999942327918,
+    5.7672081730825435e-09
+   ]
+  },
+  {
+   "id": "P1|AdAc|",
+   "player": 1,
+   "hand": "AdAc",
+   "history": "",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.4171050784789453,
+    0.5828949215210547
+   ]
+  },
+  {
+   "id": "P1|AhAc|",
+   "player": 1,
+   "hand": "AhAc",
+   "history": "",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.5925214768947256,
+    0.4074785231052744
+   ]
+  },
+  {
+   "id": "P1|AsAc|",
+   "player": 1,
+   "hand": "AsAc",
+   "history": "",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.30804913285648,
+    0.6919508671435199
+   ]
+  },
+  {
+   "id": "P1|AhAd|",
+   "player": 1,
+   "hand": "AhAd",
+   "history": "",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.3070254478763814,
+    0.6929745521236185
+   ]
+  },
+  {
+   "id": "P1|AsAd|",
+   "player": 1,
+   "hand": "AsAd",
+   "history": "",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.34952309320578034,
+    0.6504769067942198
+   ]
+  },
+  {
+   "id": "P1|AsAh|",
+   "player": 1,
+   "hand": "AsAh",
+   "history": "",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.41462543397125534,
+    0.5853745660287446
+   ]
+  },
+  {
+   "id": "P2|JdJc|K",
+   "player": 2,
+   "hand": "JdJc",
+   "history": "K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9997636176894033,
+    0.00023638231059674352
+   ]
+  },
+  {
+   "id": "P2|JhJc|K",
+   "player": 2,
+   "hand": "JhJc",
+   "history": "K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.5286855186156035,
+    0.47131448138439636
+   ]
+  },
+  {
+   "id": "P2|JsJc|K",
+   "player": 2,
+   "hand": "JsJc",
+   "history": "K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999984295771661,
+    1.5704228338797584e-06
+   ]
+  },
+  {
+   "id": "P2|JhJd|K",
+   "player": 2,
+   "hand": "JhJd",
+   "history": "K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.0006693573323731901,
+    0.9993306426676268
+   ]
+  },
+  {
+   "id": "P2|JsJd|K",
+   "player": 2,
+   "hand": "JsJd",
+   "history": "K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.010667344126729749,
+    0.9893326558732702
+   ]
+  },
+  {
+   "id": "P2|JsJh|K",
+   "player": 2,
+   "hand": "JsJh",
+   "history": "K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999852368047937,
+    1.4763195206300449e-05
+   ]
+  },
+  {
+   "id": "P2|QdQc|K",
+   "player": 2,
+   "hand": "QdQc",
+   "history": "K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999999965049398,
+    3.4950602959413306e-09
+   ]
+  },
+  {
+   "id": "P2|QhQc|K",
+   "player": 2,
+   "hand": "QhQc",
+   "history": "K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.999999997651618,
+    2.348382105918672e-09
+   ]
+  },
+  {
+   "id": "P2|QsQc|K",
+   "player": 2,
+   "hand": "QsQc",
+   "history": "K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999999801065577,
+    1.989344242596227e-08
+   ]
+  },
+  {
+   "id": "P2|QhQd|K",
+   "player": 2,
+   "hand": "QhQd",
+   "history": "K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999999942141582,
+    5.7858418001314734e-09
+   ]
+  },
+  {
+   "id": "P2|QsQd|K",
+   "player": 2,
+   "hand": "QsQd",
+   "history": "K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999999955260096,
+    4.473990352341663e-09
+   ]
+  },
+  {
+   "id": "P2|QsQh|K",
+   "player": 2,
+   "hand": "QsQh",
+   "history": "K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999999935796932,
+    6.4203068340608566e-09
+   ]
+  },
+  {
+   "id": "P2|KdKc|K",
+   "player": 2,
+   "hand": "KdKc",
+   "history": "K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999999861981047,
+    1.3801895262061646e-08
+   ]
+  },
+  {
+   "id": "P2|KhKc|K",
+   "player": 2,
+   "hand": "KhKc",
+   "history": "K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999999900998939,
+    9.90010616747803e-09
+   ]
+  },
+  {
+   "id": "P2|KsKc|K",
+   "player": 2,
+   "hand": "KsKc",
+   "history": "K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999999975560641,
+    2.4439359733421937e-09
+   ]
+  },
+  {
+   "id": "P2|KhKd|K",
+   "player": 2,
+   "hand": "KhKd",
+   "history": "K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999999841005641,
+    1.589943586103545e-08
+   ]
+  },
+  {
+   "id": "P2|KsKd|K",
+   "player": 2,
+   "hand": "KsKd",
+   "history": "K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999999885571538,
+    1.1442846222114473e-08
+   ]
+  },
+  {
+   "id": "P2|KsKh|K",
+   "player": 2,
+   "hand": "KsKh",
+   "history": "K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999999812603165,
+    1.873968344807007e-08
+   ]
+  },
+  {
+   "id": "P2|AdAc|K",
+   "player": 2,
+   "hand": "AdAc",
+   "history": "K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    2.0678566533911044e-09,
+    0.9999999979321433
+   ]
+  },
+  {
+   "id": "P2|AhAc|K",
+   "player": 2,
+   "hand": "AhAc",
+   "history": "K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    7.580058028906453e-10,
+    0.9999999992419942
+   ]
+  },
+  {
+   "id": "P2|AsAc|K",
+   "player": 2,
+   "hand": "AsAc",
+   "history": "K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    4.203450938756992e-09,
+    0.9999999957965491
+   ]
+  },
+  {
+   "id": "P2|AhAd|K",
+   "player": 2,
+   "hand": "AhAd",
+   "history": "K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    5.984341676706854e-08,
+    0.9999999401565832
+   ]
+  },
+  {
+   "id": "P2|AsAd|K",
+   "player": 2,
+   "hand": "AsAd",
+   "history": "K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    2.635237164224896e-09,
+    0.9999999973647629
+   ]
+  },
+  {
+   "id": "P2|AsAh|K",
+   "player": 2,
+   "hand": "AsAh",
+   "history": "K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    1.400093577677364e-09,
+    0.9999999985999065
+   ]
+  },
+  {
+   "id": "P3|JdJc|K-K",
+   "player": 3,
+   "hand": "JdJc",
+   "history": "K-K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.061248162021356155,
+    0.9387518379786438
+   ]
+  },
+  {
+   "id": "P3|JhJc|K-K",
+   "player": 3,
+   "hand": "JhJc",
+   "history": "K-K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9998546827158967,
+    0.00014531728410323717
+   ]
+  },
+  {
+   "id": "P3|JsJc|K-K",
+   "player": 3,
+   "hand": "JsJc",
+   "history": "K-K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999995407542589,
+    4.5924574108583683e-07
+   ]
+  },
+  {
+   "id": "P3|JhJd|K-K",
+   "player": 3,
+   "hand": "JhJd",
+   "history": "K-K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.00015949777457042183,
+    0.9998405022254296
+   ]
+  },
+  {
+   "id": "P3|JsJd|K-K",
+   "player": 3,
+   "hand": "JsJd",
+   "history": "K-K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.996663306316448,
+    0.0033366936835520222
+   ]
+  },
+  {
+   "id": "P3|JsJh|K-K",
+   "player": 3,
+   "hand": "JsJh",
+   "history": "K-K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9989280004911973,
+    0.0010719995088026024
+   ]
+  },
+  {
+   "id": "P3|QdQc|K-K",
+   "player": 3,
+   "hand": "QdQc",
+   "history": "K-K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.8995372601345156,
+    0.10046273986548426
+   ]
+  },
+  {
+   "id": "P3|QhQc|K-K",
+   "player": 3,
+   "hand": "QhQc",
+   "history": "K-K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.8992575340952582,
+    0.1007424659047418
+   ]
+  },
+  {
+   "id": "P3|QsQc|K-K",
+   "player": 3,
+   "hand": "QsQc",
+   "history": "K-K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.8999586802553714,
+    0.1000413197446285
+   ]
+  },
+  {
+   "id": "P3|QhQd|K-K",
+   "player": 3,
+   "hand": "QhQd",
+   "history": "K-K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.8997311670442153,
+    0.1002688329557848
+   ]
+  },
+  {
+   "id": "P3|QsQd|K-K",
+   "player": 3,
+   "hand": "QsQd",
+   "history": "K-K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.8997235420403465,
+    0.10027645795965354
+   ]
+  },
+  {
+   "id": "P3|QsQh|K-K",
+   "player": 3,
+   "hand": "QsQh",
+   "history": "K-K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.8996511279974491,
+    0.10034887200255084
+   ]
+  },
+  {
+   "id": "P3|KdKc|K-K",
+   "player": 3,
+   "hand": "KdKc",
+   "history": "K-K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999999726155266,
+    2.738447339918872e-08
+   ]
+  },
+  {
+   "id": "P3|KhKc|K-K",
+   "player": 3,
+   "hand": "KhKc",
+   "history": "K-K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999999817196533,
+    1.8280346712915517e-08
+   ]
+  },
+  {
+   "id": "P3|KsKc|K-K",
+   "player": 3,
+   "hand": "KsKc",
+   "history": "K-K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999999308766296,
+    6.912337036891715e-08
+   ]
+  },
+  {
+   "id": "P3|KhKd|K-K",
+   "player": 3,
+   "hand": "KhKd",
+   "history": "K-K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999999776559897,
+    2.2344010286130054e-08
+   ]
+  },
+  {
+   "id": "P3|KsKd|K-K",
+   "player": 3,
+   "hand": "KsKd",
+   "history": "K-K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999999843849382,
+    1.561506178328919e-08
+   ]
+  },
+  {
+   "id": "P3|KsKh|K-K",
+   "player": 3,
+   "hand": "KsKh",
+   "history": "K-K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    0.9999999760903099,
+    2.3909690148884587e-08
+   ]
+  },
+  {
+   "id": "P3|AdAc|K-K",
+   "player": 3,
+   "hand": "AdAc",
+   "history": "K-K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    6.5909632328240445e-09,
+    0.9999999934090368
+   ]
+  },
+  {
+   "id": "P3|AhAc|K-K",
+   "player": 3,
+   "hand": "AhAc",
+   "history": "K-K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    2.9897085654229545e-09,
+    0.9999999970102915
+   ]
+  },
+  {
+   "id": "P3|AsAc|K-K",
+   "player": 3,
+   "hand": "AsAc",
+   "history": "K-K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    3.149541295025243e-09,
+    0.9999999968504587
+   ]
+  },
+  {
+   "id": "P3|AhAd|K-K",
+   "player": 3,
+   "hand": "AhAd",
+   "history": "K-K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    1.7927011903554264e-09,
+    0.9999999982072988
+   ]
+  },
+  {
+   "id": "P3|AsAd|K-K",
+   "player": 3,
+   "hand": "AsAd",
+   "history": "K-K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    2.59684580001907e-10,
+    0.9999999997403154
+   ]
+  },
+  {
+   "id": "P3|AsAh|K-K",
+   "player": 3,
+   "hand": "AsAh",
+   "history": "K-K",
+   "actions": [
+    "K",
+    "B:1"
+   ],
+   "probs": [
+    2.878383205468824e-09,
+    0.9999999971216168
+   ]
+  },
+  {
+   "id": "P1|JdJc|K-K-B:1",
+   "player": 1,
+   "hand": "JdJc",
+   "history": "K-K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999997717371,
+    2.2826286905271251e-10
+   ]
+  },
+  {
+   "id": "P1|JhJc|K-K-B:1",
+   "player": 1,
+   "hand": "JhJc",
+   "history": "K-K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999944095465,
+    5.590453495270965e-09
+   ]
+  },
+  {
+   "id": "P1|JsJc|K-K-B:1",
+   "player": 1,
+   "hand": "JsJc",
+   "history": "K-K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999890326174,
+    1.0967382556689244e-08
+   ]
+  },
+  {
+   "id": "P1|JhJd|K-K-B:1",
+   "player": 1,
+   "hand": "JhJd",
+   "history": "K-K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.999999999911336,
+    8.866394633475954e-11
+   ]
+  },
+  {
+   "id": "P1|JsJd|K-K-B:1",
+   "player": 1,
+   "hand": "JsJd",
+   "history": "K-K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999996731881,
+    3.2681192051290404e-10
+   ]
+  },
+  {
+   "id": "P1|JsJh|K-K-B:1",
+   "player": 1,
+   "hand": "JsJh",
+   "history": "K-K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.999999999995923,
+    4.076982371099356e-12
+   ]
+  },
+  {
+   "id": "P1|QdQc|K-K-B:1",
+   "player": 1,
+   "hand": "QdQc",
+   "history": "K-K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.7891116090991261,
+    0.21088839090087386
+   ]
+  },
+  {
+   "id": "P1|QhQc|K-K-B:1",
+   "player": 1,
+   "hand": "QhQc",
+   "history": "K-K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.7890329957880144,
+    0.21096700421198541
+   ]
+  },
+  {
+   "id": "P1|QsQc|K-K-B:1",
+   "player": 1,
+   "hand": "QsQc",
+   "history": "K-K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.7893128960382697,
+    0.2106871039617302
+   ]
+  },
+  {
+   "id": "P1|QhQd|K-K-B:1",
+   "player": 1,
+   "hand": "QhQd",
+   "history": "K-K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.7896241454197628,
+    0.2103758545802372
+   ]
+  },
+  {
+   "id": "P1|QsQd|K-K-B:1",
+   "player": 1,
+   "hand": "QsQd",
+   "history": "K-K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.7871872237422254,
+    0.21281277625777464
+   ]
+  },
+  {
+   "id": "P1|QsQh|K-K-B:1",
+   "player": 1,
+   "hand": "QsQh",
+   "history": "K-K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.7901792498417666,
+    0.20982075015823345
+   ]
+  },
+  {
+   "id": "P1|KdKc|K-K-B:1",
+   "player": 1,
+   "hand": "KdKc",
+   "history": "K-K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    1.2202722658738605e-06,
+    0.9999987797277341
+   ]
+  },
+  {
+   "id": "P1|KhKc|K-K-B:1",
+   "player": 1,
+   "hand": "KhKc",
+   "history": "K-K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    1.0285957124688685e-07,
+    0.9999998971404287
+   ]
+  },
+  {
+   "id": "P1|KsKc|K-K-B:1",
+   "player": 1,
+   "hand": "KsKc",
+   "history": "K-K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    5.2310865475531064e-08,
+    0.9999999476891346
+   ]
+  },
+  {
+   "id": "P1|KhKd|K-K-B:1",
+   "player": 1,
+   "hand": "KhKd",
+   "history": "K-K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    4.2955705710623763e-07,
+    0.9999995704429429
+   ]
+  },
+  {
+   "id": "P1|KsKd|K-K-B:1",
+   "player": 1,
+   "hand": "KsKd",
+   "history": "K-K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    3.172381600739308e-08,
+    0.9999999682761841
+   ]
+  },
+  {
+   "id": "P1|KsKh|K-K-B:1",
+   "player": 1,
+   "hand": "KsKh",
+   "history": "K-K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    2.1218662472879805e-08,
+    0.9999999787813375
+   ]
+  },
+  {
+   "id": "P1|AdAc|K-K-B:1",
+   "player": 1,
+   "hand": "AdAc",
+   "history": "K-K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    5.675305089635692e-11,
+    0.999999999943247
+   ]
+  },
+  {
+   "id": "P1|AhAc|K-K-B:1",
+   "player": 1,
+   "hand": "AhAc",
+   "history": "K-K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    2.3032078979593978e-12,
+    0.9999999999976968
+   ]
+  },
+  {
+   "id": "P1|AsAc|K-K-B:1",
+   "player": 1,
+   "hand": "AsAc",
+   "history": "K-K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    2.4509313795036664e-13,
+    0.999999999999755
+   ]
+  },
+  {
+   "id": "P1|AhAd|K-K-B:1",
+   "player": 1,
+   "hand": "AhAd",
+   "history": "K-K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    6.645017938385271e-10,
+    0.9999999993354982
+   ]
+  },
+  {
+   "id": "P1|AsAd|K-K-B:1",
+   "player": 1,
+   "hand": "AsAd",
+   "history": "K-K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    1.115151546864972e-10,
+    0.9999999998884849
+   ]
+  },
+  {
+   "id": "P1|AsAh|K-K-B:1",
+   "player": 1,
+   "hand": "AsAh",
+   "history": "K-K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    3.651936715151849e-10,
+    0.9999999996348063
+   ]
+  },
+  {
+   "id": "P2|JdJc|K-K-B:1-F",
+   "player": 2,
+   "hand": "JdJc",
+   "history": "K-K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999995996981,
+    4.003018691422107e-10
+   ]
+  },
+  {
+   "id": "P2|JhJc|K-K-B:1-F",
+   "player": 2,
+   "hand": "JhJc",
+   "history": "K-K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999732527243,
+    2.6747275714047963e-08
+   ]
+  },
+  {
+   "id": "P2|JsJc|K-K-B:1-F",
+   "player": 2,
+   "hand": "JsJc",
+   "history": "K-K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999907836952,
+    9.21630482766021e-09
+   ]
+  },
+  {
+   "id": "P2|JhJd|K-K-B:1-F",
+   "player": 2,
+   "hand": "JhJd",
+   "history": "K-K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.999994381628805,
+    5.618371195038016e-06
+   ]
+  },
+  {
+   "id": "P2|JsJd|K-K-B:1-F",
+   "player": 2,
+   "hand": "JsJd",
+   "history": "K-K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999732673565,
+    2.6732643584181197e-08
+   ]
+  },
+  {
+   "id": "P2|JsJh|K-K-B:1-F",
+   "player": 2,
+   "hand": "JsJh",
+   "history": "K-K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999981669346,
+    1.8330653355955336e-09
+   ]
+  },
+  {
+   "id": "P2|QdQc|K-K-B:1-F",
+   "player": 2,
+   "hand": "QdQc",
+   "history": "K-K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999935650175,
+    6.434982498750423e-09
+   ]
+  },
+  {
+   "id": "P2|QhQc|K-K-B:1-F",
+   "player": 2,
+   "hand": "QhQc",
+   "history": "K-K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999821716996,
+    1.7828300356534282e-08
+   ]
+  },
+  {
+   "id": "P2|QsQc|K-K-B:1-F",
+   "player": 2,
+   "hand": "QsQc",
+   "history": "K-K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999997051586,
+    2.948413475784549e-10
+   ]
+  },
+  {
+   "id": "P2|QhQd|K-K-B:1-F",
+   "player": 2,
+   "hand": "QhQd",
+   "history": "K-K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999994100119,
+    5.899880470919002e-10
+   ]
+  },
+  {
+   "id": "P2|QsQd|K-K-B:1-F",
+   "player": 2,
+   "hand": "QsQd",
+   "history": "K-K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999933452007,
+    6.654799301811192e-09
+   ]
+  },
+  {
+   "id": "P2|QsQh|K-K-B:1-F",
+   "player": 2,
+   "hand": "QsQh",
+   "history": "K-K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999999848497,
+    1.515027093188089e-11
+   ]
+  },
+  {
+   "id": "P2|KdKc|K-K-B:1-F",
+   "player": 2,
+   "hand": "KdKc",
+   "history": "K-K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.5190909311243745,
+    0.4809090688756254
+   ]
+  },
+  {
+   "id": "P2|KhKc|K-K-B:1-F",
+   "player": 2,
+   "hand": "KhKc",
+   "history": "K-K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.7108177238790113,
+    0.2891822761209887
+   ]
+  },
+  {
+   "id": "P2|KsKc|K-K-B:1-F",
+   "player": 2,
+   "hand": "KsKc",
+   "history": "K-K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.5702226606673816,
+    0.42977733933261847
+   ]
+  },
+  {
+   "id": "P2|KhKd|K-K-B:1-F",
+   "player": 2,
+   "hand": "KhKd",
+   "history": "K-K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.47866496220978777,
+    0.5213350377902122
+   ]
+  },
+  {
+   "id": "P2|KsKd|K-K-B:1-F",
+   "player": 2,
+   "hand": "KsKd",
+   "history": "K-K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.879417790079549,
+    0.12058220992045096
+   ]
+  },
+  {
+   "id": "P2|KsKh|K-K-B:1-F",
+   "player": 2,
+   "hand": "KsKh",
+   "history": "K-K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.5101509700352426,
+    0.48984902996475743
+   ]
+  },
+  {
+   "id": "P2|AdAc|K-K-B:1-F",
+   "player": 2,
+   "hand": "AdAc",
+   "history": "K-K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    2.7139327930890517e-05,
+    0.999972860672069
+   ]
+  },
+  {
+   "id": "P2|AhAc|K-K-B:1-F",
+   "player": 2,
+   "hand": "AhAc",
+   "history": "K-K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    8.583732017421343e-06,
+    0.9999914162679826
+   ]
+  },
+  {
+   "id": "P2|AsAc|K-K-B:1-F",
+   "player": 2,
+   "hand": "AsAc",
+   "history": "K-K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.0006594463919136063,
+    0.9993405536080864
+   ]
+  },
+  {
+   "id": "P2|AhAd|K-K-B:1-F",
+   "player": 2,
+   "hand": "AhAd",
+   "history": "K-K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    3.367526590807591e-06,
+    0.9999966324734091
+   ]
+  },
+  {
+   "id": "P2|AsAd|K-K-B:1-F",
+   "player": 2,
+   "hand": "AsAd",
+   "history": "K-K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.06417069740552879,
+    0.9358293025944713
+   ]
+  },
+  {
+   "id": "P2|AsAh|K-K-B:1-F",
+   "player": 2,
+   "hand": "AsAh",
+   "history": "K-K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.056388906813902843,
+    0.943611093186097
+   ]
+  },
+  {
+   "id": "P2|JdJc|K-K-B:1-C",
+   "player": 2,
+   "hand": "JdJc",
+   "history": "K-K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999901250951,
+    9.874905001075036e-09
+   ]
+  },
+  {
+   "id": "P2|JhJc|K-K-B:1-C",
+   "player": 2,
+   "hand": "JhJc",
+   "history": "K-K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999922940814,
+    7.70591862522632e-09
+   ]
+  },
+  {
+   "id": "P2|JsJc|K-K-B:1-C",
+   "player": 2,
+   "hand": "JsJc",
+   "history": "K-K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999839161421,
+    1.6083857972658115e-08
+   ]
+  },
+  {
+   "id": "P2|JhJd|K-K-B:1-C",
+   "player": 2,
+   "hand": "JhJd",
+   "history": "K-K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.999999961597402,
+    3.8402598010003804e-08
+   ]
+  },
+  {
+   "id": "P2|JsJd|K-K-B:1-C",
+   "player": 2,
+   "hand": "JsJd",
+   "history": "K-K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999916906961,
+    8.30930394626921e-09
+   ]
+  },
+  {
+   "id": "P2|JsJh|K-K-B:1-C",
+   "player": 2,
+   "hand": "JsJh",
+   "history": "K-K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999985906457,
+    1.4093542102431233e-09
+   ]
+  },
+  {
+   "id": "P2|QdQc|K-K-B:1-C",
+   "player": 2,
+   "hand": "QdQc",
+   "history": "K-K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999989980127,
+    1.001987287868792e-09
+   ]
+  },
+  {
+   "id": "P2|QhQc|K-K-B:1-C",
+   "player": 2,
+   "hand": "QhQc",
+   "history": "K-K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999968973473,
+    3.102652732131523e-09
+   ]
+  },
+  {
+   "id": "P2|QsQc|K-K-B:1-C",
+   "player": 2,
+   "hand": "QsQc",
+   "history": "K-K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.999999991237059,
+    8.762941044958816e-09
+   ]
+  },
+  {
+   "id": "P2|QhQd|K-K-B:1-C",
+   "player": 2,
+   "hand": "QhQd",
+   "history": "K-K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999990122135,
+    9.877865194601858e-10
+   ]
+  },
+  {
+   "id": "P2|QsQd|K-K-B:1-C",
+   "player": 2,
+   "hand": "QsQd",
+   "history": "K-K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999998368414,
+    1.6315860034362864e-10
+   ]
+  },
+  {
+   "id": "P2|QsQh|K-K-B:1-C",
+   "player": 2,
+   "hand": "QsQh",
+   "history": "K-K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999999444766,
+    5.552342191346071e-11
+   ]
+  },
+  {
+   "id": "P2|KdKc|K-K-B:1-C",
+   "player": 2,
+   "hand": "KdKc",
+   "history": "K-K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999798114975,
+    2.0188502551650353e-08
+   ]
+  },
+  {
+   "id": "P2|KhKc|K-K-B:1-C",
+   "player": 2,
+   "hand": "KhKc",
+   "history": "K-K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999449875764,
+    5.5012423594841906e-08
+   ]
+  },
+  {
+   "id": "P2|KsKc|K-K-B:1-C",
+   "player": 2,
+   "hand": "KsKc",
+   "history": "K-K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999671662307,
+    3.2833769284303244e-08
+   ]
+  },
+  {
+   "id": "P2|KhKd|K-K-B:1-C",
+   "player": 2,
+   "hand": "KhKd",
+   "history": "K-K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999316748605,
+    6.832513950735708e-08
+   ]
+  },
+  {
+   "id": "P2|KsKd|K-K-B:1-C",
+   "player": 2,
+   "hand": "KsKd",
+   "history": "K-K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999997341982656,
+    2.658017343719218e-07
+   ]
+  },
+  {
+   "id": "P2|KsKh|K-K-B:1-C",
+   "player": 2,
+   "hand": "KsKh",
+   "history": "K-K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999994873012193,
+    5.126987806537356e-07
+   ]
+  },
+  {
+   "id": "P2|AdAc|K-K-B:1-C",
+   "player": 2,
+   "hand": "AdAc",
+   "history": "K-K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    3.0613148990431463e-06,
+    0.9999969386851009
+   ]
+  },
+  {
+   "id": "P2|AhAc|K-K-B:1-C",
+   "player": 2,
+   "hand": "AhAc",
+   "history": "K-K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    9.912249302274623e-06,
+    0.9999900877506978
+   ]
+  },
+  {
+   "id": "P2|AsAc|K-K-B:1-C",
+   "player": 2,
+   "hand": "AsAc",
+   "history": "K-K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.0011569054025808798,
+    0.9988430945974192
+   ]
+  },
+  {
+   "id": "P2|AhAd|K-K-B:1-C",
+   "player": 2,
+   "hand": "AhAd",
+   "history": "K-K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.0002820760727074212,
+    0.9997179239272925
+   ]
+  },
+  {
+   "id": "P2|AsAd|K-K-B:1-C",
+   "player": 2,
+   "hand": "AsAd",
+   "history": "K-K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.0007550959464259981,
+    0.999244904053574
+   ]
+  },
+  {
+   "id": "P2|AsAh|K-K-B:1-C",
+   "player": 2,
+   "hand": "AsAh",
+   "history": "K-K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.02765761771255894,
+    0.972342382287441
+   ]
+  },
+  {
+   "id": "P3|JdJc|K-B:1",
+   "player": 3,
+   "hand": "JdJc",
+   "history": "K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999992320915,
+    7.679084681774783e-10
+   ]
+  },
+  {
+   "id": "P3|JhJc|K-B:1",
+   "player": 3,
+   "hand": "JhJc",
+   "history": "K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999992863485,
+    7.136515216552848e-10
+   ]
+  },
+  {
+   "id": "P3|JsJc|K-B:1",
+   "player": 3,
+   "hand": "JsJc",
+   "history": "K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999999952349,
+    4.7650924637340885e-12
+   ]
+  },
+  {
+   "id": "P3|JhJd|K-B:1",
+   "player": 3,
+   "hand": "JhJd",
+   "history": "K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999998988206,
+    1.0117950149203427e-10
+   ]
+  },
+  {
+   "id": "P3|JsJd|K-B:1",
+   "player": 3,
+   "hand": "JsJd",
+   "history": "K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999999669295,
+    3.3070504526965363e-11
+   ]
+  },
+  {
+   "id": "P3|JsJh|K-B:1",
+   "player": 3,
+   "hand": "JsJh",
+   "history": "K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999990049285,
+    9.950714636920628e-10
+   ]
+  },
+  {
+   "id": "P3|QdQc|K-B:1",
+   "player": 3,
+   "hand": "QdQc",
+   "history": "K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.986010117758812,
+    0.013989882241187964
+   ]
+  },
+  {
+   "id": "P3|QhQc|K-B:1",
+   "player": 3,
+   "hand": "QhQc",
+   "history": "K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9915601458512547,
+    0.008439854148745351
+   ]
+  },
+  {
+   "id": "P3|QsQc|K-B:1",
+   "player": 3,
+   "hand": "QsQc",
+   "history": "K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9937543032415465,
+    0.006245696758453605
+   ]
+  },
+  {
+   "id": "P3|QhQd|K-B:1",
+   "player": 3,
+   "hand": "QhQd",
+   "history": "K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9903843728557408,
+    0.0096156271442592
+   ]
+  },
+  {
+   "id": "P3|QsQd|K-B:1",
+   "player": 3,
+   "hand": "QsQd",
+   "history": "K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9875451506039277,
+    0.012454849396072235
+   ]
+  },
+  {
+   "id": "P3|QsQh|K-B:1",
+   "player": 3,
+   "hand": "QsQh",
+   "history": "K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9907776767003581,
+    0.009222323299641885
+   ]
+  },
+  {
+   "id": "P3|KdKc|K-B:1",
+   "player": 3,
+   "hand": "KdKc",
+   "history": "K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9908021198366342,
+    0.009197880163365792
+   ]
+  },
+  {
+   "id": "P3|KhKc|K-B:1",
+   "player": 3,
+   "hand": "KhKc",
+   "history": "K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.992582771709183,
+    0.007417228290817099
+   ]
+  },
+  {
+   "id": "P3|KsKc|K-B:1",
+   "player": 3,
+   "hand": "KsKc",
+   "history": "K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9902066652637165,
+    0.009793334736283627
+   ]
+  },
+  {
+   "id": "P3|KhKd|K-B:1",
+   "player": 3,
+   "hand": "KhKd",
+   "history": "K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9934548072377141,
+    0.006545192762285893
+   ]
+  },
+  {
+   "id": "P3|KsKd|K-B:1",
+   "player": 3,
+   "hand": "KsKd",
+   "history": "K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9911749899897363,
+    0.008825010010263748
+   ]
+  },
+  {
+   "id": "P3|KsKh|K-B:1",
+   "player": 3,
+   "hand": "KsKh",
+   "history": "K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9842875660147434,
+    0.01571243398525654
+   ]
+  },
+  {
+   "id": "P3|AdAc|K-B:1",
+   "player": 3,
+   "hand": "AdAc",
+   "history": "K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    1.8322034442556351e-13,
+    0.9999999999998167
+   ]
+  },
+  {
+   "id": "P3|AhAc|K-B:1",
+   "player": 3,
+   "hand": "AhAc",
+   "history": "K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    1.5148177505144138e-10,
+    0.9999999998485183
+   ]
+  },
+  {
+   "id": "P3|AsAc|K-B:1",
+   "player": 3,
+   "hand": "AsAc",
+   "history": "K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    7.043162218873147e-11,
+    0.9999999999295683
+   ]
+  },
+  {
+   "id": "P3|AhAd|K-B:1",
+   "player": 3,
+   "hand": "AhAd",
+   "history": "K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    1.708330653703677e-10,
+    0.999999999829167
+   ]
+  },
+  {
+   "id": "P3|AsAd|K-B:1",
+   "player": 3,
+   "hand": "AsAd",
+   "history": "K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    2.0430736790850286e-10,
+    0.9999999997956927
+   ]
+  },
+  {
+   "id": "P3|AsAh|K-B:1",
+   "player": 3,
+   "hand": "AsAh",
+   "history": "K-B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    2.8079986351858934e-10,
+    0.9999999997192002
+   ]
+  },
+  {
+   "id": "P1|JdJc|K-B:1-F",
+   "player": 1,
+   "hand": "JdJc",
+   "history": "K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999951424323,
+    4.857567670048913e-09
+   ]
+  },
+  {
+   "id": "P1|JhJc|K-B:1-F",
+   "player": 1,
+   "hand": "JhJc",
+   "history": "K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999922063532,
+    7.793646837383535e-09
+   ]
+  },
+  {
+   "id": "P1|JsJc|K-B:1-F",
+   "player": 1,
+   "hand": "JsJc",
+   "history": "K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999969730466,
+    3.0269533383891445e-09
+   ]
+  },
+  {
+   "id": "P1|JhJd|K-B:1-F",
+   "player": 1,
+   "hand": "JhJd",
+   "history": "K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999963188623,
+    3.6811377744650777e-09
+   ]
+  },
+  {
+   "id": "P1|JsJd|K-B:1-F",
+   "player": 1,
+   "hand": "JsJd",
+   "history": "K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999999977086,
+    2.2914410569340882e-12
+   ]
+  },
+  {
+   "id": "P1|JsJh|K-B:1-F",
+   "player": 1,
+   "hand": "JsJh",
+   "history": "K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999999910886,
+    8.911466712558109e-12
+   ]
+  },
+  {
+   "id": "P1|QdQc|K-B:1-F",
+   "player": 1,
+   "hand": "QdQc",
+   "history": "K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.6987971482347205,
+    0.30120285176527944
+   ]
+  },
+  {
+   "id": "P1|QhQc|K-B:1-F",
+   "player": 1,
+   "hand": "QhQc",
+   "history": "K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.8751807700304169,
+    0.12481922996958304
+   ]
+  },
+  {
+   "id": "P1|QsQc|K-B:1-F",
+   "player": 1,
+   "hand": "QsQc",
+   "history": "K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.8050737500204029,
+    0.19492624997959707
+   ]
+  },
+  {
+   "id": "P1|QhQd|K-B:1-F",
+   "player": 1,
+   "hand": "QhQd",
+   "history": "K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.7239945662409443,
+    0.27600543375905556
+   ]
+  },
+  {
+   "id": "P1|QsQd|K-B:1-F",
+   "player": 1,
+   "hand": "QsQd",
+   "history": "K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.7595766292033843,
+    0.24042337079661555
+   ]
+  },
+  {
+   "id": "P1|QsQh|K-B:1-F",
+   "player": 1,
+   "hand": "QsQh",
+   "history": "K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9305832239768489,
+    0.06941677602315119
+   ]
+  },
+  {
+   "id": "P1|KdKc|K-B:1-F",
+   "player": 1,
+   "hand": "KdKc",
+   "history": "K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.22996445671230184,
+    0.7700355432876982
+   ]
+  },
+  {
+   "id": "P1|KhKc|K-B:1-F",
+   "player": 1,
+   "hand": "KhKc",
+   "history": "K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.08033826476033167,
+    0.9196617352396683
+   ]
+  },
+  {
+   "id": "P1|KsKc|K-B:1-F",
+   "player": 1,
+   "hand": "KsKc",
+   "history": "K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.08163263202328801,
+    0.9183673679767119
+   ]
+  },
+  {
+   "id": "P1|KhKd|K-B:1-F",
+   "player": 1,
+   "hand": "KhKd",
+   "history": "K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.10379113501898456,
+    0.8962088649810156
+   ]
+  },
+  {
+   "id": "P1|KsKd|K-B:1-F",
+   "player": 1,
+   "hand": "KsKd",
+   "history": "K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.20370397278895086,
+    0.7962960272110491
+   ]
+  },
+  {
+   "id": "P1|KsKh|K-B:1-F",
+   "player": 1,
+   "hand": "KsKh",
+   "history": "K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.14223157029697422,
+    0.8577684297030257
+   ]
+  },
+  {
+   "id": "P1|AdAc|K-B:1-F",
+   "player": 1,
+   "hand": "AdAc",
+   "history": "K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    6.1293970877861104e-12,
+    0.9999999999938706
+   ]
+  },
+  {
+   "id": "P1|AhAc|K-B:1-F",
+   "player": 1,
+   "hand": "AhAc",
+   "history": "K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    5.2007720397864994e-11,
+    0.9999999999479923
+   ]
+  },
+  {
+   "id": "P1|AsAc|K-B:1-F",
+   "player": 1,
+   "hand": "AsAc",
+   "history": "K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    1.1342117048656446e-10,
+    0.9999999998865788
+   ]
+  },
+  {
+   "id": "P1|AhAd|K-B:1-F",
+   "player": 1,
+   "hand": "AhAd",
+   "history": "K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    1.2220322624476928e-11,
+    0.9999999999877798
+   ]
+  },
+  {
+   "id": "P1|AsAd|K-B:1-F",
+   "player": 1,
+   "hand": "AsAd",
+   "history": "K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    6.608297624170385e-11,
+    0.999999999933917
+   ]
+  },
+  {
+   "id": "P1|AsAh|K-B:1-F",
+   "player": 1,
+   "hand": "AsAh",
+   "history": "K-B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    1.5975565673149458e-13,
+    0.9999999999998402
+   ]
+  },
+  {
+   "id": "P1|JdJc|K-B:1-C",
+   "player": 1,
+   "hand": "JdJc",
+   "history": "K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999969129721,
+    3.0870278765391494e-09
+   ]
+  },
+  {
+   "id": "P1|JhJc|K-B:1-C",
+   "player": 1,
+   "hand": "JhJc",
+   "history": "K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999999660057,
+    3.3994309236527847e-11
+   ]
+  },
+  {
+   "id": "P1|JsJc|K-B:1-C",
+   "player": 1,
+   "hand": "JsJc",
+   "history": "K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999999898895,
+    1.0110417280343314e-11
+   ]
+  },
+  {
+   "id": "P1|JhJd|K-B:1-C",
+   "player": 1,
+   "hand": "JhJd",
+   "history": "K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999976466353,
+    2.353364755569819e-09
+   ]
+  },
+  {
+   "id": "P1|JsJd|K-B:1-C",
+   "player": 1,
+   "hand": "JsJd",
+   "history": "K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999999918359,
+    8.16419574727894e-12
+   ]
+  },
+  {
+   "id": "P1|JsJh|K-B:1-C",
+   "player": 1,
+   "hand": "JsJh",
+   "history": "K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999999042759,
+    9.572413426058663e-11
+   ]
+  },
+  {
+   "id": "P1|QdQc|K-B:1-C",
+   "player": 1,
+   "hand": "QdQc",
+   "history": "K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999999553271,
+    4.467292106264106e-11
+   ]
+  },
+  {
+   "id": "P1|QhQc|K-B:1-C",
+   "player": 1,
+   "hand": "QhQc",
+   "history": "K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999999807703,
+    1.9229757544386673e-11
+   ]
+  },
+  {
+   "id": "P1|QsQc|K-B:1-C",
+   "player": 1,
+   "hand": "QsQc",
+   "history": "K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999996426612,
+    3.573388613490373e-10
+   ]
+  },
+  {
+   "id": "P1|QhQd|K-B:1-C",
+   "player": 1,
+   "hand": "QhQd",
+   "history": "K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999999971994,
+    2.8006328194059855e-12
+   ]
+  },
+  {
+   "id": "P1|QsQd|K-B:1-C",
+   "player": 1,
+   "hand": "QsQd",
+   "history": "K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999970865119,
+    2.913488094376539e-09
+   ]
+  },
+  {
+   "id": "P1|QsQh|K-B:1-C",
+   "player": 1,
+   "hand": "QsQh",
+   "history": "K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999999825819,
+    1.7418106241123438e-11
+   ]
+  },
+  {
+   "id": "P1|KdKc|K-B:1-C",
+   "player": 1,
+   "hand": "KdKc",
+   "history": "K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999917043586,
+    8.295641389228146e-09
+   ]
+  },
+  {
+   "id": "P1|KhKc|K-B:1-C",
+   "player": 1,
+   "hand": "KhKc",
+   "history": "K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.999999999342485,
+    6.575151440725215e-10
+   ]
+  },
+  {
+   "id": "P1|KsKc|K-B:1-C",
+   "player": 1,
+   "hand": "KsKc",
+   "history": "K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999998935600429,
+    1.0643995702181116e-07
+   ]
+  },
+  {
+   "id": "P1|KhKd|K-B:1-C",
+   "player": 1,
+   "hand": "KhKd",
+   "history": "K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999875806287,
+    1.2419371287601723e-08
+   ]
+  },
+  {
+   "id": "P1|KsKd|K-B:1-C",
+   "player": 1,
+   "hand": "KsKd",
+   "history": "K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999935262728,
+    6.473727145331293e-09
+   ]
+  },
+  {
+   "id": "P1|KsKh|K-B:1-C",
+   "player": 1,
+   "hand": "KsKh",
+   "history": "K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999351694735,
+    6.483052655738895e-08
+   ]
+  },
+  {
+   "id": "P1|AdAc|K-B:1-C",
+   "player": 1,
+   "hand": "AdAc",
+   "history": "K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    3.799621486670835e-12,
+    0.9999999999962004
+   ]
+  },
+  {
+   "id": "P1|AhAc|K-B:1-C",
+   "player": 1,
+   "hand": "AhAc",
+   "history": "K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    7.975437118140841e-13,
+    0.9999999999992025
+   ]
+  },
+  {
+   "id": "P1|AsAc|K-B:1-C",
+   "player": 1,
+   "hand": "AsAc",
+   "history": "K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    1.3674203419636785e-10,
+    0.9999999998632579
+   ]
+  },
+  {
+   "id": "P1|AhAd|K-B:1-C",
+   "player": 1,
+   "hand": "AhAd",
+   "history": "K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    2.4940643710505285e-12,
+    0.9999999999975059
+   ]
+  },
+  {
+   "id": "P1|AsAd|K-B:1-C",
+   "player": 1,
+   "hand": "AsAd",
+   "history": "K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    3.073165785812812e-11,
+    0.9999999999692682
+   ]
+  },
+  {
+   "id": "P1|AsAh|K-B:1-C",
+   "player": 1,
+   "hand": "AsAh",
+   "history": "K-B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    9.886807901955366e-14,
+    0.9999999999999011
+   ]
+  },
+  {
+   "id": "P2|JdJc|B:1",
+   "player": 2,
+   "hand": "JdJc",
+   "history": "B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.999999999673635,
+    3.263650712059259e-10
+   ]
+  },
+  {
+   "id": "P2|JhJc|B:1",
+   "player": 2,
+   "hand": "JhJc",
+   "history": "B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999995311327,
+    4.688673372499921e-10
+   ]
+  },
+  {
+   "id": "P2|JsJc|B:1",
+   "player": 2,
+   "hand": "JsJc",
+   "history": "B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999997796402,
+    2.2035991555996073e-10
+   ]
+  },
+  {
+   "id": "P2|JhJd|B:1",
+   "player": 2,
+   "hand": "JhJd",
+   "history": "B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999999591273,
+    4.0872750902967955e-11
+   ]
+  },
+  {
+   "id": "P2|JsJd|B:1",
+   "player": 2,
+   "hand": "JsJd",
+   "history": "B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999995809457,
+    4.190543493316863e-10
+   ]
+  },
+  {
+   "id": "P2|JsJh|B:1",
+   "player": 2,
+   "hand": "JsJh",
+   "history": "B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999999895066,
+    1.0493466017645775e-11
+   ]
+  },
+  {
+   "id": "P2|QdQc|B:1",
+   "player": 2,
+   "hand": "QdQc",
+   "history": "B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999999822172,
+    1.7782757846956253e-11
+   ]
+  },
+  {
+   "id": "P2|QhQc|B:1",
+   "player": 2,
+   "hand": "QhQc",
+   "history": "B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999985953059,
+    1.4046941201392838e-09
+   ]
+  },
+  {
+   "id": "P2|QsQc|B:1",
+   "player": 2,
+   "hand": "QsQc",
+   "history": "B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.999999998140089,
+    1.8599109528649021e-09
+   ]
+  },
+  {
+   "id": "P2|QhQd|B:1",
+   "player": 2,
+   "hand": "QhQd",
+   "history": "B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999999994286,
+    5.714776023673173e-13
+   ]
+  },
+  {
+   "id": "P2|QsQd|B:1",
+   "player": 2,
+   "hand": "QsQd",
+   "history": "B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.999999999125043,
+    8.749570317505551e-10
+   ]
+  },
+  {
+   "id": "P2|QsQh|B:1",
+   "player": 2,
+   "hand": "QsQh",
+   "history": "B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999999409288,
+    5.907121638182012e-11
+   ]
+  },
+  {
+   "id": "P2|KdKc|B:1",
+   "player": 2,
+   "hand": "KdKc",
+   "history": "B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999996539754737,
+    3.4602452630859637e-07
+   ]
+  },
+  {
+   "id": "P2|KhKc|B:1",
+   "player": 2,
+   "hand": "KhKc",
+   "history": "B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999996194500128,
+    3.8054998709001743e-07
+   ]
+  },
+  {
+   "id": "P2|KsKc|B:1",
+   "player": 2,
+   "hand": "KsKc",
+   "history": "B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999964348380354,
+    3.565161964625191e-06
+   ]
+  },
+  {
+   "id": "P2|KhKd|B:1",
+   "player": 2,
+   "hand": "KhKd",
+   "history": "B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999998379052917,
+    1.6209470827911302e-07
+   ]
+  },
+  {
+   "id": "P2|KsKd|B:1",
+   "player": 2,
+   "hand": "KsKd",
+   "history": "B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999994536305368,
+    5.463694631868152e-07
+   ]
+  },
+  {
+   "id": "P2|KsKh|B:1",
+   "player": 2,
+   "hand": "KsKh",
+   "history": "B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999995248504391,
+    4.751495609490596e-07
+   ]
+  },
+  {
+   "id": "P2|AdAc|B:1",
+   "player": 2,
+   "hand": "AdAc",
+   "history": "B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    1.0120716973413331e-11,
+    0.9999999999898793
+   ]
+  },
+  {
+   "id": "P2|AhAc|B:1",
+   "player": 2,
+   "hand": "AhAc",
+   "history": "B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    1.2556019103152208e-12,
+    0.9999999999987444
+   ]
+  },
+  {
+   "id": "P2|AsAc|B:1",
+   "player": 2,
+   "hand": "AsAc",
+   "history": "B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    1.8056038021008902e-11,
+    0.999999999981944
+   ]
+  },
+  {
+   "id": "P2|AhAd|B:1",
+   "player": 2,
+   "hand": "AhAd",
+   "history": "B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    3.5540394230208606e-13,
+    0.9999999999996446
+   ]
+  },
+  {
+   "id": "P2|AsAd|B:1",
+   "player": 2,
+   "hand": "AsAd",
+   "history": "B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    4.992687295124657e-12,
+    0.9999999999950073
+   ]
+  },
+  {
+   "id": "P2|AsAh|B:1",
+   "player": 2,
+   "hand": "AsAh",
+   "history": "B:1",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    8.566218366817762e-12,
+    0.9999999999914337
+   ]
+  },
+  {
+   "id": "P3|JdJc|B:1-F",
+   "player": 3,
+   "hand": "JdJc",
+   "history": "B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999992790454,
+    7.209546492656455e-10
+   ]
+  },
+  {
+   "id": "P3|JhJc|B:1-F",
+   "player": 3,
+   "hand": "JhJc",
+   "history": "B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.999999999067756,
+    9.3224395979166e-10
+   ]
+  },
+  {
+   "id": "P3|JsJc|B:1-F",
+   "player": 3,
+   "hand": "JsJc",
+   "history": "B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.999999999602874,
+    3.97125968605977e-10
+   ]
+  },
+  {
+   "id": "P3|JhJd|B:1-F",
+   "player": 3,
+   "hand": "JhJd",
+   "history": "B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.999999998642495,
+    1.3575048936550667e-09
+   ]
+  },
+  {
+   "id": "P3|JsJd|B:1-F",
+   "player": 3,
+   "hand": "JsJd",
+   "history": "B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999908759883,
+    9.124011737524646e-09
+   ]
+  },
+  {
+   "id": "P3|JsJh|B:1-F",
+   "player": 3,
+   "hand": "JsJh",
+   "history": "B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999870760556,
+    1.2923944321778598e-08
+   ]
+  },
+  {
+   "id": "P3|QdQc|B:1-F",
+   "player": 3,
+   "hand": "QdQc",
+   "history": "B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9252515028761262,
+    0.07474849712387371
+   ]
+  },
+  {
+   "id": "P3|QhQc|B:1-F",
+   "player": 3,
+   "hand": "QhQc",
+   "history": "B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9103819872817259,
+    0.08961801271827417
+   ]
+  },
+  {
+   "id": "P3|QsQc|B:1-F",
+   "player": 3,
+   "hand": "QsQc",
+   "history": "B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9204016153573789,
+    0.07959838464262109
+   ]
+  },
+  {
+   "id": "P3|QhQd|B:1-F",
+   "player": 3,
+   "hand": "QhQd",
+   "history": "B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.8981123665119102,
+    0.10188763348808981
+   ]
+  },
+  {
+   "id": "P3|QsQd|B:1-F",
+   "player": 3,
+   "hand": "QsQd",
+   "history": "B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.922621224725321,
+    0.0773787752746788
+   ]
+  },
+  {
+   "id": "P3|QsQh|B:1-F",
+   "player": 3,
+   "hand": "QsQh",
+   "history": "B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9018747166935709,
+    0.0981252833064291
+   ]
+  },
+  {
+   "id": "P3|KdKc|B:1-F",
+   "player": 3,
+   "hand": "KdKc",
+   "history": "B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.38951992642505234,
+    0.6104800735749476
+   ]
+  },
+  {
+   "id": "P3|KhKc|B:1-F",
+   "player": 3,
+   "hand": "KhKc",
+   "history": "B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.2578553373132523,
+    0.7421446626867478
+   ]
+  },
+  {
+   "id": "P3|KsKc|B:1-F",
+   "player": 3,
+   "hand": "KsKc",
+   "history": "B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.0039170800627776415,
+    0.9960829199372223
+   ]
+  },
+  {
+   "id": "P3|KhKd|B:1-F",
+   "player": 3,
+   "hand": "KhKd",
+   "history": "B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.38933594766541596,
+    0.610664052334584
+   ]
+  },
+  {
+   "id": "P3|KsKd|B:1-F",
+   "player": 3,
+   "hand": "KsKd",
+   "history": "B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.4650107741780398,
+    0.5349892258219603
+   ]
+  },
+  {
+   "id": "P3|KsKh|B:1-F",
+   "player": 3,
+   "hand": "KsKh",
+   "history": "B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.0029330028656604193,
+    0.9970669971343395
+   ]
+  },
+  {
+   "id": "P3|AdAc|B:1-F",
+   "player": 3,
+   "hand": "AdAc",
+   "history": "B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    4.233460399492846e-11,
+    0.9999999999576654
+   ]
+  },
+  {
+   "id": "P3|AhAc|B:1-F",
+   "player": 3,
+   "hand": "AhAc",
+   "history": "B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    3.7718577732824294e-11,
+    0.9999999999622814
+   ]
+  },
+  {
+   "id": "P3|AsAc|B:1-F",
+   "player": 3,
+   "hand": "AsAc",
+   "history": "B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    9.720539016188454e-11,
+    0.9999999999027946
+   ]
+  },
+  {
+   "id": "P3|AhAd|B:1-F",
+   "player": 3,
+   "hand": "AhAd",
+   "history": "B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    2.0685431908121531e-10,
+    0.9999999997931457
+   ]
+  },
+  {
+   "id": "P3|AsAd|B:1-F",
+   "player": 3,
+   "hand": "AsAd",
+   "history": "B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    2.801329317058754e-11,
+    0.9999999999719867
+   ]
+  },
+  {
+   "id": "P3|AsAh|B:1-F",
+   "player": 3,
+   "hand": "AsAh",
+   "history": "B:1-F",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    7.412198656957665e-11,
+    0.9999999999258781
+   ]
+  },
+  {
+   "id": "P3|JdJc|B:1-C",
+   "player": 3,
+   "hand": "JdJc",
+   "history": "B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999999913746,
+    8.625338128236337e-12
+   ]
+  },
+  {
+   "id": "P3|JhJc|B:1-C",
+   "player": 3,
+   "hand": "JhJc",
+   "history": "B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999990168312,
+    9.83168788010748e-10
+   ]
+  },
+  {
+   "id": "P3|JsJc|B:1-C",
+   "player": 3,
+   "hand": "JsJc",
+   "history": "B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999985133616,
+    1.4866383457691577e-09
+   ]
+  },
+  {
+   "id": "P3|JhJd|B:1-C",
+   "player": 3,
+   "hand": "JhJd",
+   "history": "B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999999605391,
+    3.946091986713941e-11
+   ]
+  },
+  {
+   "id": "P3|JsJd|B:1-C",
+   "player": 3,
+   "hand": "JsJd",
+   "history": "B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999982079368,
+    1.7920632428084704e-09
+   ]
+  },
+  {
+   "id": "P3|JsJh|B:1-C",
+   "player": 3,
+   "hand": "JsJh",
+   "history": "B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999997867677,
+    2.1323229425519286e-10
+   ]
+  },
+  {
+   "id": "P3|QdQc|B:1-C",
+   "player": 3,
+   "hand": "QdQc",
+   "history": "B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999998357928,
+    1.642071791659529e-10
+   ]
+  },
+  {
+   "id": "P3|QhQc|B:1-C",
+   "player": 3,
+   "hand": "QhQc",
+   "history": "B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999994934156,
+    5.065845428654565e-10
+   ]
+  },
+  {
+   "id": "P3|QsQc|B:1-C",
+   "player": 3,
+   "hand": "QsQc",
+   "history": "B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999988718264,
+    1.1281736388850725e-09
+   ]
+  },
+  {
+   "id": "P3|QhQd|B:1-C",
+   "player": 3,
+   "hand": "QhQd",
+   "history": "B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.99999999998457,
+    1.542996351228525e-11
+   ]
+  },
+  {
+   "id": "P3|QsQd|B:1-C",
+   "player": 3,
+   "hand": "QsQd",
+   "history": "B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999990959194,
+    9.04080589804109e-10
+   ]
+  },
+  {
+   "id": "P3|QsQh|B:1-C",
+   "player": 3,
+   "hand": "QsQh",
+   "history": "B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999999201741,
+    7.98258965737271e-11
+   ]
+  },
+  {
+   "id": "P3|KdKc|B:1-C",
+   "player": 3,
+   "hand": "KdKc",
+   "history": "B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999975615260148,
+    2.4384739851379643e-06
+   ]
+  },
+  {
+   "id": "P3|KhKc|B:1-C",
+   "player": 3,
+   "hand": "KhKc",
+   "history": "B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999987199733178,
+    1.2800266821742978e-06
+   ]
+  },
+  {
+   "id": "P3|KsKc|B:1-C",
+   "player": 3,
+   "hand": "KsKc",
+   "history": "B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999989514942,
+    1.0485058865201542e-09
+   ]
+  },
+  {
+   "id": "P3|KhKd|B:1-C",
+   "player": 3,
+   "hand": "KhKd",
+   "history": "B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999999366177763,
+    6.338222373591646e-08
+   ]
+  },
+  {
+   "id": "P3|KsKd|B:1-C",
+   "player": 3,
+   "hand": "KsKd",
+   "history": "B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.999999972636791,
+    2.7363208982636406e-08
+   ]
+  },
+  {
+   "id": "P3|KsKh|B:1-C",
+   "player": 3,
+   "hand": "KsKh",
+   "history": "B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    0.9999982451594841,
+    1.7548405159491252e-06
+   ]
+  },
+  {
+   "id": "P3|AdAc|B:1-C",
+   "player": 3,
+   "hand": "AdAc",
+   "history": "B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    5.6413203464377376e-11,
+    0.9999999999435868
+   ]
+  },
+  {
+   "id": "P3|AhAc|B:1-C",
+   "player": 3,
+   "hand": "AhAc",
+   "history": "B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    9.036753794112545e-11,
+    0.9999999999096325
+   ]
+  },
+  {
+   "id": "P3|AsAc|B:1-C",
+   "player": 3,
+   "hand": "AsAc",
+   "history": "B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    3.2821306185283456e-11,
+    0.9999999999671787
+   ]
+  },
+  {
+   "id": "P3|AhAd|B:1-C",
+   "player": 3,
+   "hand": "AhAd",
+   "history": "B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    9.382584732076803e-11,
+    0.9999999999061742
+   ]
+  },
+  {
+   "id": "P3|AsAd|B:1-C",
+   "player": 3,
+   "hand": "AsAd",
+   "history": "B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    7.562524412929741e-11,
+    0.9999999999243748
+   ]
+  },
+  {
+   "id": "P3|AsAh|B:1-C",
+   "player": 3,
+   "hand": "AsAh",
+   "history": "B:1-C",
+   "actions": [
+    "F",
+    "C"
+   ],
+   "probs": [
+    3.410238553372881e-11,
+    0.9999999999658976
+   ]
+  }
+ ],
+ "which": "average",
+ "variant": "dcfr",
+ "seed": 2,
+ "iterations": 12000,
+ "averaging": "weights t^2 (DCFR gamma=2); alternating; regrets discounted alpha=1.5, beta=0",
+ "restriction": null,
+ "avg_weight": [
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  413747089081.8696,
+  473619801041.9156,
+  486868327922.9967,
+  321195517012.9011,
+  467879760342.4417,
+  443026720022.92236,
+  576071996035.7759,
+  576071612938.3915,
+  576071997885.3337,
+  576068595787.1328,
+  576071874782.9668,
+  576071549212.4065,
+  576071941869.8912,
+  576071979199.3523,
+  576072001204.9171,
+  576071967226.8457,
+  576071964327.4036,
+  576071998677.6729,
+  240282557603.73337,
+  341335033422.74146,
+  177458480678.99692,
+  176868764423.0941,
+  201350468048.2865,
+  238854103827.93997,
+  575935828769.097,
+  304560925137.2997,
+  576071097323.374,
+  385598018.5136025,
+  6145158287.108148,
+  576063497336.5815,
+  576071999986.5936,
+  576072000647.1628,
+  576071990539.9448,
+  576071998666.9385,
+  576071999422.6594,
+  576071998301.4409,
+  576071994049.1145,
+  576071996296.826,
+  576072000592.117,
+  576071992840.7802,
+  576071995408.0967,
+  576071991204.593,
+  1191.2343221680333,
+  436.6659203988314,
+  2421.4903975985194,
+  34474.11690352553,
+  1518.0863489398384,
+  806.5547102799416,
+  575935828769.097,
+  304560925137.2997,
+  576071097323.374,
+  385598018.5136025,
+  6145158287.108148,
+  576063497336.5815,
+  576071999986.5936,
+  576072000647.1628,
+  576071990539.9448,
+  576071998666.9385,
+  576071999422.6594,
+  576071998301.4409,
+  576071994049.1145,
+  576071996296.826,
+  576072000592.117,
+  576071992840.7802,
+  576071995408.0967,
+  576071991204.593,
+  1191.2343221680333,
+  436.6659203988314,
+  2421.4903975985194,
+  34474.11690352553,
+  1518.0863489398384,
+  806.5547102799416,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  413747089081.8696,
+  473619801041.9156,
+  486868327922.9967,
+  321195517012.9011,
+  467879760342.4417,
+  443026720022.92236,
+  576071996035.7759,
+  576071612938.3915,
+  576071997885.3337,
+  576068595787.1328,
+  576071874782.9668,
+  576071549212.4065,
+  576071941869.8912,
+  576071979199.3523,
+  576072001204.9171,
+  576071967226.8457,
+  576071964327.4036,
+  576071998677.6729,
+  240282557603.73337,
+  341335033422.74146,
+  177458480678.99692,
+  176868764423.0941,
+  201350468048.2865,
+  238854103827.93997,
+  413747089081.8696,
+  473619801041.9156,
+  486868327922.9967,
+  321195517012.9011,
+  467879760342.4417,
+  443026720022.92236,
+  576071996035.7759,
+  576071612938.3915,
+  576071997885.3337,
+  576068595787.1328,
+  576071874782.9668,
+  576071549212.4065,
+  576071941869.8912,
+  576071979199.3523,
+  576072001204.9171,
+  576071967226.8457,
+  576071964327.4036,
+  576071998677.6729,
+  240282557603.73337,
+  341335033422.74146,
+  177458480678.99692,
+  176868764423.0941,
+  201350468048.2865,
+  238854103827.93997,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0,
+  576072002000.0
+ ],
+ "zero_weight_infosets": [],
+ "zero_weight_fallback": "final current strategy (documented in hinc/cfr.py)"
+}

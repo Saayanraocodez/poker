@@ -1,0 +1,126 @@
+{
+ "run": "potsweep_48k/potsweep_c3-4_JJAA24/dcfr_s2",
+ "game": {
+  "name": "potsweep_c3-4_JJAA24",
+  "board": "2c 4d 6h 8s Tc",
+  "betting": {
+   "n_players": 3,
+   "prior_contrib": [
+    "3/4",
+    "3/4",
+    "3/4"
+   ],
+   "stacks": [
+    "1",
+    "1",
+    "1"
+   ],
+   "min_bet": "1",
+   "bet_sizes": [
+    "allin"
+   ],
+   "raise_sizes": [],
+   "max_raises": 0,
+   "allow_open_fold": false
+  },
+  "seats": [
+   [
+    "JJ",
+    "QQ",
+    "KK",
+    "AA"
+   ],
+   [
+    "JJ",
+    "QQ",
+    "KK",
+    "AA"
+   ],
+   [
+    "JJ",
+    "QQ",
+    "KK",
+    "AA"
+   ]
+  ],
+  "root_prior": {
+   "kind": "product",
+   "note": "specified prior: product of seat weights conditioned on card compatibility"
+  },
+  "payoff_convention": "net chips (big blinds) relative to the start of the hand: -(prior contribution + river contribution) + pot share; zero-sum at every leaf; split pots divided equally among tied best hands",
+  "scope": "conditional river continuation game; values are conditional on this root",
+  "counts": {
+   "hands_per_seat": [
+    24,
+    24,
+    24
+   ],
+   "legal_ordered_deals": 6480,
+   "decision_nodes": 12,
+   "terminal_histories_per_deal": 13,
+   "terminal_leaves": 84240,
+   "information_sets": 288,
+   "binary_information_sets": 288,
+   "deals_with_equal_strength_hands": 1296
+  },
+  "fingerprint": "f5ee6f489739117b"
+ },
+ "variant": "dcfr",
+ "seed": 2,
+ "iterations": 48000,
+ "averaging": "weights t^2 (DCFR gamma=2); alternating; regrets discounted alpha=1.5, beta=0",
+ "utilities": [
+  -0.022190762305234906,
+  -0.018749992561320115,
+  0.04094075486655124
+ ],
+ "r": [
+  1.564721723718021e-09,
+  5.97140556932163e-08,
+  6.933887808369121e-08
+ ],
+ "max_r": 6.933887808369121e-08,
+ "nashconv": 1.3061765550062554e-07,
+ "selection_rule": "NashConv(avg) <= 0.001 x pot = 0.00225 bb",
+ "selected": true,
+ "zero_weight_infosets": [],
+ "reach_census": {
+  "unreached": 0,
+  "rare": 72,
+  "reached": 216
+ },
+ "P1_open_prob_by_class": {
+  "AA": 1.0020706519457695e-09,
+  "JJ": 3.436341701687876e-10,
+  "KK": 3.7852539052512364e-10,
+  "QQ": 4.745922580065712e-11
+ },
+ "direction_classes": {
+  "costly": 134,
+  "unresolved": 110,
+  "profitable": 44
+ },
+ "max_abs_D_sum": 2.2429974544380116e-15,
+ "max_abs_rho_sum_minus_1": 2.2652102416031994e-11,
+ "offpath_combo": {
+  "theta_candidates": 72,
+  "pairs_scanned": 2304,
+  "a_cross_effect": 1272,
+  "b_root_in_unit_interval": 438,
+  "c_numerator_nonzero": 438,
+  "pole_witnesses": 58,
+  "witness_reach_classes": [
+   "rare"
+  ]
+ },
+ "offpath_class": {
+  "theta_candidates": 12,
+  "pairs_scanned": 64,
+  "a_cross_effect": 47,
+  "b_root_in_unit_interval": 23,
+  "c_numerator_nonzero": 23,
+  "pole_witnesses": 0,
+  "witness_reach_classes": []
+ },
+ "witnesses_class_level": []
+}

@@ -1,0 +1,128 @@
+{
+ "run": "potsweep/potsweep_c95-128_JJAA24/dcfr_s1",
+ "contribution": "95/128",
+ "method_version": 2,
+ "variant": "default",
+ "source": "potsweep/potsweep_c95-128_JJAA24/dcfr_s1",
+ "dcfr_nashconv": 6.293850238099641e-07,
+ "symmetrised_float_nashconv": 4.331083886903453e-05,
+ "unknowns": [
+  "P3 K-K JJ",
+  "P2 K-K-B:1-F QQ",
+  "P2 K-K-B:1-F KK",
+  "P1 K-B:1-F QQ",
+  "P1 K-B:1-F KK",
+  "P2 B:1 KK",
+  "P3 B:1-F QQ",
+  "P3 B:1-F KK",
+  "P3 B:1-C KK"
+ ],
+ "rule": "class average; on-path rows snapped at 0.0001; mixed on-path rows solved exactly (Q or one Q(sqrt d)); free directions and off-path rows: simplest rational within tol of the DCFR class average, tol = 1e-3, 1e-4, 1e-5, 1e-6 until certified",
+ "equations": [
+  "-413*x1/2880 - 413*x2/2880 + 93/1280",
+  "413*x0/2880 - 13/180",
+  "413*x0/2880 - 13/180",
+  "0",
+  "0",
+  "0",
+  "0",
+  "0",
+  "0"
+ ],
+ "attempts": [
+  {
+   "tol": "1/1000",
+   "status": "no exact solution in [0,1]"
+  },
+  {
+   "tol": "1/10000",
+   "status": "not certified",
+   "exact_r_float": [
+    2.1073098769282303e-05,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "tol": "1/100000",
+   "status": "not certified",
+   "exact_r_float": [
+    3.9136644239838125e-05,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "tol": "1/1000000",
+   "status": "not certified",
+   "exact_r_float": [
+    4.279587449966335e-05,
+    0.0,
+    0.0
+   ]
+  }
+ ],
+ "tol": "1/1000000",
+ "field": "Q",
+ "solution": {
+  "P3 K-K JJ": "208/413",
+  "P2 K-K-B:1-F QQ": "227/1894844",
+  "P2 K-K-B:1-F KK": "581/1147",
+  "P1 K-B:1-F QQ": "11/181",
+  "P1 K-B:1-F KK": "407/895",
+  "P2 B:1 KK": "102/1205",
+  "P3 B:1-F QQ": "49/685",
+  "P3 B:1-F KK": "280/781",
+  "P3 B:1-C KK": "49/408"
+ },
+ "solution_float": {
+  "P3 K-K JJ": 0.5036319612590799,
+  "P2 K-K-B:1-F QQ": 0.00011979878026898257,
+  "P2 K-K-B:1-F KK": 0.5065387968613775,
+  "P1 K-B:1-F QQ": 0.06077348066298342,
+  "P1 K-B:1-F KK": 0.4547486033519553,
+  "P2 B:1 KK": 0.08464730290456432,
+  "P3 B:1-F QQ": 0.07153284671532846,
+  "P3 B:1-F KK": 0.3585147247119078,
+  "P3 B:1-C KK": 0.12009803921568628
+ },
+ "free_fixed": [
+  "x2",
+  "x3",
+  "x4",
+  "x5",
+  "x6",
+  "x7",
+  "x8"
+ ],
+ "max_shift_from_dcfr": 3.913684742951981e-05,
+ "exact_r": [
+  "317821327/7426447776000",
+  "0",
+  "0"
+ ],
+ "exact_r_float": [
+  4.279587449966335e-05,
+  0.0,
+  0.0
+ ],
+ "exact_utilities": [
+  "-1209/66080",
+  "-1209/66080",
+  "1209/33040"
+ ],
+ "P1_open_exactly_zero": true,
+ "P2_bet_after_check": {
+  "AA": "0",
+  "JJ": "0",
+  "KK": "0",
+  "QQ": "0"
+ },
+ "P3_bet_after_two_checks": {
+  "AA": "1",
+  "JJ": "208/413",
+  "KK": "0",
+  "QQ": "0"
+ },
+ "status": "NOT CERTIFIED"
+}

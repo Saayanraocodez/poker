@@ -1,0 +1,118 @@
+{
+ "run": "potsweep/potsweep_c189-256_JJAA24/dcfr_s1",
+ "contribution": "189/256",
+ "method_version": 2,
+ "variant": "default",
+ "source": "potsweep/potsweep_c189-256_JJAA24/dcfr_s1",
+ "dcfr_nashconv": 1.8467933488031107e-07,
+ "symmetrised_float_nashconv": 3.184536997344681e-05,
+ "unknowns": [
+  "P3 K-K JJ",
+  "P2 K-K-B:1-F QQ",
+  "P2 K-K-B:1-F KK",
+  "P2 B:1 QQ",
+  "P2 B:1 KK",
+  "P3 B:1-F KK"
+ ],
+ "rule": "class average; on-path rows snapped at 0.0001; mixed on-path rows solved exactly (Q or one Q(sqrt d)); free directions and off-path rows: simplest rational within tol of the DCFR class average, tol = 1e-3, 1e-4, 1e-5, 1e-6 until certified",
+ "equations": [
+  "-823*x1/5760 - 823*x2/5760 + 183/2560",
+  "823*x0/5760 - 13/180",
+  "823*x0/5760 - 13/180",
+  "0",
+  "0",
+  "0"
+ ],
+ "attempts": [
+  {
+   "tol": "1/1000",
+   "status": "not certified",
+   "exact_r_float": [
+    0.00010596856428476494,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "tol": "1/10000",
+   "status": "not certified",
+   "exact_r_float": [
+    2.1652943007303848e-05,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "tol": "1/100000",
+   "status": "not certified",
+   "exact_r_float": [
+    3.1343821314827585e-05,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "tol": "1/1000000",
+   "status": "not certified",
+   "exact_r_float": [
+    3.128474234404744e-05,
+    0.0,
+    0.0
+   ]
+  }
+ ],
+ "tol": "1/1000000",
+ "field": "Q",
+ "solution": {
+  "P3 K-K JJ": "416/823",
+  "P2 K-K-B:1-F QQ": "1371/9931964",
+  "P2 K-K-B:1-F KK": "1509/3017",
+  "P2 B:1 QQ": "1/8528",
+  "P2 B:1 KK": "86/631",
+  "P3 B:1-F KK": "155/481"
+ },
+ "solution_float": {
+  "P3 K-K JJ": 0.5054678007290401,
+  "P2 K-K-B:1-F QQ": 0.00013803916325109516,
+  "P2 K-K-B:1-F KK": 0.5001657275439177,
+  "P2 B:1 QQ": 0.00011726078799249531,
+  "P2 B:1 KK": 0.13629160063391443,
+  "P3 B:1-F KK": 0.32224532224532226
+ },
+ "free_fixed": [
+  "x2",
+  "x3",
+  "x4",
+  "x5"
+ ],
+ "max_shift_from_dcfr": 9.359297620331554e-06,
+ "exact_r": [
+  "11220327268577051/358651739726152704000",
+  "0",
+  "0"
+ ],
+ "exact_r_float": [
+  3.128474234404744e-05,
+  0.0,
+  0.0
+ ],
+ "exact_utilities": [
+  "-2379/131680",
+  "-2379/131680",
+  "2379/65840"
+ ],
+ "P1_open_exactly_zero": true,
+ "P2_bet_after_check": {
+  "AA": "0",
+  "JJ": "0",
+  "KK": "0",
+  "QQ": "0"
+ },
+ "P3_bet_after_two_checks": {
+  "AA": "1",
+  "JJ": "416/823",
+  "KK": "0",
+  "QQ": "0"
+ },
+ "status": "NOT CERTIFIED"
+}

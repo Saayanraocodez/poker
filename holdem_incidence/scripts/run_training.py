@@ -8,7 +8,7 @@ For each (game, variant, seed): results/<group>/<game>/<variant>_s<seed>/
     policy_cur.json        the final CURRENT strategy
     run.json               game record, variant, seed, averaging rule, wall time, final residuals
 
-usage:  python scripts/run_training.py pilot|panel|control [workers]
+usage:  python scripts/run_training.py pilot|panel|potsweep|control [workers] [iterations]
         (re-running continues every run from its checkpoint up to the planned iteration count)
 """
 import csv
@@ -31,20 +31,22 @@ AVERAGING = {"cfr": "uniform weights; simultaneous updates; regret matching",
              "dcfr": "weights t^2 (DCFR gamma=2); alternating; regrets discounted alpha=1.5, beta=0"}
 
 
-def jobs(group):
+def jobs(group, iterations=None):
     if group == "pilot":
         cfgs, P = [plan.PILOT["game"]], plan.PILOT
     elif group == "panel":
         cfgs, P = sorted(glob.glob(os.path.join(ROOT, "configs", "panel", "*.json"))), plan.PANEL
+    elif group == "potsweep":
+        cfgs, P = sorted(glob.glob(os.path.join(ROOT, "configs", "potsweep", "*.json"))), plan.POTSWEEP
     elif group == "control":
         cfgs, P = [plan.CONTROL["game"]], plan.CONTROL
     else:
-        raise SystemExit("group must be pilot, panel or control")
+        raise SystemExit("group must be pilot, panel, potsweep or control")
     out = []
     for c in cfgs:
         for v in P["variants"]:
             for s in P["seeds"]:
-                out.append((group, os.path.join(ROOT, c) if not os.path.isabs(c) else c, v, s, P["iterations"]))
+                out.append((group, os.path.join(ROOT, c) if not os.path.isabs(c) else c, v, s, iterations or P["iterations"]))
     return out
 
 
@@ -101,7 +103,7 @@ def run(job):
 def main(argv):
     group = argv[1]
     workers = int(argv[2]) if len(argv) > 2 else min(24, os.cpu_count() - 2)
-    js = jobs(group)
+    js = jobs(group, int(argv[3]) if len(argv) > 3 else None)   # [iterations]: a declared continuation
     print("%d runs, %d workers" % (len(js), workers), flush=True)
     with Pool(workers) as pool:
         for d, nc, wall in pool.imap_unordered(run, js):

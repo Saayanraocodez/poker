@@ -22,6 +22,10 @@ and observed. The mechanism needs an action that some player **never takes with 
     after an action they essentially never take, and those provably carry no cross effect.
 - **Imposing silence at pot 3** brings the exact poles back. But the deterrence windows of the
   bluff and the value bet do not overlap, so no equilibrium carries them.
+- **The pot threshold (§3).** P1's silence, and with it the exact poles, lasts from pot 1.5 up
+  to **pot 759/256 ≈ 2.965**, certified by exact Nash equilibria. At **pot 381/128 ≈ 2.977**
+  every DCFR seed opens. The switch sits in a window 1/256 wide in the prior contribution, just
+  below Kuhn's pot of 3.
 
 These are statements about the **specified conditional river games**, not about unrestricted
 Hold'em.
@@ -191,7 +195,155 @@ game. Every run checkpoints and resumes bit-identically (`tests/test_cfr_ranges.
 
 ---
 
-## 3. Theory (THEORY.md)
+## 3. The pot threshold: where P1's silence, and the exact poles, end
+
+Files: `results/potsweep/` (`threshold.json`, `certification.json`, `verify.json`), `results/potsweep_48k/`
+and the plot `potsweep_threshold.png`. Preregistered as amendments 2–6; every amendment says what had
+already been seen when it was written.
+
+**Setup.**
+- The game is the 24-hand JJ–AA game of §1–2: board 2c 4d 6h 8s Tc, stack 1 = bet, all-in only.
+- The prior contribution is c per seat, so the pot is 3c. There are 20 values of c in (1/2, 1):
+  - a grid in sixteenths;
+  - then two preregistered rounds of quarter-point refinement around each switch.
+- DCFR ran 3 seeds × 12,000 iterations per point, plus the declared continuation of the seven grid
+  points to 48,000 iterations.
+- Reused end points: pot 1.5 (§1), pot 3 (the pilot) and pot 6 (the panel).
+
+**Result.**
+- **P1 never opens, certified by exact Nash equilibria, at 16 of the 20 contributions.** These run from
+  pot 1.5 up to **pot 759/256 ≈ 2.965** (c = 253/256).
+- **At pot 381/128 ≈ 2.977 (c = 127/128) every DCFR seed opens:** AA 0.60–0.62 and JJ 0.25. This
+  matches pot 3 (AA 0.53–0.57) and pot 6 (AA 0.97–0.99).
+- **The switch therefore lies in (759/256, 381/128].** That window is 1/256 wide in c, where the
+  preregistered refinement stops, and it sits just below Kuhn's pot of 3.
+- **In DCFR the switch is a jump.** At c = 253/256 P1 opens AA with float probability at most
+  2.4e-3. One step later the probability is about 0.6.
+- **P2's silence ends first,** between pot 285/128 ≈ 2.227 and pot 9/4.
+  - Exact equilibria with both P1 and P2 silent are certified up to c = 95/128.
+  - At c = 3/4 every DCFR seed has P2 betting AA after P1 checks, with probability 0.17–0.26.
+  - Once P2 bets, only the 72 responses to P1's bet stay opponent-silent (Theorem 8: 144 → 72).
+    The exact witnesses per certificate fall from 17–28 to 12–15.
+  - They stay at 12–15 all the way to c = 253/256. **The mechanism is present wherever P1 is
+    silent.**
+- **The 2.4e-3 is not evidence of opening.** It is P1's float opening at a certified point, and it
+  lies within DCFR's accuracy: every certified point (up to 2.4e-3 at 253/256) also has an exact
+  equilibrium in which P1 never opens.
+
+| c | pot | P1 opens (DCFR, max class) | P2 bets AA after check (DCFR) | NashConv (bb) | rare sets (T8) | float-scan witnesses | exact P1-silent certificate (seeds; field) | exact witnesses |
+|---|---|---|---|---|---|---|---|---|
+| 1/2 † | 3/2 | 3.6e-8 – 5.0e-8 | 7.9e-8 – 9.4e-8 | 1.3e-8 – 1.4e-8 | 144 opp.-silent | 10–12 | 3/3 (Q, 10⁶ rationalisation) | 10–12 † |
+| 9/16 | 27/16 | 3.7e-8 – 4.2e-8 | 1.1e-7 – 1.2e-7 | 2.3e-6 – 5.4e-6 | 144 opp.-silent | 5–7 | 3/3; 48k 3/3 (Q) | 17–19 |
+| 5/8 | 15/8 | 3.6e-8 – 4.2e-8 | 1.6e-7 – 1.7e-7 | 2.8e-6 – 3.6e-6 | 144 opp.-silent | 9–16 | 3/3; 48k 3/3 (Q) | 20 |
+| 11/16 | 33/16 | 3.7e-8 – 5.1e-8 | 3.4e-7 – 3.8e-7 | 1.2e-6 – 3.9e-6 | 144 opp.-silent | 10–21 | 3/3; 48k 3/3 (Q) | 23–25 |
+| 45/64 | 135/64 | 4.1e-8 – 5.4e-8 | 4.7e-7 – 5.4e-7 | 1.3e-7 – 7.5e-6 | 144 opp.-silent | 16–19 | 3/3 (Q) | 24 |
+| 23/32 | 69/32 | 5.1e-8 – 6.1e-8 | 7.3e-7 – 9.3e-7 | 4.1e-7 – 2.6e-6 | 144 opp.-silent | 12–15 | 3/3 (Q) | 24–28 |
+| 47/64 | 141/64 | 7.3e-8 – 5.5e-6 | 1.6e-6 – 2.7e-6 | 2.5e-7 – 4.4e-7 | 144 opp.-silent | 2–10 | 3/3 (Q) | 28 |
+| 189/256 | 567/256 | 2.6e-6 – 1.1e-5 | 2.7e-6 – 7.3e-6 | 1.7e-7 – 5.5e-7 | 144 opp.-silent | 0–6 | 2/3 (Q) | 28 |
+| 95/128 | 285/128 | 1.3e-5 – 4.4e-5 | 8.7e-6 – 3.7e-5 | 1.9e-7 – 6.3e-7 | 144 opp.-silent | 0–2 | 2/3 (Q) | 28 |
+| 191/256 | 573/256 | 9.7e-5 – 3.7e-4 | 1.3e-4 – 5.0e-4 | 8.9e-7 – 3.2e-6 | 23–66 opp.-silent | 0 | none (polish: too many mixed rows, or unfinished) | – |
+| 3/4 | 9/4 | 4.2e-8 – 6.4e-8 | 0.17 – 0.26 | 4.3e-7 – 6.8e-7 | 72 opp.-silent | 1–4 | 3/3; 48k 3/3 (Q) | 12–13 |
+| 13/16 | 39/16 | 9.7e-7 – 5.3e-6 | 0.53 – 0.54 | 1.3e-3 – 1.9e-3 | 72 opp.-silent | 0 | none (DCFR does not converge) | – |
+| 7/8 | 21/8 | 7.7e-8 – 1.2e-7 | 0.75 | 2.7e-6 – 5.6e-6 | 72 opp.-silent | 0–2 | 3/3; 48k 3/3 (Q(√286839393)) | 14–15 |
+| 15/16 | 45/16 | 1.8e-7 – 6.6e-7 | 1 | 5.3e-6 – 7.8e-6 | 72 opp.-silent, 12 own | 3–11 | 3/3; 48k 3/3 (Q(√5814557254)) | 13 |
+| 61/64 | 183/64 | 7.2e-7 – 1.5e-6 | 1 | 3.4e-6 – 5.6e-6 | 72 opp.-silent, 12 own | 1–2 | 3/3 (Q(√36429626521)) | 13–15 |
+| 31/32 | 93/32 | 2.7e-6 – 5.5e-6 | 1 | 3.4e-6 – 5.0e-6 | 72 opp.-silent, 12 own | 0 | 3/3 (Q(√397698368041)) ‡ | 12–14 |
+| 125/128 | 375/128 | 6.9e-6 – 1.5e-5 | 1 | 2.4e-6 – 3.8e-6 | 72 opp.-silent, 12 own | 0 | 3/3 (Q(√103487875626361)) | 13 |
+| 63/64 | 189/64 | 4.5e-5 – 1.1e-4 | 1 | 2.8e-6 – 4.8e-6 | 32–72 opp.-silent, 12 own | 0 | 3/3 (Q(√6573839017921)) | 13 |
+| **253/256** | **759/256** | 2.5e-4 – 2.4e-3 | 1 | 3.4e-6 – 5.5e-5 | 6–24 opp.-silent, 12 own | 0 | **3/3 (Q(√1696550223293641)) ‡** | 12 |
+| **127/128** | **381/128** | **0.60 – 0.62** | 1 | 3.1e-5 – 3.4e-5 | 12–14 own | 0 | none ‡ | – |
+| 255/256 | 765/256 | 0.57 – 0.58 | 1 | 9.6e-5 – 1.2e-4 | 12 own | 0 | none ‡ | – |
+| 1 § | 3 | 0.53 – 0.57 | 1 | 1.8e-4 – 3.0e-4 | 12 own | 0 | none | – |
+| 2 § | 6 | 0.97 – 0.99 | 1 | 9.8e-6 – 4.9e-5 | 12–14 own | 0 | none | – |
+
+Notes to the table:
+- Columns 3–7 are the 12,000-iteration DCFR profiles. The table is printed by
+  `python scripts/potsweep.py table`.
+- "exact witnesses" counts the class-level poles found by the scan repeated in exact arithmetic on
+  the certified profile (one certificate per profile).
+- † At pot 1.5 the count is different: it is the float-scan witnesses, each re-checked exactly (§1).
+- ‡ The P1-silent variant with the deterrence search; see below.
+- § Reused: the pilot (DCFR, 6 × 30,000) and the panel.
+
+**How the silent points were certified.** The declared 10⁶ rationalisation certified **none** of the
+81 new profiles (60 at 12,000 iterations, 21 at 48,000). The largest exact residual per profile
+after rounding was 3.8e-8 to 6.3e-5 (about 1e-3 at c = 13/16), because the DCFR averages lie on
+continua of equilibria. Three steps did the work. Each was declared in an amendment before its main
+run (amendment 4 records one test run made before it):
+- **Class-symmetric polish** (amendments 3–4).
+  - The game is invariant under the 24 suit permutations, so a profile in which every combo of a
+    hand class plays alike is a 4-type profile.
+  - From each DCFR profile: average within hand classes, snap near-pure on-path rows, solve the
+    indifference conditions of the remaining mixed rows exactly, and round the off-path rows.
+- **Quadratic fields** (amendment 4).
+  - Up to c = 3/4 the solutions are rational.
+  - From c = 7/8 they are quadratic surds. P1's QQ call and P2's KK call enter two bilinear
+    indifference conditions, and eliminating between them leaves a quadratic.
+  - Those profiles are evaluated exactly in Q(√d) by the unchanged engine, with an exact number
+    type (`hinc/surd.py`, checked against the Fraction and float engines by `tests/test_surd.py`).
+- **Deterrence search** (amendments 5–6).
+  - At c = 31/32 seed 1 and at c = 253/256, DCFR's responses to P1's bet do not deter P1.
+  - There the 12 responses are chosen by a declared deterrence search with P1's opening fixed at
+    exactly 0, then rounded.
+- **Only the exact full best-response check certifies.** There are 64 certificates, and all 64 pass
+  an independent re-check (`scripts/verify_potsweep.py`, log in `results/potsweep/`). It parses each
+  stored exact profile and confirms:
+  - exact residuals (0, 0, 0);
+  - P1's opening exactly 0;
+  - one witness, re-derived per combo.
+
+**Two exact regularities.**
+- **The bluff frequency.** On the silent branch the JJ bluff frequency is exactly
+  **13/(24c + 8) = (13/8)/(3c + 1)** at every certified point of the sweep (9/16 ≤ c ≤ 253/256),
+  except c = 7/8.
+  - This is the bluff that leaves the bluff-catcher's KK indifferent, in pot-odds form.
+  - At pot 1.5 it does not hold. P3's bluff there is not pinned: 0.29, 0.38 and 0.42 in the three
+    certificates of §1.
+  - For c ≤ 3/4 it is P3's bluff after two checks: 26/43, 13/23, 26/49, …, 1/2 at c = 3/4.
+  - For c ≥ 15/16, where P2 bets AA always, it is P2's bluff after P1 checks: 26/61, 8/19, 52/125,
+    …, 104/253.
+  - At c = 7/8, where P2 still mixes with AA (≈ 0.752, a quadratic surd), neither bluff has this
+    form.
+- **The deterring responses.** Near the top they have one shape: P2 calls only with AA, and after P2
+  folds P3 calls with AA and with KK at θ ≈ 0.82–0.84 (OP2's coordinate).
+  - The best float margins the search finds (seed 1 at 31/32; identical in all three seeds at the
+    other three points):
+
+    | c | 31/32 | 253/256 | 127/128 | 255/256 |
+    |---|---|---|---|---|
+    | best margin (bb) | +1.8e-3 | +1.5e-4 | −1.8e-4 | −5.1e-4 |
+
+  - The margins fall almost linearly and cross zero at c ≈ 0.990 (pot ≈ 2.970), inside the bracket.
+  - At 127/128 and 255/256 the on-path part still solves exactly (r2 = r3 = 0), but P1 keeps
+    r1 = 3.6e-4 and 1.0e-3 respectively.
+
+**What is not shown** (declared and retained):
+- **The upper end of the bracket is not a proof.** It rests on DCFR selection and on a local search.
+  It does not show that no P1-silent equilibrium exists at c ≥ 127/128. By upper hemicontinuity,
+  silent equilibria at c arbitrarily close to 1 would force one at pot 3, and OP2's local search did
+  not find one there.
+- **Two points are not certified.**
+  - At c = 13/16 DCFR never converged: NashConv 1.3e-3 to 2.2e-3, even at 48,000 iterations. The
+    polish of the 48,000-iteration profiles found more than 12 mixed rows. The polish of the
+    12,000-iteration profiles (at most 12 unknowns, so up to 4,096 exact vertex evaluations each)
+    was stopped unfinished.
+  - At c = 191/256, where P2 starts to bet, two seeds had more than 12 mixed rows and the third was
+    stopped unfinished.
+  - Two further profiles (seed 1 at 189/256 and at 95/128) were not certified.
+  - `results/potsweep_polish_log.txt` lists every polish outcome.
+- **The certificates are class-symmetric equilibria,** and the equilibrium sets are continua. For
+  example, P2's AA frequency ranges over 0.18–0.27 across the five distinct certificates at c = 3/4.
+  The exact witness counts are therefore counts at one certificate each.
+- **The float-scan counts are unreliable near the switches.** They drop wherever DCFR leaves a
+  residual P1 opening of 1e-5 to 1e-4, which lifts the response sets above the 1e-6 reach cutoff.
+  The exact counts do not drop.
+- **The N = n + 1 analogue.** In this game, P1's silence, and with it the off-path mechanism, holds
+  only while the pot-to-bet ratio is below a threshold in (2.965, 2.977]. That plays the role of
+  Kuhn's deck-size law, in pot-to-bet ratio instead of deck size.
+
+---
+
+## 4. Theory (THEORY.md)
 
 Proved for every finite constant-sum n-player game with perfect recall, each with a computational
 check (`results/theory/theory_checks.json`):
@@ -208,7 +360,8 @@ check (`results/theory/theory_checks.json`):
 - **Attainable poles sit at its endpoints;** mixed coordinates cannot carry them (Theorem 7).
 - **The classification** of unreached sets into own / opponent-silent / blocker, with only the
   last two able to carry the mechanism (Theorem 8). It predicts all 48 analysed profiles without
-  exception.
+  exception. It is also consistent with the 81 pot-sweep profiles of §3: witnesses appear only where
+  opponent-silent sets exist.
 - **One off-path parameter moves incidence along a straight line** in share space, for every n
   (Theorem 10). Exact in a 4-player river game.
 - **Exact equilibria can be 10⁻⁶ apart and differ in ρ by 68,750** (Proposition 11): equilibrium
@@ -216,16 +369,18 @@ check (`results/theory/theory_checks.json`):
 
 ---
 
-## 4. Limitations
+## 5. Limitations
 
 1. **Conditional river games** with *specified* product priors, chosen ranges and an all-in-only
    action set. The all-in-only set is forced by the rules here (stack = min bet), so there is no
    bet-size abstraction in these experiments. Nothing here concerns equilibria of unrestricted
    Hold'em or whether these ranges arise upstream.
-2. **Equilibrium accuracy.** Only the pot-1.5 profiles are certified exact, by rationalisation plus
-   exact best responses. All others are approximate equilibria with the measured residuals above.
-   "No witness" is relative to the declared tolerances (reach ≤ 1e-6 for candidates, etc.,
-   `hinc/plan.py`).
+2. **Equilibrium accuracy.**
+   - Certified exact: the pot-1.5 profiles (rationalisation plus exact best responses) and the 64
+     pot-sweep certificates of §3 (class-symmetric exact equilibria, some in quadratic fields).
+   - All other profiles are approximate equilibria with the measured residuals above.
+   - "No witness" is relative to the declared tolerances (reach ≤ 1e-6 for candidates, etc.,
+     `hinc/plan.py`).
 3. **Scan coverage.** One θ (a combo, or a hand class moved together) against one upstream
    combo/class whose action leads into θ's history. Joint multi-parameter families are not
    scanned.
@@ -238,21 +393,23 @@ check (`results/theory/theory_checks.json`):
 6. Seeds: 6 per pilot variant, 3 per panel game. The turn, side pots, short all-in raises and
    derived (upstream) priors are not implemented.
 
-## 5. Unresolved, and the most informative next experiment
+## 6. Unresolved, and the most informative next experiment
 
-- **The pot threshold** (most informative next): P1 is silent at pot 1.5 and bets at pot 3. Sweep
-  the prior contribution between 1/2 and 1 on the 24-hand game, and certify each point exactly.
-  This locates the switch at which the off-path mechanism appears. It would be the river-game
-  analogue of Kuhn's N = n + 1 law, in pot-to-stack ratio instead of deck size.
-- **Prove** (or refute) "no P1-silent equilibrium at pot 3", with the correlated-equilibrium
-  certificate method that settled (3,5)-Kuhn.
+- **The exact pot threshold** (most informative next). §3 brackets the switch in
+  (759/256, 381/128], and the silent branch's deterrence margin crosses zero near pot 2.970.
+  - The silent branch is explicit: on-path behaviour solves in closed form, as rationals or
+    quadratic surds in c.
+  - So the pot where its deterrence window closes can be computed exactly, as an algebraic number,
+    by solving for the c at which the best deterring responses leave P1 indifferent.
+- **Prove** (or refute) "no P1-silent equilibrium at pot 3", and more generally above the bracket.
+  The method would be the correlated-equilibrium certificate that settled (3,5)-Kuhn.
 - **Refinement of the pot-1.5 witnesses:** which survive sequential rationality?
 - **The blocker route:** design polarised, card-overlapping ranges in which a public action is
   taken only by combos that block an opponent's hand.
 - **Action abstraction:** run the implemented multi-size tree (`configs/extension_stack6_sizes.json`,
   tested) and compare against the all-in game.
 
-## 6. Reproduce
+## 7. Reproduce
 
 ```
 python -m unittest discover -s tests -v
@@ -263,6 +420,12 @@ python scripts/positive_control.py write ; python scripts/positive_control.py tr
 python scripts/silent_p1.py train ; python scripts/silent_p1.py analyse
 python scripts/analyze_profiles.py pilot ; python scripts/analyze_profiles.py panel ; python scripts/analyze_profiles.py control ; python scripts/analyze_profiles.py positive_control
 python scripts/pilot_contrast.py ; python scripts/witness_sweeps.py panel ; python scripts/verify_pot15.py ; python scripts/theory_checks.py ; python scripts/make_plots.py
+# pot sweep (§3)
+python scripts/run_training.py potsweep 21
+python scripts/potsweep.py train 48000 potsweep_48k potsweep_c9-16_JJAA24 potsweep_c5-8_JJAA24 potsweep_c11-16_JJAA24 potsweep_c3-4_JJAA24 potsweep_c13-16_JJAA24 potsweep_c7-8_JJAA24 potsweep_c15-16_JJAA24
+python scripts/analyze_profiles.py potsweep ; python scripts/analyze_profiles.py potsweep_48k ; python scripts/theory_checks.py t8
+python scripts/potsweep.py certify ; python scripts/potsweep.py polish potsweep ; python scripts/potsweep.py polish potsweep_48k ; python scripts/potsweep.py polish_silent 61/64
+python scripts/potsweep.py summary ; python scripts/potsweep.py table ; python scripts/potsweep.py plot ; python scripts/verify_potsweep.py
 ```
 Extend: add a config (pot, stacks, sizes, raise cap, ranges, weights) under `configs/` and point
 `hinc/plan.py` at it. Re-running any training command resumes from checkpoints.

@@ -36,7 +36,7 @@ from hinc.strategy import load_profile, to_exact, normalise_exact          # noq
 
 
 def find_config(name):
-    for f in glob.glob(os.path.join(ROOT, "configs", "*.json")) + glob.glob(os.path.join(ROOT, "configs", "panel", "*.json")):
+    for f in glob.glob(os.path.join(ROOT, "configs", "*.json")) + glob.glob(os.path.join(ROOT, "configs", "*", "*.json")):
         c = json.load(open(f))
         if c.get("name") == name:
             return c

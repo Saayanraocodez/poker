@@ -31,5 +31,7 @@ FAMILY_GRID = 11         # points checked inside that window
 PILOT = {"game": "configs/expanded24.json", "variants": ["cfr+", "dcfr"], "seeds": [1, 2, 3, 4, 5, 6],
          "iterations": 30000}
 PANEL = {"variants": ["dcfr"], "seeds": [1, 2, 3], "iterations": 12000}
+# pot sweep (amendment 2): the 24-hand game at prior contributions in (1/2, 1), configs/potsweep/
+POTSWEEP = {"variants": ["dcfr"], "seeds": [1, 2, 3], "iterations": 12000, "continuation_iterations": 48000}
 CHECKPOINTS = [10, 30, 100, 300, 1000, 3000, 6000, 12000, 20000, 30000]
 CONTROL = {"game": "configs/control_2p.json", "variants": ["cfr+"], "seeds": [1, 2], "iterations": 5000}

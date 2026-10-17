@@ -1,0 +1,111 @@
+{
+ "game": {
+  "name": "potsweep_c7-8_JJAA24",
+  "board": "2c 4d 6h 8s Tc",
+  "betting": {
+   "n_players": 3,
+   "prior_contrib": [
+    "7/8",
+    "7/8",
+    "7/8"
+   ],
+   "stacks": [
+    "1",
+    "1",
+    "1"
+   ],
+   "min_bet": "1",
+   "bet_sizes": [
+    "allin"
+   ],
+   "raise_sizes": [],
+   "max_raises": 0,
+   "allow_open_fold": false
+  },
+  "seats": [
+   [
+    "JJ",
+    "QQ",
+    "KK",
+    "AA"
+   ],
+   [
+    "JJ",
+    "QQ",
+    "KK",
+    "AA"
+   ],
+   [
+    "JJ",
+    "QQ",
+    "KK",
+    "AA"
+   ]
+  ],
+  "root_prior": {
+   "kind": "product",
+   "note": "specified prior: product of seat weights conditioned on card compatibility"
+  },
+  "payoff_convention": "net chips (big blinds) relative to the start of the hand: -(prior contribution + river contribution) + pot share; zero-sum at every leaf; split pots divided equally among tied best hands",
+  "scope": "conditional river continuation game; values are conditional on this root",
+  "counts": {
+   "hands_per_seat": [
+    24,
+    24,
+    24
+   ],
+   "legal_ordered_deals": 6480,
+   "decision_nodes": 12,
+   "terminal_histories_per_deal": 13,
+   "terminal_leaves": 84240,
+   "information_sets": 288,
+   "binary_information_sets": 288,
+   "deals_with_equal_strength_hands": 1296
+  },
+  "fingerprint": "7338726e5a66be8d"
+ },
+ "variant": "dcfr",
+ "seed": 3,
+ "iterations": 12000,
+ "averaging": "weights t^2 (DCFR gamma=2); alternating; regrets discounted alpha=1.5, beta=0",
+ "restriction": null,
+ "wall_s": 456.61944870001935,
+ "final": {
+  "t": 12000,
+  "wall_s": 456.619,
+  "avg": {
+   "u": [
+    -0.04019954661479705,
+    -0.0060419967362987815,
+    0.046241543351094185
+   ],
+   "r": [
+    6.11625246837999e-08,
+    9.493336943101199e-07,
+    1.6807156623041553e-06
+   ],
+   "max_r": 1.6807156623041553e-06,
+   "nashconv": 2.691211881298075e-06
+  },
+  "cur": {
+   "u": [
+    -0.04035185518267444,
+    -0.005957159769092763,
+    0.04630901495177602
+   ],
+   "r": [
+    2.6009138742802418e-05,
+    7.937954018814603e-05,
+    4.5682045720481235e-05
+   ],
+   "max_r": 7.937954018814603e-05,
+   "nashconv": 0.00015107072465142968
+  },
+  "zero_weight_infosets": 0,
+  "min_avg_weight": 107659144262.43164,
+  "infosets_reach_below_1e-9": 31,
+  "infosets_reach_exactly_0": 0
+ },
+ "zero_weight_infosets": [],
+ "dir": "potsweep/potsweep_c7-8_JJAA24/dcfr_s3"
+}

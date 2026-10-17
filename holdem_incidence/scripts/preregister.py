@@ -61,7 +61,7 @@ def main(argv):
 
 
 def cfgs():
-    return sorted(glob.glob(os.path.join(ROOT, "configs", "*.json")) + glob.glob(os.path.join(ROOT, "configs", "panel", "*.json")))
+    return sorted(glob.glob(os.path.join(ROOT, "configs", "*.json")) + glob.glob(os.path.join(ROOT, "configs", "*", "*.json")))
 
 
 if __name__ == "__main__":

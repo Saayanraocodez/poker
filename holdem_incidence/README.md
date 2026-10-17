@@ -35,6 +35,7 @@ pip install numpy matplotlib psutil
 | `hinc/incidence.py` | exact derivative vectors (U(I→a) − U(I→b)), ρ, classification with declared tolerances |
 | `hinc/offpath.py` | θ-sweeps, exact affine roots θ*, cross effects |
 | `hinc/kuhn_bridge.py` | the map to Kuhn coordinates and Kuhn payoffs |
+| `hinc/surd.py` | exact arithmetic in a real quadratic field Q(√d), so profiles with quadratic-surd probabilities are evaluated exactly by the same engine |
 | `hinc/plan.py` | the declared analysis plan (thresholds, selection rule, budgets) |
 | `configs/` | versioned game configurations (bridge, expanded24, control_2p, extension, `panel/`) |
 | `scripts/` | experiment drivers (below) |
@@ -68,6 +69,15 @@ python scripts/witness_sweeps.py panel             # sweeps along every validate
 python scripts/verify_pot15.py                    # independent exact re-check of a pot-1.5 witness
 python scripts/theory_checks.py                   # computational checks of THEORY.md
 python scripts/make_plots.py                      # results/plots/*.png
+python scripts/run_training.py potsweep 21        # pot sweep: 24-hand game at prior contribution c in (1/2, 1)
+python scripts/potsweep.py train 48000 potsweep_48k <grid config names>   # declared continuation
+python scripts/analyze_profiles.py potsweep ; python scripts/analyze_profiles.py potsweep_48k ; python scripts/theory_checks.py t8
+python scripts/potsweep.py certify                # 10^6 rationalisation + exact re-check of float-scan witnesses
+python scripts/potsweep.py polish potsweep        # class-symmetric exact polish (Q or Q(sqrt d)) + exact scan
+python scripts/potsweep.py polish potsweep_48k
+python scripts/potsweep.py polish_silent 61/64    # P1-silent variant with the deterrence search
+python scripts/potsweep.py summary ; python scripts/potsweep.py table ; python scripts/potsweep.py plot
+python scripts/verify_potsweep.py                 # independent re-check of every stored certificate
 ```
 
 Scratch runs: set `HINC_RESULTS=<dir>` to keep them out of `results/` (the project's scratch
