@@ -1,0 +1,98 @@
+{
+ "game": {
+  "name": "control_2p",
+  "board": "2c 4d 6h 8s Tc",
+  "betting": {
+   "n_players": 2,
+   "prior_contrib": [
+    "1",
+    "1"
+   ],
+   "stacks": [
+    "1",
+    "1"
+   ],
+   "min_bet": "1",
+   "bet_sizes": [
+    "allin"
+   ],
+   "raise_sizes": [],
+   "max_raises": 0,
+   "allow_open_fold": false
+  },
+  "seats": [
+   [
+    "JJ",
+    "QQ",
+    "KK",
+    "AA"
+   ],
+   [
+    "JJ",
+    "QQ",
+    "KK",
+    "AA"
+   ]
+  ],
+  "root_prior": {
+   "kind": "product",
+   "note": "specified prior: product of seat weights conditioned on card compatibility"
+  },
+  "payoff_convention": "net chips (big blinds) relative to the start of the hand: -(prior contribution + river contribution) + pot share; zero-sum at every leaf; split pots divided equally among tied best hands",
+  "scope": "conditional river continuation game; values are conditional on this root",
+  "counts": {
+   "hands_per_seat": [
+    24,
+    24
+   ],
+   "legal_ordered_deals": 456,
+   "decision_nodes": 4,
+   "terminal_histories_per_deal": 5,
+   "terminal_leaves": 2280,
+   "information_sets": 96,
+   "binary_information_sets": 96,
+   "deals_with_equal_strength_hands": 24
+  },
+  "fingerprint": "a5c3733a40fa954a"
+ },
+ "variant": "cfr+",
+ "seed": 1,
+ "iterations": 5000,
+ "averaging": "linear weights max(t - delay, 0), delay 0; alternating updates; regret matching+",
+ "restriction": null,
+ "wall_s": 2.7007184000394773,
+ "final": {
+  "t": 5000,
+  "wall_s": 2.701,
+  "avg": {
+   "u": [
+    -0.041348477719212885,
+    0.041348477719212885
+   ],
+   "r": [
+    0.0005510083502614851,
+    0.0004299000982926557
+   ],
+   "max_r": 0.0005510083502614851,
+   "nashconv": 0.0009809084485541408
+  },
+  "cur": {
+   "u": [
+    -0.04220944578216897,
+    0.04220944578216897
+   ],
+   "r": [
+    0.010487983967905082,
+    0.014981829852939152
+   ],
+   "max_r": 0.014981829852939152,
+   "nashconv": 0.025469813820844234
+  },
+  "zero_weight_infosets": 0,
+  "min_avg_weight": 2308205.909518062,
+  "infosets_reach_below_1e-9": 0,
+  "infosets_reach_exactly_0": 0
+ },
+ "zero_weight_infosets": [],
+ "dir": "control/control_2p/cfrp_s1"
+}

@@ -1,0 +1,110 @@
+{
+ "game": {
+  "name": "expanded24",
+  "board": "2c 4d 6h 8s Tc",
+  "betting": {
+   "n_players": 3,
+   "prior_contrib": [
+    "1",
+    "1",
+    "1"
+   ],
+   "stacks": [
+    "1",
+    "1",
+    "1"
+   ],
+   "min_bet": "1",
+   "bet_sizes": [
+    "allin"
+   ],
+   "raise_sizes": [],
+   "max_raises": 0,
+   "allow_open_fold": false
+  },
+  "seats": [
+   [
+    "JJ",
+    "QQ",
+    "KK",
+    "AA"
+   ],
+   [
+    "JJ",
+    "QQ",
+    "KK",
+    "AA"
+   ],
+   [
+    "JJ",
+    "QQ",
+    "KK",
+    "AA"
+   ]
+  ],
+  "root_prior": {
+   "kind": "product",
+   "note": "specified prior: product of seat weights conditioned on card compatibility"
+  },
+  "payoff_convention": "net chips (big blinds) relative to the start of the hand: -(prior contribution + river contribution) + pot share; zero-sum at every leaf; split pots divided equally among tied best hands",
+  "scope": "conditional river continuation game; values are conditional on this root",
+  "counts": {
+   "hands_per_seat": [
+    24,
+    24,
+    24
+   ],
+   "legal_ordered_deals": 6480,
+   "decision_nodes": 12,
+   "terminal_histories_per_deal": 13,
+   "terminal_leaves": 84240,
+   "information_sets": 288,
+   "binary_information_sets": 288,
+   "deals_with_equal_strength_hands": 1296
+  },
+  "fingerprint": "163057113ca2e4c3"
+ },
+ "variant": "cfr+",
+ "seed": 3,
+ "iterations": 30000,
+ "averaging": "linear weights max(t - delay, 0), delay 0; alternating updates; regret matching+",
+ "wall_s": 1767.1621656000798,
+ "final": {
+  "t": 30000,
+  "wall_s": 1767.162,
+  "avg": {
+   "u": [
+    -0.046585042171544445,
+    0.002809992282545366,
+    0.043775049888998746
+   ],
+   "r": [
+    0.00012134720014709416,
+    5.619366397182539e-05,
+    0.00012769940800447244
+   ],
+   "max_r": 0.00012769940800447244,
+   "nashconv": 0.000305240272123392
+  },
+  "cur": {
+   "u": [
+    -0.04713271827288918,
+    0.0040522291583030045,
+    0.04308048911453352
+   ],
+   "r": [
+    0.002937673322091945,
+    0.000534529921268785,
+    0.002054519375710967
+   ],
+   "max_r": 0.002937673322091945,
+   "nashconv": 0.005526722619071697
+  },
+  "zero_weight_infosets": 0,
+  "min_avg_weight": 16.94480486711728,
+  "infosets_reach_below_1e-9": 2,
+  "infosets_reach_exactly_0": 0
+ },
+ "zero_weight_infosets": [],
+ "dir": "results/pilot/expanded24/cfrp_s3"
+}

@@ -1,0 +1,111 @@
+{
+ "game": {
+  "name": "bridge_kuhn4",
+  "board": "2c 4d 6h 8s Tc",
+  "betting": {
+   "n_players": 3,
+   "prior_contrib": [
+    "1",
+    "1",
+    "1"
+   ],
+   "stacks": [
+    "1",
+    "1",
+    "1"
+   ],
+   "min_bet": "1",
+   "bet_sizes": [
+    "allin"
+   ],
+   "raise_sizes": [],
+   "max_raises": 0,
+   "allow_open_fold": false
+  },
+  "seats": [
+   [
+    "JsJh",
+    "QsQh",
+    "KsKh",
+    "AsAh"
+   ],
+   [
+    "JsJh",
+    "QsQh",
+    "KsKh",
+    "AsAh"
+   ],
+   [
+    "JsJh",
+    "QsQh",
+    "KsKh",
+    "AsAh"
+   ]
+  ],
+  "root_prior": {
+   "kind": "product",
+   "note": "specified prior: product of seat weights conditioned on card compatibility"
+  },
+  "payoff_convention": "net chips (big blinds) relative to the start of the hand: -(prior contribution + river contribution) + pot share; zero-sum at every leaf; split pots divided equally among tied best hands",
+  "scope": "conditional river continuation game; values are conditional on this root",
+  "counts": {
+   "hands_per_seat": [
+    4,
+    4,
+    4
+   ],
+   "legal_ordered_deals": 24,
+   "decision_nodes": 12,
+   "terminal_histories_per_deal": 13,
+   "terminal_leaves": 312,
+   "information_sets": 48,
+   "binary_information_sets": 48,
+   "deals_with_equal_strength_hands": 0
+  },
+  "fingerprint": "e8c7249629ac1da5"
+ },
+ "variant": "dcfr",
+ "seed": 3,
+ "iterations": 30000,
+ "averaging": "weights t^2 (DCFR gamma=2); alternating; regrets discounted alpha=1.5, beta=0",
+ "restriction": null,
+ "wall_s": 62.97290249998423,
+ "final": {
+  "t": 30000,
+  "wall_s": 62.973,
+  "avg": {
+   "u": [
+    -0.02500997411690642,
+    -0.020833330625831765,
+    0.04584330474273801
+   ],
+   "r": [
+    3.456631589293657e-08,
+    7.766441110362843e-08,
+    2.4787929410463594e-08
+   ],
+   "max_r": 7.766441110362843e-08,
+   "nashconv": 1.370186564070286e-07
+  },
+  "cur": {
+   "u": [
+    -0.02503726894137423,
+    -0.020805076267949384,
+    0.045842345209323565
+   ],
+   "r": [
+    5.088471129927052e-06,
+    0.0004396240285618677,
+    9.822112730692445e-06
+   ],
+   "max_r": 0.0004396240285618677,
+   "nashconv": 0.0004545346124224872
+  },
+  "zero_weight_infosets": 0,
+  "min_avg_weight": 5444103545510.051,
+  "infosets_reach_below_1e-9": 14,
+  "infosets_reach_exactly_0": 0
+ },
+ "zero_weight_infosets": [],
+ "dir": "positive_control/bridge_kuhn4/dcfr_s3"
+}

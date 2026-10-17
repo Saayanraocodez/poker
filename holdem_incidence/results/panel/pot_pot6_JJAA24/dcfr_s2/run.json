@@ -1,0 +1,110 @@
+{
+ "game": {
+  "name": "pot_pot6_JJAA24",
+  "board": "2c 4d 6h 8s Tc",
+  "betting": {
+   "n_players": 3,
+   "prior_contrib": [
+    "2",
+    "2",
+    "2"
+   ],
+   "stacks": [
+    "1",
+    "1",
+    "1"
+   ],
+   "min_bet": "1",
+   "bet_sizes": [
+    "allin"
+   ],
+   "raise_sizes": [],
+   "max_raises": 0,
+   "allow_open_fold": false
+  },
+  "seats": [
+   [
+    "JJ",
+    "QQ",
+    "KK",
+    "AA"
+   ],
+   [
+    "JJ",
+    "QQ",
+    "KK",
+    "AA"
+   ],
+   [
+    "JJ",
+    "QQ",
+    "KK",
+    "AA"
+   ]
+  ],
+  "root_prior": {
+   "kind": "product",
+   "note": "specified prior: product of seat weights conditioned on card compatibility"
+  },
+  "payoff_convention": "net chips (big blinds) relative to the start of the hand: -(prior contribution + river contribution) + pot share; zero-sum at every leaf; split pots divided equally among tied best hands",
+  "scope": "conditional river continuation game; values are conditional on this root",
+  "counts": {
+   "hands_per_seat": [
+    24,
+    24,
+    24
+   ],
+   "legal_ordered_deals": 6480,
+   "decision_nodes": 12,
+   "terminal_histories_per_deal": 13,
+   "terminal_leaves": 84240,
+   "information_sets": 288,
+   "binary_information_sets": 288,
+   "deals_with_equal_strength_hands": 1296
+  },
+  "fingerprint": "51149e402932dfe9"
+ },
+ "variant": "dcfr",
+ "seed": 2,
+ "iterations": 12000,
+ "averaging": "weights t^2 (DCFR gamma=2); alternating; regrets discounted alpha=1.5, beta=0",
+ "wall_s": 641.191735900019,
+ "final": {
+  "t": 12000,
+  "wall_s": 641.192,
+  "avg": {
+   "u": [
+    -0.035226716172279814,
+    -0.010428491974991499,
+    0.045655208147275535
+   ],
+   "r": [
+    1.0932629367264857e-05,
+    2.0162974318931742e-05,
+    1.7744277004232145e-05
+   ],
+   "max_r": 2.0162974318931742e-05,
+   "nashconv": 4.8839880690428744e-05
+  },
+  "cur": {
+   "u": [
+    -0.03522594469490035,
+    -0.0107059768883111,
+    0.0459319215831192
+   ],
+   "r": [
+    0.0006229071340228889,
+    0.0010429157396835177,
+    0.0009727894471183232
+   ],
+   "max_r": 0.0010429157396835177,
+   "nashconv": 0.00263861232082473
+  },
+  "zero_weight_infosets": 0,
+  "min_avg_weight": 0.011711063581064076,
+  "infosets_reach_below_1e-9": 12,
+  "infosets_reach_exactly_0": 0
+ },
+ "zero_weight_infosets": [],
+ "dir": "results/panel/pot_pot6_JJAA24/dcfr_s2"
+}

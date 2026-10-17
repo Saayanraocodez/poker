@@ -1,0 +1,125 @@
+{
+ "run": "pilot/expanded24/dcfr_s1",
+ "game": {
+  "name": "expanded24",
+  "board": "2c 4d 6h 8s Tc",
+  "betting": {
+   "n_players": 3,
+   "prior_contrib": [
+    "1",
+    "1",
+    "1"
+   ],
+   "stacks": [
+    "1",
+    "1",
+    "1"
+   ],
+   "min_bet": "1",
+   "bet_sizes": [
+    "allin"
+   ],
+   "raise_sizes": [],
+   "max_raises": 0,
+   "allow_open_fold": false
+  },
+  "seats": [
+   [
+    "JJ",
+    "QQ",
+    "KK",
+    "AA"
+   ],
+   [
+    "JJ",
+    "QQ",
+    "KK",
+    "AA"
+   ],
+   [
+    "JJ",
+    "QQ",
+    "KK",
+    "AA"
+   ]
+  ],
+  "root_prior": {
+   "kind": "product",
+   "note": "specified prior: product of seat weights conditioned on card compatibility"
+  },
+  "payoff_convention": "net chips (big blinds) relative to the start of the hand: -(prior contribution + river contribution) + pot share; zero-sum at every leaf; split pots divided equally among tied best hands",
+  "scope": "conditional river continuation game; values are conditional on this root",
+  "counts": {
+   "hands_per_seat": [
+    24,
+    24,
+    24
+   ],
+   "legal_ordered_deals": 6480,
+   "decision_nodes": 12,
+   "terminal_histories_per_deal": 13,
+   "terminal_leaves": 84240,
+   "information_sets": 288,
+   "binary_information_sets": 288,
+   "deals_with_equal_strength_hands": 1296
+  },
+  "fingerprint": "163057113ca2e4c3"
+ },
+ "variant": "dcfr",
+ "seed": 1,
+ "iterations": 30000,
+ "averaging": "weights t^2 (DCFR gamma=2); alternating; regrets discounted alpha=1.5, beta=0",
+ "utilities": [
+  -0.04654228192828913,
+  0.0023945330385811083,
+  0.04414774888970456
+ ],
+ "r": [
+  1.6124230523162364e-05,
+  0.00012176186622792724,
+  0.0001386443805376364
+ ],
+ "max_r": 0.0001386443805376364,
+ "nashconv": 0.000276530477288726,
+ "selection_rule": "NashConv(avg) <= 0.001 x pot = 0.003 bb",
+ "selected": true,
+ "zero_weight_infosets": [],
+ "reach_census": {
+  "unreached": 0,
+  "rare": 12,
+  "reached": 276
+ },
+ "P1_open_prob_by_class": {
+  "AA": 0.5469006394394845,
+  "JJ": 0.22216853216055943,
+  "KK": 2.3301386359230287e-09,
+  "QQ": 1.3935796553884508e-05
+ },
+ "direction_classes": {
+  "unresolved": 125,
+  "costly": 111,
+  "profitable": 48,
+  "inert": 4
+ },
+ "max_abs_D_sum": 3.073929999430902e-15,
+ "max_abs_rho_sum_minus_1": 1.5196732761069143e-12,
+ "offpath_combo": {
+  "theta_candidates": 12,
+  "pairs_scanned": 432,
+  "a_cross_effect": 0,
+  "b_root_in_unit_interval": 0,
+  "c_numerator_nonzero": 0,
+  "pole_witnesses": 0,
+  "witness_reach_classes": []
+ },
+ "offpath_class": {
+  "theta_candidates": 2,
+  "pairs_scanned": 12,
+  "a_cross_effect": 0,
+  "b_root_in_unit_interval": 0,
+  "c_numerator_nonzero": 0,
+  "pole_witnesses": 0,
+  "witness_reach_classes": []
+ },
+ "witnesses_class_level": []
+}

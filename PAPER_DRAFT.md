@@ -148,6 +148,13 @@ P1 to P3 while staying in equilibrium. SGS left open whether other equilibria ex
 9. **An independent exact reproduction of SGS**, with two errata (one material). **[E]**
 10. **A two-player control** showing the phenomenon needs three players for two independent
     reasons. **[E,G]**
+11. **Beyond Kuhn (§17).**
+    - General theorems for constant-sum perfect-recall games: the window theorem, the residue
+      identity, the classification of unreached information sets, and the share line.
+    - Exact pole witnesses in a real-card 24-hand three-player Hold'em river game, exactly where
+      the theory says they can exist.
+
+    **[P,E]**
 
 ### 1.4 What the proofs trust
 
@@ -1169,7 +1176,7 @@ exploit-vs-safety trade-off.
 7. **Identifiability:** the cost of learning off-path responses; sample complexity for telling
    sub-families apart.
 8. **Toward real poker:** which of these phenomena survive in Leduc and in abstracted Texas Hold'em
-   (research branch `holdem-approx`)?
+   (branch `holdem-incidence`; first results in §17)?
 
 ---
 
@@ -1193,6 +1200,58 @@ exploit-vs-safety trade-off.
 | "exploitability measures distance to equilibrium" | "in this game the certified distance is a median 29× the exploitability" |
 
 ---
+
+## 17. Beyond Kuhn: three-player Hold'em river games (new research line, 2026-10-16)
+
+Full detail: `holdem_incidence/` (FINDINGS.md, THEORY.md, README.md, results/).
+
+**17.1 Setting.** Conditional three-player river continuation games:
+- real 52-card Hold'em evaluation and split pots;
+- explicit seat ranges, and a specified product prior conditioned on card compatibility;
+- information sets (player, own hand, public history), with perfect recall;
+- full-traversal CFR/CFR+/DCFR as candidate generators only;
+- exact information-set best responses for the residuals r_i;
+- exact transfer derivatives U(I→a) − U(I→b).
+
+All values are conditional on the declared root. Nothing here concerns unrestricted Hold'em.
+
+**17.2 The exact bridge.** The board 2c 4d 6h 8s Tc with ranges {JsJh, QsQh, KsKh, AsAh}, pot 3,
+stacks 1 and min bet 1 is three-player Kuhn poker exactly:
+- 24 deals, 312 leaves and 48 information sets;
+- every payoff, utility and derivative is identical to kuhn3's in rational arithmetic;
+- the off-path pole c33* = 1/2 − b32 and the window [1/10, 29/80] are reproduced exactly.
+
+**17.3 Theory for general games** (holdem_incidence/THEORY.md; finite, constant-sum, perfect
+recall, any n). Each result is checked computationally.
+
+| result | statement |
+|---|---|
+| Lemma 1 | U is affine in any information set's row |
+| Theorem 3 | an unreached parameter θ has zero direct effect and an affine cross effect C on any other player's deviation, with Σ C_i = 0; own-unreached sets have C = 0 |
+| Corollary 4 | ρ is Möbius in θ, with at most one simple pole |
+| Theorem 5 | if the third player is out of the pot, ρ = 1 + t/(C_A(θ − θ*)) (generalises Theorem 2) |
+| Theorem 6 | the Nash set along θ is a closed interval W |
+| Theorem 7 | an attainable pole sits at an endpoint of W; mixed coordinates carry none |
+| Theorem 8 | unreached sets are own / opponent-silent / blocker; only the last two can carry the mechanism |
+| Theorem 10 | for any n, one off-path parameter moves the share vector along a straight line |
+| Proposition 11 | exact equilibria 10⁻⁶ apart can differ in ρ by 68,750 |
+
+**17.4 Results** (all 41 trained profiles selected by residual; configs hashed before any panel
+result).
+
+| game | P1's opening | rare-set kind | validated witnesses |
+|---|---|---|---|
+| 24-hand JJ–AA (all 6 combos each), pot 1.5 | never | opponent-silent | 10–12 per seed; the rationalised profile is an **exact** Nash equilibrium and every witness is exact |
+| 24-hand, pot 3 (pilot, 12 runs) and pot 6 | AA value, JJ bluff | own | 0 |
+| 36-hand support, four boards and two asymmetric weightings | value and bluffs | own | 0 |
+| pot 3 with P1's opening forced to check (OP2) | forced silent | opponent-silent | exact poles at θ* = 27/32 (JJ bluff) and ≈ 0.829 (AA value), but the windows do not meet: no equilibrium carries them |
+
+The off-path incidence mechanism survives beyond the four-type embedding exactly where Theorem 8
+says it can: in equilibria with an opponent-silent action. Other findings:
+- The Kuhn equilibria do not lift to the 24-hand game (exact NashConv 0.22–0.27 bb).
+- The two-player control gives ρ ≡ 1.
+- Open next: the pot threshold between 1.5 and 3 at which P1's silence, and the mechanism, switch
+  on — a pot-to-stack analogue of the N = n + 1 law.
 
 ## References
 

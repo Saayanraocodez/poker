@@ -1,0 +1,146 @@
+{
+ "game": {
+  "name": "board_connected_R36",
+  "board": "9c 8d 7h 5s 2c",
+  "betting": {
+   "n_players": 3,
+   "prior_contrib": [
+    "1",
+    "1",
+    "1"
+   ],
+   "stacks": [
+    "1",
+    "1",
+    "1"
+   ],
+   "min_bet": "1",
+   "bet_sizes": [
+    "allin"
+   ],
+   "raise_sizes": [],
+   "max_raises": 0,
+   "allow_open_fold": false
+  },
+  "seats": [
+   [
+    "AA",
+    "KK",
+    "99",
+    "55",
+    "AsKs",
+    "AhKh",
+    "KsQs",
+    "KhQh",
+    "JsTs",
+    "JhTh",
+    "9s8s",
+    "9h8h",
+    "7s6s",
+    "7h6h",
+    "5s4s",
+    "5h4h"
+   ],
+   [
+    "AA",
+    "KK",
+    "99",
+    "55",
+    "AsKs",
+    "AhKh",
+    "KsQs",
+    "KhQh",
+    "JsTs",
+    "JhTh",
+    "9s8s",
+    "9h8h",
+    "7s6s",
+    "7h6h",
+    "5s4s",
+    "5h4h"
+   ],
+   [
+    "AA",
+    "KK",
+    "99",
+    "55",
+    "AsKs",
+    "AhKh",
+    "KsQs",
+    "KhQh",
+    "JsTs",
+    "JhTh",
+    "9s8s",
+    "9h8h",
+    "7s6s",
+    "7h6h",
+    "5s4s",
+    "5h4h"
+   ]
+  ],
+  "root_prior": {
+   "kind": "product",
+   "note": "specified prior: product of seat weights conditioned on card compatibility"
+  },
+  "payoff_convention": "net chips (big blinds) relative to the start of the hand: -(prior contribution + river contribution) + pot share; zero-sum at every leaf; split pots divided equally among tied best hands",
+  "scope": "conditional river continuation game; values are conditional on this root",
+  "counts": {
+   "hands_per_seat": [
+    28,
+    28,
+    28
+   ],
+   "legal_ordered_deals": 12036,
+   "decision_nodes": 12,
+   "terminal_histories_per_deal": 13,
+   "terminal_leaves": 156468,
+   "information_sets": 336,
+   "binary_information_sets": 336,
+   "deals_with_equal_strength_hands": 1176
+  },
+  "fingerprint": "b42b60d7ca46ba52"
+ },
+ "variant": "dcfr",
+ "seed": 3,
+ "iterations": 12000,
+ "averaging": "weights t^2 (DCFR gamma=2); alternating; regrets discounted alpha=1.5, beta=0",
+ "wall_s": 1374.8488782999816,
+ "final": {
+  "t": 12000,
+  "wall_s": 1374.849,
+  "avg": {
+   "u": [
+    -0.03305600320760554,
+    -0.0077682498059670705,
+    0.040824253013573106
+   ],
+   "r": [
+    4.098616552782042e-06,
+    5.65051483399949e-06,
+    1.335732464649575e-05
+   ],
+   "max_r": 1.335732464649575e-05,
+   "nashconv": 2.310645603327728e-05
+  },
+  "cur": {
+   "u": [
+    -0.03266812767202509,
+    -0.008183340730324328,
+    0.04085146840230278
+   ],
+   "r": [
+    0.000260529638036959,
+    0.0002078472424551659,
+    0.000207636972656626
+   ],
+   "max_r": 0.000260529638036959,
+   "nashconv": 0.0006760138531487509
+  },
+  "zero_weight_infosets": 0,
+  "min_avg_weight": 23.02333870685113,
+  "infosets_reach_below_1e-9": 11,
+  "infosets_reach_exactly_0": 0
+ },
+ "zero_weight_infosets": [],
+ "dir": "results/panel/board_connected_R36/dcfr_s3"
+}

@@ -1,0 +1,182 @@
+{
+ "game": {
+  "name": "weights_P3bluff_x2_R36",
+  "board": "2c 4d 6h 8s Tc",
+  "betting": {
+   "n_players": 3,
+   "prior_contrib": [
+    "1",
+    "1",
+    "1"
+   ],
+   "stacks": [
+    "1",
+    "1",
+    "1"
+   ],
+   "min_bet": "1",
+   "bet_sizes": [
+    "allin"
+   ],
+   "raise_sizes": [],
+   "max_raises": 0,
+   "allow_open_fold": false
+  },
+  "seats": [
+   [
+    "AA",
+    "KK",
+    "99",
+    "55",
+    "AsKs",
+    "AhKh",
+    "KsQs",
+    "KhQh",
+    "JsTs",
+    "JhTh",
+    "9s8s",
+    "9h8h",
+    "7s6s",
+    "7h6h",
+    "5s4s",
+    "5h4h"
+   ],
+   [
+    "AA",
+    "KK",
+    "99",
+    "55",
+    "AsKs",
+    "AhKh",
+    "KsQs",
+    "KhQh",
+    "JsTs",
+    "JhTh",
+    "9s8s",
+    "9h8h",
+    "7s6s",
+    "7h6h",
+    "5s4s",
+    "5h4h"
+   ],
+   [
+    "AA",
+    "KK",
+    "99",
+    "55",
+    [
+     "AsKs",
+     "2"
+    ],
+    [
+     "AhKh",
+     "2"
+    ],
+    [
+     "KsQs",
+     "2"
+    ],
+    [
+     "KhQh",
+     "2"
+    ],
+    [
+     "JsTs",
+     "2"
+    ],
+    [
+     "JhTh",
+     "2"
+    ],
+    [
+     "9s8s",
+     "2"
+    ],
+    [
+     "9h8h",
+     "2"
+    ],
+    [
+     "7s6s",
+     "2"
+    ],
+    [
+     "7h6h",
+     "2"
+    ],
+    [
+     "5s4s",
+     "2"
+    ],
+    [
+     "5h4h",
+     "2"
+    ]
+   ]
+  ],
+  "root_prior": {
+   "kind": "product",
+   "note": "specified prior: product of seat weights conditioned on card compatibility"
+  },
+  "payoff_convention": "net chips (big blinds) relative to the start of the hand: -(prior contribution + river contribution) + pot share; zero-sum at every leaf; split pots divided equally among tied best hands",
+  "scope": "conditional river continuation game; values are conditional on this root",
+  "counts": {
+   "hands_per_seat": [
+    34,
+    34,
+    34
+   ],
+   "legal_ordered_deals": 22692,
+   "decision_nodes": 12,
+   "terminal_histories_per_deal": 13,
+   "terminal_leaves": 294996,
+   "information_sets": 408,
+   "binary_information_sets": 408,
+   "deals_with_equal_strength_hands": 2478
+  },
+  "fingerprint": "7bbabfd1e1affc09"
+ },
+ "variant": "dcfr",
+ "seed": 1,
+ "iterations": 12000,
+ "averaging": "weights t^2 (DCFR gamma=2); alternating; regrets discounted alpha=1.5, beta=0",
+ "wall_s": 1190.9908836000004,
+ "final": {
+  "t": 12000,
+  "wall_s": 1190.991,
+  "avg": {
+   "u": [
+    0.06217518852170703,
+    0.09609362231277196,
+    -0.1582688108344828
+   ],
+   "r": [
+    1.1110762000360319e-05,
+    9.64841278747186e-06,
+    9.585933427536109e-06
+   ],
+   "max_r": 1.1110762000360319e-05,
+   "nashconv": 3.0345108215368288e-05
+  },
+  "cur": {
+   "u": [
+    0.06236830732711299,
+    0.09611948703272273,
+    -0.15848779435986204
+   ],
+   "r": [
+    0.0002868639487600688,
+    0.0001492673837581865,
+    0.00016802284533506961
+   ],
+   "max_r": 0.0002868639487600688,
+   "nashconv": 0.0006041541778533249
+  },
+  "zero_weight_infosets": 0,
+  "min_avg_weight": 3.1121353794701587,
+  "infosets_reach_below_1e-9": 34,
+  "infosets_reach_exactly_0": 0
+ },
+ "zero_weight_infosets": [],
+ "dir": "results/panel/weights_P3bluff_x2_R36/dcfr_s1"
+}

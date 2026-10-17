@@ -1,0 +1,305 @@
+{
+ "machine": {
+  "cpus": 28,
+  "ram_GB": 31.8,
+  "python": "3.13.14"
+ },
+ "note": "single process; one CFR+/DCFR iteration = three alternating full traversals, CFR = one",
+ "games": [
+  {
+   "config": "configs/bridge.json",
+   "counts": {
+    "hands_per_seat": [
+     4,
+     4,
+     4
+    ],
+    "legal_ordered_deals": 24,
+    "decision_nodes": 12,
+    "terminal_histories_per_deal": 13,
+    "terminal_leaves": 312,
+    "information_sets": 48,
+    "binary_information_sets": 48,
+    "deals_with_equal_strength_hands": 0
+   },
+   "build_s": 0.002,
+   "rss_after_build_MB": 43.5,
+   "rss_delta_build_MB": 0.1,
+   "ms_per_iter_cfr": 0.24,
+   "ms_per_iter_cfr+": 0.47,
+   "ms_per_iter_dcfr": 0.48,
+   "residual_eval_s": 0.0,
+   "nashconv_after_smoke": 0.013146639781208433,
+   "exact_residual_eval_s": 0.0,
+   "exact_nashconv_after_smoke": 0.013146639604451848,
+   "peak_rss_MB": 46.1
+  },
+  {
+   "config": "configs/expanded24.json",
+   "counts": {
+    "hands_per_seat": [
+     24,
+     24,
+     24
+    ],
+    "legal_ordered_deals": 6480,
+    "decision_nodes": 12,
+    "terminal_histories_per_deal": 13,
+    "terminal_leaves": 84240,
+    "information_sets": 288,
+    "binary_information_sets": 288,
+    "deals_with_equal_strength_hands": 1296
+   },
+   "build_s": 0.419,
+   "rss_after_build_MB": 69.4,
+   "rss_delta_build_MB": 23.3,
+   "ms_per_iter_cfr": 4.72,
+   "ms_per_iter_cfr+": 10.4,
+   "ms_per_iter_dcfr": 10.44,
+   "residual_eval_s": 0.005,
+   "nashconv_after_smoke": 0.12211381500860347,
+   "exact_residual_eval_s": 1.18,
+   "exact_nashconv_after_smoke": 0.12211381828014646,
+   "peak_rss_MB": 79.6
+  },
+  {
+   "config": "configs/control_2p.json",
+   "counts": {
+    "hands_per_seat": [
+     24,
+     24
+    ],
+    "legal_ordered_deals": 456,
+    "decision_nodes": 4,
+    "terminal_histories_per_deal": 5,
+    "terminal_leaves": 2280,
+    "information_sets": 96,
+    "binary_information_sets": 96,
+    "deals_with_equal_strength_hands": 24
+   },
+   "build_s": 0.009,
+   "rss_after_build_MB": 79.9,
+   "rss_delta_build_MB": 0.3,
+   "ms_per_iter_cfr": 0.22,
+   "ms_per_iter_cfr+": 0.39,
+   "ms_per_iter_dcfr": 0.39,
+   "residual_eval_s": 0.0,
+   "nashconv_after_smoke": 0.034419589021768004,
+   "exact_residual_eval_s": 0.02,
+   "exact_nashconv_after_smoke": 0.03441958902269382,
+   "peak_rss_MB": 60.5
+  },
+  {
+   "config": "configs/panel/board_connected_R36.json",
+   "counts": {
+    "hands_per_seat": [
+     28,
+     28,
+     28
+    ],
+    "legal_ordered_deals": 12036,
+    "decision_nodes": 12,
+    "terminal_histories_per_deal": 13,
+    "terminal_leaves": 156468,
+    "information_sets": 336,
+    "binary_information_sets": 336,
+    "deals_with_equal_strength_hands": 1176
+   },
+   "build_s": 0.748,
+   "rss_after_build_MB": 89.6,
+   "rss_delta_build_MB": 29.1,
+   "ms_per_iter_cfr": 9.0,
+   "ms_per_iter_cfr+": 20.16,
+   "ms_per_iter_dcfr": 20.03,
+   "residual_eval_s": 0.01,
+   "nashconv_after_smoke": 0.14243653884792104,
+   "peak_rss_MB": 94.1
+  },
+  {
+   "config": "configs/panel/board_dry_R36.json",
+   "counts": {
+    "hands_per_seat": [
+     34,
+     34,
+     34
+    ],
+    "legal_ordered_deals": 22692,
+    "decision_nodes": 12,
+    "terminal_histories_per_deal": 13,
+    "terminal_leaves": 294996,
+    "information_sets": 408,
+    "binary_information_sets": 408,
+    "deals_with_equal_strength_hands": 2478
+   },
+   "build_s": 1.564,
+   "rss_after_build_MB": 163.7,
+   "rss_delta_build_MB": 69.6,
+   "ms_per_iter_cfr": 18.4,
+   "ms_per_iter_cfr+": 41.5,
+   "ms_per_iter_dcfr": 41.39,
+   "residual_eval_s": 0.02,
+   "nashconv_after_smoke": 0.1908858262148184,
+   "peak_rss_MB": 146.3
+  },
+  {
+   "config": "configs/panel/board_flush3_R36.json",
+   "counts": {
+    "hands_per_seat": [
+     26,
+     26,
+     26
+    ],
+    "legal_ordered_deals": 10062,
+    "decision_nodes": 12,
+    "terminal_histories_per_deal": 13,
+    "terminal_leaves": 130806,
+    "information_sets": 312,
+    "binary_information_sets": 312,
+    "deals_with_equal_strength_hands": 684
+   },
+   "build_s": 0.639,
+   "rss_after_build_MB": 156.7,
+   "rss_delta_build_MB": 10.4,
+   "ms_per_iter_cfr": 7.63,
+   "ms_per_iter_cfr+": 16.62,
+   "ms_per_iter_dcfr": 16.8,
+   "residual_eval_s": 0.008,
+   "nashconv_after_smoke": 0.1431854231367232,
+   "peak_rss_MB": 97.6
+  },
+  {
+   "config": "configs/panel/board_paired_R36.json",
+   "counts": {
+    "hands_per_seat": [
+     32,
+     32,
+     32
+    ],
+    "legal_ordered_deals": 18942,
+    "decision_nodes": 12,
+    "terminal_histories_per_deal": 13,
+    "terminal_leaves": 246246,
+    "information_sets": 384,
+    "binary_information_sets": 384,
+    "deals_with_equal_strength_hands": 2046
+   },
+   "build_s": 1.261,
+   "rss_after_build_MB": 144.4,
+   "rss_delta_build_MB": 46.8,
+   "ms_per_iter_cfr": 14.78,
+   "ms_per_iter_cfr+": 33.23,
+   "ms_per_iter_dcfr": 34.14,
+   "residual_eval_s": 0.017,
+   "nashconv_after_smoke": 0.17140240126437264,
+   "peak_rss_MB": 141.5
+  },
+  {
+   "config": "configs/panel/pot_pot1.5_JJAA24.json",
+   "counts": {
+    "hands_per_seat": [
+     24,
+     24,
+     24
+    ],
+    "legal_ordered_deals": 6480,
+    "decision_nodes": 12,
+    "terminal_histories_per_deal": 13,
+    "terminal_leaves": 84240,
+    "information_sets": 288,
+    "binary_information_sets": 288,
+    "deals_with_equal_strength_hands": 1296
+   },
+   "build_s": 0.431,
+   "rss_after_build_MB": 138.0,
+   "rss_delta_build_MB": -3.5,
+   "ms_per_iter_cfr": 4.86,
+   "ms_per_iter_cfr+": 10.88,
+   "ms_per_iter_dcfr": 10.79,
+   "residual_eval_s": 0.005,
+   "nashconv_after_smoke": 0.13433465535562167,
+   "exact_residual_eval_s": 1.18,
+   "exact_nashconv_after_smoke": 0.13433465983335663,
+   "peak_rss_MB": 100.2
+  },
+  {
+   "config": "configs/panel/pot_pot6_JJAA24.json",
+   "counts": {
+    "hands_per_seat": [
+     24,
+     24,
+     24
+    ],
+    "legal_ordered_deals": 6480,
+    "decision_nodes": 12,
+    "terminal_histories_per_deal": 13,
+    "terminal_leaves": 84240,
+    "information_sets": 288,
+    "binary_information_sets": 288,
+    "deals_with_equal_strength_hands": 1296
+   },
+   "build_s": 0.402,
+   "rss_after_build_MB": 99.9,
+   "rss_delta_build_MB": -0.3,
+   "ms_per_iter_cfr": 4.84,
+   "ms_per_iter_cfr+": 10.68,
+   "ms_per_iter_dcfr": 10.56,
+   "residual_eval_s": 0.005,
+   "nashconv_after_smoke": 0.11303007986644738,
+   "exact_residual_eval_s": 1.19,
+   "exact_nashconv_after_smoke": 0.11303008268244533,
+   "peak_rss_MB": 100.7
+  },
+  {
+   "config": "configs/panel/weights_P1value_x2_R36.json",
+   "counts": {
+    "hands_per_seat": [
+     34,
+     34,
+     34
+    ],
+    "legal_ordered_deals": 22692,
+    "decision_nodes": 12,
+    "terminal_histories_per_deal": 13,
+    "terminal_leaves": 294996,
+    "information_sets": 408,
+    "binary_information_sets": 408,
+    "deals_with_equal_strength_hands": 2478
+   },
+   "build_s": 1.536,
+   "rss_after_build_MB": 146.8,
+   "rss_delta_build_MB": 46.2,
+   "ms_per_iter_cfr": 18.61,
+   "ms_per_iter_cfr+": 41.41,
+   "ms_per_iter_dcfr": 41.23,
+   "residual_eval_s": 0.02,
+   "nashconv_after_smoke": 0.18634343189570296,
+   "peak_rss_MB": 145.9
+  },
+  {
+   "config": "configs/panel/weights_P3bluff_x2_R36.json",
+   "counts": {
+    "hands_per_seat": [
+     34,
+     34,
+     34
+    ],
+    "legal_ordered_deals": 22692,
+    "decision_nodes": 12,
+    "terminal_histories_per_deal": 13,
+    "terminal_leaves": 294996,
+    "information_sets": 408,
+    "binary_information_sets": 408,
+    "deals_with_equal_strength_hands": 2478
+   },
+   "build_s": 1.534,
+   "rss_after_build_MB": 198.7,
+   "rss_delta_build_MB": 52.8,
+   "ms_per_iter_cfr": 18.73,
+   "ms_per_iter_cfr+": 42.43,
+   "ms_per_iter_dcfr": 42.46,
+   "residual_eval_s": 0.02,
+   "nashconv_after_smoke": 0.186177728217145,
+   "peak_rss_MB": 164.8
+  }
+ ]
+}

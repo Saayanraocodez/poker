@@ -1,0 +1,495 @@
+{
+ "run": "positive_control/bridge_family/canonical_beta1_8",
+ "game": {
+  "name": "bridge_kuhn4",
+  "board": "2c 4d 6h 8s Tc",
+  "betting": {
+   "n_players": 3,
+   "prior_contrib": [
+    "1",
+    "1",
+    "1"
+   ],
+   "stacks": [
+    "1",
+    "1",
+    "1"
+   ],
+   "min_bet": "1",
+   "bet_sizes": [
+    "allin"
+   ],
+   "raise_sizes": [],
+   "max_raises": 0,
+   "allow_open_fold": false
+  },
+  "seats": [
+   [
+    "JsJh",
+    "QsQh",
+    "KsKh",
+    "AsAh"
+   ],
+   [
+    "JsJh",
+    "QsQh",
+    "KsKh",
+    "AsAh"
+   ],
+   [
+    "JsJh",
+    "QsQh",
+    "KsKh",
+    "AsAh"
+   ]
+  ],
+  "root_prior": {
+   "kind": "product",
+   "note": "specified prior: product of seat weights conditioned on card compatibility"
+  },
+  "payoff_convention": "net chips (big blinds) relative to the start of the hand: -(prior contribution + river contribution) + pot share; zero-sum at every leaf; split pots divided equally among tied best hands",
+  "scope": "conditional river continuation game; values are conditional on this root",
+  "counts": {
+   "hands_per_seat": [
+    4,
+    4,
+    4
+   ],
+   "legal_ordered_deals": 24,
+   "decision_nodes": 12,
+   "terminal_histories_per_deal": 13,
+   "terminal_leaves": 312,
+   "information_sets": 48,
+   "binary_information_sets": 48,
+   "deals_with_equal_strength_hands": 0
+  },
+  "fingerprint": "e8c7249629ac1da5"
+ },
+ "variant": "SGS-exact",
+ "seed": 0,
+ "iterations": 0,
+ "averaging": "n/a",
+ "utilities": [
+  -0.026041666666666713,
+  -0.02083333333333333,
+  0.046875000000000056
+ ],
+ "r": [
+  0.0,
+  -4.163336342344337e-17,
+  -9.71445146547012e-17
+ ],
+ "max_r": 0.0,
+ "nashconv": -1.3877787807814457e-16,
+ "selection_rule": "NashConv(avg) <= 0.001 x pot = 0.003 bb",
+ "selected": true,
+ "zero_weight_infosets": [],
+ "reach_census": {
+  "unreached": 15,
+  "rare": 0,
+  "reached": 33
+ },
+ "P1_open_prob_by_class": {
+  "AA": 0.0,
+  "JJ": 0.0,
+  "KK": 0.0,
+  "QQ": 0.0
+ },
+ "direction_classes": {
+  "costless_transfer": 7,
+  "costly": 24,
+  "inert": 17
+ },
+ "max_abs_D_sum": 2.220446049250313e-16,
+ "max_abs_rho_sum_minus_1": 2.1316282072803006e-14,
+ "offpath_combo": {
+  "theta_candidates": 15,
+  "pairs_scanned": 88,
+  "a_cross_effect": 29,
+  "b_root_in_unit_interval": 17,
+  "c_numerator_nonzero": 15,
+  "pole_witnesses": 11,
+  "witness_reach_classes": [
+   "unreached"
+  ]
+ },
+ "offpath_class": {
+  "theta_candidates": 15,
+  "pairs_scanned": 88,
+  "a_cross_effect": 29,
+  "b_root_in_unit_interval": 17,
+  "c_numerator_nonzero": 15,
+  "pole_witnesses": 11,
+  "witness_reach_classes": [
+   "unreached"
+  ]
+ },
+ "witnesses_class_level": [
+  {
+   "theta": "AA",
+   "theta_owner": 2,
+   "theta_history": "B:1",
+   "theta_reach": 0.0,
+   "theta_reach_class": "unreached",
+   "theta_value": 1.0,
+   "upstream": "JJ",
+   "upstream_player": 1,
+   "upstream_history": "",
+   "cross": [
+    -0.3333333333333335,
+    0.3333333333333333,
+    0.0
+   ],
+   "theta_star": 0.9999999999999997,
+   "D_at_theta_star": [
+    0.0,
+    0.03385416666666652,
+    -0.03385416666666674
+   ],
+   "family_max_r_increase": [
+    2.498001805406602e-16,
+    0.0,
+    0.0
+   ],
+   "exact": {
+    "rational_profile": "limit_denominator(10^6) per entry, last action absorbs rounding",
+    "exact_r": [
+     "0",
+     "0",
+     "0"
+    ],
+    "exact_r_float": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exact_nashconv": 0.0,
+    "theta_star_exact": "1",
+    "slope_exact_nonzero": true,
+    "D_at_theta_star_exact": [
+     "0",
+     "13/384",
+     "-13/384"
+    ],
+    "denominator_zero_exactly": true,
+    "numerator_nonzero_exactly": true,
+    "r_at_theta_star_exact": [
+     "0",
+     "0",
+     "0"
+    ],
+    "r_at_theta_star_float": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "deviator_r_not_above_baseline": true
+   }
+  },
+  {
+   "theta": "KK",
+   "theta_owner": 2,
+   "theta_history": "B:1",
+   "theta_reach": 0.0,
+   "theta_reach_class": "unreached",
+   "theta_value": 0.5,
+   "upstream": "AA",
+   "upstream_player": 1,
+   "upstream_history": "",
+   "cross": [
+    0.08333333333333336,
+    -0.08333333333333333,
+    0.0
+   ],
+   "theta_star": 0.7187499999999998,
+   "D_at_theta_star": [
+    0.0,
+    -0.039062499999999944,
+    0.039062499999999944
+   ],
+   "family_max_r_increase": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "exact": {
+    "rational_profile": "limit_denominator(10^6) per entry, last action absorbs rounding",
+    "exact_r": [
+     "0",
+     "0",
+     "0"
+    ],
+    "exact_r_float": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exact_nashconv": 0.0,
+    "theta_star_exact": "23/32",
+    "slope_exact_nonzero": true,
+    "D_at_theta_star_exact": [
+     "0",
+     "-5/128",
+     "5/128"
+    ],
+    "denominator_zero_exactly": true,
+    "numerator_nonzero_exactly": true,
+    "r_at_theta_star_exact": [
+     "0",
+     "0",
+     "0"
+    ],
+    "r_at_theta_star_float": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "deviator_r_not_above_baseline": true
+   }
+  },
+  {
+   "theta": "KK",
+   "theta_owner": 2,
+   "theta_history": "B:1",
+   "theta_reach": 0.0,
+   "theta_reach_class": "unreached",
+   "theta_value": 0.5,
+   "upstream": "JJ",
+   "upstream_player": 1,
+   "upstream_history": "",
+   "cross": [
+    -0.16666666666666657,
+    0.125,
+    0.04166666666666664
+   ],
+   "theta_star": 0.4999999999999999,
+   "D_at_theta_star": [
+    0.0,
+    0.033854166666666616,
+    -0.03385416666666669
+   ],
+   "family_max_r_increase": [
+    5.551115123125783e-17,
+    0.0,
+    0.0
+   ],
+   "exact": {
+    "rational_profile": "limit_denominator(10^6) per entry, last action absorbs rounding",
+    "exact_r": [
+     "0",
+     "0",
+     "0"
+    ],
+    "exact_r_float": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exact_nashconv": 0.0,
+    "theta_star_exact": "1/2",
+    "slope_exact_nonzero": true,
+    "D_at_theta_star_exact": [
+     "0",
+     "13/384",
+     "-13/384"
+    ],
+    "denominator_zero_exactly": true,
+    "numerator_nonzero_exactly": true,
+    "r_at_theta_star_exact": [
+     "0",
+     "0",
+     "0"
+    ],
+    "r_at_theta_star_float": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "deviator_r_not_above_baseline": true
+   }
+  },
+  {
+   "theta": "KK",
+   "theta_owner": 2,
+   "theta_history": "B:1",
+   "theta_reach": 0.0,
+   "theta_reach_class": "unreached",
+   "theta_value": 0.5,
+   "upstream": "QQ",
+   "upstream_player": 1,
+   "upstream_history": "",
+   "cross": [
+    -0.16666666666666669,
+    0.125,
+    0.04166666666666664
+   ],
+   "theta_star": 0.5000000000000002,
+   "D_at_theta_star": [
+    0.0,
+    0.03906250000000003,
+    -0.03906250000000005
+   ],
+   "family_max_r_increase": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "exact": {
+    "rational_profile": "limit_denominator(10^6) per entry, last action absorbs rounding",
+    "exact_r": [
+     "0",
+     "0",
+     "0"
+    ],
+    "exact_r_float": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exact_nashconv": 0.0,
+    "theta_star_exact": "1/2",
+    "slope_exact_nonzero": true,
+    "D_at_theta_star_exact": [
+     "0",
+     "5/128",
+     "-5/128"
+    ],
+    "denominator_zero_exactly": true,
+    "numerator_nonzero_exactly": true,
+    "r_at_theta_star_exact": [
+     "0",
+     "0",
+     "0"
+    ],
+    "r_at_theta_star_float": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "deviator_r_not_above_baseline": true
+   }
+  },
+  {
+   "theta": "QQ",
+   "theta_owner": 2,
+   "theta_history": "B:1",
+   "theta_reach": 0.0,
+   "theta_reach_class": "unreached",
+   "theta_value": 0.0,
+   "upstream": "AA",
+   "upstream_player": 1,
+   "upstream_history": "",
+   "cross": [
+    0.08333333333333337,
+    -0.08333333333333334,
+    0.0
+   ],
+   "theta_star": 0.2187499999999998,
+   "D_at_theta_star": [
+    0.0,
+    -0.03906249999999996,
+    0.039062499999999944
+   ],
+   "family_max_r_increase": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "exact": {
+    "rational_profile": "limit_denominator(10^6) per entry, last action absorbs rounding",
+    "exact_r": [
+     "0",
+     "0",
+     "0"
+    ],
+    "exact_r_float": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exact_nashconv": 0.0,
+    "theta_star_exact": "7/32",
+    "slope_exact_nonzero": true,
+    "D_at_theta_star_exact": [
+     "0",
+     "-5/128",
+     "5/128"
+    ],
+    "denominator_zero_exactly": true,
+    "numerator_nonzero_exactly": true,
+    "r_at_theta_star_exact": [
+     "0",
+     "0",
+     "0"
+    ],
+    "r_at_theta_star_float": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "deviator_r_not_above_baseline": true
+   }
+  },
+  {
+   "theta": "JJ",
+   "theta_owner": 3,
+   "theta_history": "B:1-C",
+   "theta_reach": 0.0,
+   "theta_reach_class": "unreached",
+   "theta_value": 0.0,
+   "upstream": "AA",
+   "upstream_player": 1,
+   "upstream_history": "",
+   "cross": [
+    0.020833333333333343,
+    0.0,
+    -0.020833333333333343
+   ],
+   "theta_star": 0.8749999999999992,
+   "D_at_theta_star": [
+    0.0,
+    -0.0208333333333333,
+    0.020833333333333287
+   ],
+   "family_max_r_increase": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "exact": {
+    "rational_profile": "limit_denominator(10^6) per entry, last action absorbs rounding",
+    "exact_r": [
+     "0",
+     "0",
+     "0"
+    ],
+    "exact_r_float": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "exact_nashconv": 0.0,
+    "theta_star_exact": "7/8",
+    "slope_exact_nonzero": true,
+    "D_at_theta_star_exact": [
+     "0",
+     "-1/48",
+     "1/48"
+    ],
+    "denominator_zero_exactly": true,
+    "numerator_nonzero_exactly": true,
+    "r_at_theta_star_exact": [
+     "0",
+     "0",
+     "0"
+    ],
+    "r_at_theta_star_float": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "deviator_r_not_above_baseline": true
+   }
+  }
+ ]
+}

@@ -1,0 +1,1497 @@
+[
+ {
+  "run": "pilot/expanded24/cfrp_s1",
+  "game": {
+   "name": "expanded24",
+   "board": "2c 4d 6h 8s Tc",
+   "betting": {
+    "n_players": 3,
+    "prior_contrib": [
+     "1",
+     "1",
+     "1"
+    ],
+    "stacks": [
+     "1",
+     "1",
+     "1"
+    ],
+    "min_bet": "1",
+    "bet_sizes": [
+     "allin"
+    ],
+    "raise_sizes": [],
+    "max_raises": 0,
+    "allow_open_fold": false
+   },
+   "seats": [
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ],
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ],
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ]
+   ],
+   "root_prior": {
+    "kind": "product",
+    "note": "specified prior: product of seat weights conditioned on card compatibility"
+   },
+   "payoff_convention": "net chips (big blinds) relative to the start of the hand: -(prior contribution + river contribution) + pot share; zero-sum at every leaf; split pots divided equally among tied best hands",
+   "scope": "conditional river continuation game; values are conditional on this root",
+   "counts": {
+    "hands_per_seat": [
+     24,
+     24,
+     24
+    ],
+    "legal_ordered_deals": 6480,
+    "decision_nodes": 12,
+    "terminal_histories_per_deal": 13,
+    "terminal_leaves": 84240,
+    "information_sets": 288,
+    "binary_information_sets": 288,
+    "deals_with_equal_strength_hands": 1296
+   },
+   "fingerprint": "163057113ca2e4c3"
+  },
+  "variant": "cfr+",
+  "seed": 1,
+  "iterations": 30000,
+  "averaging": "linear weights max(t - delay, 0), delay 0; alternating updates; regret matching+",
+  "utilities": [
+   -0.046513303777294145,
+   0.0025214801941554465,
+   0.04399182358314195
+  ],
+  "r": [
+   6.458922249182736e-05,
+   0.0001400270768790058,
+   0.0001274670890709234
+  ],
+  "max_r": 0.0001400270768790058,
+  "nashconv": 0.00033208338844175657,
+  "selection_rule": "NashConv(avg) <= 0.001 x pot = 0.003 bb",
+  "selected": true,
+  "zero_weight_infosets": [],
+  "reach_census": {
+   "unreached": 0,
+   "rare": 12,
+   "reached": 276
+  },
+  "P1_open_prob_by_class": {
+   "AA": 0.5737271208220022,
+   "JJ": 0.2330979306602831,
+   "KK": 4.030651245742953e-05,
+   "QQ": 3.9111418513519385e-05
+  },
+  "direction_classes": {
+   "unresolved": 128,
+   "costly": 112,
+   "profitable": 48
+  },
+  "max_abs_D_sum": 1.7381929229287607e-15,
+  "max_abs_rho_sum_minus_1": 5.713207684721056e-13,
+  "offpath_combo": {
+   "theta_candidates": 12,
+   "pairs_scanned": 432,
+   "a_cross_effect": 237,
+   "b_root_in_unit_interval": 0,
+   "c_numerator_nonzero": 0,
+   "pole_witnesses": 0,
+   "witness_reach_classes": []
+  },
+  "offpath_class": {
+   "theta_candidates": 2,
+   "pairs_scanned": 12,
+   "a_cross_effect": 11,
+   "b_root_in_unit_interval": 0,
+   "c_numerator_nonzero": 0,
+   "pole_witnesses": 0,
+   "witness_reach_classes": []
+  },
+  "witnesses_class_level": []
+ },
+ {
+  "run": "pilot/expanded24/cfrp_s2",
+  "game": {
+   "name": "expanded24",
+   "board": "2c 4d 6h 8s Tc",
+   "betting": {
+    "n_players": 3,
+    "prior_contrib": [
+     "1",
+     "1",
+     "1"
+    ],
+    "stacks": [
+     "1",
+     "1",
+     "1"
+    ],
+    "min_bet": "1",
+    "bet_sizes": [
+     "allin"
+    ],
+    "raise_sizes": [],
+    "max_raises": 0,
+    "allow_open_fold": false
+   },
+   "seats": [
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ],
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ],
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ]
+   ],
+   "root_prior": {
+    "kind": "product",
+    "note": "specified prior: product of seat weights conditioned on card compatibility"
+   },
+   "payoff_convention": "net chips (big blinds) relative to the start of the hand: -(prior contribution + river contribution) + pot share; zero-sum at every leaf; split pots divided equally among tied best hands",
+   "scope": "conditional river continuation game; values are conditional on this root",
+   "counts": {
+    "hands_per_seat": [
+     24,
+     24,
+     24
+    ],
+    "legal_ordered_deals": 6480,
+    "decision_nodes": 12,
+    "terminal_histories_per_deal": 13,
+    "terminal_leaves": 84240,
+    "information_sets": 288,
+    "binary_information_sets": 288,
+    "deals_with_equal_strength_hands": 1296
+   },
+   "fingerprint": "163057113ca2e4c3"
+  },
+  "variant": "cfr+",
+  "seed": 2,
+  "iterations": 30000,
+  "averaging": "linear weights max(t - delay, 0), delay 0; alternating updates; regret matching+",
+  "utilities": [
+   -0.046679884328717454,
+   0.002591048063073298,
+   0.04408883626564642
+  ],
+  "r": [
+   0.00011586082086623845,
+   5.686238340009116e-05,
+   0.00016466553898524666
+  ],
+  "max_r": 0.00016466553898524666,
+  "nashconv": 0.00033738874325157627,
+  "selection_rule": "NashConv(avg) <= 0.001 x pot = 0.003 bb",
+  "selected": true,
+  "zero_weight_infosets": [],
+  "reach_census": {
+   "unreached": 0,
+   "rare": 12,
+   "reached": 276
+  },
+  "P1_open_prob_by_class": {
+   "AA": 0.5339432485059185,
+   "JJ": 0.2169143510080989,
+   "KK": 5.17608114052277e-05,
+   "QQ": 5.129785211497649e-05
+  },
+  "direction_classes": {
+   "unresolved": 130,
+   "costly": 110,
+   "profitable": 48
+  },
+  "max_abs_D_sum": 2.213507155346406e-15,
+  "max_abs_rho_sum_minus_1": 9.907630271754897e-13,
+  "offpath_combo": {
+   "theta_candidates": 12,
+   "pairs_scanned": 432,
+   "a_cross_effect": 218,
+   "b_root_in_unit_interval": 0,
+   "c_numerator_nonzero": 0,
+   "pole_witnesses": 0,
+   "witness_reach_classes": []
+  },
+  "offpath_class": {
+   "theta_candidates": 2,
+   "pairs_scanned": 12,
+   "a_cross_effect": 11,
+   "b_root_in_unit_interval": 0,
+   "c_numerator_nonzero": 0,
+   "pole_witnesses": 0,
+   "witness_reach_classes": []
+  },
+  "witnesses_class_level": []
+ },
+ {
+  "run": "pilot/expanded24/cfrp_s3",
+  "game": {
+   "name": "expanded24",
+   "board": "2c 4d 6h 8s Tc",
+   "betting": {
+    "n_players": 3,
+    "prior_contrib": [
+     "1",
+     "1",
+     "1"
+    ],
+    "stacks": [
+     "1",
+     "1",
+     "1"
+    ],
+    "min_bet": "1",
+    "bet_sizes": [
+     "allin"
+    ],
+    "raise_sizes": [],
+    "max_raises": 0,
+    "allow_open_fold": false
+   },
+   "seats": [
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ],
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ],
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ]
+   ],
+   "root_prior": {
+    "kind": "product",
+    "note": "specified prior: product of seat weights conditioned on card compatibility"
+   },
+   "payoff_convention": "net chips (big blinds) relative to the start of the hand: -(prior contribution + river contribution) + pot share; zero-sum at every leaf; split pots divided equally among tied best hands",
+   "scope": "conditional river continuation game; values are conditional on this root",
+   "counts": {
+    "hands_per_seat": [
+     24,
+     24,
+     24
+    ],
+    "legal_ordered_deals": 6480,
+    "decision_nodes": 12,
+    "terminal_histories_per_deal": 13,
+    "terminal_leaves": 84240,
+    "information_sets": 288,
+    "binary_information_sets": 288,
+    "deals_with_equal_strength_hands": 1296
+   },
+   "fingerprint": "163057113ca2e4c3"
+  },
+  "variant": "cfr+",
+  "seed": 3,
+  "iterations": 30000,
+  "averaging": "linear weights max(t - delay, 0), delay 0; alternating updates; regret matching+",
+  "utilities": [
+   -0.046585042171544445,
+   0.002809992282545366,
+   0.043775049888998746
+  ],
+  "r": [
+   0.00012134720014709416,
+   5.619366397182539e-05,
+   0.00012769940800447244
+  ],
+  "max_r": 0.00012769940800447244,
+  "nashconv": 0.000305240272123392,
+  "selection_rule": "NashConv(avg) <= 0.001 x pot = 0.003 bb",
+  "selected": true,
+  "zero_weight_infosets": [],
+  "reach_census": {
+   "unreached": 0,
+   "rare": 12,
+   "reached": 276
+  },
+  "P1_open_prob_by_class": {
+   "AA": 0.5510699497466109,
+   "JJ": 0.22386129420694986,
+   "KK": 2.056373161625997e-05,
+   "QQ": 2.838540009232077e-05
+  },
+  "direction_classes": {
+   "unresolved": 132,
+   "costly": 108,
+   "profitable": 48
+  },
+  "max_abs_D_sum": 1.942890293094024e-15,
+  "max_abs_rho_sum_minus_1": 6.827871601444713e-13,
+  "offpath_combo": {
+   "theta_candidates": 12,
+   "pairs_scanned": 432,
+   "a_cross_effect": 217,
+   "b_root_in_unit_interval": 0,
+   "c_numerator_nonzero": 0,
+   "pole_witnesses": 0,
+   "witness_reach_classes": []
+  },
+  "offpath_class": {
+   "theta_candidates": 2,
+   "pairs_scanned": 12,
+   "a_cross_effect": 11,
+   "b_root_in_unit_interval": 0,
+   "c_numerator_nonzero": 0,
+   "pole_witnesses": 0,
+   "witness_reach_classes": []
+  },
+  "witnesses_class_level": []
+ },
+ {
+  "run": "pilot/expanded24/cfrp_s4",
+  "game": {
+   "name": "expanded24",
+   "board": "2c 4d 6h 8s Tc",
+   "betting": {
+    "n_players": 3,
+    "prior_contrib": [
+     "1",
+     "1",
+     "1"
+    ],
+    "stacks": [
+     "1",
+     "1",
+     "1"
+    ],
+    "min_bet": "1",
+    "bet_sizes": [
+     "allin"
+    ],
+    "raise_sizes": [],
+    "max_raises": 0,
+    "allow_open_fold": false
+   },
+   "seats": [
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ],
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ],
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ]
+   ],
+   "root_prior": {
+    "kind": "product",
+    "note": "specified prior: product of seat weights conditioned on card compatibility"
+   },
+   "payoff_convention": "net chips (big blinds) relative to the start of the hand: -(prior contribution + river contribution) + pot share; zero-sum at every leaf; split pots divided equally among tied best hands",
+   "scope": "conditional river continuation game; values are conditional on this root",
+   "counts": {
+    "hands_per_seat": [
+     24,
+     24,
+     24
+    ],
+    "legal_ordered_deals": 6480,
+    "decision_nodes": 12,
+    "terminal_histories_per_deal": 13,
+    "terminal_leaves": 84240,
+    "information_sets": 288,
+    "binary_information_sets": 288,
+    "deals_with_equal_strength_hands": 1296
+   },
+   "fingerprint": "163057113ca2e4c3"
+  },
+  "variant": "cfr+",
+  "seed": 4,
+  "iterations": 30000,
+  "averaging": "linear weights max(t - delay, 0), delay 0; alternating updates; regret matching+",
+  "utilities": [
+   -0.046301957407358665,
+   0.0026274165343331594,
+   0.04367454087302321
+  ],
+  "r": [
+   0.00012631406874720474,
+   9.846504343135687e-05,
+   0.00015969690432686423
+  ],
+  "max_r": 0.00015969690432686423,
+  "nashconv": 0.00038447601650542585,
+  "selection_rule": "NashConv(avg) <= 0.001 x pot = 0.003 bb",
+  "selected": true,
+  "zero_weight_infosets": [],
+  "reach_census": {
+   "unreached": 0,
+   "rare": 12,
+   "reached": 276
+  },
+  "P1_open_prob_by_class": {
+   "AA": 0.567293840861001,
+   "JJ": 0.2304644652543256,
+   "KK": 2.9959303498494784e-05,
+   "QQ": 1.627413346015149e-05
+  },
+  "direction_classes": {
+   "unresolved": 136,
+   "costly": 104,
+   "profitable": 48
+  },
+  "max_abs_D_sum": 2.275957200481571e-15,
+  "max_abs_rho_sum_minus_1": 8.596456879672587e-13,
+  "offpath_combo": {
+   "theta_candidates": 12,
+   "pairs_scanned": 432,
+   "a_cross_effect": 228,
+   "b_root_in_unit_interval": 0,
+   "c_numerator_nonzero": 0,
+   "pole_witnesses": 0,
+   "witness_reach_classes": []
+  },
+  "offpath_class": {
+   "theta_candidates": 2,
+   "pairs_scanned": 12,
+   "a_cross_effect": 11,
+   "b_root_in_unit_interval": 0,
+   "c_numerator_nonzero": 0,
+   "pole_witnesses": 0,
+   "witness_reach_classes": []
+  },
+  "witnesses_class_level": []
+ },
+ {
+  "run": "pilot/expanded24/cfrp_s5",
+  "game": {
+   "name": "expanded24",
+   "board": "2c 4d 6h 8s Tc",
+   "betting": {
+    "n_players": 3,
+    "prior_contrib": [
+     "1",
+     "1",
+     "1"
+    ],
+    "stacks": [
+     "1",
+     "1",
+     "1"
+    ],
+    "min_bet": "1",
+    "bet_sizes": [
+     "allin"
+    ],
+    "raise_sizes": [],
+    "max_raises": 0,
+    "allow_open_fold": false
+   },
+   "seats": [
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ],
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ],
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ]
+   ],
+   "root_prior": {
+    "kind": "product",
+    "note": "specified prior: product of seat weights conditioned on card compatibility"
+   },
+   "payoff_convention": "net chips (big blinds) relative to the start of the hand: -(prior contribution + river contribution) + pot share; zero-sum at every leaf; split pots divided equally among tied best hands",
+   "scope": "conditional river continuation game; values are conditional on this root",
+   "counts": {
+    "hands_per_seat": [
+     24,
+     24,
+     24
+    ],
+    "legal_ordered_deals": 6480,
+    "decision_nodes": 12,
+    "terminal_histories_per_deal": 13,
+    "terminal_leaves": 84240,
+    "information_sets": 288,
+    "binary_information_sets": 288,
+    "deals_with_equal_strength_hands": 1296
+   },
+   "fingerprint": "163057113ca2e4c3"
+  },
+  "variant": "cfr+",
+  "seed": 5,
+  "iterations": 30000,
+  "averaging": "linear weights max(t - delay, 0), delay 0; alternating updates; regret matching+",
+  "utilities": [
+   -0.04623838641291949,
+   0.002544996250806075,
+   0.04369339016211233
+  ],
+  "r": [
+   9.827610382245194e-05,
+   7.079132492536803e-05,
+   0.00016679562304188628
+  ],
+  "max_r": 0.00016679562304188628,
+  "nashconv": 0.00033586305178970625,
+  "selection_rule": "NashConv(avg) <= 0.001 x pot = 0.003 bb",
+  "selected": true,
+  "zero_weight_infosets": [],
+  "reach_census": {
+   "unreached": 0,
+   "rare": 12,
+   "reached": 276
+  },
+  "P1_open_prob_by_class": {
+   "AA": 0.5491583848946561,
+   "JJ": 0.223104897412955,
+   "KK": 2.419023916929079e-05,
+   "QQ": 1.5499636228165114e-05
+  },
+  "direction_classes": {
+   "unresolved": 140,
+   "costly": 104,
+   "profitable": 42,
+   "inert": 2
+  },
+  "max_abs_D_sum": 2.1510571102112408e-15,
+  "max_abs_rho_sum_minus_1": 5.491163079796024e-13,
+  "offpath_combo": {
+   "theta_candidates": 12,
+   "pairs_scanned": 432,
+   "a_cross_effect": 100,
+   "b_root_in_unit_interval": 0,
+   "c_numerator_nonzero": 0,
+   "pole_witnesses": 0,
+   "witness_reach_classes": []
+  },
+  "offpath_class": {
+   "theta_candidates": 2,
+   "pairs_scanned": 12,
+   "a_cross_effect": 11,
+   "b_root_in_unit_interval": 0,
+   "c_numerator_nonzero": 0,
+   "pole_witnesses": 0,
+   "witness_reach_classes": []
+  },
+  "witnesses_class_level": []
+ },
+ {
+  "run": "pilot/expanded24/cfrp_s6",
+  "game": {
+   "name": "expanded24",
+   "board": "2c 4d 6h 8s Tc",
+   "betting": {
+    "n_players": 3,
+    "prior_contrib": [
+     "1",
+     "1",
+     "1"
+    ],
+    "stacks": [
+     "1",
+     "1",
+     "1"
+    ],
+    "min_bet": "1",
+    "bet_sizes": [
+     "allin"
+    ],
+    "raise_sizes": [],
+    "max_raises": 0,
+    "allow_open_fold": false
+   },
+   "seats": [
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ],
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ],
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ]
+   ],
+   "root_prior": {
+    "kind": "product",
+    "note": "specified prior: product of seat weights conditioned on card compatibility"
+   },
+   "payoff_convention": "net chips (big blinds) relative to the start of the hand: -(prior contribution + river contribution) + pot share; zero-sum at every leaf; split pots divided equally among tied best hands",
+   "scope": "conditional river continuation game; values are conditional on this root",
+   "counts": {
+    "hands_per_seat": [
+     24,
+     24,
+     24
+    ],
+    "legal_ordered_deals": 6480,
+    "decision_nodes": 12,
+    "terminal_histories_per_deal": 13,
+    "terminal_leaves": 84240,
+    "information_sets": 288,
+    "binary_information_sets": 288,
+    "deals_with_equal_strength_hands": 1296
+   },
+   "fingerprint": "163057113ca2e4c3"
+  },
+  "variant": "cfr+",
+  "seed": 6,
+  "iterations": 30000,
+  "averaging": "linear weights max(t - delay, 0), delay 0; alternating updates; regret matching+",
+  "utilities": [
+   -0.04624690070087538,
+   0.0025928866305131035,
+   0.04365401407036404
+  ],
+  "r": [
+   4.602174581945506e-05,
+   9.763150874861262e-05,
+   0.00012841920280698416
+  ],
+  "max_r": 0.00012841920280698416,
+  "nashconv": 0.00027207245737505183,
+  "selection_rule": "NashConv(avg) <= 0.001 x pot = 0.003 bb",
+  "selected": true,
+  "zero_weight_infosets": [],
+  "reach_census": {
+   "unreached": 0,
+   "rare": 12,
+   "reached": 276
+  },
+  "P1_open_prob_by_class": {
+   "AA": 0.5781718912547383,
+   "JJ": 0.23488465095995448,
+   "KK": 2.8945270152516105e-05,
+   "QQ": 3.2477917092599095e-05
+  },
+  "direction_classes": {
+   "unresolved": 135,
+   "costly": 105,
+   "profitable": 48
+  },
+  "max_abs_D_sum": 1.6627324517237696e-15,
+  "max_abs_rho_sum_minus_1": 8.79518680108049e-13,
+  "offpath_combo": {
+   "theta_candidates": 12,
+   "pairs_scanned": 432,
+   "a_cross_effect": 193,
+   "b_root_in_unit_interval": 0,
+   "c_numerator_nonzero": 0,
+   "pole_witnesses": 0,
+   "witness_reach_classes": []
+  },
+  "offpath_class": {
+   "theta_candidates": 2,
+   "pairs_scanned": 12,
+   "a_cross_effect": 11,
+   "b_root_in_unit_interval": 0,
+   "c_numerator_nonzero": 0,
+   "pole_witnesses": 0,
+   "witness_reach_classes": []
+  },
+  "witnesses_class_level": []
+ },
+ {
+  "run": "pilot/expanded24/dcfr_s1",
+  "game": {
+   "name": "expanded24",
+   "board": "2c 4d 6h 8s Tc",
+   "betting": {
+    "n_players": 3,
+    "prior_contrib": [
+     "1",
+     "1",
+     "1"
+    ],
+    "stacks": [
+     "1",
+     "1",
+     "1"
+    ],
+    "min_bet": "1",
+    "bet_sizes": [
+     "allin"
+    ],
+    "raise_sizes": [],
+    "max_raises": 0,
+    "allow_open_fold": false
+   },
+   "seats": [
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ],
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ],
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ]
+   ],
+   "root_prior": {
+    "kind": "product",
+    "note": "specified prior: product of seat weights conditioned on card compatibility"
+   },
+   "payoff_convention": "net chips (big blinds) relative to the start of the hand: -(prior contribution + river contribution) + pot share; zero-sum at every leaf; split pots divided equally among tied best hands",
+   "scope": "conditional river continuation game; values are conditional on this root",
+   "counts": {
+    "hands_per_seat": [
+     24,
+     24,
+     24
+    ],
+    "legal_ordered_deals": 6480,
+    "decision_nodes": 12,
+    "terminal_histories_per_deal": 13,
+    "terminal_leaves": 84240,
+    "information_sets": 288,
+    "binary_information_sets": 288,
+    "deals_with_equal_strength_hands": 1296
+   },
+   "fingerprint": "163057113ca2e4c3"
+  },
+  "variant": "dcfr",
+  "seed": 1,
+  "iterations": 30000,
+  "averaging": "weights t^2 (DCFR gamma=2); alternating; regrets discounted alpha=1.5, beta=0",
+  "utilities": [
+   -0.04654228192828913,
+   0.0023945330385811083,
+   0.04414774888970456
+  ],
+  "r": [
+   1.6124230523162364e-05,
+   0.00012176186622792724,
+   0.0001386443805376364
+  ],
+  "max_r": 0.0001386443805376364,
+  "nashconv": 0.000276530477288726,
+  "selection_rule": "NashConv(avg) <= 0.001 x pot = 0.003 bb",
+  "selected": true,
+  "zero_weight_infosets": [],
+  "reach_census": {
+   "unreached": 0,
+   "rare": 12,
+   "reached": 276
+  },
+  "P1_open_prob_by_class": {
+   "AA": 0.5469006394394845,
+   "JJ": 0.22216853216055943,
+   "KK": 2.3301386359230287e-09,
+   "QQ": 1.3935796553884508e-05
+  },
+  "direction_classes": {
+   "unresolved": 125,
+   "costly": 111,
+   "profitable": 48,
+   "inert": 4
+  },
+  "max_abs_D_sum": 3.073929999430902e-15,
+  "max_abs_rho_sum_minus_1": 1.5196732761069143e-12,
+  "offpath_combo": {
+   "theta_candidates": 12,
+   "pairs_scanned": 432,
+   "a_cross_effect": 0,
+   "b_root_in_unit_interval": 0,
+   "c_numerator_nonzero": 0,
+   "pole_witnesses": 0,
+   "witness_reach_classes": []
+  },
+  "offpath_class": {
+   "theta_candidates": 2,
+   "pairs_scanned": 12,
+   "a_cross_effect": 0,
+   "b_root_in_unit_interval": 0,
+   "c_numerator_nonzero": 0,
+   "pole_witnesses": 0,
+   "witness_reach_classes": []
+  },
+  "witnesses_class_level": []
+ },
+ {
+  "run": "pilot/expanded24/dcfr_s2",
+  "game": {
+   "name": "expanded24",
+   "board": "2c 4d 6h 8s Tc",
+   "betting": {
+    "n_players": 3,
+    "prior_contrib": [
+     "1",
+     "1",
+     "1"
+    ],
+    "stacks": [
+     "1",
+     "1",
+     "1"
+    ],
+    "min_bet": "1",
+    "bet_sizes": [
+     "allin"
+    ],
+    "raise_sizes": [],
+    "max_raises": 0,
+    "allow_open_fold": false
+   },
+   "seats": [
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ],
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ],
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ]
+   ],
+   "root_prior": {
+    "kind": "product",
+    "note": "specified prior: product of seat weights conditioned on card compatibility"
+   },
+   "payoff_convention": "net chips (big blinds) relative to the start of the hand: -(prior contribution + river contribution) + pot share; zero-sum at every leaf; split pots divided equally among tied best hands",
+   "scope": "conditional river continuation game; values are conditional on this root",
+   "counts": {
+    "hands_per_seat": [
+     24,
+     24,
+     24
+    ],
+    "legal_ordered_deals": 6480,
+    "decision_nodes": 12,
+    "terminal_histories_per_deal": 13,
+    "terminal_leaves": 84240,
+    "information_sets": 288,
+    "binary_information_sets": 288,
+    "deals_with_equal_strength_hands": 1296
+   },
+   "fingerprint": "163057113ca2e4c3"
+  },
+  "variant": "dcfr",
+  "seed": 2,
+  "iterations": 30000,
+  "averaging": "weights t^2 (DCFR gamma=2); alternating; regrets discounted alpha=1.5, beta=0",
+  "utilities": [
+   -0.0467009693289373,
+   0.0027029361250443646,
+   0.04399803320389209
+  ],
+  "r": [
+   5.270871415002931e-05,
+   4.410161167910315e-05,
+   0.00013324014557278274
+  ],
+  "max_r": 0.00013324014557278274,
+  "nashconv": 0.0002300504714019152,
+  "selection_rule": "NashConv(avg) <= 0.001 x pot = 0.003 bb",
+  "selected": true,
+  "zero_weight_infosets": [],
+  "reach_census": {
+   "unreached": 0,
+   "rare": 12,
+   "reached": 276
+  },
+  "P1_open_prob_by_class": {
+   "AA": 0.5435710219114075,
+   "JJ": 0.22082570465454468,
+   "KK": 3.0069762298421246e-09,
+   "QQ": 4.134735000639623e-06
+  },
+  "direction_classes": {
+   "unresolved": 129,
+   "costly": 108,
+   "profitable": 48,
+   "inert": 3
+  },
+  "max_abs_D_sum": 3.0891088298456992e-15,
+  "max_abs_rho_sum_minus_1": 1.0511591597150982e-12,
+  "offpath_combo": {
+   "theta_candidates": 12,
+   "pairs_scanned": 432,
+   "a_cross_effect": 0,
+   "b_root_in_unit_interval": 0,
+   "c_numerator_nonzero": 0,
+   "pole_witnesses": 0,
+   "witness_reach_classes": []
+  },
+  "offpath_class": {
+   "theta_candidates": 2,
+   "pairs_scanned": 12,
+   "a_cross_effect": 0,
+   "b_root_in_unit_interval": 0,
+   "c_numerator_nonzero": 0,
+   "pole_witnesses": 0,
+   "witness_reach_classes": []
+  },
+  "witnesses_class_level": []
+ },
+ {
+  "run": "pilot/expanded24/dcfr_s3",
+  "game": {
+   "name": "expanded24",
+   "board": "2c 4d 6h 8s Tc",
+   "betting": {
+    "n_players": 3,
+    "prior_contrib": [
+     "1",
+     "1",
+     "1"
+    ],
+    "stacks": [
+     "1",
+     "1",
+     "1"
+    ],
+    "min_bet": "1",
+    "bet_sizes": [
+     "allin"
+    ],
+    "raise_sizes": [],
+    "max_raises": 0,
+    "allow_open_fold": false
+   },
+   "seats": [
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ],
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ],
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ]
+   ],
+   "root_prior": {
+    "kind": "product",
+    "note": "specified prior: product of seat weights conditioned on card compatibility"
+   },
+   "payoff_convention": "net chips (big blinds) relative to the start of the hand: -(prior contribution + river contribution) + pot share; zero-sum at every leaf; split pots divided equally among tied best hands",
+   "scope": "conditional river continuation game; values are conditional on this root",
+   "counts": {
+    "hands_per_seat": [
+     24,
+     24,
+     24
+    ],
+    "legal_ordered_deals": 6480,
+    "decision_nodes": 12,
+    "terminal_histories_per_deal": 13,
+    "terminal_leaves": 84240,
+    "information_sets": 288,
+    "binary_information_sets": 288,
+    "deals_with_equal_strength_hands": 1296
+   },
+   "fingerprint": "163057113ca2e4c3"
+  },
+  "variant": "dcfr",
+  "seed": 3,
+  "iterations": 30000,
+  "averaging": "weights t^2 (DCFR gamma=2); alternating; regrets discounted alpha=1.5, beta=0",
+  "utilities": [
+   -0.046602074589138114,
+   0.0028452961504164035,
+   0.04375677843871993
+  ],
+  "r": [
+   4.4626987417910324e-05,
+   3.9217585064971975e-05,
+   0.00011829939418979418
+  ],
+  "max_r": 0.00011829939418979418,
+  "nashconv": 0.00020214396667267648,
+  "selection_rule": "NashConv(avg) <= 0.001 x pot = 0.003 bb",
+  "selected": true,
+  "zero_weight_infosets": [],
+  "reach_census": {
+   "unreached": 0,
+   "rare": 12,
+   "reached": 276
+  },
+  "P1_open_prob_by_class": {
+   "AA": 0.5493449154253783,
+   "JJ": 0.22316855923203818,
+   "KK": 1.0369443635909477e-09,
+   "QQ": 5.608094308416571e-06
+  },
+  "direction_classes": {
+   "unresolved": 126,
+   "costly": 108,
+   "profitable": 48,
+   "inert": 6
+  },
+  "max_abs_D_sum": 2.467210463708014e-15,
+  "max_abs_rho_sum_minus_1": 1.247890679678676e-12,
+  "offpath_combo": {
+   "theta_candidates": 12,
+   "pairs_scanned": 432,
+   "a_cross_effect": 0,
+   "b_root_in_unit_interval": 0,
+   "c_numerator_nonzero": 0,
+   "pole_witnesses": 0,
+   "witness_reach_classes": []
+  },
+  "offpath_class": {
+   "theta_candidates": 2,
+   "pairs_scanned": 12,
+   "a_cross_effect": 0,
+   "b_root_in_unit_interval": 0,
+   "c_numerator_nonzero": 0,
+   "pole_witnesses": 0,
+   "witness_reach_classes": []
+  },
+  "witnesses_class_level": []
+ },
+ {
+  "run": "pilot/expanded24/dcfr_s4",
+  "game": {
+   "name": "expanded24",
+   "board": "2c 4d 6h 8s Tc",
+   "betting": {
+    "n_players": 3,
+    "prior_contrib": [
+     "1",
+     "1",
+     "1"
+    ],
+    "stacks": [
+     "1",
+     "1",
+     "1"
+    ],
+    "min_bet": "1",
+    "bet_sizes": [
+     "allin"
+    ],
+    "raise_sizes": [],
+    "max_raises": 0,
+    "allow_open_fold": false
+   },
+   "seats": [
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ],
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ],
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ]
+   ],
+   "root_prior": {
+    "kind": "product",
+    "note": "specified prior: product of seat weights conditioned on card compatibility"
+   },
+   "payoff_convention": "net chips (big blinds) relative to the start of the hand: -(prior contribution + river contribution) + pot share; zero-sum at every leaf; split pots divided equally among tied best hands",
+   "scope": "conditional river continuation game; values are conditional on this root",
+   "counts": {
+    "hands_per_seat": [
+     24,
+     24,
+     24
+    ],
+    "legal_ordered_deals": 6480,
+    "decision_nodes": 12,
+    "terminal_histories_per_deal": 13,
+    "terminal_leaves": 84240,
+    "information_sets": 288,
+    "binary_information_sets": 288,
+    "deals_with_equal_strength_hands": 1296
+   },
+   "fingerprint": "163057113ca2e4c3"
+  },
+  "variant": "dcfr",
+  "seed": 4,
+  "iterations": 30000,
+  "averaging": "weights t^2 (DCFR gamma=2); alternating; regrets discounted alpha=1.5, beta=0",
+  "utilities": [
+   -0.04661259916433641,
+   0.0026447028591251955,
+   0.04396789630520933
+  ],
+  "r": [
+   2.890911238051519e-05,
+   4.8620155732417066e-05,
+   0.00011078219173519394
+  ],
+  "max_r": 0.00011078219173519394,
+  "nashconv": 0.0001883114598481262,
+  "selection_rule": "NashConv(avg) <= 0.001 x pot = 0.003 bb",
+  "selected": true,
+  "zero_weight_infosets": [],
+  "reach_census": {
+   "unreached": 0,
+   "rare": 12,
+   "reached": 276
+  },
+  "P1_open_prob_by_class": {
+   "AA": 0.5690137510333761,
+   "JJ": 0.23116185376474044,
+   "KK": 1.6158961692683305e-09,
+   "QQ": 3.322362186249099e-06
+  },
+  "direction_classes": {
+   "unresolved": 130,
+   "costly": 107,
+   "profitable": 48,
+   "inert": 3
+  },
+  "max_abs_D_sum": 2.959438250016433e-15,
+  "max_abs_rho_sum_minus_1": 1.2208012378778221e-12,
+  "offpath_combo": {
+   "theta_candidates": 12,
+   "pairs_scanned": 432,
+   "a_cross_effect": 0,
+   "b_root_in_unit_interval": 0,
+   "c_numerator_nonzero": 0,
+   "pole_witnesses": 0,
+   "witness_reach_classes": []
+  },
+  "offpath_class": {
+   "theta_candidates": 2,
+   "pairs_scanned": 12,
+   "a_cross_effect": 0,
+   "b_root_in_unit_interval": 0,
+   "c_numerator_nonzero": 0,
+   "pole_witnesses": 0,
+   "witness_reach_classes": []
+  },
+  "witnesses_class_level": []
+ },
+ {
+  "run": "pilot/expanded24/dcfr_s5",
+  "game": {
+   "name": "expanded24",
+   "board": "2c 4d 6h 8s Tc",
+   "betting": {
+    "n_players": 3,
+    "prior_contrib": [
+     "1",
+     "1",
+     "1"
+    ],
+    "stacks": [
+     "1",
+     "1",
+     "1"
+    ],
+    "min_bet": "1",
+    "bet_sizes": [
+     "allin"
+    ],
+    "raise_sizes": [],
+    "max_raises": 0,
+    "allow_open_fold": false
+   },
+   "seats": [
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ],
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ],
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ]
+   ],
+   "root_prior": {
+    "kind": "product",
+    "note": "specified prior: product of seat weights conditioned on card compatibility"
+   },
+   "payoff_convention": "net chips (big blinds) relative to the start of the hand: -(prior contribution + river contribution) + pot share; zero-sum at every leaf; split pots divided equally among tied best hands",
+   "scope": "conditional river continuation game; values are conditional on this root",
+   "counts": {
+    "hands_per_seat": [
+     24,
+     24,
+     24
+    ],
+    "legal_ordered_deals": 6480,
+    "decision_nodes": 12,
+    "terminal_histories_per_deal": 13,
+    "terminal_leaves": 84240,
+    "information_sets": 288,
+    "binary_information_sets": 288,
+    "deals_with_equal_strength_hands": 1296
+   },
+   "fingerprint": "163057113ca2e4c3"
+  },
+  "variant": "dcfr",
+  "seed": 5,
+  "iterations": 30000,
+  "averaging": "weights t^2 (DCFR gamma=2); alternating; regrets discounted alpha=1.5, beta=0",
+  "utilities": [
+   -0.04619787974025522,
+   0.0023857441555002615,
+   0.04381213558475556
+  ],
+  "r": [
+   5.004635894826498e-05,
+   7.165162941861949e-05,
+   0.0001814825468547318
+  ],
+  "max_r": 0.0001814825468547318,
+  "nashconv": 0.0003031805352216163,
+  "selection_rule": "NashConv(avg) <= 0.001 x pot = 0.003 bb",
+  "selected": true,
+  "zero_weight_infosets": [],
+  "reach_census": {
+   "unreached": 0,
+   "rare": 12,
+   "reached": 276
+  },
+  "P1_open_prob_by_class": {
+   "AA": 0.5316115262712564,
+   "JJ": 0.21596645253390112,
+   "KK": 1.3125352266937652e-09,
+   "QQ": 1.2432252179168218e-06
+  },
+  "direction_classes": {
+   "unresolved": 158,
+   "costly": 80,
+   "profitable": 42,
+   "inert": 8
+  },
+  "max_abs_D_sum": 3.1676050671336498e-15,
+  "max_abs_rho_sum_minus_1": 4.649614027130156e-13,
+  "offpath_combo": {
+   "theta_candidates": 12,
+   "pairs_scanned": 432,
+   "a_cross_effect": 0,
+   "b_root_in_unit_interval": 0,
+   "c_numerator_nonzero": 0,
+   "pole_witnesses": 0,
+   "witness_reach_classes": []
+  },
+  "offpath_class": {
+   "theta_candidates": 2,
+   "pairs_scanned": 12,
+   "a_cross_effect": 0,
+   "b_root_in_unit_interval": 0,
+   "c_numerator_nonzero": 0,
+   "pole_witnesses": 0,
+   "witness_reach_classes": []
+  },
+  "witnesses_class_level": []
+ },
+ {
+  "run": "pilot/expanded24/dcfr_s6",
+  "game": {
+   "name": "expanded24",
+   "board": "2c 4d 6h 8s Tc",
+   "betting": {
+    "n_players": 3,
+    "prior_contrib": [
+     "1",
+     "1",
+     "1"
+    ],
+    "stacks": [
+     "1",
+     "1",
+     "1"
+    ],
+    "min_bet": "1",
+    "bet_sizes": [
+     "allin"
+    ],
+    "raise_sizes": [],
+    "max_raises": 0,
+    "allow_open_fold": false
+   },
+   "seats": [
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ],
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ],
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ]
+   ],
+   "root_prior": {
+    "kind": "product",
+    "note": "specified prior: product of seat weights conditioned on card compatibility"
+   },
+   "payoff_convention": "net chips (big blinds) relative to the start of the hand: -(prior contribution + river contribution) + pot share; zero-sum at every leaf; split pots divided equally among tied best hands",
+   "scope": "conditional river continuation game; values are conditional on this root",
+   "counts": {
+    "hands_per_seat": [
+     24,
+     24,
+     24
+    ],
+    "legal_ordered_deals": 6480,
+    "decision_nodes": 12,
+    "terminal_histories_per_deal": 13,
+    "terminal_leaves": 84240,
+    "information_sets": 288,
+    "binary_information_sets": 288,
+    "deals_with_equal_strength_hands": 1296
+   },
+   "fingerprint": "163057113ca2e4c3"
+  },
+  "variant": "dcfr",
+  "seed": 6,
+  "iterations": 30000,
+  "averaging": "weights t^2 (DCFR gamma=2); alternating; regrets discounted alpha=1.5, beta=0",
+  "utilities": [
+   -0.04618487860416646,
+   0.0025180822886074162,
+   0.04366679631555856
+  ],
+  "r": [
+   2.9631592747027258e-05,
+   4.2735564387390464e-05,
+   0.00010960992307404438
+  ],
+  "max_r": 0.00010960992307404438,
+  "nashconv": 0.0001819770802084621,
+  "selection_rule": "NashConv(avg) <= 0.001 x pot = 0.003 bb",
+  "selected": true,
+  "zero_weight_infosets": [],
+  "reach_census": {
+   "unreached": 0,
+   "rare": 12,
+   "reached": 276
+  },
+  "P1_open_prob_by_class": {
+   "AA": 0.5722876091112915,
+   "JJ": 0.23249151974591564,
+   "KK": 1.551762455164728e-09,
+   "QQ": 6.5281916303337814e-09
+  },
+  "direction_classes": {
+   "unresolved": 124,
+   "costly": 108,
+   "profitable": 50,
+   "inert": 6
+  },
+  "max_abs_D_sum": 3.757411048965764e-15,
+  "max_abs_rho_sum_minus_1": 1.4619416788264061e-12,
+  "offpath_combo": {
+   "theta_candidates": 12,
+   "pairs_scanned": 432,
+   "a_cross_effect": 0,
+   "b_root_in_unit_interval": 0,
+   "c_numerator_nonzero": 0,
+   "pole_witnesses": 0,
+   "witness_reach_classes": []
+  },
+  "offpath_class": {
+   "theta_candidates": 2,
+   "pairs_scanned": 12,
+   "a_cross_effect": 0,
+   "b_root_in_unit_interval": 0,
+   "c_numerator_nonzero": 0,
+   "pole_witnesses": 0,
+   "witness_reach_classes": []
+  },
+  "witnesses_class_level": []
+ }
+]

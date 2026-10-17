@@ -1,0 +1,170 @@
+{
+ "utc": "2026-10-16T23:45:32+00:00",
+ "statement": "Configurations and analysis plan fixed before any panel profile was trained or any incidence result on the expanded games was examined.  Candidate profiles are selected by residual only; every run passing the residual criterion is analysed; negative findings are retained.",
+ "configs_sha256": {
+  "configs/bridge.json": "dba93e97adde8475559878cfe7ce3a50bc4d57ba52dd1e1c2af4a3f0e8dfa39f",
+  "configs/control_2p.json": "764501a7658c01917c57447f4c218b074dac983f7d09f318115645a13051d65a",
+  "configs/expanded24.json": "8466edf421a2037d65444ac12cedb318c2903d78159c608d62663fc022e958b3",
+  "configs/panel/board_connected_R36.json": "7cc913f3dd43c085e0e009ceff6faf6b33e075ca10834629e5f3e4cd9b035b84",
+  "configs/panel/board_dry_R36.json": "8bab70f0d6606990f50f5c11e591cd2795d11e58cb0293da0bc18d57d52a8456",
+  "configs/panel/board_flush3_R36.json": "a7a011ef4a65b95a146815213cc466d6b20aa1d654c9ab0eb1258b5a153eb3c1",
+  "configs/panel/board_paired_R36.json": "caebe1b11e567d6bfc7e03131cecb21e548b412974d8b0a549d177f08393a638",
+  "configs/panel/pot_pot1.5_JJAA24.json": "8c745d96ee37761c7ee5087ff510cecdb60976b8178e584a0b94d5d3505eeb0f",
+  "configs/panel/pot_pot6_JJAA24.json": "cf9ea0176199be3c9c2e7602863dfae965814724c7fbc9371d9fe196b8624f50",
+  "configs/panel/weights_P1value_x2_R36.json": "a28a0c5ca9b83adfe8d3971fb657791765c7b79473a100f06756748499c13b09",
+  "configs/panel/weights_P3bluff_x2_R36.json": "5a62373bc20f9a92f9789570d8d5c8e9a0188cbb9760ebf8e6bef07bc58ea609"
+ },
+ "plan_sha256": "1e0020727ce7d9f88ecc40126b121d1e4d5c0f1b3b2f684510320c6d83fcb637",
+ "plan": {
+  "CHECKPOINTS": [
+   10,
+   30,
+   100,
+   300,
+   1000,
+   3000,
+   6000,
+   12000,
+   20000,
+   30000
+  ],
+  "CONTROL": {
+   "game": "configs/control_2p.json",
+   "variants": [
+    "cfr+"
+   ],
+   "seeds": [
+    1,
+    2
+   ],
+   "iterations": 5000
+  },
+  "FAMILY_GRID": 11,
+  "FAMILY_WINDOW": 0.05,
+  "PANEL": {
+   "variants": [
+    "dcfr"
+   ],
+   "seeds": [
+    1,
+    2,
+    3
+   ],
+   "iterations": 12000
+  },
+  "PILOT": {
+   "game": "configs/expanded24.json",
+   "variants": [
+    "cfr+",
+    "dcfr"
+   ],
+   "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "iterations": 30000
+  },
+  "REACH_RARE": 1e-06,
+  "SELECT_NASHCONV_PER_POT": 0.001,
+  "TOL_CROSS": 1e-09,
+  "TOL_EQ_FACTOR": 10.0,
+  "TOL_FAMILY": 1e-09,
+  "TOL_NUM": 1e-12,
+  "TOL_NUMERATOR": 1e-09
+ },
+ "budget_rationale": {
+  "measured": [
+   {
+    "config": "configs/bridge.json",
+    "ms_per_iter_dcfr": 0.48,
+    "ms_per_iter_cfr+": 0.47,
+    "peak_rss_MB": 46.1
+   },
+   {
+    "config": "configs/expanded24.json",
+    "ms_per_iter_dcfr": 10.44,
+    "ms_per_iter_cfr+": 10.4,
+    "peak_rss_MB": 79.6
+   },
+   {
+    "config": "configs/control_2p.json",
+    "ms_per_iter_dcfr": 0.39,
+    "ms_per_iter_cfr+": 0.39,
+    "peak_rss_MB": 60.5
+   },
+   {
+    "config": "configs/panel/board_connected_R36.json",
+    "ms_per_iter_dcfr": 20.03,
+    "ms_per_iter_cfr+": 20.16,
+    "peak_rss_MB": 94.1
+   },
+   {
+    "config": "configs/panel/board_dry_R36.json",
+    "ms_per_iter_dcfr": 41.39,
+    "ms_per_iter_cfr+": 41.5,
+    "peak_rss_MB": 146.3
+   },
+   {
+    "config": "configs/panel/board_flush3_R36.json",
+    "ms_per_iter_dcfr": 16.8,
+    "ms_per_iter_cfr+": 16.62,
+    "peak_rss_MB": 97.6
+   },
+   {
+    "config": "configs/panel/board_paired_R36.json",
+    "ms_per_iter_dcfr": 34.14,
+    "ms_per_iter_cfr+": 33.23,
+    "peak_rss_MB": 141.5
+   },
+   {
+    "config": "configs/panel/pot_pot1.5_JJAA24.json",
+    "ms_per_iter_dcfr": 10.79,
+    "ms_per_iter_cfr+": 10.88,
+    "peak_rss_MB": 100.2
+   },
+   {
+    "config": "configs/panel/pot_pot6_JJAA24.json",
+    "ms_per_iter_dcfr": 10.56,
+    "ms_per_iter_cfr+": 10.68,
+    "peak_rss_MB": 100.7
+   },
+   {
+    "config": "configs/panel/weights_P1value_x2_R36.json",
+    "ms_per_iter_dcfr": 41.23,
+    "ms_per_iter_cfr+": 41.41,
+    "peak_rss_MB": 145.9
+   },
+   {
+    "config": "configs/panel/weights_P3bluff_x2_R36.json",
+    "ms_per_iter_dcfr": 42.46,
+    "ms_per_iter_cfr+": 42.43,
+    "peak_rss_MB": 164.8
+   }
+  ],
+  "choice": "pilot: 30,000 iterations x 2 variants x 6 seeds on the 24-hand game (~5 min/run at 10.4 ms/iter); panel: 12,000 DCFR iterations x 3 seeds (<= 8.5 min/run at <= 42 ms/iter); control: 5,000 CFR+ iterations x 2 seeds.  Runs execute in parallel, one process each, < 200 MB each.  Full traversal throughout: sampling (MCCFR) is not needed at these sizes."
+ },
+ "amendments": [
+  {
+   "utc": "2026-10-16T23:52:41+00:00",
+   "text": "Added BEFORE any pilot or panel profile finished (training still running), after a scratch smoke run (work/, not a result) showed P1 opening AA ~0.58 and JJ ~0.24 in the 24-hand game, so that the responses to P1's bet are ON path and the declared scan can only meet rare own-unreached sets.  New declared experiments: (PC1) positive control: the same off-path scan applied to exact SGS family profiles of the bridge game must recover Kuhn's known poles (a11/a21 at c33 = 1/2 - b32, a41 at the upper end); (PC2) DCFR on the bridge game, 3 seeds x 30,000 iterations, analysed like the pilot; (OP2) imposed P1 silence on the 24-hand game: CFR (DCFR, seeds 1-3, 12,000 iterations) with P1's opening fixed to check, then the 72 unreached responses to a P1 bet are chosen explicitly by a deterministic deterrence search (minimise P1's full-game residual by exact coordinate minimisation, 5 declared starts), then theta = P3's KK call at B:1-F (the c33 analogue) is swept with everything else fixed and the P1 JJ-bet deviation (the a11 analogue) is measured.  OP2 is exploratory: its search gives an upper bound on the best achievable deterrence, not a proof that deterrence is impossible.",
+   "plan_sha256": "1e0020727ce7d9f88ecc40126b121d1e4d5c0f1b3b2f684510320c6d83fcb637",
+   "configs_sha256": {
+    "configs/bridge.json": "dba93e97adde8475559878cfe7ce3a50bc4d57ba52dd1e1c2af4a3f0e8dfa39f",
+    "configs/control_2p.json": "764501a7658c01917c57447f4c218b074dac983f7d09f318115645a13051d65a",
+    "configs/expanded24.json": "8466edf421a2037d65444ac12cedb318c2903d78159c608d62663fc022e958b3",
+    "configs/panel/board_connected_R36.json": "7cc913f3dd43c085e0e009ceff6faf6b33e075ca10834629e5f3e4cd9b035b84",
+    "configs/panel/board_dry_R36.json": "8bab70f0d6606990f50f5c11e591cd2795d11e58cb0293da0bc18d57d52a8456",
+    "configs/panel/board_flush3_R36.json": "a7a011ef4a65b95a146815213cc466d6b20aa1d654c9ab0eb1258b5a153eb3c1",
+    "configs/panel/board_paired_R36.json": "caebe1b11e567d6bfc7e03131cecb21e548b412974d8b0a549d177f08393a638",
+    "configs/panel/pot_pot1.5_JJAA24.json": "8c745d96ee37761c7ee5087ff510cecdb60976b8178e584a0b94d5d3505eeb0f",
+    "configs/panel/pot_pot6_JJAA24.json": "cf9ea0176199be3c9c2e7602863dfae965814724c7fbc9371d9fe196b8624f50",
+    "configs/panel/weights_P1value_x2_R36.json": "a28a0c5ca9b83adfe8d3971fb657791765c7b79473a100f06756748499c13b09",
+    "configs/panel/weights_P3bluff_x2_R36.json": "5a62373bc20f9a92f9789570d8d5c8e9a0188cbb9760ebf8e6bef07bc58ea609"
+   }
+  }
+ ]
+}

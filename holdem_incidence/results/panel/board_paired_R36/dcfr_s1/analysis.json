@@ -1,0 +1,166 @@
+{
+ "run": "panel/board_paired_R36/dcfr_s1",
+ "game": {
+  "name": "board_paired_R36",
+  "board": "Kc 7d 7h 3s 2c",
+  "betting": {
+   "n_players": 3,
+   "prior_contrib": [
+    "1",
+    "1",
+    "1"
+   ],
+   "stacks": [
+    "1",
+    "1",
+    "1"
+   ],
+   "min_bet": "1",
+   "bet_sizes": [
+    "allin"
+   ],
+   "raise_sizes": [],
+   "max_raises": 0,
+   "allow_open_fold": false
+  },
+  "seats": [
+   [
+    "AA",
+    "KK",
+    "99",
+    "55",
+    "AsKs",
+    "AhKh",
+    "KsQs",
+    "KhQh",
+    "JsTs",
+    "JhTh",
+    "9s8s",
+    "9h8h",
+    "7s6s",
+    "7h6h",
+    "5s4s",
+    "5h4h"
+   ],
+   [
+    "AA",
+    "KK",
+    "99",
+    "55",
+    "AsKs",
+    "AhKh",
+    "KsQs",
+    "KhQh",
+    "JsTs",
+    "JhTh",
+    "9s8s",
+    "9h8h",
+    "7s6s",
+    "7h6h",
+    "5s4s",
+    "5h4h"
+   ],
+   [
+    "AA",
+    "KK",
+    "99",
+    "55",
+    "AsKs",
+    "AhKh",
+    "KsQs",
+    "KhQh",
+    "JsTs",
+    "JhTh",
+    "9s8s",
+    "9h8h",
+    "7s6s",
+    "7h6h",
+    "5s4s",
+    "5h4h"
+   ]
+  ],
+  "root_prior": {
+   "kind": "product",
+   "note": "specified prior: product of seat weights conditioned on card compatibility"
+  },
+  "payoff_convention": "net chips (big blinds) relative to the start of the hand: -(prior contribution + river contribution) + pot share; zero-sum at every leaf; split pots divided equally among tied best hands",
+  "scope": "conditional river continuation game; values are conditional on this root",
+  "counts": {
+   "hands_per_seat": [
+    32,
+    32,
+    32
+   ],
+   "legal_ordered_deals": 18942,
+   "decision_nodes": 12,
+   "terminal_histories_per_deal": 13,
+   "terminal_leaves": 246246,
+   "information_sets": 384,
+   "binary_information_sets": 384,
+   "deals_with_equal_strength_hands": 2046
+  },
+  "fingerprint": "004163398fadbe54"
+ },
+ "variant": "dcfr",
+ "seed": 1,
+ "iterations": 12000,
+ "averaging": "weights t^2 (DCFR gamma=2); alternating; regrets discounted alpha=1.5, beta=0",
+ "utilities": [
+  -0.03421144181303987,
+  -0.006034941216810573,
+  0.040246383029848364
+ ],
+ "r": [
+  7.988237187617209e-06,
+  1.5697819586478826e-05,
+  1.6263841514423116e-05
+ ],
+ "max_r": 1.6263841514423116e-05,
+ "nashconv": 3.994989828851915e-05,
+ "selection_rule": "NashConv(avg) <= 0.001 x pot = 0.003 bb",
+ "selected": true,
+ "zero_weight_infosets": [],
+ "reach_census": {
+  "unreached": 0,
+  "rare": 18,
+  "reached": 366
+ },
+ "P1_open_prob_by_class": {
+  "54s": 1.959770138767902e-08,
+  "55": 4.490517577321029e-09,
+  "76s": 0.9999994052988525,
+  "98s": 8.024999598000806e-09,
+  "99": 7.895993645938001e-09,
+  "AA": 0.425320039049443,
+  "AKs": 1.9239463580288885e-08,
+  "JTs": 0.47890409396190925,
+  "KK": 2.0076626808054424e-06,
+  "KQs": 6.20972319858798e-08
+ },
+ "direction_classes": {
+  "profitable": 111,
+  "unresolved": 74,
+  "costly": 199
+ },
+ "max_abs_D_sum": 6.0021432268797525e-15,
+ "max_abs_rho_sum_minus_1": 4.029665490179468e-12,
+ "offpath_combo": {
+  "theta_candidates": 18,
+  "pairs_scanned": 832,
+  "a_cross_effect": 87,
+  "b_root_in_unit_interval": 0,
+  "c_numerator_nonzero": 0,
+  "pole_witnesses": 0,
+  "witness_reach_classes": []
+ },
+ "offpath_class": {
+  "theta_candidates": 7,
+  "pairs_scanned": 100,
+  "a_cross_effect": 32,
+  "b_root_in_unit_interval": 0,
+  "c_numerator_nonzero": 0,
+  "pole_witnesses": 0,
+  "witness_reach_classes": []
+ },
+ "witnesses_class_level": []
+}

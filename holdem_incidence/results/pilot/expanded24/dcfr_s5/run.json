@@ -1,0 +1,110 @@
+{
+ "game": {
+  "name": "expanded24",
+  "board": "2c 4d 6h 8s Tc",
+  "betting": {
+   "n_players": 3,
+   "prior_contrib": [
+    "1",
+    "1",
+    "1"
+   ],
+   "stacks": [
+    "1",
+    "1",
+    "1"
+   ],
+   "min_bet": "1",
+   "bet_sizes": [
+    "allin"
+   ],
+   "raise_sizes": [],
+   "max_raises": 0,
+   "allow_open_fold": false
+  },
+  "seats": [
+   [
+    "JJ",
+    "QQ",
+    "KK",
+    "AA"
+   ],
+   [
+    "JJ",
+    "QQ",
+    "KK",
+    "AA"
+   ],
+   [
+    "JJ",
+    "QQ",
+    "KK",
+    "AA"
+   ]
+  ],
+  "root_prior": {
+   "kind": "product",
+   "note": "specified prior: product of seat weights conditioned on card compatibility"
+  },
+  "payoff_convention": "net chips (big blinds) relative to the start of the hand: -(prior contribution + river contribution) + pot share; zero-sum at every leaf; split pots divided equally among tied best hands",
+  "scope": "conditional river continuation game; values are conditional on this root",
+  "counts": {
+   "hands_per_seat": [
+    24,
+    24,
+    24
+   ],
+   "legal_ordered_deals": 6480,
+   "decision_nodes": 12,
+   "terminal_histories_per_deal": 13,
+   "terminal_leaves": 84240,
+   "information_sets": 288,
+   "binary_information_sets": 288,
+   "deals_with_equal_strength_hands": 1296
+  },
+  "fingerprint": "163057113ca2e4c3"
+ },
+ "variant": "dcfr",
+ "seed": 5,
+ "iterations": 30000,
+ "averaging": "weights t^2 (DCFR gamma=2); alternating; regrets discounted alpha=1.5, beta=0",
+ "wall_s": 1769.7005742999622,
+ "final": {
+  "t": 30000,
+  "wall_s": 1769.701,
+  "avg": {
+   "u": [
+    -0.04619787974025522,
+    0.0023857441555002615,
+    0.04381213558475556
+   ],
+   "r": [
+    5.004635894826498e-05,
+    7.165162941861949e-05,
+    0.0001814825468547318
+   ],
+   "max_r": 0.0001814825468547318,
+   "nashconv": 0.0003031805352216163
+  },
+  "cur": {
+   "u": [
+    -0.04631039424781391,
+    0.0016785193488076553,
+    0.04463187489893598
+   ],
+   "r": [
+    0.001238890640884227,
+    5.272787246281014e-05,
+    0.00047610982738439944
+   ],
+   "max_r": 0.001238890640884227,
+   "nashconv": 0.0017677283407314366
+  },
+  "zero_weight_infosets": 0,
+  "min_avg_weight": 0.0021842309823773805,
+  "infosets_reach_below_1e-9": 12,
+  "infosets_reach_exactly_0": 0
+ },
+ "zero_weight_infosets": [],
+ "dir": "results/pilot/expanded24/dcfr_s5"
+}

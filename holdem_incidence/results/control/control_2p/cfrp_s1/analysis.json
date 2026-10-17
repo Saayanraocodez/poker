@@ -1,0 +1,98 @@
+{
+ "run": "control/control_2p/cfrp_s1",
+ "game": {
+  "name": "control_2p",
+  "board": "2c 4d 6h 8s Tc",
+  "betting": {
+   "n_players": 2,
+   "prior_contrib": [
+    "1",
+    "1"
+   ],
+   "stacks": [
+    "1",
+    "1"
+   ],
+   "min_bet": "1",
+   "bet_sizes": [
+    "allin"
+   ],
+   "raise_sizes": [],
+   "max_raises": 0,
+   "allow_open_fold": false
+  },
+  "seats": [
+   [
+    "JJ",
+    "QQ",
+    "KK",
+    "AA"
+   ],
+   [
+    "JJ",
+    "QQ",
+    "KK",
+    "AA"
+   ]
+  ],
+  "root_prior": {
+   "kind": "product",
+   "note": "specified prior: product of seat weights conditioned on card compatibility"
+  },
+  "payoff_convention": "net chips (big blinds) relative to the start of the hand: -(prior contribution + river contribution) + pot share; zero-sum at every leaf; split pots divided equally among tied best hands",
+  "scope": "conditional river continuation game; values are conditional on this root",
+  "counts": {
+   "hands_per_seat": [
+    24,
+    24
+   ],
+   "legal_ordered_deals": 456,
+   "decision_nodes": 4,
+   "terminal_histories_per_deal": 5,
+   "terminal_leaves": 2280,
+   "information_sets": 96,
+   "binary_information_sets": 96,
+   "deals_with_equal_strength_hands": 24
+  },
+  "fingerprint": "a5c3733a40fa954a"
+ },
+ "variant": "cfr+",
+ "seed": 1,
+ "iterations": 5000,
+ "averaging": "linear weights max(t - delay, 0), delay 0; alternating updates; regret matching+",
+ "utilities": [
+  -0.041348477719212885,
+  0.041348477719212885
+ ],
+ "r": [
+  0.0005510083502614851,
+  0.0004299000982926557
+ ],
+ "max_r": 0.0005510083502614851,
+ "nashconv": 0.0009809084485541408,
+ "selection_rule": "NashConv(avg) <= 0.001 x pot = 0.002 bb",
+ "selected": true,
+ "zero_weight_infosets": [],
+ "reach_census": {
+  "unreached": 0,
+  "rare": 0,
+  "reached": 96
+ },
+ "P1_open_prob_by_class": {
+  "AA": 0.7138752574545343,
+  "JJ": 0.23783505081111533,
+  "KK": 0.001241861555630615,
+  "QQ": 0.00020019343703237666
+ },
+ "direction_classes": {
+  "unresolved": 48,
+  "costly": 24,
+  "profitable": 24
+ },
+ "max_abs_D_sum": 0.0,
+ "max_abs_rho_sum_minus_1": 0.0,
+ "control_rho_opponent": [
+  1.0
+ ],
+ "control_costless_transfers": 0
+}

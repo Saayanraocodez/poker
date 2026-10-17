@@ -1,0 +1,9 @@
+{
+  "name": "control_2p",
+  "description": "Two-player constant-sum control: same board and 24-hand JJ-AA range, P1 then P2, pot 2 bb (1 bb prior contribution each), stacks 1 bb, all-in only, no open fold. The opponent's incidence share must be exactly 1 wherever defined.",
+  "board": "2c 4d 6h 8s Tc",
+  "range": ["JJ", "QQ", "KK", "AA"],
+  "prior": "product",
+  "betting": {"n_players": 2, "prior_contrib": [1, 1], "stacks": [1, 1], "min_bet": 1,
+              "bet_sizes": ["allin"], "raise_sizes": [], "max_raises": 0, "allow_open_fold": false}
+}

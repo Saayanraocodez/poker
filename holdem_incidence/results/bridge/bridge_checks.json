@@ -1,0 +1,987 @@
+{
+ "scope": "EXACT correspondence between two specified continuation games: the all-in river game (board 2c 4d 6h 8s Tc; JsJh QsQh KsKh AsAh; pot 3, stacks 1, min bet 1, no open fold) and three-player Kuhn poker.  It transfers every Kuhn fact about THIS river game, off-path strategies and deviation derivatives included.  It does NOT show that these ranges arise at an equilibrium of unrestricted Hold'em, nor that the continuation equilibrium extends to one from the start of a hand.",
+ "game": {
+  "name": "bridge_kuhn4",
+  "board": "2c 4d 6h 8s Tc",
+  "betting": {
+   "n_players": 3,
+   "prior_contrib": [
+    "1",
+    "1",
+    "1"
+   ],
+   "stacks": [
+    "1",
+    "1",
+    "1"
+   ],
+   "min_bet": "1",
+   "bet_sizes": [
+    "allin"
+   ],
+   "raise_sizes": [],
+   "max_raises": 0,
+   "allow_open_fold": false
+  },
+  "seats": [
+   [
+    "JsJh",
+    "QsQh",
+    "KsKh",
+    "AsAh"
+   ],
+   [
+    "JsJh",
+    "QsQh",
+    "KsKh",
+    "AsAh"
+   ],
+   [
+    "JsJh",
+    "QsQh",
+    "KsKh",
+    "AsAh"
+   ]
+  ],
+  "root_prior": {
+   "kind": "product",
+   "note": "specified prior: product of seat weights conditioned on card compatibility"
+  },
+  "payoff_convention": "net chips (big blinds) relative to the start of the hand: -(prior contribution + river contribution) + pot share; zero-sum at every leaf; split pots divided equally among tied best hands",
+  "scope": "conditional river continuation game; values are conditional on this root",
+  "counts": {
+   "hands_per_seat": [
+    4,
+    4,
+    4
+   ],
+   "legal_ordered_deals": 24,
+   "decision_nodes": 12,
+   "terminal_histories_per_deal": 13,
+   "terminal_leaves": 312,
+   "information_sets": 48,
+   "binary_information_sets": 48,
+   "deals_with_equal_strength_hands": 0
+  },
+  "fingerprint": "e8c7249629ac1da5"
+ },
+ "validate": {
+  "prior_sums_to_one_exactly": true,
+  "card_compatibility": 24,
+  "chip_conservation_leaves": 312,
+  "infoset_ids_unique": 48
+ },
+ "expected_counts_match": true,
+ "infoset_map": {
+  "P1|JsJh|": "a11",
+  "P1|QsQh|": "a21",
+  "P1|KsKh|": "a31",
+  "P1|AsAh|": "a41",
+  "P2|JsJh|K": "b11",
+  "P2|QsQh|K": "b21",
+  "P2|KsKh|K": "b31",
+  "P2|AsAh|K": "b41",
+  "P3|JsJh|K-K": "c11",
+  "P3|QsQh|K-K": "c21",
+  "P3|KsKh|K-K": "c31",
+  "P3|AsAh|K-K": "c41",
+  "P1|JsJh|K-K-B:1": "a12",
+  "P1|QsQh|K-K-B:1": "a22",
+  "P1|KsKh|K-K-B:1": "a32",
+  "P1|AsAh|K-K-B:1": "a42",
+  "P2|JsJh|K-K-B:1-F": "b13",
+  "P2|QsQh|K-K-B:1-F": "b23",
+  "P2|KsKh|K-K-B:1-F": "b33",
+  "P2|AsAh|K-K-B:1-F": "b43",
+  "P2|JsJh|K-K-B:1-C": "b14",
+  "P2|QsQh|K-K-B:1-C": "b24",
+  "P2|KsKh|K-K-B:1-C": "b34",
+  "P2|AsAh|K-K-B:1-C": "b44",
+  "P3|JsJh|K-B:1": "c12",
+  "P3|QsQh|K-B:1": "c22",
+  "P3|KsKh|K-B:1": "c32",
+  "P3|AsAh|K-B:1": "c42",
+  "P1|JsJh|K-B:1-F": "a13",
+  "P1|QsQh|K-B:1-F": "a23",
+  "P1|KsKh|K-B:1-F": "a33",
+  "P1|AsAh|K-B:1-F": "a43",
+  "P1|JsJh|K-B:1-C": "a14",
+  "P1|QsQh|K-B:1-C": "a24",
+  "P1|KsKh|K-B:1-C": "a34",
+  "P1|AsAh|K-B:1-C": "a44",
+  "P2|JsJh|B:1": "b12",
+  "P2|QsQh|B:1": "b22",
+  "P2|KsKh|B:1": "b32",
+  "P2|AsAh|B:1": "b42",
+  "P3|JsJh|B:1-F": "c13",
+  "P3|QsQh|B:1-F": "c23",
+  "P3|KsKh|B:1-F": "c33",
+  "P3|AsAh|B:1-F": "c43",
+  "P3|JsJh|B:1-C": "c14",
+  "P3|QsQh|B:1-C": "c24",
+  "P3|KsKh|B:1-C": "c34",
+  "P3|AsAh|B:1-C": "c44"
+ },
+ "terminal_payoffs_equal_to_kuhn": "312 / 312",
+ "profiles": [
+  {
+   "profile": "canonical_beta0_corner",
+   "utilities": [
+    "-1/48",
+    "-1/48",
+    "1/24"
+   ],
+   "kuhn3_utilities": [
+    "-1/48",
+    "-1/48",
+    "1/24"
+   ],
+   "utilities_equal": true,
+   "residuals_exact": [
+    "0",
+    "0",
+    "0"
+   ],
+   "nashconv_exact": "0",
+   "derivative_vectors_equal_to_kuhn3": "48 / 48",
+   "selected_derivatives_U(x=1)-U(x=0)": {
+    "a11": [
+     "0",
+     "1/24",
+     "-1/24"
+    ],
+    "a41": [
+     "0",
+     "-1/24",
+     "1/24"
+    ],
+    "b11": [
+     "1/12",
+     "0",
+     "-1/12"
+    ],
+    "b31": [
+     "1/16",
+     "-5/48",
+     "1/24"
+    ],
+    "c11": [
+     "-1/24",
+     "1/24",
+     "0"
+    ],
+    "c33": [
+     "0",
+     "0",
+     "0"
+    ]
+   }
+  },
+  {
+   "profile": "canonical_beta1_8",
+   "utilities": [
+    "-5/192",
+    "-1/48",
+    "3/64"
+   ],
+   "kuhn3_utilities": [
+    "-5/192",
+    "-1/48",
+    "3/64"
+   ],
+   "utilities_equal": true,
+   "residuals_exact": [
+    "0",
+    "0",
+    "0"
+   ],
+   "nashconv_exact": "0",
+   "derivative_vectors_equal_to_kuhn3": "48 / 48",
+   "selected_derivatives_U(x=1)-U(x=0)": {
+    "a11": [
+     "0",
+     "13/384",
+     "-13/384"
+    ],
+    "a41": [
+     "-7/384",
+     "-1/48",
+     "5/128"
+    ],
+    "b11": [
+     "1/12",
+     "0",
+     "-1/12"
+    ],
+    "b31": [
+     "1/16",
+     "-5/48",
+     "1/24"
+    ],
+    "c11": [
+     "-1/32",
+     "1/32",
+     "0"
+    ],
+    "c33": [
+     "0",
+     "0",
+     "0"
+    ]
+   }
+  },
+  {
+   "profile": "canonical_beta1_4_corner",
+   "utilities": [
+    "-1/32",
+    "-1/48",
+    "5/96"
+   ],
+   "kuhn3_utilities": [
+    "-1/32",
+    "-1/48",
+    "5/96"
+   ],
+   "utilities_equal": true,
+   "residuals_exact": [
+    "0",
+    "0",
+    "0"
+   ],
+   "nashconv_exact": "0",
+   "derivative_vectors_equal_to_kuhn3": "48 / 48",
+   "selected_derivatives_U(x=1)-U(x=0)": {
+    "a11": [
+     "0",
+     "5/192",
+     "-5/192"
+    ],
+    "a41": [
+     "-7/192",
+     "0",
+     "7/192"
+    ],
+    "b11": [
+     "1/12",
+     "0",
+     "-1/12"
+    ],
+    "b31": [
+     "1/16",
+     "-5/48",
+     "1/24"
+    ],
+    "c11": [
+     "-1/48",
+     "1/48",
+     "0"
+    ],
+    "c33": [
+     "0",
+     "0",
+     "0"
+    ]
+   }
+  },
+  {
+   "profile": "subA_unequal",
+   "utilities": [
+    "-5/192",
+    "-1/48",
+    "3/64"
+   ],
+   "kuhn3_utilities": [
+    "-5/192",
+    "-1/48",
+    "3/64"
+   ],
+   "utilities_equal": true,
+   "residuals_exact": [
+    "0",
+    "0",
+    "0"
+   ],
+   "nashconv_exact": "0",
+   "derivative_vectors_equal_to_kuhn3": "48 / 48",
+   "selected_derivatives_U(x=1)-U(x=0)": {
+    "a11": [
+     "0",
+     "19/256",
+     "-19/256"
+    ],
+    "a41": [
+     "-11/768",
+     "-5/192",
+     "31/768"
+    ],
+    "b11": [
+     "1/12",
+     "0",
+     "-1/12"
+    ],
+    "b31": [
+     "1/16",
+     "-5/48",
+     "1/24"
+    ],
+    "c11": [
+     "-1/32",
+     "7/192",
+     "-1/192"
+    ],
+    "c33": [
+     "0",
+     "0",
+     "0"
+    ]
+   }
+  },
+  {
+   "profile": "subB_interior",
+   "utilities": [
+    "-5/192",
+    "-1/48",
+    "3/64"
+   ],
+   "kuhn3_utilities": [
+    "-5/192",
+    "-1/48",
+    "3/64"
+   ],
+   "utilities_equal": true,
+   "residuals_exact": [
+    "0",
+    "0",
+    "0"
+   ],
+   "nashconv_exact": "0",
+   "derivative_vectors_equal_to_kuhn3": "48 / 48",
+   "selected_derivatives_U(x=1)-U(x=0)": {
+    "a11": [
+     "0",
+     "29/576",
+     "-29/576"
+    ],
+    "a41": [
+     "-7/384",
+     "-1/48",
+     "5/128"
+    ],
+    "b11": [
+     "1/16",
+     "0",
+     "-1/16"
+    ],
+    "b31": [
+     "1/16",
+     "-5/48",
+     "1/24"
+    ],
+    "c11": [
+     "-1/32",
+     "1/32",
+     "0"
+    ],
+    "c33": [
+     "0",
+     "0",
+     "0"
+    ]
+   }
+  },
+  {
+   "profile": "subC_b23",
+   "utilities": [
+    "-5/192",
+    "-1/48",
+    "3/64"
+   ],
+   "kuhn3_utilities": [
+    "-5/192",
+    "-1/48",
+    "3/64"
+   ],
+   "utilities_equal": true,
+   "residuals_exact": [
+    "0",
+    "0",
+    "0"
+   ],
+   "nashconv_exact": "0",
+   "derivative_vectors_equal_to_kuhn3": "48 / 48",
+   "selected_derivatives_U(x=1)-U(x=0)": {
+    "a11": [
+     "-1/60",
+     "163/2304",
+     "-623/11520"
+    ],
+    "a41": [
+     "-23/3840",
+     "-5/192",
+     "41/1280"
+    ],
+    "b11": [
+     "1/24",
+     "0",
+     "-1/24"
+    ],
+    "b31": [
+     "1/16",
+     "-5/48",
+     "1/24"
+    ],
+    "c11": [
+     "-7/192",
+     "7/192",
+     "0"
+    ],
+    "c33": [
+     "0",
+     "0",
+     "0"
+    ]
+   }
+  },
+  {
+   "profile": "offpath_witness_MASTER_DATA",
+   "utilities": [
+    "-1/32",
+    "-1/48",
+    "5/96"
+   ],
+   "kuhn3_utilities": [
+    "-1/32",
+    "-1/48",
+    "5/96"
+   ],
+   "utilities_equal": true,
+   "residuals_exact": [
+    "0",
+    "0",
+    "0"
+   ],
+   "nashconv_exact": "0",
+   "derivative_vectors_equal_to_kuhn3": "48 / 48",
+   "selected_derivatives_U(x=1)-U(x=0)": {
+    "a11": [
+     "-197/40000",
+     "521/9600",
+     "-11843/240000"
+    ],
+    "a41": [
+     "-3361/480000",
+     "-19/2400",
+     "2387/160000"
+    ],
+    "b11": [
+     "1/24",
+     "0",
+     "-1/24"
+    ],
+    "b31": [
+     "1/16",
+     "-5/48",
+     "1/24"
+    ],
+    "c11": [
+     "-1/24",
+     "1/24",
+     "0"
+    ],
+    "c33": [
+     "0",
+     "0",
+     "0"
+    ]
+   }
+  },
+  {
+   "profile": "random_rational_0",
+   "utilities": [
+    "1906331/2985984",
+    "-390937/995328",
+    "-45845/186624"
+   ],
+   "kuhn3_utilities": [
+    "1906331/2985984",
+    "-390937/995328",
+    "-45845/186624"
+   ],
+   "utilities_equal": true,
+   "residuals_exact": [
+    "1153957/2985984",
+    "943849/995328",
+    "188567/186624"
+   ],
+   "nashconv_exact": "48629/20736",
+   "derivative_vectors_equal_to_kuhn3": "48 / 48",
+   "selected_derivatives_U(x=1)-U(x=0)": {
+    "a11": [
+     "95/6912",
+     "209/6912",
+     "-19/432"
+    ],
+    "a41": [
+     "50965/82944",
+     "-24757/82944",
+     "-91/288"
+    ],
+    "b11": [
+     "269/9216",
+     "-4447/248832",
+     "-11/972"
+    ],
+    "b31": [
+     "-17131/248832",
+     "34985/248832",
+     "-8927/124416"
+    ],
+    "c11": [
+     "10613/248832",
+     "-6727/248832",
+     "-1943/124416"
+    ],
+    "c33": [
+     "-85/576",
+     "0",
+     "85/576"
+    ]
+   }
+  },
+  {
+   "profile": "random_rational_1",
+   "utilities": [
+    "-12887/746496",
+    "29731/248832",
+    "-38153/373248"
+   ],
+   "kuhn3_utilities": [
+    "-12887/746496",
+    "29731/248832",
+    "-38153/373248"
+   ],
+   "utilities_equal": true,
+   "residuals_exact": [
+    "672929/746496",
+    "160061/248832",
+    "465055/746496"
+   ],
+   "nashconv_exact": "539389/248832",
+   "derivative_vectors_equal_to_kuhn3": "48 / 48",
+   "selected_derivatives_U(x=1)-U(x=0)": {
+    "a11": [
+     "167/576",
+     "-47717/82944",
+     "23669/82944"
+    ],
+    "a41": [
+     "2515/4608",
+     "-18187/41472",
+     "-139/1296"
+    ],
+    "b11": [
+     "-73/512",
+     "349/2592",
+     "329/41472"
+    ],
+    "b31": [
+     "-25517/124416",
+     "4441/20736",
+     "-1129/124416"
+    ],
+    "c11": [
+     "985/124416",
+     "-143/41472",
+     "-139/31104"
+    ],
+    "c33": [
+     "-7/288",
+     "0",
+     "7/288"
+    ]
+   }
+  },
+  {
+   "profile": "random_rational_2",
+   "utilities": [
+    "319223/746496",
+    "33001/373248",
+    "-385225/746496"
+   ],
+   "kuhn3_utilities": [
+    "319223/746496",
+    "33001/373248",
+    "-385225/746496"
+   ],
+   "utilities_equal": true,
+   "residuals_exact": [
+    "562057/746496",
+    "260327/373248",
+    "947413/746496"
+   ],
+   "nashconv_exact": "169177/62208",
+   "derivative_vectors_equal_to_kuhn3": "48 / 48",
+   "selected_derivatives_U(x=1)-U(x=0)": {
+    "a11": [
+     "19/128",
+     "-56657/124416",
+     "38189/124416"
+    ],
+    "a41": [
+     "1375/5184",
+     "-1687/10368",
+     "-1063/10368"
+    ],
+    "b11": [
+     "757/2304",
+     "-47/576",
+     "-569/2304"
+    ],
+    "b31": [
+     "-4739/62208",
+     "19225/62208",
+     "-7243/31104"
+    ],
+    "c11": [
+     "3661/62208",
+     "-257/6912",
+     "-337/15552"
+    ],
+    "c33": [
+     "-3/128",
+     "0",
+     "3/128"
+    ]
+   }
+  }
+ ],
+ "witness_projection_b12_to_0": {
+  "r": [
+   "1/300",
+   "0",
+   "0"
+  ],
+  "expected_r1": "1/300",
+  "ok": true
+ },
+ "coordinated_deviation_case": {
+  "description": "P1 bets A and would fold after checking; P2 always bets after K; P3 never bets, folds to bets",
+  "kuhn3_coordinate_gradient_search_profitable": false,
+  "full_best_response_r1": "1/4",
+  "expected": "1/4 (6 A deals x 1 chip / 24)"
+ },
+ "kuhn_offpath_pole": {
+  "profile": "sub-family B, b11=b21=3/20, b32=2/5, c11=1/4, c33=1/5",
+  "root_analysis": {
+   "D_at_0": [
+    0.016666666666666666,
+    0.022916666666666665,
+    -0.03958333333333333
+   ],
+   "D_at_1": [
+    -0.15,
+    0.022916666666666665,
+    0.12708333333333333
+   ],
+   "cross_effect": [
+    -0.16666666666666666,
+    0.0,
+    0.16666666666666666
+   ],
+   "deviator": 1,
+   "theta_star": 0.1,
+   "theta_star_exact": "1/10",
+   "in_unit_interval": true,
+   "D_at_theta_star": [
+    0.0,
+    0.022916666666666665,
+    -0.022916666666666665
+   ]
+  },
+  "expected_root": "1/10 = 1/2 - b32",
+  "window_sweep_exact": [
+   {
+    "c33": "0",
+    "r": [
+     "1/30",
+     "0",
+     "0"
+    ],
+    "reach_c33": "0"
+   },
+   {
+    "c33": "1/20",
+    "r": [
+     "1/60",
+     "0",
+     "0"
+    ],
+    "reach_c33": "0"
+   },
+   {
+    "c33": "1/10",
+    "r": [
+     "0",
+     "0",
+     "0"
+    ],
+    "reach_c33": "0"
+   },
+   {
+    "c33": "3/20",
+    "r": [
+     "0",
+     "0",
+     "0"
+    ],
+    "reach_c33": "0"
+   },
+   {
+    "c33": "1/5",
+    "r": [
+     "0",
+     "0",
+     "0"
+    ],
+    "reach_c33": "0"
+   },
+   {
+    "c33": "29/80",
+    "r": [
+     "0",
+     "0",
+     "0"
+    ],
+    "reach_c33": "0"
+   },
+   {
+    "c33": "3/8",
+    "r": [
+     "1/960",
+     "0",
+     "0"
+    ],
+    "reach_c33": "0"
+   },
+   {
+    "c33": "1/2",
+    "r": [
+     "11/960",
+     "0",
+     "0"
+    ],
+    "reach_c33": "0"
+   },
+   {
+    "c33": "1",
+    "r": [
+     "17/320",
+     "0",
+     "0"
+    ],
+    "reach_c33": "0"
+   }
+  ],
+  "expected_window": "[1/10, 29/80] (Table 3: [1/2-b32, 1/2-b32+3/4(b11+b21)+beta/4])"
+ },
+ "expanded24": {
+  "game": {
+   "name": "expanded24",
+   "board": "2c 4d 6h 8s Tc",
+   "betting": {
+    "n_players": 3,
+    "prior_contrib": [
+     "1",
+     "1",
+     "1"
+    ],
+    "stacks": [
+     "1",
+     "1",
+     "1"
+    ],
+    "min_bet": "1",
+    "bet_sizes": [
+     "allin"
+    ],
+    "raise_sizes": [],
+    "max_raises": 0,
+    "allow_open_fold": false
+   },
+   "seats": [
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ],
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ],
+    [
+     "JJ",
+     "QQ",
+     "KK",
+     "AA"
+    ]
+   ],
+   "root_prior": {
+    "kind": "product",
+    "note": "specified prior: product of seat weights conditioned on card compatibility"
+   },
+   "payoff_convention": "net chips (big blinds) relative to the start of the hand: -(prior contribution + river contribution) + pot share; zero-sum at every leaf; split pots divided equally among tied best hands",
+   "scope": "conditional river continuation game; values are conditional on this root",
+   "counts": {
+    "hands_per_seat": [
+     24,
+     24,
+     24
+    ],
+    "legal_ordered_deals": 6480,
+    "decision_nodes": 12,
+    "terminal_histories_per_deal": 13,
+    "terminal_leaves": 84240,
+    "information_sets": 288,
+    "binary_information_sets": 288,
+    "deals_with_equal_strength_hands": 1296
+   },
+   "fingerprint": "163057113ca2e4c3"
+  },
+  "validate": {
+   "prior_sums_to_one_exactly": true,
+   "card_compatibility": 6480,
+   "chip_conservation_leaves": 84240,
+   "infoset_ids_unique": 288
+  },
+  "expected_counts_match": true,
+  "lifted_kuhn_family": {
+   "meaning": "every combo of a rank plays its Kuhn type's SGS-family strategy; exact residuals in the 24-hand game",
+   "rows": [
+    {
+     "profile": "canonical_beta0_corner",
+     "utilities": [
+      "-7/240",
+      "-1/48",
+      "1/20"
+     ],
+     "r_exact": [
+      "67/720",
+      "73/720",
+      "3/40"
+     ],
+     "r_float": [
+      0.09305555555555556,
+      0.10138888888888889,
+      0.075
+     ],
+     "nashconv_exact": "97/360",
+     "nashconv_float": 0.26944444444444443
+    },
+    {
+     "profile": "canonical_beta1_8",
+     "utilities": [
+      "-71/1920",
+      "-13/1920",
+      "7/160"
+     ],
+     "r_exact": [
+      "121/1152",
+      "503/5760",
+      "59/960"
+     ],
+     "r_float": [
+      0.10503472222222222,
+      0.08732638888888888,
+      0.06145833333333333
+     ],
+     "nashconv_exact": "731/2880",
+     "nashconv_float": 0.25381944444444443
+    },
+    {
+     "profile": "canonical_beta1_4_corner",
+     "utilities": [
+      "-43/960",
+      "7/960",
+      "3/80"
+     ],
+     "r_exact": [
+      "353/2880",
+      "211/2880",
+      "23/480"
+     ],
+     "r_float": [
+      0.12256944444444444,
+      0.07326388888888889,
+      0.04791666666666667
+     ],
+     "nashconv_exact": "39/160",
+     "nashconv_float": 0.24375
+    },
+    {
+     "profile": "subA_unequal",
+     "utilities": [
+      "-409/11520",
+      "-7/640",
+      "107/2304"
+     ],
+     "r_exact": [
+      "235/2304",
+      "527/5760",
+      "683/11520"
+     ],
+     "r_float": [
+      0.10199652777777778,
+      0.09149305555555555,
+      0.05928819444444444
+     ],
+     "nashconv_exact": "91/360",
+     "nashconv_float": 0.25277777777777777
+    },
+    {
+     "profile": "subB_interior",
+     "utilities": [
+      "-13/320",
+      "-1/96",
+      "49/960"
+     ],
+     "r_exact": [
+      "313/2880",
+      "131/1440",
+      "13/240"
+     ],
+     "r_float": [
+      0.10868055555555556,
+      0.09097222222222222,
+      0.05416666666666667
+     ],
+     "nashconv_exact": "731/2880",
+     "nashconv_float": 0.25381944444444443
+    },
+    {
+     "profile": "subC_b23",
+     "utilities": [
+      "-101/2304",
+      "-13/768",
+      "35/576"
+     ],
+     "r_exact": [
+      "887/11520",
+      "1123/11520",
+      "547/11520"
+     ],
+     "r_float": [
+      0.07699652777777778,
+      0.09748263888888889,
+      0.04748263888888889
+     ],
+     "nashconv_exact": "2557/11520",
+     "nashconv_float": 0.22196180555555556
+    }
+   ]
+  }
+ },
+ "wall_s": 29.6
+}
