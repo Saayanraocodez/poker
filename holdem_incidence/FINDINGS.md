@@ -29,6 +29,10 @@ and observed. The mechanism needs an action that some player **never takes with 
   - The certified silent branch ends **exactly at pot 3c\* ≈ 2.970210**, with c\* an algebraic number
     of degree 10 (§3.1). This is the end of that branch, not a proof that no other silent
     equilibrium exists above it.
+  - **For every pot in [4, 6] no P1-silent Nash equilibrium exists at all** (with a suit-symmetric
+    check part, and whatever the responses to P1's bet). This is proved by exact correlated-equilibrium
+    certificates valid on whole intervals of the pot, each replayed by an independent checker
+    (§3.2, THEORY.md Theorem 12). Pots in (2.970, 4) remain open.
 
 These are statements about the **specified conditional river games**, not about unrestricted
 Hold'em.
@@ -448,6 +452,90 @@ things are not excluded:
   permutations does not preserve deterrence.
 - correlated devices.
 
+### 3.2 No P1-silent equilibrium at any pot in [4, 6] (certified)
+
+Files: `results/silent_ce/` (one JSON per certificate or failed attempt, its log, and `check.json`),
+`scripts/silent_ce.py` (prover), `scripts/check_silent_ce.py` (independent checker).
+
+**The question.** §3.1 shows where one branch of P1-silent equilibria ends. Does *any* P1-silent
+Nash equilibrium exist at larger pots?
+
+**The method** (THEORY.md Theorem 12). A profile in which P1 never opens is Nash iff two things hold:
+- its check part is a Nash equilibrium of the restricted game G_c (P1 forced to check);
+- the 72 combo-level responses y to P1's all-in deter every P1 combo.
+
+**The certificate.** It uses weights λ over P1's four classes and correlated-equilibrium multipliers
+μ over the 12 class agents' (plan, deviation) pairs.
+- **B_s** = the maximum over class-level pure profiles of G_c of
+  L = Σ λ_k V_k + Σ μ (u_a(ρ) − u_a(τ)) on the plan ρ the agent plays.
+  - At any suit-symmetric Nash equilibrium of G_c every bracket is ≥ 0, so Σ λ_k V_k ≤ B_s.
+  - The check is exhaustive: 160,000 P2 × P3 class plans, after which P1's classes separate.
+- **B_y** = the minimum of Σ λ_k Ebet_k(y) over **all** 2⁷² combo-level response vertices.
+  - The function is multilinear, so the minimum is at a vertex.
+  - The check enumerates P2's 2²⁴ choices; P3's responses separate given them.
+- **If B_s < B_y**, deterrence would need Σ λ_k Ebet_k(y) ≤ Σ λ_k V_k ≤ B_s < B_y. That is
+  impossible, so no such equilibrium exists.
+
+The proposer is a float LP (HiGHS) with cutting planes, and it decides nothing.
+
+**Point results**:
+
+| c | pot | coarse (CCE) relaxation | correlated (CE) relaxation |
+|---|---|---|---|
+| 1 | 3 | margin −0.0275 | margin −0.0120 |
+| 11/10 | 3.3 | −0.0219 | −0.0078 |
+| 5/4 | 3.75 | −0.0135 | −0.0024 |
+| 13/10 | 3.9 | — | −0.00038 (no certificate) |
+| 4/3 | 4 | — | **certified**, gap 9.5e-4 |
+| 27/20 | 4.05 | — | **certified** |
+| 11/8 | 4.125 | −0.0065 | — |
+| 7/5 | 4.2 | −0.0051 | **certified** |
+| 29/20 | 4.35 | −0.0024 | **certified** |
+| 3/2 | 4.5 | **certified**, gap 2.0e-4 | — |
+| 2 | 6 | **certified**, gap 0.017 | — |
+
+**Whole intervals** (THEORY.md Proposition 13). With the multipliers fixed, every payoff is affine in
+c. So B_s is convex in c and B_y is concave in c, and one rational (λ, μ) that separates at both
+ends of an interval separates on all of it. Each interval below is certified exactly at both ends
+with one set of multipliers:
+
+| interval of c | pot | margins at the ends |
+|---|---|---|
+| [4/3, 27/20] | [4, 4.05] | 5.0e-4, 5.0e-4 |
+| [27/20, 7/5] | [4.05, 4.2] | 5.3e-4, 5.3e-4 |
+| [7/5, 29/20] | [4.2, 4.35] | 3.0e-3, 3.0e-3 |
+| [29/20, 3/2] | [4.35, 4.5] | 5.4e-3, 5.4e-3 |
+| [3/2, 2] | [4.5, 6] | 5.2e-5, 5.1e-5 |
+
+Their union is **c ∈ [4/3, 2]**: no P1-silent Nash equilibrium with a suit-symmetric check part, for
+any responses to P1's bet, at any pot from 4 to 6. One set of multipliers does not stretch over
+[4/3, 3/2] or [4/3, 2]; that is why the range is split.
+
+**Checks.**
+- **Independent re-check:** all 11 certificates (17 interval ends) pass (`results/silent_ce/check.json`).
+  - B_s is recomputed from the engine's class table with the opposite decoupling: P1 × P3
+    enumerated, P2 separating.
+  - B_y is recomputed from a rule-based combo enumeration, with no engine.
+  - Both equal the stored values exactly, and B_s < B_y every time.
+- **Table cross-check:** at every c used, the class model and the engine agree on all 9,600
+  restricted-game payoff entries.
+- **Negative control:** at c_lo = 1038163/2²⁰, where an exact P1-silent equilibrium is certified
+  (§3.1), the search finds no certificate (margin −0.0126), as it must.
+- The proposer's weights reproduce the threshold proof's: at pot 3 it settles on λ ∝ (13/180 for
+  JJ, 8/45 for AA).
+
+**Scope.**
+- Nash equilibrium only.
+- The check part is suit-symmetric; that is how a 24-hand profile reduces to the class game. The
+  responses to P1's bet are fully arbitrary.
+- Suit-asymmetric check parts are not excluded.
+
+**Why pots in (2.970, 4) stay open.** At c* an actual P1-silent equilibrium exists, so every valid
+certificate must fail there. Relaxation margins must therefore shrink to zero as c falls toward
+c*: the CE margin goes from −3.8e-4 at pot 3.9 to −0.012 at pot 3. Closing the gap needs an exact
+method rather than a stronger relaxation: an exhaustive support enumeration of the class-symmetric
+equilibria of G_c (32 class coordinates), followed by the deterrence check on each support.
+
 ---
 
 ## 4. Theory (THEORY.md)
@@ -473,6 +561,11 @@ check (`results/theory/theory_checks.json`):
   (Theorem 10). Exact in a 4-player river game.
 - **Exact equilibria can be 10⁻⁶ apart and differ in ρ by 68,750** (Proposition 11): equilibrium
   accuracy cannot control incidence near a pole.
+- **Silence decomposition and certificates** (Theorem 12): a first player's silence is a Nash
+  equilibrium iff the check part is one and the off-path responses deter. Lagrangian certificates
+  exclude it.
+- **Certificates extend from two endpoints to a whole parameter interval** (Proposition 13). Used
+  for every pot in [4, 6].
 
 ---
 
@@ -502,12 +595,14 @@ check (`results/theory/theory_checks.json`):
 
 ## 6. Unresolved, and the most informative next experiment
 
-- **Prove** (or refute) "no P1-silent equilibrium above c\*" (most informative next).
-  - §3.1 settles where the certified silent branch ends: exactly at c\* ≈ 0.990070, a degree-10
-    algebraic number.
-  - Whether some other P1-silent equilibrium survives above c\* is open: another on-path support, or
-    combo-asymmetric responses. That includes pot 3.
-  - The method would be the correlated-equilibrium certificate that settled (3,5)-Kuhn.
+- **Close the gap (c\*, 4/3), i.e. pots (2.970, 4)** (most informative next).
+  - §3.1: the certified silent branch ends exactly at c\*.
+  - §3.2: no P1-silent equilibrium with a suit-symmetric check part exists for c ∈ [4/3, 2]. The
+    responses to P1's bet may be arbitrary.
+  - In between, relaxations must fail as c → c\*. The exact route is a support enumeration of the
+    class-symmetric equilibria of the restricted game, with the deterrence check per support. Pot 3
+    lies in this gap.
+- **Suit-asymmetric check parts:** the certificates of §3.2 assume the check part is suit-symmetric.
 - **Refinement of the pot-1.5 witnesses:** which survive sequential rationality?
 - **The blocker route:** design polarised, card-overlapping ranges in which a public action is
   taken only by combos that block an opponent's hand.
@@ -533,6 +628,10 @@ python scripts/potsweep.py certify ; python scripts/potsweep.py polish potsweep 
 python scripts/potsweep.py summary ; python scripts/potsweep.py table ; python scripts/potsweep.py plot ; python scripts/verify_potsweep.py
 # the exact end of the silent branch (§3.1; ~1 min)
 python scripts/silent_threshold.py all
+# no P1-silent equilibrium at pots [4, 6] (FINDINGS 3.2)
+python scripts/silent_ce.py run 4/3 c4-3_ce          # one point (HINC_CE_MODE=cce for the coarse relaxation)
+python scripts/silent_ce.py interval 3/2 2 iv_c3-2_c2  # one certificate for a whole interval of c
+python scripts/check_silent_ce.py                       # independent re-check of every stored certificate
 ```
 Extend: add a config (pot, stacks, sizes, raise cap, ranges, weights) under `configs/` and point
 `hinc/plan.py` at it. Re-running any training command resumes from checkpoints.

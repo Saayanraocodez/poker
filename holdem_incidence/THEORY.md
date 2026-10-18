@@ -321,6 +321,66 @@ differences 6.875, 687.5 and 68,750.
 
 ---
 
+## Theorem 12 (silence decomposition and Lagrangian certificates). [P, E]
+
+Let player 1 move first, with a passive action K and an aggressive action B. Let G be the
+**restricted game** in which player 1's first move is forced to K. A profile σ in which player 1
+never plays B (at any type) is a Nash equilibrium iff:
+- **(a)** σ restricted to G is a Nash equilibrium of G; and
+- **(b)** the responses y to B (the behaviour at the information sets after B) **deter** every type
+  h of player 1: Ebet(h; y) ≤ V_h(σ), where V_h is player 1's value with type h when passing.
+
+**The certificate.** Take weights λ_h ≥ 0 and correlated-equilibrium multipliers μ ≥ 0 indexed by
+(agent a, plan ρ, deviation τ) of G, and define
+
+  L(s) = Σ_h λ_h V_h(s) + Σ μ_{a,ρ,τ} · P_s(a plays ρ) · (u_a(ρ, s_{−a}) − u_a(τ, s_{−a})).
+
+Suppose max_{s pure in G} L(s) < min_y Σ_h λ_h Ebet(h; y), with y ranging over the vertices of the
+response box. Then **no Nash equilibrium of the full game has player 1 silent.**
+
+*Proof.*
+- **The decomposition.**
+  - After B nothing is reached, so no player's utility depends on y (Theorem 3(1)).
+  - For i ≠ 1, the best-response values in the full game and in G coincide, since i's
+    information sets after B are unreached by every deviation of i.
+  - Player 1's best response separates by type into "pass and continue optimally" and "bet",
+    which gives (a) and (b).
+- **The bound.** Let σ be a silent equilibrium. Its restriction is Nash in G, so every bracket is
+  ≥ 0: a plan in the support of an optimal behavioural strategy is itself optimal, under perfect
+  recall. Hence Σ λ_h V_h(σ) ≤ L(σ) ≤ max_s L(s), where the last step holds because L is
+  multilinear in the agents' behaviour.
+- **The contradiction.** Deterrence (b), weighted by λ, gives
+  Σ λ_h Ebet(h; y) ≤ Σ λ_h V_h(σ) < min_y Σ λ_h Ebet(h; y), which is impossible.
+- The minimum over y is attained at a vertex: the responses enter multilinearly. ∎
+
+**The suit-symmetric version.** In the 24-hand game, let the agents be the hand classes. A
+suit-symmetric profile of G is Nash iff its class profile is Nash in the class game, because one
+combo's deviation gains exactly 1/6 of its class's. The certificate then excludes every silent
+equilibrium **whose check part is suit-symmetric**, with the responses y still arbitrary at combo
+level. This is the form used in FINDINGS §3.2. It is the same method that proved (3,5)-Kuhn has no
+P1-silent equilibrium (MASTER_DATA §16.11.5).
+
+---
+
+## Proposition 13 (certificates on whole parameter intervals). [P, E]
+
+Suppose the payoffs are affine in a parameter c, and the game tree does not depend on c. In the
+river games, c is the prior contribution: every payoff is −(c + river contribution) + (3c + bets)/k.
+If one (λ, μ) satisfies max_s L(s; c) < min_y Σ λ_h Ebet(h; y; c) at c = c₁ and at c = c₂, it
+satisfies it for every c ∈ [c₁, c₂].
+
+*Proof.* For fixed multipliers, each L(s; c) and each Σ λ_h Ebet(h; y; c) is affine in c. A maximum
+of finitely many affine functions is convex, and a minimum is concave. So min − max is concave, and a
+concave function positive at both ends of an interval is positive on all of it. ∎
+
+**Remark (why relaxations fail near a threshold).** If a silent equilibrium σ₀ exists at c₀, then
+for every (λ, μ), max_s L ≥ Σ λ_h V_h(σ₀) ≥ min_y Σ λ_h Ebet(h; y), using σ₀'s own deterring y.
+So no certificate exists at c₀. As c approaches the end c* of a silent branch, the best certificate
+margin tends to a value ≤ 0. Near c* only an exact method can decide. In the river game the CE
+margin goes from −0.012 at pot 3 to −3.8e-4 at pot 3.9, and it certifies from pot 4 on.
+
+---
+
 ## What the theory predicts, and what the experiments found
 
 - **Where P1 opens, the Kuhn route is closed.** In the 24-hand game at pot 3 and pot 6, and in

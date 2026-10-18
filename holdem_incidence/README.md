@@ -80,6 +80,10 @@ python scripts/potsweep.py polish_silent 61/64    # P1-silent variant with the d
 python scripts/potsweep.py summary ; python scripts/potsweep.py table ; python scripts/potsweep.py plot
 python scripts/verify_potsweep.py                 # independent re-check of every stored certificate
 python scripts/silent_threshold.py all            # exact end c* of the P1-silent branch + certificates at c* -/+ 2^-20
+# no P1-silent equilibrium at pots [4, 6] (FINDINGS 3.2)
+python scripts/silent_ce.py run 4/3 c4-3_ce          # one point (HINC_CE_MODE=cce for the coarse relaxation)
+python scripts/silent_ce.py interval 3/2 2 iv_c3-2_c2  # one certificate for a whole interval of c
+python scripts/check_silent_ce.py                       # independent re-check of every stored certificate
 ```
 
 Scratch runs: set `HINC_RESULTS=<dir>` to keep them out of `results/` (the project's scratch

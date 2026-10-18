@@ -1,0 +1,211 @@
+{
+ "independent_check": "Independent re-check of every certificate written by scripts/silent_ce.py.\n\nIndependence from the prover:\n* B_s (max of L over class-level pure profiles of the restricted game) is recomputed from the hinc\n  ENGINE's class table (the prover used the rule-based class model), with the opposite decoupling:\n  P1 x P3 class plans are enumerated (8^4 x 4^4 = 1,048,576) and P2's four classes separate.\n* B_y (min over all 2^72 combo-level responses of lambda . Ebet) is recomputed from a RULE-BASED\n  combo enumeration (the 24 combos of each seat built from the suits, card disjointness, and the\n  class model's payoff function), not from the engine the prover used.\nThe multipliers are re-parsed from the stored JSON text.  A certificate passes iff both recomputed\nbounds equal the stored ones exactly and B_s < B_y.\n\nusage:  python scripts/check_silent_ce.py        -> results/silent_ce/check.json",
+ "results": [
+  {
+   "certificate": "c27-20_ce.json",
+   "mode": "ce",
+   "ends": [
+    {
+     "c": "27/20",
+     "B_s_recomputed": "1512778291/3600000000",
+     "B_y_recomputed": "30382001/72000000",
+     "B_s_equal_stored": true,
+     "B_y_equal_stored": true,
+     "B_s_lt_B_y": true
+    }
+   ],
+   "passes": true
+  },
+  {
+   "certificate": "c29-20_ce.json",
+   "mode": "ce",
+   "ends": [
+    {
+     "c": "29/20",
+     "B_s_recomputed": "3297541099/7200000000",
+     "B_y_recomputed": "278677061/600000000",
+     "B_s_equal_stored": true,
+     "B_y_equal_stored": true,
+     "B_s_lt_B_y": true
+    }
+   ],
+   "passes": true
+  },
+  {
+   "certificate": "c2_cce.json",
+   "mode": "cce",
+   "ends": [
+    {
+     "c": "2",
+     "B_s_recomputed": "246295031/360000000",
+     "B_y_recomputed": "98609/140625",
+     "B_s_equal_stored": true,
+     "B_y_equal_stored": true,
+     "B_s_lt_B_y": true
+    }
+   ],
+   "passes": true
+  },
+  {
+   "certificate": "c3-2_cce.json",
+   "mode": "cce",
+   "ends": [
+    {
+     "c": "3/2",
+     "B_s_recomputed": "29134931/60000000",
+     "B_y_recomputed": "2732537/5625000",
+     "B_s_equal_stored": true,
+     "B_y_equal_stored": true,
+     "B_s_lt_B_y": true
+    }
+   ],
+   "passes": true
+  },
+  {
+   "certificate": "c4-3_ce.json",
+   "mode": "ce",
+   "ends": [
+    {
+     "c": "4/3",
+     "B_s_recomputed": "10349/25000",
+     "B_y_recomputed": "8298243/20000000",
+     "B_s_equal_stored": true,
+     "B_y_equal_stored": true,
+     "B_s_lt_B_y": true
+    }
+   ],
+   "passes": true
+  },
+  {
+   "certificate": "c7-5_ce.json",
+   "mode": "ce",
+   "ends": [
+    {
+     "c": "7/5",
+     "B_s_recomputed": "790276433/1800000000",
+     "B_y_recomputed": "33239237/75000000",
+     "B_s_equal_stored": true,
+     "B_y_equal_stored": true,
+     "B_s_lt_B_y": true
+    }
+   ],
+   "passes": true
+  },
+  {
+   "certificate": "iv_c27-20_c7-5.json",
+   "mode": "ce",
+   "ends": [
+    {
+     "c": "27/20",
+     "B_s_recomputed": "102475171/240000000",
+     "B_y_recomputed": "24047243/56250000",
+     "B_s_equal_stored": true,
+     "B_y_equal_stored": true,
+     "B_s_lt_B_y": true
+    },
+    {
+     "c": "7/5",
+     "B_s_recomputed": "88532739/200000000",
+     "B_y_recomputed": "33239237/75000000",
+     "B_s_equal_stored": true,
+     "B_y_equal_stored": true,
+     "B_s_lt_B_y": true
+    }
+   ],
+   "passes": true
+  },
+  {
+   "certificate": "iv_c29-20_c3-2.json",
+   "mode": "ce",
+   "ends": [
+    {
+     "c": "29/20",
+     "B_s_recomputed": "4644319/10000000",
+     "B_y_recomputed": "1651712/3515625",
+     "B_s_equal_stored": true,
+     "B_y_equal_stored": true,
+     "B_s_lt_B_y": true
+    },
+    {
+     "c": "3/2",
+     "B_s_recomputed": "115295051/240000000",
+     "B_y_recomputed": "2732537/5625000",
+     "B_s_equal_stored": true,
+     "B_y_equal_stored": true,
+     "B_s_lt_B_y": true
+    }
+   ],
+   "passes": true
+  },
+  {
+   "certificate": "iv_c3-2_c2.json",
+   "mode": "ce",
+   "ends": [
+    {
+     "c": "3/2",
+     "B_s_recomputed": "362804893/720000000",
+     "B_y_recomputed": "36284201/72000000",
+     "B_s_equal_stored": true,
+     "B_y_equal_stored": true,
+     "B_s_lt_B_y": true
+    },
+    {
+     "c": "2",
+     "B_s_recomputed": "118727551/180000000",
+     "B_y_recomputed": "39578927/60000000",
+     "B_s_equal_stored": true,
+     "B_y_equal_stored": true,
+     "B_s_lt_B_y": true
+    }
+   ],
+   "passes": true
+  },
+  {
+   "certificate": "iv_c4-3_c27-20.json",
+   "mode": "ce",
+   "ends": [
+    {
+     "c": "4/3",
+     "B_s_recomputed": "29973101/72000000",
+     "B_y_recomputed": "520993/1250000",
+     "B_s_equal_stored": true,
+     "B_y_equal_stored": true,
+     "B_s_lt_B_y": true
+    },
+    {
+     "c": "27/20",
+     "B_s_recomputed": "202306321/480000000",
+     "B_y_recomputed": "30382001/72000000",
+     "B_s_equal_stored": true,
+     "B_y_equal_stored": true,
+     "B_s_lt_B_y": true
+    }
+   ],
+   "passes": true
+  },
+  {
+   "certificate": "iv_c7-5_c29-20.json",
+   "mode": "ce",
+   "ends": [
+    {
+     "c": "7/5",
+     "B_s_recomputed": "89124507/200000000",
+     "B_y_recomputed": "10094293/22500000",
+     "B_s_equal_stored": true,
+     "B_y_equal_stored": true,
+     "B_s_lt_B_y": true
+    },
+    {
+     "c": "29/20",
+     "B_s_recomputed": "166121833/360000000",
+     "B_y_recomputed": "278677061/600000000",
+     "B_s_equal_stored": true,
+     "B_y_equal_stored": true,
+     "B_s_lt_B_y": true
+    }
+   ],
+   "passes": true
+  }
+ ],
+ "all_pass": true
+}

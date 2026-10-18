@@ -1246,6 +1246,14 @@ result).
 | 36-hand support, four boards and two asymmetric weightings | value and bluffs | own | 0 |
 | pot 3 with P1's opening forced to check (OP2) | forced silent | opponent-silent | exact poles at θ* = 27/32 (JJ bluff) and ≈ 0.829 (AA value), but the windows do not meet: no equilibrium carries them |
 
+**Where silence ends** (holdem_incidence/FINDINGS §3, 2026-10-17/18):
+- P1-silent exact equilibria (and with them the exact poles) exist from pot 1.5 up to the end of a
+  certified branch at pot 3c* ≈ 2.970210, where c* is algebraic of degree 10.
+- For **every pot in [4, 6] no P1-silent Nash equilibrium with a suit-symmetric check part
+  exists**, whatever the responses to P1's bet. This is proved by exact correlated-equilibrium
+  certificates valid on whole intervals of the pot, each replayed by an independent checker.
+- Pots in (2.970, 4) are open. Pot 3 lies in this gap.
+
 The off-path incidence mechanism survives beyond the four-type embedding exactly where Theorem 8
 says it can: in equilibria with an opponent-silent action. Other findings:
 - The Kuhn equilibria do not lift to the 24-hand game (exact NashConv 0.22–0.27 bb).
