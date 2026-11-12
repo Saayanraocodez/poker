@@ -1,0 +1,38 @@
+# Silent cell re-derived on a fresh clone (Linux, Python 3.13, 3 workers), 2026-11-11/12.
+# KUHN_MODE=nash KUHN_ORDER=bet KUHN_SUFFIX=R python enuml.py silent 3 silentR 4
+mode nash (strong rules only)   layer depth 4
+silent: top expansion -> 940 subtrees, 0 complete, 104s
+silent: exact frontier filter -> 184 subtrees survive (117s)
+   jobs 33 done (146 queued, 5 running, 0 handed back)  exact tests 538  killed 420 (78.1%)  leaves 23  192s
+   jobs 66 done (113 queued, 5 running, 0 handed back)  exact tests 1522  killed 1136 (74.6%)  leaves 194  263s
+   jobs 80 done (99 queued, 5 running, 0 handed back)  exact tests 1786  killed 1338 (74.9%)  leaves 206  324s
+   jobs 86 done (93 queued, 5 running, 0 handed back)  exact tests 2229  killed 1594 (71.5%)  leaves 366  408s
+   jobs 136 done (46 queued, 2 running, 0 handed back)  exact tests 2774  killed 2011 (72.5%)  leaves 459  468s
+   jobs 162 done (18 queued, 4 running, 0 handed back)  exact tests 3139  killed 2305 (73.4%)  leaves 518  528s
+   jobs 184 done (0 queued, 0 running, 0 handed back)  exact tests 4173  killed 3149 (75.5%)  leaves 610  644s
+silent: 610 leaves, 4173 exact tests (3149 killed), 644s  -> enum6_pat_silentR.npy
+   leaf 21  FAMILY  {'nE': 6, 'nMIX': 6, 'nDC': 15, 'priv': 1, 'nodes': 301}
+   leaf 245  FAMILY  {'nE': 7, 'nMIX': 7, 'nDC': 15, 'priv': 1, 'nodes': 301}
+   leaf 174  FAMILY  {'nE': 2, 'nMIX': 2, 'nDC': 26, 'priv': 1, 'nodes': 301}
+   leaf 247  FAMILY  {'nE': 6, 'nMIX': 6, 'nDC': 15, 'priv': 1, 'nodes': 301}
+   leaf 370  FAMILY  {'nE': 5, 'nMIX': 5, 'nDC': 16, 'priv': 2, 'nodes': 301}
+   leaf 249  FAMILY  {'nE': 2, 'nMIX': 2, 'nDC': 26, 'priv': 1, 'nodes': 301}
+   leaf 445  FAMILY  {'nE': 7, 'nMIX': 7, 'nDC': 14, 'nodes': 301}
+   leaf 453  FAMILY  {'nE': 5, 'nMIX': 5, 'nDC': 16, 'priv': 2, 'nodes': 301}
+   leaf 514  FAMILY  {'nE': 6, 'nMIX': 6, 'nDC': 16, 'priv': 2, 'nodes': 301}
+   leaf 466  FAMILY  {'nE': 6, 'nMIX': 6, 'nDC': 15, 'priv': 1, 'nodes': 301}
+   leaf 516  FAMILY  {'nE': 5, 'nMIX': 5, 'nDC': 16, 'priv': 2, 'nodes': 301}
+   leaf 522  FAMILY  {'nE': 3, 'nMIX': 3, 'nDC': 25, 'nodes': 301}
+silent: leaf verdicts {'EMPTY_GB': 2, 'EMPTY_BOX': 596, 'FAMILY': 12}   1735s
+
+# python certleaf.py silentR 3
+   610/610  {'EMPTY_BOX': 598, 'FAMILY': 12}  989s
+TOTAL 610 leaves: {'EMPTY_BOX': 598, 'FAMILY': 12}   verdict-class mismatches vs symleaf: 0   990s  -> cert_silentR.json.gz
+certleaf exit 0
+
+# python checkcert.py cert_silentR.json.gz
+checked 610 leaves: 610 verified {'EMPTY_BOX': 598, 'FAMILY': 12}, 0 failed  (4s)
+
+# The 12 FAMILY leaves of this run have the same MIX and DC label sets as the 12 leaves of nefull_systems.txt
+# (rerun leaf -> repo leaf): 174->18 453->62 370->70 249->72 466->77 514->97 516->99 245->196 247->198 522->211 21->440 445->469.
+# Leaf counts (610 here, 668 in the R ledger) depend on the worker count; the verdicts do not.

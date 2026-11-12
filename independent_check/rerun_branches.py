@@ -10,8 +10,11 @@ Each branch runs enumc7 with 1 worker; <processes> branches run side by side.  B
 time exceeds the third argument (default 130 s on the original 20-26 workers) are skipped: the six
 hard branches need hours.  Output: independent_check/rerun_ledger.txt (appended).
 
-Result of 2026-11-11 (Linux, Python 3.13, 4 cores): see rerun_ledger.txt -- every branch run has
-checkenum2 OK, 0 failed, 0 missing, and the same node / split / pkill / kill / leaf counts as the ledger.
+Result of 2026-11-11/12 (Linux, Python 3.13, 4 cores): rerun_ledger.txt -- 70 of the 77 branches re-derived
+(3,472 nodes, trees 0.9 MB gzipped in total), every one checkenum2 OK with 0 failed and 0 missing; 69 have
+the ledger's node / split / pkill / kill / leaf counts exactly, one (a11:0,a21:0,a31:1,a41:0) closes with a
+smaller tree (445 nodes against 484), so tree shapes are run-dependent on the larger branches.  Not re-run:
+the six hard branches and a11:0,a21:MIX,a31:0,a41:1 (29,593 nodes, hours on 4 cores).
 """
 import subprocess, sys, os, re, time
 from concurrent.futures import ThreadPoolExecutor
