@@ -443,7 +443,7 @@ wrong frame. Feasible directions split into **costly** (du_A < 0; ρ well define
 | direction | closed form | notes |
 |---|---|---|
 | `+e_{b₃₁}` | **ρ ≡ 3/5 exactly** | on the *entire* family; hand-derivable (Part 8) |
-| `+e_{c₃₁}` | `(2−4s)/(4−5s)`, s = b₁₁+b₂₁ | depends on b₁₁,b₂₁ only via their sum; hits 0 at s = ½ |
+| `+e_{c₃₁}` | `(2−4s−m)/(4−5s−m)`, s = b₁₁+b₂₁, m = b₂₃(1−b₂₁) | `(2−4s)/(4−5s)` where b₂₃ = 0 (then only b₁₁+b₂₁ matters; hits 0 at s = ½); corrected 2026-11-16, erratum 13 |
 | `+e_{a₃₁}` | ∈ [3/11, 2/5] | independent of c₁₁, b₃₂, c₃₃ |
 
 ## 7.4 Costless directions exist for everyone — only P2's preserve equilibrium [E,G]
@@ -481,7 +481,7 @@ common; costless directions that stay inside the equilibrium set belong to P2 al
 | `+e_{a₃₂}` | `b₂₁ = (1 − 8c₁₁b₁₁)/(4 − 8c₁₁)`; in sub-family A, b₂₁ = ¼ | **2.7e-15** | **2** | POLE |
 | `+e_{a₃₁}` | **no root** — no c₃₃ dependence at all, 48/48 cases | — | 1 | fails (i) |
 | `b₃₄` | root at b₃₁ = 1, but Table 3 pins b₃₁ = 0 | — | 2 | **fails (ii)** |
-| `c₂₂` | root at b₁₁ = b₂₁ = 0 **is** attainable | ρ ≡ 0.800 | 2 | **fails (iii)** |
+| `c₂₂` | root at b₁₁ = b₂₁ = 0 **is** attainable | ρ = (b₁₁+3b₂₁)/(b₁₁+4b₂₁) ∈ [¾, 1]; ≡ 0.800 on b₁₁ = b₂₁ | 2 | **fails (iii)** |
 | `a₁₁, a₂₁` when b₃₂ > ½ | `c₃₃* = ½ − b₃₂ < 0`, outside [0,1] | — | 1 | **fails (ii)** |
 
 **The a₂₂ root verification:**
@@ -3174,11 +3174,12 @@ each player:
 | `b14`, `b24` | `-1` | `= 0` | `[0, 1]` (private: in no Nash inequality) |
 | `b12`, `c13` | `-1` | `= 0` | `[0, 0.4173]`, `[0, 0.5269]` |
 | `a43` | `+4` | `= 1` | already pinned to 1 by Nash |
-| `b43`, `c43` | `+4` | `= 1` | `[0, 1]`, `[0.7750, 1]` |
+| `b43`, `c43` | `+4` | `= 1` | `[0, 1]` (free only where `b41 = 1`; 1 elsewhere), `[0.7750, 1]` |
 | `a44`, `c44` | `+5` | `= 1` | `[0, 1]` each |
-| `b44` | `+5` | `= 1` | `[17/32, 1]` |
+| `b44` | `+5` | `= 1` | `[0, 1]` (`[17/32, 1]` where `b41 < 1`; corrected 2026-11-16, erratum 12) |
 
-Thirteen of the eighteen have a nontrivial Nash window and eight of them the WHOLE of `[0,1]`:
+Thirteen of the eighteen have a nontrivial Nash window and ten of them the WHOLE of `[0,1]`
+(`a14`, `a24`, `c14`, `c24`, `b14`, `b24`, `a44`, `c44`, `b43`, `b44`; counted as eight before erratum 12):
 sequential rationality alone -- any refinement at all -- collapses thirteen dimensions of the
 equilibrium set to points.  (`b42 = 1` is not exact dominance but follows the same way:
 `D_{b42} / R_{b42} >= 4` everywhere, a robustly one-signed leading form.)

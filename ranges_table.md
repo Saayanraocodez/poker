@@ -17,8 +17,8 @@
 | `b33` | on path (Table 3) | [1/2, 7/8] | [1/2, 7/8] | [1/2ᶜ, 7/8] | [1/2, 3/4] |
 | `b41` | on path (Table 3) | [0, 1] | [0, 1] | [0, 1] | [0, 2/3] |
 | `b42` | off path | [31/40ᶜ, 1] | [0.7750ᶜ, 1] | [31/40ᶜ, 1] | [0.7750⁻, 1] |
-| `b43` | off path | [0ᶜ, 1] | [0⁻, 1] | [0⁻, 1] | [1, 1] |
-| `b44` | off path | [17/32ᶜ, 1] | [0.7797⁻, 1] | [17/32ᶜ, 1] | [4/5, 1] |
+| `b43` | off path | [0, 1] | [0, 1] | [0, 1] | [1, 1] |
+| `b44` | off path | [0, 1] | [0, 1] | [0, 1] | [4/5, 1] |
 | `c11` | on path (Table 3) | [0, 1/2] | [0, 0] | [0⁻, 1/2⁻] | [1/2, 1/2] |
 | `c12` | off path | [0, 0] | [0, 0] | [0, 0] | [0, 0] |
 | `c13` | off path | [0, 0.5269ᶜ] | [0, 0.5269⁻] | [0, 0.5268ᶜ] | [0, 0.3458ᶜ] |
@@ -33,5 +33,8 @@
 | `c42` | off path | [1, 1] | [1, 1] | [1, 1] | [1, 1] |
 | `c43` | off path | [0.7750ᶜ, 1] | [0.7752ᶜ, 1] | [0.7750ᶜ, 1] | [0.7750⁻, 1] |
 | `c44` | off path | [0, 1] | [0, 1] | [0, 1] | [0, 1] |
+
+‡ `b44` is free in [0, 1] in leaves 70, 440 (private, or own-unreached where `b41 = 1`). In the leaves where it is constrained: all [17/32ᶜ, 1], A [0.7797⁻, 1], B [17/32ᶜ, 1], C [4/5, 1].
+‡ `b43` equals 1 wherever `b41 < 1` (a reached call with the top card); in the two leaves with `b41 = 1` (70, 440) it is own-unreached and free.
 
 Marks: a bare number is attained (exact rational witness in the leaf, verified); ⁻ = certified strict bound (not attained); ᶜ = certified bound, attainment undecided at the search precision (the true extremum lies between the best known equilibrium value and this bound).

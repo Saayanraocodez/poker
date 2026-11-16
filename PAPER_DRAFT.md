@@ -477,7 +477,7 @@ The twelve systems are written out in `nefull_systems.txt`. Their coordinate pro
 `checknefull.py`, with exact witnesses where a bound is attained.
 
 **Table 4 — the windows.** Marks: bare = attained (exact witness); ⁻ = certified strict bound, not
-attained; ᶜ = certified bound with attainment undecided.
+attained; ᶜ = certified bound with attainment undecided; ‡ = free where `b41 = 1` (note below the table).
 
 | coordinate | role | all equilibria | A | B | C |
 |---|---|---|---|---|---|
@@ -498,8 +498,8 @@ attained; ᶜ = certified bound with attainment undecided.
 | b33 | on path | [1/2, 7/8] | [1/2, 7/8] | [1/2ᶜ, 7/8] | [1/2, 3/4] |
 | b41 | on path | [0, 1] | [0, 1] | [0, 1] | [0, 2/3] |
 | b42 | off path | [31/40ᶜ, 1] | [0.7750ᶜ, 1] | [31/40ᶜ, 1] | [0.7750⁻, 1] |
-| b43 | off path | [0ᶜ, 1] | [0⁻, 1] | [0⁻, 1] | [1, 1] |
-| b44 | off path | [17/32ᶜ, 1] | [0.7797⁻, 1] | [17/32ᶜ, 1] | [4/5, 1] |
+| b43 | off path | [0, 1]‡ | [0, 1]‡ | [0, 1]‡ | [1, 1] |
+| b44 | off path | [0, 1]‡ | [0, 1]‡ | [0, 1]‡ | [4/5, 1] |
 | c11 | on path | [0, 1/2] | [0, 0] | [0⁻, 1/2⁻] | [1/2, 1/2] |
 | c12 | off path | [0, 0] | [0, 0] | [0, 0] | [0, 0] |
 | c13 | off path | [0, 0.5269ᶜ] | [0, 0.5269⁻] | [0, 0.5268ᶜ] | [0, 0.3458ᶜ] |
@@ -515,13 +515,19 @@ attained; ᶜ = certified bound with attainment undecided.
 | c43 | off path | [0.7750ᶜ, 1] | [0.7752ᶜ, 1] | [0.7750ᶜ, 1] | [0.7750⁻, 1] |
 | c44 | off path | [0, 1] | [0, 1] | [0, 1] | [0, 1] |
 
+‡ `b43` and `b44` are own-unreached where `b41 = 1` (`b11 = b21 = 1/4`), and Theorem 5 frees them there: the
+family point `b11 = b21 = 1/4` with `b43 = b44 = 0` is exactly Nash. Where `b41 < 1`, `b43 = 1` and
+`b44 ≥ 17/32ᶜ` (A: `≥ 0.7797⁻`, B: `≥ 17/32ᶜ`, C: `≥ 4/5`). *(Corrected 2026-11-16, erratum 12: the earlier rows
+left out the leaves in which the coordinate is private or own-unreached.)*
+
 **How to read it:**
 - **Pinned although off path.** `a13 = c12 = c22 = 0` and `a43 = c42 = 1` in every equilibrium: the
   other players' deterrence pins them.
 - **Free well beyond Table 2.** The responses to P1's bet that Table 2 sets to 0 range up to
   `b12 ≈ 0.42`, `b22 ≈ 0.58`, `c13 ≈ 0.53` and `c23 = 7/12`. The top-card calls `b42` and `c43` only
   need ≥ ≈ 0.775.
-- **Wide windows.** `b32` and `c33` range over [0, 15/16], and `b44 ≥ 17/32`.
+- **Wide windows.** `b32` and `c33` range over [0, 15/16]. `b44 ≥ 17/32` wherever `b41 < 1`; at `b41 = 1`
+  (`b11 = b21 = 1/4`) P2 never checks the top card, so `b43` and `b44` are free.
 - **Sub-family C is the most restricted:** `b41 ≤ 2/3`, and `b32, c33 ≤ 19/24`.
 - **The corner leaves** (`b11 = b21 = 0`) pin the responses to P1's bet exactly to Table 2.
 
@@ -552,7 +558,7 @@ properness, which orders whole pure strategies across information sets, can sele
    - `c = +5` for `x44`.
 
    Each is pinned in every sequential equilibrium. Also `b42 = 1`, since `D_b42 / R_b42 ≥ 4`.
-   Thirteen of these have a nontrivial Nash window, and eight of those windows are all of [0, 1].
+   Thirteen of these have a nontrivial Nash window, and ten of those windows are all of [0, 1].
 2. **Closure.** Substituting and recomputing settles 7–12 more coordinates per leaf, including
    `b44 = 1` and the "private" `b24 = b14 = 0`.
 3. **The knife-edges.** After the closure, the unreached coordinates' leading coefficients are *the
@@ -677,7 +683,8 @@ exists, `ρ ≡ 1`, and no pole is possible. **[P]**
 
 **Exact closed forms** **[E]**:
 - `ρ_{P2→P1}(+e_b31) ≡ 3/5` on the entire family (worked by hand in Appendix A);
-- `ρ_{P3→P2}(+e_c31) = (2 − 4s)/(4 − 5s)`, with `s = b11 + b21`;
+- `ρ_{P3→P2}(+e_c31) = (2 − 4s − m)/(4 − 5s − m)`, with `s = b11 + b21` and `m = b23(1 − b21)`; this is
+  `(2 − 4s)/(4 − 5s)` wherever `b23 = 0` (sub-families A and B);
 - `ρ_{P1→P3}(+e_a31) ∈ [3/11, 2/5]`.
 
 ### 9.4 Off-path parameters decide on-path incidence **[E]**
@@ -720,7 +727,7 @@ a11/a21, its upper bound to kill a41, and both are attainable.
 
 **Negative controls**, one per clause:
 - `b34` fails (ii): its root is at `b31 = 1`, which Table 3 pins to 0.
-- `c22` fails (iii): ρ ≡ 0.8, then 0/0.
+- `c22` fails (iii): `ρ = (b11 + 3 b21)/(b11 + 4 b21)` stays in [3/4, 1] (4/5 on `b11 = b21`), then 0/0 at the corner.
 - a11 with `b32 > 1/2` fails (ii): the root is below 0.
 
 **Census over all 48 coordinates:**
@@ -3239,6 +3246,8 @@ python ident_probe.py
 
 ### F.2 Errata to this project's own earlier claims (each caught by a control or a checker)
 
+*(Errata 12–14 were found on 2026-11-11 by an independent re-implementation, `independent_check/`.)*
+
 | # | claim | what was wrong | MASTER_DATA |
 |---|---|---|---|
 | 3 | `c41 = 1` is dominance-forced | no: `du3/dc41 = 0` exactly at a profile with reach 0.25; the scan excluded it by interiority | §15.2 |
@@ -3250,6 +3259,9 @@ python ident_probe.py
 | 9 | "984 leaves carry certified equilibria" | 12 (LM points on the MIX boundary) | §16.2 |
 | 10 | interval reasoning will decide the residual leaves | never, for family-adjacent leaves; exact tests decide them | §16.2 |
 | 11 | McCormick rows on squared monomials | a dict literal dropped a coefficient (found by the checker) | §16.8 |
+| 12 | Table 4: `b44 ∈ [17/32, 1]` over all equilibria (and "not attained" at `b43 = 0`) | the union ran only over leaves with a range certificate; `b43`, `b44` are private / own-unreached and free where `b41 = 1` (exact witness: `b11 = b21 = 1/4`, `b43 = b44 = 0`) | PAPER_KIT §7.2 note ‡ |
+| 13 | `ρ_{P3→P2}(+e_c31) = (2 − 4s)/(4 − 5s)` on the whole family | holds only where `b23 = 0`; the exact form is `(2 − 4s − m)/(4 − 5s − m)`, `m = b23(1 − b21)` | §7.3 |
+| 14 | `ρ(c22) ≡ 0.8` | only on `b11 = b21`; in general `(b11 + 3 b21)/(b11 + 4 b21) ∈ [3/4, 1]` | §7.5 |
 
 ### F.3 Hypotheses tested and refuted (MASTER_DATA Part 11)
 
@@ -3789,7 +3801,7 @@ wrong frame. Feasible directions split into **costly** (du_A < 0; ρ well define
 | direction | closed form | notes |
 |---|---|---|
 | `+e_{b₃₁}` | **ρ ≡ 3/5 exactly** | on the *entire* family; hand-derivable (Part 8) |
-| `+e_{c₃₁}` | `(2−4s)/(4−5s)`, s = b₁₁+b₂₁ | depends on b₁₁,b₂₁ only via their sum; hits 0 at s = ½ |
+| `+e_{c₃₁}` | `(2−4s−m)/(4−5s−m)`, s = b₁₁+b₂₁, m = b₂₃(1−b₂₁) | `(2−4s)/(4−5s)` where b₂₃ = 0 (then only b₁₁+b₂₁ matters; hits 0 at s = ½); corrected 2026-11-16, erratum 13 |
 | `+e_{a₃₁}` | ∈ [3/11, 2/5] | independent of c₁₁, b₃₂, c₃₃ |
 
 ## 7.4 Costless directions exist for everyone — only P2's preserve equilibrium [E,G]
@@ -3827,7 +3839,7 @@ common; costless directions that stay inside the equilibrium set belong to P2 al
 | `+e_{a₃₂}` | `b₂₁ = (1 − 8c₁₁b₁₁)/(4 − 8c₁₁)`; in sub-family A, b₂₁ = ¼ | **2.7e-15** | **2** | POLE |
 | `+e_{a₃₁}` | **no root** — no c₃₃ dependence at all, 48/48 cases | — | 1 | fails (i) |
 | `b₃₄` | root at b₃₁ = 1, but Table 3 pins b₃₁ = 0 | — | 2 | **fails (ii)** |
-| `c₂₂` | root at b₁₁ = b₂₁ = 0 **is** attainable | ρ ≡ 0.800 | 2 | **fails (iii)** |
+| `c₂₂` | root at b₁₁ = b₂₁ = 0 **is** attainable | ρ = (b₁₁+3b₂₁)/(b₁₁+4b₂₁) ∈ [¾, 1]; ≡ 0.800 on b₁₁ = b₂₁ | 2 | **fails (iii)** |
 | `a₁₁, a₂₁` when b₃₂ > ½ | `c₃₃* = ½ − b₃₂ < 0`, outside [0,1] | — | 1 | **fails (ii)** |
 
 **The a₂₂ root verification:**
@@ -6520,11 +6532,12 @@ each player:
 | `b14`, `b24` | `-1` | `= 0` | `[0, 1]` (private: in no Nash inequality) |
 | `b12`, `c13` | `-1` | `= 0` | `[0, 0.4173]`, `[0, 0.5269]` |
 | `a43` | `+4` | `= 1` | already pinned to 1 by Nash |
-| `b43`, `c43` | `+4` | `= 1` | `[0, 1]`, `[0.7750, 1]` |
+| `b43`, `c43` | `+4` | `= 1` | `[0, 1]` (free only where `b41 = 1`; 1 elsewhere), `[0.7750, 1]` |
 | `a44`, `c44` | `+5` | `= 1` | `[0, 1]` each |
-| `b44` | `+5` | `= 1` | `[17/32, 1]` |
+| `b44` | `+5` | `= 1` | `[0, 1]` (`[17/32, 1]` where `b41 < 1`; corrected 2026-11-16, erratum 12) |
 
-Thirteen of the eighteen have a nontrivial Nash window and eight of them the WHOLE of `[0,1]`:
+Thirteen of the eighteen have a nontrivial Nash window and ten of them the WHOLE of `[0,1]`
+(`a14`, `a24`, `c14`, `c24`, `b14`, `b24`, `a44`, `c44`, `b43`, `b44`; counted as eight before erratum 12):
 sequential rationality alone -- any refinement at all -- collapses thirteen dimensions of the
 equilibrium set to points.  (`b42 = 1` is not exact dominance but follows the same way:
 `D_{b42} / R_{b42} >= 4` everywhere, a robustly one-signed leading form.)
@@ -7369,8 +7382,8 @@ emptiness certificate checked by `checknefull.py`, attained bounds with an exact
 | `b33` | on path (Table 3) | [1/2, 7/8] | [1/2, 7/8] | [1/2ᶜ, 7/8] | [1/2, 3/4] |
 | `b41` | on path (Table 3) | [0, 1] | [0, 1] | [0, 1] | [0, 2/3] |
 | `b42` | off path | [31/40ᶜ, 1] | [0.7750ᶜ, 1] | [31/40ᶜ, 1] | [0.7750⁻, 1] |
-| `b43` | off path | [0ᶜ, 1] | [0⁻, 1] | [0⁻, 1] | [1, 1] |
-| `b44` | off path | [17/32ᶜ, 1] | [0.7797⁻, 1] | [17/32ᶜ, 1] | [4/5, 1] |
+| `b43` | off path | [0, 1]‡ | [0, 1]‡ | [0, 1]‡ | [1, 1] |
+| `b44` | off path | [0, 1]‡ | [0, 1]‡ | [0, 1]‡ | [4/5, 1] |
 | `c11` | on path (Table 3) | [0, 1/2] | [0, 0] | [0⁻, 1/2⁻] | [1/2, 1/2] |
 | `c12` | off path | [0, 0] | [0, 0] | [0, 0] | [0, 0] |
 | `c13` | off path | [0, 0.5269ᶜ] | [0, 0.5269⁻] | [0, 0.5268ᶜ] | [0, 0.3458ᶜ] |
@@ -7388,13 +7401,16 @@ emptiness certificate checked by `checknefull.py`, attained bounds with an exact
 
 Marks: a bare number is attained (exact rational witness in the leaf, verified); ⁻ = certified strict bound (not attained); ᶜ = certified bound, attainment undecided at the search precision (the true extremum lies between the best known equilibrium value and this bound).
 
+‡ Corrected 2026-11-16 (erratum 12). `b43` and `b44` are own-unreached where `b41 = 1` (`b11 = b21 = 1/4`, leaves 70 and 440) and Theorem 5 frees them there, so over the Nash set both range over all of `[0, 1]`: the family point `b11 = b21 = 1/4` with `b44 = 0` (or with `b43 = b44 = 0`) is exactly Nash (`independent_check/check_34.py`, section 4). Where `b41 < 1`, `b43 = 1` and `b44 ≥ 17/32ᶜ` (A: `≥ 0.7797⁻`, B: `≥ 17/32ᶜ`, C: `≥ 4/5`). The earlier rows took the union only over the leaves in which a coordinate has a range certificate, leaving out the leaves where it is private or own-unreached (`ranges_table.py`, fixed).
+
 Read with §4: `a13`, `c12`, `c22` are 0 and `a43`, `c42` are 1 in *every* equilibrium although they
 are off the path — the deterrence inequalities pin them (a fold with the worst card facing a
 bet, a call with the best card, are forced by the *other* players' incentives). `b12`, `b22`,
 `c13`, `c23` — the responses to P1's bet that Table 2 sets to 0 — are free up to ≈ 0.42, 0.58,
 0.53, 7/12 respectively; `b42`, `c43` (calls with the top card) only need ≥ ≈ 0.775; `b32`,
-`c33` range over `[0, 15/16]`; `b44 ≥ 17/32` (≥ 4/5 wherever `a32 = 0` binds); `a14`, `a24`, `c14`,
-`c24`, `c34`, `c44`, `a44`, `b43` are unconstrained. Sub-family C is the most restricted
+`c33` range over `[0, 15/16]`; `b44 ≥ 17/32` wherever `b41 < 1` (≥ 4/5 wherever `a32 = 0` binds) and is free at
+`b41 = 1`, where P2 never checks the top card (‡); `a14`, `a24`, `c14`, `c24`, `c34`, `c44`, `a44` are unconstrained;
+`b43` is 1 wherever `b41 < 1` and free at `b41 = 1`. Sub-family C is the most restricted
 (`b41 ≤ 2/3`, `b32`, `c33 ≤ 19/24`). At the three corner leaves (`b11 = b21 = 0`) the responses to P1's bet
 are pinned to Table 2 (`b12 = b22 = c13 = c23 = 0`, `b42 = c43 = 1`) while `b32`, `c33 ∈ [0, 1/2]`,
 `a33 ∈ [0, 1/2]` and `b44 ≥ 4/5` keep a window: the deterrence of P1's bet has no slack at the
@@ -7426,7 +7442,7 @@ Kreps–Wilson consistency in closed form.
    (`x43`) or `+5` (`x44`) — the same chip difference at **every node** of the set, under every
    belief — so each is pinned in every sequential equilibrium; and `b42 = 1` because
    `D_{b42}/R_{b42} ≥ 4 > 0` everywhere. Thirteen of the eighteen have a nontrivial Nash window
-   (Table 4), eight of them all of `[0,1]`: the refinement collapses thirteen dimensions to
+   (Table 4), ten of them all of `[0,1]`: the refinement collapses thirteen dimensions to
    points.
 2. *(closure)* Substituting those and recomputing the leading coefficients settles 7–12
    coordinates per leaf, including `b44 = 1` and the "private" `b24 = b14 = 0` that appear in
@@ -7588,9 +7604,11 @@ too (B gains more than A loses); ρ > 1 means C gains more than A loses.
 
 - `ρ_{P2→P1}(+e_{b₃₁}) ≡ 3/5` **exactly, on the entire family** — every sub-family, every
   value of every free parameter. Derived by hand in §9.
-- `ρ_{P3→P2}(+e_{c₃₁}) = (2 − 4s)/(4 − 5s)` with `s = b₁₁ + b₂₁`; it depends on `b₁₁` and
-  `b₂₁` only through their sum, is independent of `c₁₁`, and reaches exactly 0 at `s = ½`,
-  the extreme corner `b₁₁ = b₂₁ = ¼` of the family.
+- `ρ_{P3→P2}(+e_{c₃₁}) = (2 − 4s − m)/(4 − 5s − m)` with `s = b₁₁ + b₂₁` and `m = b₂₃(1 − b₂₁)`, from
+  `du/dc₃₁ = κ(2 − s, 2 − 4s − m, m − 4 + 5s)`. Where `b₂₃ = 0` (sub-families A and B, and C at `b₂₃ = 0`) it is
+  `(2 − 4s)/(4 − 5s)`: a function of `b₁₁ + b₂₁` alone, independent of `c₁₁`, reaching exactly 0 at `s = ½`,
+  the extreme corner `b₁₁ = b₂₁ = ¼` of the family. *(Corrected 2026-11-16, erratum 13: the earlier statement
+  omitted `m` and fails at every sub-family-C point with `b₂₃ > 0`.)*
 - `ρ_{P1→P3}(+e_{a₃₁}) ∈ [3/11, 2/5]`, depending on `b₁₁` and `b₂₁` separately, and
   independent of `c₁₁, b₃₂, c₃₃`.
 
@@ -7653,7 +7671,7 @@ Each direction is perfectly well behaved at the *other's* pole. The pole is not 
 | control | clause it fails | evidence |
 |---|---|---|
 | `b₃₄` (round 2) | (ii) not attainable | root at `b₃₁ = 1`, Table 3 pins `b₃₁ = 0`; `du₂/db₃₄ ≡ −0.0208`, ρ ≡ 1 |
-| `c₂₂` (round 2) | (iii) numerator vanishes | root at `b₁₁=b₂₁=0` **is** attainable, but ρ ≡ 0.800 exactly as `b₁₁=b₂₁ → 0`, then 0/0 |
+| `c₂₂` (round 2) | (iii) numerator vanishes | root at `b₁₁=b₂₁=0` **is** attainable, but `ρ = (b₁₁+3b₂₁)/(b₁₁+4b₂₁)` stays in [¾, 1] (exactly 0.800 along `b₁₁=b₂₁ → 0`), then 0/0 |
 | `a₁₁`, `a₂₁` at `b₃₂ > ½` | (ii) not attainable | `c₃₃* = ½ − b₃₂ < 0`, outside [0,1] |
 
 **Census over all 48 parameters:**
@@ -8592,7 +8610,7 @@ in the opening round when the family says to check* (`a31` / `b31` / `c31`):
 |---|---|---|---|---|
 | P1 | `+e_{a31}` | P3 | `0.273 → 0.400`, decreasing; depends on `b11` and `b21` separately, not on `c11`, `b32`, `c33` | P1's loss splits ~⅔ to P2, ~⅓ to P3 |
 | P2 | `+e_{b31}` | P1 | **exactly 3/5, everywhere in the family** | 60 % of P2's loss to P1, 40 % to P3 |
-| P3 | `+e_{c31}` | P2 | **`(2 − 4s)/(4 − 5s)` with `s = b11 + b21`**, verified exactly; independent of `c11` | falls `0.5 → 0` as `s` runs `0 → 1/2`; at the family's extreme corner `b11 = b21 = 1/4` all of P3's loss goes to P1 |
+| P3 | `+e_{c31}` | P2 | **`(2 − 4s − m)/(4 − 5s − m)` with `s = b11 + b21`, `m = b23(1 − b21)`**, verified exactly; independent of `c11`; equal to `(2 − 4s)/(4 − 5s)` where `b23 = 0` (corrected 2026-11-16) | falls `0.5 → 0` as `s` runs `0 → 1/2`; at the family's extreme corner `b11 = b21 = 1/4` all of P3's loss goes to P1 |
 
 The `c31` row explains the "touches 0 but does not flip" entry in (2): `ρ = 0` exactly at
 `s = b11 + b21 = 1/2`, which is reachable only at the single corner `b11 = b21 = 1/4`. The
@@ -9006,7 +9024,7 @@ Three **negative controls** show the criterion is not automatic:
 | control | why no pole |
 |---|---|
 | `b34` (round-2) | root at `b31 = 1`, but Table 3 pins `b31 = 0` → boundary **not attainable**. `du2/db34 ≡ −0.0208`, ρ ≡ 1 |
-| `c22` (round-2) | root at `b11 = b21 = 0` **is** attainable, but the numerator vanishes at the same rate: ρ ≡ 0.800 exactly as `b11 = b21 → 0`, then 0/0 at the corner |
+| `c22` (round-2) | root at `b11 = b21 = 0` **is** attainable, but the numerator vanishes at the same rate: `ρ = (b11 + 3 b21)/(b11 + 4 b21)` stays in `[3/4, 1]` (exactly 0.800 as `b11 = b21 → 0`), then 0/0 at the corner |
 | `a11`/`a21` when `b32 > 1/2` | `c33* = 1/2 − b32 < 0` falls outside `[0,1]` → boundary **not attainable** |
 
 > **The criterion.** ρ has a pole at a deviation `x` iff **(i)** `du_owner/dx = 0` has a root

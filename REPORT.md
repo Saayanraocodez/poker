@@ -175,7 +175,7 @@ in the opening round when the family says to check* (`a31` / `b31` / `c31`):
 |---|---|---|---|---|
 | P1 | `+e_{a31}` | P3 | `0.273 → 0.400`, decreasing; depends on `b11` and `b21` separately, not on `c11`, `b32`, `c33` | P1's loss splits ~⅔ to P2, ~⅓ to P3 |
 | P2 | `+e_{b31}` | P1 | **exactly 3/5, everywhere in the family** | 60 % of P2's loss to P1, 40 % to P3 |
-| P3 | `+e_{c31}` | P2 | **`(2 − 4s)/(4 − 5s)` with `s = b11 + b21`**, verified exactly; independent of `c11` | falls `0.5 → 0` as `s` runs `0 → 1/2`; at the family's extreme corner `b11 = b21 = 1/4` all of P3's loss goes to P1 |
+| P3 | `+e_{c31}` | P2 | **`(2 − 4s − m)/(4 − 5s − m)` with `s = b11 + b21`, `m = b23(1 − b21)`**, verified exactly; independent of `c11`; equal to `(2 − 4s)/(4 − 5s)` where `b23 = 0` (corrected 2026-11-16) | falls `0.5 → 0` as `s` runs `0 → 1/2`; at the family's extreme corner `b11 = b21 = 1/4` all of P3's loss goes to P1 |
 
 The `c31` row explains the "touches 0 but does not flip" entry in (2): `ρ = 0` exactly at
 `s = b11 + b21 = 1/2`, which is reachable only at the single corner `b11 = b21 = 1/4`. The
@@ -589,7 +589,7 @@ Three **negative controls** show the criterion is not automatic:
 | control | why no pole |
 |---|---|
 | `b34` (round-2) | root at `b31 = 1`, but Table 3 pins `b31 = 0` → boundary **not attainable**. `du2/db34 ≡ −0.0208`, ρ ≡ 1 |
-| `c22` (round-2) | root at `b11 = b21 = 0` **is** attainable, but the numerator vanishes at the same rate: ρ ≡ 0.800 exactly as `b11 = b21 → 0`, then 0/0 at the corner |
+| `c22` (round-2) | root at `b11 = b21 = 0` **is** attainable, but the numerator vanishes at the same rate: `ρ = (b11 + 3 b21)/(b11 + 4 b21)` stays in `[3/4, 1]` (exactly 0.800 as `b11 = b21 → 0`), then 0/0 at the corner |
 | `a11`/`a21` when `b32 > 1/2` | `c33* = 1/2 − b32 < 0` falls outside `[0,1]` → boundary **not attainable** |
 
 > **The criterion.** ρ has a pole at a deviation `x` iff **(i)** `du_owner/dx = 0` has a root
