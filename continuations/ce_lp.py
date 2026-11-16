@@ -21,8 +21,9 @@ from scipy.optimize import linprog
 import g34
 
 IX = g34.IX; ND = g34.ND; DEALS = g34.DEALS
-rounds = int(sys.argv[1]) if len(sys.argv) > 1 else 400
-seed = int(sys.argv[2]) if len(sys.argv) > 2 else 0
+_main = __name__ == '__main__'
+rounds = int(sys.argv[1]) if _main and len(sys.argv) > 1 else 400
+seed = int(sys.argv[2]) if _main and len(sys.argv) > 2 else 0
 rng = np.random.default_rng(seed)
 g = g34.Game(1.0)
 
@@ -207,6 +208,6 @@ if __name__ == "__main__":
     S, res = dual_lp(cols, M)
     z = res.x[-1]; pi = -res.ineqlin.marginals
     supp = [(list(map(int, S[j])), float(pi[j])) for j in np.argsort(-pi) if pi[j] > 1e-10]
-    json.dump(dict(bound=float(z), history=hist, mu=res.x[:-1].tolist(), support=supp, plans=[[list(p) for p in P] for P in PL], agents=AG, rows=ROWS, M=M),
+    json.dump(dict(bound=float(z), history=hist, mu=res.x[:-1].tolist(), support=supp, profiles=[list(map(int, s_)) for s_ in cols], plans=[[list(p) for p in P] for P in PL], agents=AG, rows=ROWS, M=M),
               open('ce_lp_%d.json' % seed, 'w'))
     print("final bound z = %.10f ; primal support %d profiles, P(P1 bets) under it = %.8f" % (z, len(supp), sum(w * fobj(tuple(s_)) for s_, w in supp)))

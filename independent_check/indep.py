@@ -30,8 +30,11 @@ def actor(h):
     return (ib + 1 + answered) % 3
 
 
+ANTE = 1          # every player's ante; the bet is 1.  The standard game is ANTE = 1 (set indep.ANTE to study other pots)
+
+
 def payoff(cards, h):
-    contrib = [1, 1, 1]
+    contrib = [ANTE, ANTE, ANTE]
     folded = [False] * 3
     if 'B' in h:
         ib = h.index('B')
