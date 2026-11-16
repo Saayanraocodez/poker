@@ -14,6 +14,10 @@ chain of verified links makes every recorded box sound by induction down the tre
     node's on 0/1/MIX and are DC elsewhere, starting from a box that CONTAINS the node's recorded box;
   * leaf: no unassigned coordinate; a leaf certificate (checkcert.check_leaf).
 Coverage: every child of every split has exactly one record.
+The ROOT is bound to the cell the file claims to cover (2026-11-16): the header's "spec" must name each of
+a11, a21, a31, a41 once with a label 0 / 1 / MIX, and the header's labels must be exactly those four and
+unassigned everywhere else -- a header with extra labels would silently prove a smaller set empty.
+check81.py runs this over a set of trees and checks that the 81 opening cells are all covered.
 
 usage:  python checkenum2.py enumc_<tag>.jsonl.gz [workers]
 """
@@ -22,6 +26,24 @@ from fractions import Fraction as F
 import checkcert as C, xcheck as XC
 
 U, MIX, DC = 9, 2, 3
+
+
+OPEN = {"a11": 0, "a21": 4, "a31": 8, "a41": 12}        # kuhn3p.pidx(0, j, 1) = 4 (j - 1)
+
+
+def root_labels(spec):
+    """the label vector a cell spec stands for: its four opening labels, unassigned elsewhere"""
+    lab = [U] * 48; seen = set()
+    parts = spec.split(",")
+    C.need(len(parts) == 4, "spec must name the four opening coordinates")
+    for p in parts:
+        name, _, l = p.partition(":")
+        C.need(name in OPEN and name not in seen and l in ("0", "1", "MIX"), "bad spec entry %r" % p)
+        seen.add(name); lab[OPEN[name]] = {"0": 0, "1": 1, "MIX": MIX}[l]
+    return lab
+
+
+LAST = {}                                               # the last main() call's result, for check81.py
 
 
 def _pre(ctx):
@@ -89,7 +111,7 @@ def main(path, nw=8):
     t0 = time.time()
     BATCH = int(os.environ.get("KUHN_CHECK_BATCH", "4000"))
     kinds = {"split": 0, "pkill": 0, "kill": 0, "leaf": 0}; verd = {}; bad = 0; nodes = 0
-    pending = {}; seen = set(); jobs = []
+    pending = {}; seen = set(); jobs = []; leaflab = {}; family = []
     pool = Pool(nw)
 
     def drain():
@@ -98,13 +120,19 @@ def main(path, nw=8):
             if err: bad += 1; print("node %d (%s): %s" % (nid, kind, err), flush=True)
             else:
                 kinds[kind] += 1
-                if kind == "leaf": verd[v] = verd.get(v, 0) + 1
+                if kind == "leaf":
+                    verd[v] = verd.get(v, 0) + 1
+                    if v == "FAMILY": family.append(leaflab[nid])
         jobs.clear()
 
     with gzip.open(path, "rt") as f:
         header = json.loads(f.readline())
         if header.get("method") != "enumc7": raise SystemExit("not an enumc7 output")
         lab0 = [int(v) for v in header["lab"]]
+        try:
+            C.need(lab0 == root_labels(header.get("spec", "")), "root labels are not exactly the spec's four opening labels")
+        except C.Bad as ex:
+            bad += 1; print("header: FAILED %s" % ex, flush=True)
         root = ("root", lab0, [F(1) if v == 1 else F(0) for v in lab0], [F(0) if v == 0 else F(1) for v in lab0])
         for line in f:
             r = json.loads(line); nodes += 1; nid = r["id"]
@@ -113,6 +141,7 @@ def main(path, nw=8):
             elif nid in pending: ctx = pending.pop(nid)
             else: bad += 1; print("node %d: unknown (no parent split)" % nid); continue
             seen.add(nid)
+            if r["kind"] == "leaf": leaflab[nid] = [int(x) for x in r["lab"]]
             if r["kind"] == "split":
                 blo = [F(x[0]) for x in r["box"]]; bhi = [F(x[1]) for x in r["box"]]
                 for cid, l in zip(r["children"], (0, 1, MIX)):
@@ -123,6 +152,7 @@ def main(path, nw=8):
     drain(); pool.close(); pool.join()
     missing = len(pending)
     ok = bad == 0 and missing == 0 and 0 in seen
+    LAST.clear(); LAST.update(spec=header.get("spec"), ok=ok, nodes=nodes, kinds=dict(kinds), verdicts=dict(verd), failed=bad, missing=missing, family=family)
     print("%s: %d nodes  split %d  pkill %d  kill %d  leaf %d %s  failed %d  children never seen %d   (%.0fs)  %s"
           % (path, nodes, kinds["split"], kinds["pkill"], kinds["kill"], kinds["leaf"], verd, bad, missing, time.time() - t0,
              "OK" if ok else "*** NOT VERIFIED"), flush=True)
