@@ -36,9 +36,10 @@ every card, and play follows the published family wherever it is reached (Theore
 play the Nash set is strictly larger. We give all of it as the union of twelve explicit
 semi-algebraic sets with certified coordinate ranges (Theorem 5). The proofs are exact:
 
-- 66,699 support leaves and about 4.4 million enumeration nodes carry stored certificates
-  (Nullstellensatz cofactors, rational LP duals, interval steps under outward rounding, exact
-  propagation records);
+- Theorem 4 is carried by 81 exact-propagation certificate trees, one per cell of the first player's
+  opening labels (about 38,000 nodes, a few megabytes, kept in the repository);
+- 66,699 support-leaf certificates and about 4.4 million label-box nodes (Nullstellensatz cofactors,
+  rational LP duals, interval steps under outward rounding) reach the same verdicts independently;
 - each certificate is replayed by an independent rational checker that contains no solver;
 - no floating-point arithmetic is trusted anywhere in a proof.
 
@@ -99,13 +100,13 @@ P1 to P3 while staying in equilibrium. SGS left open whether other equilibria ex
      semi-algebraic sets, with every coordinate's range certified (Table 4).
 
    **[P,E]**
-2. **Proofs a reader can replay.** Every verdict is a stored certificate checked by an independent
-   Fraction-only checker with no solver in it:
-   - 66,699 / 66,699 support leaves;
-   - the enumeration's node kills for all 77 betting branches: 4,394,323 label-box certificate nodes
-     on 71 branches, plus 26,223 exact-propagation certificate nodes on the last 6, replayed by a
-     second, independently written checker;
-   - 0 failures.
+2. **Proofs a reader can replay.** Theorem 4 is one object: 81 exact-propagation certificate trees,
+   one per opening cell (about 38,000 nodes, a few megabytes), replayed by an independent
+   Fraction-only checker with no solver in it, plus a driver that checks the 81 cells are covered.
+   Two older certified routes agree with it and serve as cross-checks:
+   - 66,699 / 66,699 support-leaf certificates;
+   - 4,394,323 label-box certificate nodes on 71 betting cells;
+   - 0 failures anywhere.
 
    **[E]**
 3. **Refinements decided exactly.**
@@ -402,9 +403,11 @@ under IEEE-754. The third pass removed even that dependence: every betting branc
 certificate tree in which every float kill is replaced by an exact certificate, or the node is split.
 - 71 branches: `enumc2` + `checkenum`;
 - the 6 that resisted: `enumc7` + `checkenum2`, exact propagation;
-- cross-check: `enumc7` on **all** 77 gives 33,104 nodes and 462 leaves, all `EMPTY_BOX`.
+- `enumc7` on **all** 77 gives 33,104 nodes and 462 leaves, all `EMPTY_BOX`; on the silent cell,
+  4,723 nodes and the same 12 FAMILY leaves; on the three root-dead cells, one node each.
 
-Two independent certified methods agree.
+So the exact-propagation trees alone cover all 81 cells. They are the proof of Theorem 4 (§6), and
+the other routes are independent cross-checks.
 
 ---
 
@@ -418,18 +421,36 @@ equilibrium set is strictly larger than the family (exact witness with `b12 = 9/
 
 *Proof.*
 1. By Lemma 1, it suffices to enumerate profiles satisfying the D-condition everywhere.
-2. P1's four opening coordinates give 81 label cells; 78 survive the root in Nash mode.
-3. **The 77 betting cells contain no support.** Layered exact enumeration reaches 45,276 supports,
-   every one certified empty (47 of the 77 cells have no support at all).
-4. **The silent cell** yields 668 supports: 656 certified empty and 12 FAMILY leaves. These are
-   sub-families A (4 leaves), B (3) and C (5), with every corner.
-5. **Every leaf verdict is a stored certificate.** `checkcert.py` verifies 66,699 of 66,699: 668
-   silent, 45,276 Nash-mode betting and 20,755 seq-mode betting, with 0 failed.
-6. **The node kills are certified too**, for all 77 betting cells:
-   - 71 cells: 4,394,323 nodes replayed by `checkenum.py`;
-   - 6 cells: 26,223 exact-propagation nodes replayed by `checkenum2.py`;
-   - 0 failures.
-7. Lemma 5: a FAMILY leaf's points agree with a family member on every reached coordinate. ∎
+2. P1's four opening coordinates give 81 label cells, which partition the profile space (Lemma 4).
+3. **Every cell is closed by one exact certificate tree.** `enumc7.py` derives, for a cell, a tree in
+   which every node carries its exact propagated box and a certificate for every narrowing, kill and
+   leaf. `checkenum2.py`, written independently of the prover, replays each tree starting from the
+   cell's four opening labels (it rejects a tree whose root is anything else), and `check81.py` checks
+   that the 81 cells are all covered and that no support survives outside the silent cell.
+   - **The 80 betting cells contain no support.** 77 trees with 33,104 nodes and 462 support leaves,
+     every leaf certified empty; the other three cells (`a11 = a21 = 0`, `a41 = 1`) die at the root.
+   - **The silent cell:** 4,723 nodes and 79 leaves: 67 certified empty and 12 FAMILY leaves. These are
+     sub-families A (4 leaves), B (3) and C (5), with every corner.
+4. Lemma 5: a FAMILY leaf's points agree with a family member on every reached coordinate. ∎
+
+**Lemma 6 (six cells by hand).** *No equilibrium has `a11 = a21 = 0 < a41`.* If P1 bets only cards 3
+and 4, and bets the 4 with positive probability, then every set "facing P1's bet with card 1, 2 or 3"
+is reached, and calling there loses for sure. So every such call has probability 0, and a bet with
+card 1 is called at most by a 4: it is worth at least `(1/3)(+2) + (2/3)(−2) = −2/3`. Checking card 1
+is worth at most −1. So `a11 = 0` is not a best reply. ∎ This covers the three cells the root
+propagation kills and three more (`a41` interior), with no computation at all.
+
+**Independent cross-checks (not part of the proof above).** The same verdicts were reached earlier by
+two other certified routes, each with its own checker:
+- the R ledger: layered enumeration under outward-rounded interval arithmetic, with a stored
+  certificate for every support leaf, 66,699 of 66,699 replayed by `checkcert.py` (668 silent, 45,276
+  Nash-mode betting, 20,755 seq-mode betting);
+- label-box certificate trees for 71 betting cells: 4,394,323 nodes replayed by `checkenum.py`.
+
+**Counts are not invariants.** Node and leaf counts depend on the number of workers and on the LP
+solver build; only the verdicts are fixed. A re-derivation on another machine (3 workers) gives the
+silent cell 610 supports instead of 668, with the same 12 FAMILY leaves label for label, and one
+betting tree closes in 445 nodes instead of 484 (`independent_check/`).
 
 **Corollary 4.1.** In every Nash equilibrium P1 checks with every card.
 
@@ -446,7 +467,16 @@ Its exploitability is exactly (0, 0, 0). Setting `b12 := 0`, P1 gains exactly 1/
 sets, and a dominated off-path action can be *essential*: 169 of 23,820 hunt equilibria stop being
 Nash when projected onto Table 2.
 
-**Ledger** (the run of 2026-09-20/21 under outward-rounded interval arithmetic, suffix R):
+**Ledger.** The proof (`check81.py`; trees in `proof34/`):
+
+| part | cells | nodes | support leaves | verdict |
+|---|---|---|---|---|
+| betting cells, exact-propagation trees | 77 | 33,104 | 462 | all empty |
+| betting cells dead at the root | 3 | 3 | 0 | closed by exact propagation (and by Lemma 6) |
+| silent cell | 1 | 4,723 | 79 | 67 empty + 12 FAMILY |
+
+The cross-checks (the run of 2026-09-20/21 under outward-rounded interval arithmetic, suffix R, and
+the third pass):
 
 | part | supports | verdict |
 |---|---|---|
@@ -454,7 +484,7 @@ Nash when projected onto Table 2.
 | seq-mode betting, 32 branches | 20,755 | all empty |
 | silent cell | 668 | 656 empty + 12 FAMILY |
 | leaf certificates replayed | 66,699 / 66,699 | 0 failed |
-| node certificates replayed (betting) | 4,394,323 + 26,223 | 0 failed |
+| node certificates replayed (71 betting branches, label-box trees) | 4,394,323 | 0 failed |
 
 ---
 
