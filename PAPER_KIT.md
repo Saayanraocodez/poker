@@ -597,7 +597,7 @@ Lemma 5 finishes. ∎
 `j = 1..4`). **Corollary 4.2.** The set of Nash equilibrium payoff vectors is the family's,
 the segment `{(−κ(½ + β), −κ/2, κ(1 + β)) : β ∈ [0, ¼]}` with `κ = 1/24` and
 `β = max{b₁₁, b₂₁}`; in particular P2's payoff is `−1/48` in **every** equilibrium of the
-game, and `u₁ + u₃ = −1/48`. **[P]** (realization equivalence plus the family's utilities in
+game, and `u₁ + u₃ = +1/48`. **[P]** (realization equivalence plus the family's utilities in
 §4, checked on the 744 certified family points to 1e-15).
 
 ### 7.2 The complete equilibrium set, off path included (2026-09-21)

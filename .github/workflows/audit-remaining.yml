@@ -1,0 +1,30 @@
+name: Audit remaining research artifacts
+on:
+  push:
+    branches: [claude/funny-heisenberg-ga1r59]
+    paths: [.github/workflows/audit-remaining.yml, audit_remaining.py, audit_ce_witnesses.py, tremble_uniform_symbolic.py]
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: claude/funny-heisenberg-ga1r59
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy scipy sympy
+      - run: python audit_remaining.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: supplemental-audit
+          path: audit-results/
+          retention-days: 30

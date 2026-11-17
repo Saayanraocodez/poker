@@ -37,7 +37,7 @@ play the Nash set is strictly larger. We give all of it as the union of twelve e
 semi-algebraic sets with certified coordinate ranges (Theorem 5). The proofs are exact:
 
 - Theorem 4 is carried by 81 exact-propagation certificate trees, one per cell of the first player's
-  opening labels (about 38,000 nodes, a few megabytes, kept in the repository);
+  opening labels (38,280 nodes, about 42 MB of compressed certificates, kept in the repository);
 - 66,699 support-leaf certificates and about 4.4 million label-box nodes (Nullstellensatz cofactors,
   rational LP duals, interval steps under outward rounding) reach the same verdicts independently;
 - each certificate is replayed by an independent rational checker that contains no solver;
@@ -111,7 +111,7 @@ P1 to P3 while staying in equilibrium. SGS left open whether other equilibria ex
 
    **[P,E]**
 2. **Proofs a reader can replay.** Theorem 4 is one object: 81 exact-propagation certificate trees,
-   one per opening cell (about 38,000 nodes, a few megabytes), replayed by an independent
+   one per opening cell (38,280 nodes, about 42 MB of compressed certificates), replayed by an independent
    Fraction-only checker with no solver in it, plus a driver that checks the 81 cells are covered.
    Two older certified routes agree with it and serve as cross-checks:
    - 66,699 / 66,699 support-leaf certificates;
@@ -478,7 +478,7 @@ betting tree closes in 445 nodes instead of 484 (`independent_check/`).
 
 **Corollary 4.2.** The equilibrium payoff set is the segment
 `{(−κ(1/2 + β), −κ/2, κ(1 + β)) : β ∈ [0, 1/4]}`. In particular **P2's payoff is −1/48 in every
-equilibrium**, and `u1 + u3 = −1/48`.
+equilibrium**, and `u1 + u3 = +1/48`.
 
 **The off-path witness** (why "as profiles" fails). Take the sub-family-C corner:
 - on path: `b11 = 1/4`, `b21 = b23 = 0`, `c11 = 1/2`;
@@ -489,15 +489,13 @@ Its exploitability is exactly (0, 0, 0). Setting `b12 := 0`, P1 gains exactly 1/
 sets, and a dominated off-path action can be *essential*: 169 of 23,820 hunt equilibria stop being
 Nash when projected onto Table 2.
 
-**Ledger.** The proof (`check81.py`; node counts are those of the 2026-10-05 run; a re-derivation on
-another machine is in `proof34/`, 77 of the 81 cells on 2026-11-17, the silent cell at 4,720 nodes and 80
-leaves with the same 12 FAMILY leaves):
+**Ledger.** The committed proof was independently replayed in full on 2026-11-17 with `check81.py`: 81/81 cells, 38,280 nodes, zero failures or missing cells. See `proof34/ledger.txt` and `proof34/check81.log`.
 
 | part | cells | nodes | support leaves | verdict |
 |---|---|---|---|---|
-| betting cells, exact-propagation trees | 77 | 33,104 | 462 | all empty |
-| betting cells dead at the root | 3 | 3 | 0 | closed by exact propagation (and by Lemma 6) |
-| silent cell | 1 | 4,723 | 79 | 67 empty + 12 FAMILY |
+| betting cells (including three root kills) | 80 | 33,560 | 478 | all empty |
+| silent cell | 1 | 4,720 | 80 | 68 empty + 12 FAMILY |
+| total | 81 | 38,280 | 558 | all cells verified |
 
 The cross-checks (the run of 2026-09-20/21 under outward-rounded interval arithmetic, suffix R, and
 the third pass):
@@ -1251,8 +1249,7 @@ exploit-vs-safety trade-off.
 7. **CFR studies are of specific variants, budgets and averaging schemes.** Distances are certified,
    but the conclusions about convergence are empirical.
 8. **Identifiability (§12)** is a probe at single rational points, with float Fisher information.
-9. **The certificates are stored outside git** (about 64 GB of ignored data, which includes the
-   `cert_*.json.gz` files). An archive (e.g. Zenodo) is needed for artifact review.
+9. **Artifact coverage varies by result.** The complete 81-cell Theorem 4 proof is committed in `proof34/`. Historical cross-check data and some range/refinement certificates remain outside git; those claims need their original artifacts restored before a fresh clone can replay them. The historical working archive was reported as about 64 GB.
 
 ---
 
@@ -7568,7 +7565,7 @@ Lemma 5 finishes. ∎
 `j = 1..4`). **Corollary 4.2.** The set of Nash equilibrium payoff vectors is the family's,
 the segment `{(−κ(½ + β), −κ/2, κ(1 + β)) : β ∈ [0, ¼]}` with `κ = 1/24` and
 `β = max{b₁₁, b₂₁}`; in particular P2's payoff is `−1/48` in **every** equilibrium of the
-game, and `u₁ + u₃ = −1/48`. **[P]** (realization equivalence plus the family's utilities in
+game, and `u₁ + u₃ = +1/48`. **[P]** (realization equivalence plus the family's utilities in
 §4, checked on the 744 certified family points to 1e-15).
 
 ### 7.2 The complete equilibrium set, off path included (2026-09-21)

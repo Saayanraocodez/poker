@@ -7,8 +7,8 @@ Each cell is derived by enumc7 under KUHN_MODE=nash, KUHN_ORDER=bet and copied t
 proof34/cell_<labels>.jsonl.gz when its checkpoint says complete.  Then:  python check81.py proof34
 Trees from an earlier machine (enumc_c7_*N.jsonl.gz) can simply be copied into a directory and given to
 check81.py instead: it reads the cell from each file's header.
-Sizes: the 77 cells present on 2026-11-17 hold 13,991 nodes; the missing ones are four large betting
-cells (about 24,000 nodes; hours on 4 cores).
+Status: all 81 cells are committed and verified (38,280 nodes, 2026-11-17).
+A default invocation has no missing cells to derive; explicit cell specs can still be supplied.
 """
 import sys, os, json, glob, gzip, shutil, subprocess
 import check81

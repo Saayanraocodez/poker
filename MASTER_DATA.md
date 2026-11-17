@@ -3405,16 +3405,7 @@ game solved to violation ≤ 1e-16) that is still not an exact certificate.
 cards 3 and 4 only, every call with a card ≤ 3 loses for sure at a reached set, so a bet with card 1
 is called at most by a 4 and is worth ≥ −2/3 > −1. (Three root cells and three with `a41` interior.)
 
-**`proof34/`** holds the trees themselves (git ignores `*.jsonl.gz` elsewhere). On 2026-11-17 it has
-**77 of the 81 cells**, re-derived on a fresh clone and replayed (13,991 nodes, 81 support
-leaves, 0 failed, 12 MB; `check81.py` ran on the first 76, the 77th was replayed by `checkenum2.py`): 76 betting cells with no surviving support, and the silent cell with 4,720 nodes
-and 80 leaves = 68 certified empty + 12 FAMILY, whose label vectors are exactly the twelve of
-`family_leaves.json`. The four cells still missing are large betting cells
-(`0,M,0,M`, `M,0,0,M`, `M,M,0,1`, `M,M,0,M`: 23,959 nodes in the 2026-10-05 ledger, hours on 4
-cores); `derive81.py` derives them (resumable), or the original `enumc_c7_*` files can be given to
-`check81.py` directly. `proof34/ledger.txt` is `check81.py`'s output. Node counts differ between runs (worker count, LP solver build): the silent
-cell had 668 supports on the original machine and 610 on the re-run, one betting tree 484 nodes
-against 445. Only the verdicts are invariant.
+**`proof34/`** now contains all **81 of 81 cells**, independently replayed on 2026-11-17: **38,280 nodes**, **558 support leaves**, zero failures or missing cells. The 80 betting cells have no surviving support. The silent cell has 4,720 nodes and 80 leaves (68 EMPTY_BOX + 12 FAMILY); those twelve label vectors match `independent_check/family_leaves.json` exactly. The four previously missing trees were derived in GitHub Actions run 44012773280 and committed in e8aaeeb2196a10b7633841a45d634aa0b51f31d2. `proof34/ledger.txt` and `proof34/check81.log` record the full replay. Node counts may vary across derivations; the certified verdicts are the invariant.
 
 **Reproducibility.** `makeD.py` regenerates the git-ignored `D_all.pkl` (no script did);
 `family_leaves.json` gives the twelve FAMILY leaves' labels under the leaf ids the committed
