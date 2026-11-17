@@ -12,6 +12,7 @@ Sections
   3  stated witnesses and closed forms (Theorems 2, 3; Proposition 8; Theorem 6(1); the b12 witness)
   4  ERRATA found by this check (each an exact counter-witness)
   5  hand lemma: the six cells a11 = a21 = 0 < a41 are empty (covers root81's three float kills)
+  6  an exact witness for the sharpened Table 4 bound sup b12 = 5/12
 """
 import os, sys, random
 from fractions import Fraction as F
@@ -187,6 +188,14 @@ for bits in range(2 ** 10):
     worst = gain if worst is None else min(worst, gain)
 check(worst is not None and worst >= F(1, 3), "bluffing card 1 gains at least 1/3")
 print("   over all 2^10 vertices of the unconstrained responses: bet(card 1) - check(card 1) >= %s > 0" % worst)
+
+# =============================================================================== 6
+print("6. Table 4 sharpened: sup b12 = 5/12 is attained")
+p = I.family(F(1, 4), F(1, 4), 0, 0, F(1, 8), F(1, 2), F(3, 5))
+p.update(b12=F(5, 12), b44=F(11, 12))
+check(I.exploitability(p) == [0, 0, 0], "witness with b12 = 5/12")
+print("   b11 = b21 = 1/4, c11 = 1/8, c33 = 1/2, c34 = 3/5, b44 = 11/12, b12 = 5/12: exactly Nash")
+print("   (the matching bound {b12 > 5/12} = empty is certified leaf by leaf in ranges_sharpened/)")
 
 print()
 print("ALL CHECKS PASSED" if not FAILS else "%d CHECK(S) FAILED" % len(FAILS))

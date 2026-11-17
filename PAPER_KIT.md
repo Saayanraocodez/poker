@@ -469,7 +469,7 @@ window cannot be closed without destroying the transfer. And at `w = 0` the `a�
 (its numerator vanishes) while the `a₁₁` pole survives as the **only admissible** value of
 `c₃₃`. **[P,E]**
 
-**Theorem 3 (properness selection).** Under Myerson properness applied to the normal form,
+**Theorem 3 (properness selection; a NECESSITY statement, see MASTER_DATA §17.6 for the completed proof).** Under Myerson properness applied to the normal form,
 an interior `c₃₃` requires `cost(a₁₁) = cost(a₄₁)`, which holds uniquely at
 
 > **`c₃₃ = lo + w/3`**  (and `= ½ + w/3` once `b₃₂ = 0` is forced).
@@ -698,7 +698,8 @@ actions. For such a game a completely mixed behaviour profile is ε-proper in va
 extensive-form sense iff it is ε′-perfect with ε′ = ε/(1−ε): with two actions "the inferior
 action gets at most ε times the better one" and "the inferior action gets at most ε" differ
 only by the factor `1 − ε ≤ σ(better) ≤ 1`. Hence **extensive-form proper = extensive-form
-perfect = agent-normal-form perfect** here, and only *normal-form* properness — which orders
+perfect = agent-normal-form perfect** here ("extensive-form proper" means proper in the AGENT normal
+form, each information set its own player; Part I now says "agent-normal-form proper"), and only *normal-form* properness — which orders
 whole pure strategies across information sets — can select more.
 
 **Definition (the belief system).** For coordinate `v`, `D_v` is the own-reach-stripped
