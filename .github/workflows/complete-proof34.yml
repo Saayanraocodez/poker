@@ -1,0 +1,79 @@
+name: Complete proof34 missing cells
+on:
+  push:
+    branches: [codex/complete-proof34-cells]
+    paths: [.github/workflows/complete-proof34.yml]
+permissions:
+  contents: read
+jobs:
+  derive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - label: 0_M_0_M
+            spec: a11:0,a21:MIX,a31:0,a41:MIX
+          - label: M_0_0_M
+            spec: a11:MIX,a21:0,a31:0,a41:MIX
+          - label: M_M_0_1
+            spec: a11:MIX,a21:MIX,a31:0,a41:1
+          - label: M_M_0_M
+            spec: a11:MIX,a21:MIX,a31:0,a41:MIX
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      KUHN_CKPT: '60'
+      PYTHONUNBUFFERED: '1'
+      CELL_SPEC: ${{ matrix.spec }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy scipy sympy
+      - name: Generate gradients
+        run: python makeD.py
+      - name: Derive missing cell
+        timeout-minutes: 330
+        run: python -u derive81.py 4 "$CELL_SPEC" 2>&1 | tee derive.log
+      - name: Save certificates and resumable checkpoints
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cell-${{ matrix.label }}
+          retention-days: 30
+          path: |
+            proof34/cell_${{ matrix.label }}.jsonl.gz
+            enumc_p34_*.jsonl.gz
+            enumc_p34_*.ckpt
+            derive.log
+  verify:
+    needs: derive
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy scipy sympy
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: cell-*
+          merge-multiple: true
+          path: recovered
+      - run: |
+          cp recovered/proof34/cell_*.jsonl.gz proof34/
+          python makeD.py
+          python check81.py proof34 -j 4 2>&1 | tee check81.log
+      - name: Save full proof and independent replay
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: proof34-verified-results
+          retention-days: 30
+          path: |
+            proof34/
+            check81.log
