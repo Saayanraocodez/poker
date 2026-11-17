@@ -3616,3 +3616,25 @@ python qre.py 3000 ; python logit_balance.py
 python ce_lp.py 600 0 ; python ce_verify.py 0 ; python nfce_lp.py 5 0 24 ; python nfce_verify.py 0
 python pot_sweep.py 1.0,1.05,1.1,1.2,1.25,1.3,1.4,1.5 8000 2 ; python pot_exact.py
 ```
+
+## 17.8 Table 4 sharpened (2026-11-17) **[E]**
+
+`nefull.py` certified its bounds at a budget of 40 B&B nodes from the best point SLSQP found, which
+left the decimal entries up to 6e-4 slack. `sharpen_ranges.py` certifies emptiness of
+`{leaf system, x_v > T}` at a rational `T` just outside the best equilibrium value an independent
+optimiser reaches (`independent_check/windows_test.py`); `check_sharpened.py` replays all 36 stored
+certificates with `checkcert` (36 verified, 0 failed). Controls: false bounds (`b12 ≤ 0.41` on leaf
+440, `b22 ≤ 0.58` on leaf 70) get no certificate.
+
+| coordinate | old bound (all equilibria) | new | value reached by search |
+|---|---|---|---|
+| `b12` sup | 0.4173 | **0.41668** (A), **5/12 attained** (B: exact witness, and `{b12 > 5/12}` certified empty on leaves 440 and 469) | 5/12 |
+| `b22` sup | 0.5841 | 0.58334 (A); 7/12 attained (B, as before) | 7/12 |
+| `c13` sup | 0.5269 | 0.52623 | 0.5262193 |
+| `c23` sup, sub-family C | 0.3894 | 0.38890 | 7/18 |
+| `b42` inf, sub-families A, C | 0.7750 | 0.77579 | 0.7757997 |
+| `c43` inf | 0.7750 | 0.77503 (leaf 469 unchanged), 0.77579 elsewhere | 0.7757997 |
+
+The exact-tight targets (`5/12` on the A leaves, `7/12`) did not certify at budget 300 except on leaf
+469; bounds 1e-5 looser certify at the root. A bookkeeping slip was caught by the replay checker: the
+first stored file for leaf 469 held the certificate of a looser `T` than its label; it was regenerated.
