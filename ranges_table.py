@@ -18,12 +18,33 @@ rows = []
 for l in open("nefull_ranges.txt"):
     m = re.match(r"\s*(\d+)\s+([ABC])\s+(\S+)\s+(MIX|DC)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)", l)
     if m: rows.append(m.groups())
+# sharper certificates (sharpen_ranges.py; replayed by check_sharpened.py) and exact witnesses
+import glob
+_sh = {}
+for _f in glob.glob(os.path.join("ranges_sharpened", "*_*_*.json")):
+    _d = json.load(open(_f)); _sh[(str(_d["leaf"]), _d["coord"], _d["side"])] = F(_d["T"])
+_wit = set()
+if os.path.exists(os.path.join("ranges_sharpened", "witnesses.json")):
+    for _k in json.load(open(os.path.join("ranges_sharpened", "witnesses.json"))):
+        _l, _c, _side, _T = _k.split(":"); _wit.add((_l, _c, _side, F(_T)))
+def _num(s_):
+    return F(s_) if "/" in s_ or s_.isdigit() else F(s_)
+_rows2 = []; NSHARP = 0
+for leaf, sub, name, lbl, lo, hi, alo, ahi in rows:
+    T = _sh.get((leaf, name, "sup"))
+    if T is not None and T < _num(hi): hi = str(T); ahi = "None"; NSHARP += 1
+    T = _sh.get((leaf, name, "inf"))
+    if T is not None and T > _num(lo): lo = str(T); alo = "None"; NSHARP += 1
+    if (leaf, name, "sup", _num(hi)) in _wit: ahi = "True"
+    if (leaf, name, "inf", _num(lo)) in _wit: alo = "True"
+    _rows2.append((leaf, sub, name, lbl, lo, hi, alo, ahi))
+rows = _rows2
 def val(s):
     if s == "?": return None
     return F(s) if "/" in s or s.isdigit() else F(float(s)).limit_denominator(10**6)
 def show(v, att):
     if v is None: return "?"
-    txt = str(v) if v.denominator <= 100 else "%.4f" % float(v)
+    txt = str(v) if v.denominator <= 100 else "%.5f" % float(v)
     return txt + ("" if att == "True" else ("⁻" if att == "False" else "ᶜ"))
 by = {}
 for leaf, sub, name, lbl, lo, hi, alo, ahi in rows:
@@ -89,5 +110,7 @@ for name in freed:
     print("‡ `%s` is free in [0, 1] in leaves %s (private, or own-unreached where `b41 = 1`). In the leaves where it is constrained: all %s, A %s, B %s, C %s."
           % (name, ", ".join(map(str, where)), cell(es), cell([e for e in es if e[0] == "A"]), cell([e for e in es if e[0] == "B"]), cell([e for e in es if e[0] == "C"])))
 print("‡ `b43` equals 1 wherever `b41 < 1` (a reached call with the top card); in the two leaves with `b41 = 1` (70, 440) it is own-unreached and free.")
+print()
+print("%d bounds are sharper than nefull_ranges.txt: certified by sharpen_ranges.py at a rational just outside the best equilibrium value found, and replayed by check_sharpened.py (2026-11-17)." % NSHARP)
 print()
 print("Marks: a bare number is attained (exact rational witness in the leaf, verified); ⁻ = certified strict bound (not attained); ᶜ = certified bound, attainment undecided at the search precision (the true extremum lies between the best known equilibrium value and this bound).")

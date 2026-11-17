@@ -395,7 +395,8 @@ The twelve systems are written out in `nefull_systems.txt`. Their coordinate pro
 `checknefull.py`, with exact witnesses where a bound is attained.
 
 **Table 4 — the windows.** Marks: bare = attained (exact witness); ⁻ = certified strict bound, not
-attained; ᶜ = certified bound with attainment undecided; ‡ = free where `b41 = 1` (note below the table).
+attained; ᶜ = certified bound with attainment undecided; ‡ = free where `b41 = 1` (note below the table). The ᶜ decimals were sharpened on 2026-11-17 to within 1e-5 of the
+best equilibrium value found (`sharpen_ranges.py`).
 
 | coordinate | role | all equilibria | A | B | C |
 |---|---|---|---|---|---|
@@ -408,29 +409,29 @@ attained; ᶜ = certified bound with attainment undecided; ‡ = free where `b41
 | a43 | off path | [1, 1] | [1, 1] | [1, 1] | [1, 1] |
 | a44 | off path | [0, 1] | [0, 1] | [0ᶜ, 1] | [0, 1] |
 | b11 | on path | [0, 1/4] | [0, 1/4] | [0, 1/4ᶜ] | [0, 1/4] |
-| b12 | off path | [0, 0.4173ᶜ] | [0, 0.4173⁻] | [0, 0.4169⁻] | [0, 0.2781ᶜ] |
+| b12 | off path | [0, 0.41668ᶜ] | [0, 0.41668ᶜ] | [0, 5/12] | [0, 0.27779ᶜ] |
 | b21 | on path | [0, 1/4] | [0, 1/4] | [0, 1/4] | [0, 1/6] |
-| b22 | off path | [0, 0.5841ᶜ] | [0, 0.5841⁻] | [0, 7/12] | [0, 0.3895⁻] |
+| b22 | off path | [0, 0.58334ᶜ] | [0, 0.58334ᶜ] | [0, 7/12] | [0, 0.38890ᶜ] |
 | b23 | on path | [0, 1/8] | [0, 0] | [0, 0] | [0, 1/8] |
 | b32 | off path | [0, 15/16] | [0, 15/16] | [0, 15/16ᶜ] | [0, 19/24] |
 | b33 | on path | [1/2, 7/8] | [1/2, 7/8] | [1/2ᶜ, 7/8] | [1/2, 3/4] |
 | b41 | on path | [0, 1] | [0, 1] | [0, 1] | [0, 2/3] |
-| b42 | off path | [31/40ᶜ, 1] | [0.7750ᶜ, 1] | [31/40ᶜ, 1] | [0.7750⁻, 1] |
+| b42 | off path | [31/40ᶜ, 1] | [0.77579ᶜ, 1] | [31/40ᶜ, 1] | [0.77579ᶜ, 1] |
 | b43 | off path | [0, 1]‡ | [0, 1]‡ | [0, 1]‡ | [1, 1] |
 | b44 | off path | [0, 1]‡ | [0, 1]‡ | [0, 1]‡ | [4/5, 1] |
 | c11 | on path | [0, 1/2] | [0, 0] | [0⁻, 1/2⁻] | [1/2, 1/2] |
 | c12 | off path | [0, 0] | [0, 0] | [0, 0] | [0, 0] |
-| c13 | off path | [0, 0.5269ᶜ] | [0, 0.5269⁻] | [0, 0.5268ᶜ] | [0, 0.3458ᶜ] |
+| c13 | off path | [0, 0.52623ᶜ] | [0, 0.52623ᶜ] | [0, 0.52623ᶜ] | [0, 0.34509ᶜ] |
 | c14 | off path | [0, 1] | [0, 1] | [0, 1] | [0, 1] |
 | c21 | on path | [0, 1/2] | [1/2, 1/2] | [0⁻, 1/2⁻] | [0, 0] |
 | c22 | off path | [0, 0] | [0, 0] | [0, 0] | [0, 0] |
-| c23 | off path | [0, 7/12] | [0, 7/12ᶜ] | [0, 7/12] | [0, 0.3894⁻] |
+| c23 | off path | [0, 7/12] | [0, 7/12ᶜ] | [0, 7/12] | [0, 0.38890ᶜ] |
 | c24 | off path | [0, 1] | [0, 1] | [0, 1] | [0, 1] |
 | c32 | off path | [0, 1/2] | [0, 1/2] | [0, 1/2] | [0, 1/2] |
 | c33 | off path | [0, 15/16] | [0, 15/16ᶜ] | [0, 15/16] | [0, 19/24] |
 | c34 | off path | [0, 1] | [0, 1] | [0, 1ᶜ] | [0, 1] |
 | c42 | off path | [1, 1] | [1, 1] | [1, 1] | [1, 1] |
-| c43 | off path | [0.7750ᶜ, 1] | [0.7752ᶜ, 1] | [0.7750ᶜ, 1] | [0.7750⁻, 1] |
+| c43 | off path | [0.77503ᶜ, 1] | [0.77579ᶜ, 1] | [0.77503ᶜ, 1] | [0.77579ᶜ, 1] |
 | c44 | off path | [0, 1] | [0, 1] | [0, 1] | [0, 1] |
 
 ‡ `b43` and `b44` are own-unreached where `b41 = 1` (`b11 = b21 = 1/4`), and Theorem 5 frees them there: the
@@ -442,8 +443,8 @@ left out the leaves in which the coordinate is private or own-unreached.)*
 - **Pinned although off path.** `a13 = c12 = c22 = 0` and `a43 = c42 = 1` in every equilibrium: the
   other players' deterrence pins them.
 - **Free well beyond Table 2.** The responses to P1's bet that Table 2 sets to 0 range up to
-  `b12 ≈ 0.42`, `b22 ≈ 0.58`, `c13 ≈ 0.53` and `c23 = 7/12`. The top-card calls `b42` and `c43` only
-  need ≥ ≈ 0.775.
+  `b12 = 5/12`, `b22 = 7/12`, `c13 ≈ 0.526` and `c23 = 7/12` (the first two up to 1e-5 in sub-family A). The
+  top-card calls `b42` and `c43` only need ≥ ≈ 0.775.
 - **Wide windows.** `b32` and `c33` range over [0, 15/16]. `b44 ≥ 17/32` wherever `b41 < 1`; at `b41 = 1`
   (`b11 = b21 = 1/4`) P2 never checks the top card, so `b43` and `b44` are free.
 - **Sub-family C is the most restricted:** `b41 ≤ 2/3`, and `b32, c33 ≤ 19/24`.
