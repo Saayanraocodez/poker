@@ -17,6 +17,7 @@ def run(name,args,cwd=".",marker=None):
     print(text,flush=True)
 run("independent-game",["independent_check/check_34.py"],marker=lambda s:"ALL CHECKS PASSED" in s and "skipped:" not in s)
 run("gradient-generation",["makeD.py"])
+run("gradient-recomputation",["checkD.py"],marker=lambda s:"48 of 48 gradients agree" in s and "*** FAIL" not in s)
 run("sharpened-ranges",["check_sharpened.py"],marker=lambda s:bool(re.search(r"certificates: 36 verified, 0 failed; exact witnesses: [1-9][0-9]* verified, 0 failed",s)))
 run("stored-ce-witnesses",["audit_ce_witnesses.py"],marker=lambda s:"ALL STORED CE WITNESSES VERIFIED" in s)
 run("ante-witnesses",["pot_exact.py"],cwd="continuations",marker=lambda s:"ALL EXACT CHECKS PASSED" in s)
