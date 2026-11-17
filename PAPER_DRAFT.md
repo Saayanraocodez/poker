@@ -3396,6 +3396,17 @@ in any headline result. Environment variables:
 | `KUHN_EXACT_FILTER`, `KUHN_BUDGET`, `KUHN_JOBSECS`, `KUHN_RUNGS_*` | enumeration tuning |
 | `KUHN_ROUND=nearest` | restores the old rounding |
 
+**E.0 On a fresh clone** (2026-11-16). Three inputs are git-ignored and are regenerated first; the
+proof of Theorem 4 then replays from the repository alone:
+```
+python makeD.py                       # D_all.pkl: the 48 stripped gradients (checkD.py then verifies them)
+python make_leaf_files.py             # the 12 FAMILY leaves under the committed leaf ids
+python check81.py proof34 -j 4        # Theorem 4: replays every certificate tree, checks the 81 cells
+python independent_check/check_34.py  # a second engine: the game, the family, witnesses, errata 12-14
+python independent_check/windows_test.py   # stress test of Table 4's certified bounds
+```
+The continuation experiments of §18 are listed in MASTER_DATA §17.7.
+
 **E.1 Reproduction of SGS and the incidence-ratio results** (Sections 4, 9):
 ```
 python check_engine.py
