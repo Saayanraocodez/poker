@@ -1,0 +1,66 @@
+{
+  "scope": "Available committed supplemental artifacts; excludes the already completed 81-cell replay and historical data outside git.",
+  "results": [
+    {
+      "check": "independent-game",
+      "status": "PASS",
+      "seconds": 14.4
+    },
+    {
+      "check": "gradient-generation",
+      "status": "PASS",
+      "seconds": 1.2
+    },
+    {
+      "check": "gradient-recomputation",
+      "status": "PASS",
+      "seconds": 0.2
+    },
+    {
+      "check": "sharpened-ranges",
+      "status": "PASS",
+      "seconds": 0.6
+    },
+    {
+      "check": "stored-ce-witnesses",
+      "status": "PASS",
+      "seconds": 1.2
+    },
+    {
+      "check": "ante-witnesses",
+      "status": "PASS",
+      "seconds": 0.6
+    },
+    {
+      "check": "uniform-tremble-diagnostic",
+      "status": "DIAGNOSTIC_ONLY",
+      "seconds": 1.1
+    },
+    {
+      "check": "original-range-certificates",
+      "status": "BLOCKED",
+      "missing": [
+        "nefull_certs.json.gz",
+        "enum6_pat_silentR.npy"
+      ]
+    },
+    {
+      "check": "sequential-pattern-certificates",
+      "status": "BLOCKED",
+      "missing": [
+        "seqcert_18.jsonl.gz",
+        "seqcert_62.jsonl.gz",
+        "seqcert_70.jsonl.gz",
+        "seqcert_72.jsonl.gz",
+        "seqcert_77.jsonl.gz",
+        "seqcert_97.jsonl.gz",
+        "seqcert_99.jsonl.gz",
+        "seqcert_196.jsonl.gz",
+        "seqcert_198.jsonl.gz",
+        "seqcert_211.jsonl.gz",
+        "seqcert_440.jsonl.gz",
+        "seqcert_469.jsonl.gz"
+      ]
+    }
+  ]
+}

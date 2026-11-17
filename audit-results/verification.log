@@ -1,0 +1,445 @@
+independent-game PASS
+1. the game
+   utilities: 200 random rational profiles, exact agreement with kuhn3p; tree.py float max diff 2.8e-16
+   best responses (information-set DP here, 4 x 2^4 enumeration there): max diff 4.4e-16
+   du_k/dx_i = R_k(i) D_i exactly (Definition 4), 15 random profiles x 48 coordinates
+2. the SGS family
+   exploitability exactly (0,0,0) and Table-3 utilities at {'A': 300, 'B': 300, 'C': 300} random rational points
+   SGS erratum 1 (prose b33): exploitability exactly (0, 0, 1/160), although du/db33 = (0,0,0)
+3. witnesses and closed forms
+   b12 = 9/100 witness: exactly Nash; b12 := 0 gives P1 1/300, Table-2 pins 1/150
+   Theorem 2 (rho = 1 + R/(c33 - c33*), R = t/D', D'/kappa = -4,-4,+2,0): 900 exact identities
+   Theorem 3 costs 4k(c33-lo), 4k(c33-lo), 2k(hi-c33) and rho(b31) = 3/5: exact at 100 points
+   Proposition 8: sequence-form midpoint of two equal-payoff equilibria has exploitability exactly (0, 0, 1/320)
+   Theorem 6(1): D_v = c R_v with c = -1 / +4 / +5 holds at exactly the 18 stated coordinates
+4. errata found
+   (i)  rho_{P3->P2}(+e_c31) = (2-4s)/(4-5s) fails at 89 of 89 sampled points with b23 > 0;
+        exact form: (2 - 4s - m)/(4 - 5s - m), m = b23 (1 - b21), from du/dc31 = k (2-s, 2-4s-m, m-4+5s)
+   (ii) rho_{P3->P2}(+e_c22) = (b11 + 3 b21)/(b11 + 4 b21): 4/5 only on b11 = b21; range [3/4, 1]
+   (iii) Table 4, row b44: [17/32, 1] 'over all equilibria' is false.  At b11 = b21 = 1/4 (b41 = 1) the
+        family point with b44 := 0 is exactly Nash AND satisfies the D-condition everywhere; with b43 := 0
+        as well it is still exactly Nash (own-unreached).  Correct windows: b43, b44 in [0, 1], attained.
+5. hand lemma: no equilibrium has a11 = a21 = 0 < a41
+   over all 2^10 vertices of the unconstrained responses: bet(card 1) - check(card 1) >= 1/3 > 0
+6. Table 4 sharpened: sup b12 = 5/12 is attained
+   b11 = b21 = 1/4, c11 = 1/8, c33 = 1/2, c34 = 3/5, b44 = 11/12, b12 = 5/12: exactly Nash
+   (the matching bound {b12 > 5/12} = empty is certified leaf by leaf in ranges_sharpened/)
+
+ALL CHECKS PASSED
+
+gradient-generation PASS
+D_all.pkl: 48 gradients, 1211 terms, 1s
+
+gradient-recomputation PASS
+D_all.pkl: 48 of 48 gradients agree with the independent tree computation  OK
+
+sharpened-ranges PASS
+sharpened range certificates: 36 verified, 0 failed; exact witnesses: 1 verified, 0 failed
+
+stored-ce-witnesses PASS
+continuations/ce_witness.json PASS 68 profiles; 644 rows; minimum 0 ; P1 bets 3800759024072035142681/33467186530378431056163
+continuations/nfce_witness.json PASS 193 profiles; 2668 rows; minimum 0 ; P1 bets 3308538/55243663
+ALL STORED CE WITNESSES VERIFIED
+
+ante-witnesses PASS
+A = 11/10   window [26/43, 1620/1849] = [0.60465, 0.87615]: exploitability exactly 0 at 6 points of the window: True ; just outside P1 gains 43/120000 (below), 1/12000 (above) ; u = ['-74/1849', '-7/516', '1189/22188']
+A = 6/5     window [16/23, 435/529] = [0.69565, 0.82231]: exploitability exactly 0 at 6 points of the window: True ; just outside P1 gains 23/60000 (below), 1/12000 (above) ; u = ['-101/2116', '-1/138', '349/6348']
+A = 5/4     window [14/19, 288/361] = [0.73684, 0.79778]: exploitability exactly 0 at 6 points of the window: True ; just outside P1 gains 19/48000 (below), 1/12000 (above) ; u = ['-37/722', '-1/228', '241/4332']
+A = 129/100 window [374/487, 184800/237169] = [0.76797, 0.77919]: exploitability exactly 0 at 6 points of the window: True ; just outside P1 gains 487/1200000 (below), 1/12000 (above) ; u = ['-25573/474338', '-13/5844', '159769/2846028']
+A = 13/10   L - U = 2/2401 > 0: the window is empty
+A = 7/5     L - U = 77/676 > 0: the window is empty
+L(A) - U(A) = (18*A**2 - 18*A - 7)/(3*A + 1)**2   roots: [1/2 + sqrt(23)/6]  A2 = (3 + sqrt(23))/6 = 1.2993052538854533
+ALL EXACT CHECKS PASSED
+
+uniform-tremble-diagnostic PASS
+{
+  "scope": "Exact local uniform-tremble branch: nonsingular mixed equations and all 40 floor signs verified. Arbitrary shapes and global uniqueness remain unproved.",
+  "mixed": [
+    "a32",
+    "a33",
+    "a41",
+    "b21",
+    "b33",
+    "b41",
+    "c21",
+    "c33"
+  ],
+  "epsilon_powers": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "equations": [
+    "(z3 + z5*z6 + 3*z6 - 2)/24",
+    "(2*z3 - z5)/12",
+    "-(z3 + z6 - z7)/12",
+    "-(2*z1 - 1)/12",
+    "(2*z6 - 1)/12",
+    "(z1 - z6)/12",
+    "-(2*z4 - z5 - 1)/12",
+    "-(z2 - 4)/12"
+  ],
+  "candidate": {
+    "a32": "47",
+    "a33": "1/2",
+    "a41": "4",
+    "b21": "1/4",
+    "b33": "3/4",
+    "b41": "1/2",
+    "c21": "1/2",
+    "c33": "3/4"
+  },
+  "residuals": [
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+  ],
+  "jacobian_rank": 7,
+  "jacobian_determinant": "0",
+  "regularized_row": "-(z0*z6 + 2*z1 - z2 - 7*z6 - 17)/24",
+  "regularized_residuals": [
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+  ],
+  "regularized_rank": 8,
+  "regularized_determinant": "1/214990848",
+  "z_derivative": {
+    "a32": "93",
+    "a33": "11/2",
+    "a41": "4",
+    "b21": "3/8",
+    "b33": "-325/8",
+    "b41": "13/4",
+    "c21": "-2",
+    "c33": "-39/8"
+  },
+  "floor_signs_through_first_order": {
+    "a11": {
+      "constant": "-1/24",
+      "linear": "55/48",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "a12": {
+      "constant": "-5/48",
+      "linear": "7/24",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "a13": {
+      "constant": "-5/96",
+      "linear": "-55/192",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "a14": {
+      "constant": "-1/96",
+      "linear": "-19/192",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "a21": {
+      "constant": "-1/24",
+      "linear": "73/48",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "a22": {
+      "constant": "-1/12",
+      "linear": "1/4",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "a23": {
+      "constant": "-1/24",
+      "linear": "-5/48",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "a24": {
+      "constant": "0",
+      "linear": "-1/8",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "a31": {
+      "constant": "-7/96",
+      "linear": "51/64",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "a34": {
+      "constant": "-1/96",
+      "linear": "-7/192",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "a42": {
+      "constant": "1/6",
+      "linear": "-5/24",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "a43": {
+      "constant": "1/12",
+      "linear": "17/24",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "a44": {
+      "constant": "0",
+      "linear": "5/48",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "b11": {
+      "constant": "0",
+      "linear": "-3/8",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "b12": {
+      "constant": "0",
+      "linear": "-1/2",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "b13": {
+      "constant": "-5/48",
+      "linear": "51/16",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "b14": {
+      "constant": "-1/48",
+      "linear": "-17/6",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "b22": {
+      "constant": "0",
+      "linear": "-7/24",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "b23": {
+      "constant": "-1/12",
+      "linear": "55/24",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "b24": {
+      "constant": "0",
+      "linear": "-25/12",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "b31": {
+      "constant": "-5/48",
+      "linear": "13/12",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "b32": {
+      "constant": "0",
+      "linear": "-1/12",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "b34": {
+      "constant": "-1/48",
+      "linear": "1/6",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "b42": {
+      "constant": "0",
+      "linear": "1",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "b43": {
+      "constant": "1/6",
+      "linear": "-25/6",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "b44": {
+      "constant": "0",
+      "linear": "5",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "c11": {
+      "constant": "-1/48",
+      "linear": "19/12",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "c12": {
+      "constant": "-1/16",
+      "linear": "-7/24",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "c13": {
+      "constant": "0",
+      "linear": "-5/12",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "c14": {
+      "constant": "0",
+      "linear": "-1/12",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "c22": {
+      "constant": "-1/24",
+      "linear": "-3/16",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "c23": {
+      "constant": "0",
+      "linear": "-5/24",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "c24": {
+      "constant": "0",
+      "linear": "-1/12",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "c31": {
+      "constant": "-11/96",
+      "linear": "81/64",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "c32": {
+      "constant": "-1/96",
+      "linear": "1/192",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "c34": {
+      "constant": "0",
+      "linear": "-1/12",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "c41": {
+      "constant": "1/16",
+      "linear": "5/32",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "c42": {
+      "constant": "1/12",
+      "linear": "35/48",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "c43": {
+      "constant": "0",
+      "linear": "1",
+      "higher": null,
+      "status": "CORRECT"
+    },
+    "c44": {
+      "constant": "0",
+      "linear": "0",
+      "higher": {
+        "power": 2,
+        "coefficient": "5/4"
+      },
+      "status": "CORRECT"
+    }
+  },
+  "local_uniform_branch_checks": "PASS"
+}
+
+{
+  "scope": "Available committed supplemental artifacts; excludes the already completed 81-cell replay and historical data outside git.",
+  "results": [
+    {
+      "check": "independent-game",
+      "status": "PASS",
+      "seconds": 14.4
+    },
+    {
+      "check": "gradient-generation",
+      "status": "PASS",
+      "seconds": 1.2
+    },
+    {
+      "check": "gradient-recomputation",
+      "status": "PASS",
+      "seconds": 0.2
+    },
+    {
+      "check": "sharpened-ranges",
+      "status": "PASS",
+      "seconds": 0.6
+    },
+    {
+      "check": "stored-ce-witnesses",
+      "status": "PASS",
+      "seconds": 1.2
+    },
+    {
+      "check": "ante-witnesses",
+      "status": "PASS",
+      "seconds": 0.6
+    },
+    {
+      "check": "uniform-tremble-diagnostic",
+      "status": "DIAGNOSTIC_ONLY",
+      "seconds": 1.1
+    },
+    {
+      "check": "original-range-certificates",
+      "status": "BLOCKED",
+      "missing": [
+        "nefull_certs.json.gz",
+        "enum6_pat_silentR.npy"
+      ]
+    },
+    {
+      "check": "sequential-pattern-certificates",
+      "status": "BLOCKED",
+      "missing": [
+        "seqcert_18.jsonl.gz",
+        "seqcert_62.jsonl.gz",
+        "seqcert_70.jsonl.gz",
+        "seqcert_72.jsonl.gz",
+        "seqcert_77.jsonl.gz",
+        "seqcert_97.jsonl.gz",
+        "seqcert_99.jsonl.gz",
+        "seqcert_196.jsonl.gz",
+        "seqcert_198.jsonl.gz",
+        "seqcert_211.jsonl.gz",
+        "seqcert_440.jsonl.gz",
+        "seqcert_469.jsonl.gz"
+      ]
+    }
+  ]
+}
