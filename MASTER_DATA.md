@@ -3405,9 +3405,14 @@ game solved to violation ≤ 1e-16) that is still not an exact certificate.
 cards 3 and 4 only, every call with a card ≤ 3 loses for sure at a reached set, so a bet with card 1
 is called at most by a 4 and is worth ≥ −2/3 > −1. (Three root cells and three with `a41` interior.)
 
-**`proof34/`** holds the trees themselves (git ignores `*.jsonl.gz` elsewhere): 73 cells re-derived
-on a fresh clone at the time of writing (0.9 MB), the rest being derived; `proof34/ledger.txt` is
-`check81.py`'s output. Node counts differ between runs (worker count, LP solver build): the silent
+**`proof34/`** holds the trees themselves (git ignores `*.jsonl.gz` elsewhere). On 2026-11-17 it has
+**76 of the 81 cells**, re-derived on a fresh clone and replayed by `check81.py` (11,632 nodes, 81 support
+leaves, 0 failed, 8 MB): 75 betting cells with no surviving support, and the silent cell with 4,720 nodes
+and 80 leaves = 68 certified empty + 12 FAMILY, whose label vectors are exactly the twelve of
+`family_leaves.json`. The five cells still missing are large betting cells
+(`0,M,0,M`, `M,0,0,1`, `M,0,0,M`, `M,M,0,1`, `M,M,0,M`: 26,372 nodes in the 2026-10-05 ledger, hours on 4
+cores); `derive81.py` derives them (resumable), or the original `enumc_c7_*` files can be given to
+`check81.py` directly. `proof34/ledger.txt` is `check81.py`'s output. Node counts differ between runs (worker count, LP solver build): the silent
 cell had 668 supports on the original machine and 610 on the re-run, one betting tree 484 nodes
 against 445. Only the verdicts are invariant.
 

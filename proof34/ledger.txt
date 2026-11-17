@@ -1,8 +1,10 @@
+a11:0,a21:0,a31:0,a41:0            nodes   4720 split  1573 pkill  2000 kill  1067 leaf   80 {'EMPTY_BOX': 68, 'FAMILY': 12} failed 0 missing 0  OK   cell_0_0_0_0.jsonl.gz
 a11:0,a21:0,a31:0,a41:1            nodes      1 split     0 pkill     1 kill     0 leaf    0 {} failed 0 missing 0  OK   cell_0_0_0_1.jsonl.gz
 a11:0,a21:0,a31:0,a41:MIX          nodes     10 split     3 pkill     7 kill     0 leaf    0 {} failed 0 missing 0  OK   cell_0_0_0_M.jsonl.gz
 a11:0,a21:0,a31:1,a41:0            nodes    445 split   148 pkill   190 kill   107 leaf    0 {} failed 0 missing 0  OK   cell_0_0_1_0.jsonl.gz
 a11:0,a21:0,a31:1,a41:1            nodes      1 split     0 pkill     1 kill     0 leaf    0 {} failed 0 missing 0  OK   cell_0_0_1_1.jsonl.gz
 a11:0,a21:0,a31:1,a41:MIX          nodes      4 split     1 pkill     3 kill     0 leaf    0 {} failed 0 missing 0  OK   cell_0_0_1_M.jsonl.gz
+a11:0,a21:0,a31:MIX,a41:0          nodes   2350 split   783 pkill   687 kill   880 leaf    0 {} failed 0 missing 0  OK   cell_0_0_M_0.jsonl.gz
 a11:0,a21:0,a31:MIX,a41:1          nodes      1 split     0 pkill     1 kill     0 leaf    0 {} failed 0 missing 0  OK   cell_0_0_M_1.jsonl.gz
 a11:0,a21:0,a31:MIX,a41:MIX        nodes     10 split     3 pkill     7 kill     0 leaf    0 {} failed 0 missing 0  OK   cell_0_0_M_M.jsonl.gz
 a11:0,a21:1,a31:0,a41:0            nodes     85 split    28 pkill    25 kill    32 leaf    0 {} failed 0 missing 0  OK   cell_0_1_0_0.jsonl.gz
@@ -15,6 +17,7 @@ a11:0,a21:1,a31:MIX,a41:0          nodes     19 split     6 pkill     5 kill    
 a11:0,a21:1,a31:MIX,a41:1          nodes    121 split    40 pkill    15 kill    66 leaf    0 {} failed 0 missing 0  OK   cell_0_1_M_1.jsonl.gz
 a11:0,a21:1,a31:MIX,a41:MIX        nodes     19 split     6 pkill     4 kill     9 leaf    0 {} failed 0 missing 0  OK   cell_0_1_M_M.jsonl.gz
 a11:0,a21:MIX,a31:0,a41:0          nodes     13 split     4 pkill     7 kill     2 leaf    0 {} failed 0 missing 0  OK   cell_0_M_0_0.jsonl.gz
+a11:0,a21:MIX,a31:0,a41:1          nodes   1087 split   362 pkill   512 kill   213 leaf    0 {} failed 0 missing 0  OK   cell_0_M_0_1.jsonl.gz
 a11:0,a21:MIX,a31:1,a41:0          nodes     13 split     4 pkill     7 kill     2 leaf    0 {} failed 0 missing 0  OK   cell_0_M_1_0.jsonl.gz
 a11:0,a21:MIX,a31:1,a41:1          nodes     97 split    32 pkill     8 kill    57 leaf    0 {} failed 0 missing 0  OK   cell_0_M_1_1.jsonl.gz
 a11:0,a21:MIX,a31:1,a41:MIX        nodes     61 split    20 pkill    18 kill    23 leaf    0 {} failed 0 missing 0  OK   cell_0_M_1_M.jsonl.gz
@@ -72,8 +75,8 @@ a11:MIX,a21:MIX,a31:MIX,a41:0      nodes    103 split    34 pkill    48 kill    
 a11:MIX,a21:MIX,a31:MIX,a41:1      nodes     70 split    23 pkill    28 kill    19 leaf    0 {} failed 0 missing 0  OK   cell_M_M_M_1.jsonl.gz
 a11:MIX,a21:MIX,a31:MIX,a41:MIX    nodes    103 split    34 pkill     7 kill    62 leaf    0 {} failed 0 missing 0  OK   cell_M_M_M_M.jsonl.gz
 
-cells verified: 73 of 81   (betting 73 of 80, silent NO)
-nodes replayed: 3475   support leaves: 1   FAMILY leaves: 0
-missing cells (8): a11:0,a21:0,a31:0,a41:0 a11:0,a21:0,a31:MIX,a41:0 a11:0,a21:MIX,a31:0,a41:1 a11:0,a21:MIX,a31:0,a41:MIX a11:MIX,a21:0,a31:0,a41:1 a11:MIX,a21:0,a31:0,a41:MIX a11:MIX,a21:MIX,a31:0,a41:1 a11:MIX,a21:MIX,a31:0,a41:MIX
+cells verified: 76 of 81   (betting 75 of 80, silent yes)
+nodes replayed: 11632   support leaves: 81   FAMILY leaves: 12  (the twelve of family_leaves.json: True)
+missing cells (5): a11:0,a21:MIX,a31:0,a41:MIX a11:MIX,a21:0,a31:0,a41:1 a11:MIX,a21:0,a31:0,a41:MIX a11:MIX,a21:MIX,a31:0,a41:1 a11:MIX,a21:MIX,a31:0,a41:MIX
 problems: none
-THEOREM 4 NOT YET VERIFIED BY THIS SET OF TREES  (140s)
+THEOREM 4 NOT YET VERIFIED BY THIS SET OF TREES  (476s)
