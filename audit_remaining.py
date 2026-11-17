@@ -14,12 +14,14 @@ def run(name,args,cwd=".",marker=None):
     (out/(name+".log")).write_text(text)
     results.append({"check":name,"status":status,"seconds":round(time.time()-start,1)})
     print(name,status,flush=True)
+    print(text,flush=True)
 run("independent-game",["independent_check/check_34.py"],marker=lambda s:"ALL CHECKS PASSED" in s and "skipped:" not in s)
 run("gradient-generation",["makeD.py"])
 run("sharpened-ranges",["check_sharpened.py"],marker=lambda s:bool(re.search(r"certificates: 36 verified, 0 failed; exact witnesses: [1-9][0-9]* verified, 0 failed",s)))
 run("stored-ce-witnesses",["audit_ce_witnesses.py"],marker=lambda s:"ALL STORED CE WITNESSES VERIFIED" in s)
 run("ante-witnesses",["pot_exact.py"],cwd="continuations",marker=lambda s:"ALL EXACT CHECKS PASSED" in s)
 run("uniform-tremble-diagnostic",["tremble_uniform_symbolic.py"])
+if results[-1]["status"] == "PASS": results[-1]["status"] = "DIAGNOSTIC_ONLY"
 for name,inputs in [
     ("original-range-certificates",["nefull_certs.json.gz","enum6_pat_silentR.npy"]),
     ("sequential-pattern-certificates",["seqcert_"+str(k)+".jsonl.gz" for k in (18,62,70,72,77,97,99,196,198,211,440,469)])
