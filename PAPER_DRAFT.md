@@ -1514,6 +1514,12 @@ See Appendix H for the full list with verification status. Core:
 - C. Daskalakis, C. Papadimitriou. *Three-player games are hard.* ECCC TR05-139, 2005.
 - J. Nash, L. Shapley. *A simple three-person poker game.* 1950.
 - B. Chen, J. Ankenman. *The Mathematics of Poker.* 2006.
+- R. McKelvey, T. Palfrey. *Quantal response equilibria for extensive form games.* Experimental
+  Economics 1:9–41, 1998.
+- R. Aumann. *Subjectivity and correlation in randomized strategies.* J. Math. Econ. 1:67–96, 1974.
+- J.-F. Mertens. *Two examples of strategic equilibrium.* Games Econ. Behav. 8:378–388, 1995.
+- J. Billingham. *Equilibrium solutions of three player Kuhn poker with N > 3 cards: a new numerical
+  method using regularization and arc-length continuation.* arXiv:1802.04670, 2018. (abstract only read)
 
 ---
 
