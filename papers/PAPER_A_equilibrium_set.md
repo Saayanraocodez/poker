@@ -354,7 +354,7 @@ sets, and a dominated off-path action can be *essential*: 169 of 23,820 hunt equ
 Nash when projected onto Table 2.
 
 **Ledger.** The proof (`check81.py`; node counts are those of the 2026-10-05 run; a re-derivation on
-another machine is in `proof34/`, 76 of the 81 cells on 2026-11-17, the silent cell at 4,720 nodes and 80
+another machine is in `proof34/`, 77 of the 81 cells on 2026-11-17, the silent cell at 4,720 nodes and 80
 leaves with the same 12 FAMILY leaves):
 
 | part | cells | nodes | support leaves | verdict |
