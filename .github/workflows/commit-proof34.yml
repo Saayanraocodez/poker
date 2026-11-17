@@ -1,0 +1,53 @@
+name: Commit verified proof34 results
+on:
+  push:
+    branches: [codex/complete-proof34-cells]
+    paths: [.github/workflows/commit-proof34.yml]
+permissions:
+  contents: write
+  actions: read
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: claude/funny-heisenberg-ga1r59
+      - name: Ensure research source matches verified source
+        run: test "$(git rev-parse HEAD)" = "ea9b8b42294481d74b527f2610111617e41f8d7f"
+      - uses: actions/download-artifact@v4
+        with:
+          name: proof34-verified-results
+          run-id: 44012773280
+          github-token: ${{ github.token }}
+          path: recovered
+      - name: Validate and copy verified results
+        shell: python
+        run: |
+          from pathlib import Path
+          import shutil
+          src = Path("recovered/proof34")
+          ledger = (src / "ledger.txt").read_text()
+          assert "cells verified: 81 of 81" in ledger
+          assert "missing cells (0): none" in ledger
+          assert "problems: none" in ledger
+          assert "THEOREM 4 VERIFIED: all 81 cells closed" in ledger
+          assert len(list(src.glob("cell_*.jsonl.gz"))) == 81
+          added = {"cell_0_M_0_M.jsonl.gz", "cell_M_0_0_M.jsonl.gz", "cell_M_M_0_1.jsonl.gz", "cell_M_M_0_M.jsonl.gz"}
+          for old in Path("proof34").glob("cell_*.jsonl.gz"):
+              assert old.read_bytes() == (src / old.name).read_bytes(), old.name
+          for name in added:
+              assert not (Path("proof34") / name).exists(), name
+              shutil.copyfile(src / name, Path("proof34") / name)
+          shutil.copyfile(src / "ledger.txt", "proof34/ledger.txt")
+          shutil.copyfile("recovered/check81.log", "proof34/check81.log")
+      - name: Commit and push results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add proof34/cell_0_M_0_M.jsonl.gz proof34/cell_M_0_0_M.jsonl.gz proof34/cell_M_M_0_1.jsonl.gz proof34/cell_M_M_0_M.jsonl.gz proof34/ledger.txt proof34/check81.log
+          git diff --cached --stat
+          git commit -m "proof34: complete all 81 cells with independent verification" -m "Add the four missing certificate trees and full check81 replay log. All 81 cells verified, 38,280 nodes replayed, 12 family leaves matched, no missing cells or problems. Results from Actions run 44012773280."
+          git push origin HEAD:claude/funny-heisenberg-ga1r59
+          git rev-parse HEAD
