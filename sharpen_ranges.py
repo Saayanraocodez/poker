@@ -7,7 +7,8 @@ Leaf labels come from independent_check/family_leaves.json, so no ignored data f
 usage:  python makeD.py ; python sharpen_ranges.py <leaf> <coord> <sup|inf> <budget> <T1> [T2 ...]
         (T as fractions, tried in the order given; results appended to ranges_sharpened.txt)
 """
-import sys, json, time
+import sys, json, time, os
+os.makedirs('ranges_sharpened', exist_ok=True)
 from fractions import Fraction as F
 import sympy as sp
 import kuhn3p as K, symleaf as SL, certbox, nefull, checkcert as C
@@ -35,9 +36,10 @@ for T in Ts:
             return base(og)
         try:
             n = C.check_box_cert(cert, rowof, lab); ok = "VERIFIED by checkcert (%d nodes)" % n
-            json.dump(cert, open("ranges_sharpened_%d_%s_%s.json" % (leaf, name, word), "w"))
+            json.dump(dict(leaf=leaf, coord=name, side=word, T=str(T), cert=cert), open("ranges_sharpened/%d_%s_%s.json" % (leaf, name, word), "w"))
         except C.Bad as ex:
             ok = "CHECKER REJECTED: %s" % ex
         line = "%d %s %s: {x %s %s} is empty on the leaf, T = %s = %.6f, budget %d: %s (%.0fs)" % (leaf, name, word, ">" if sign > 0 else "<", T, T, float(T), budget, ok, time.time() - t0)
     print(line, flush=True)
     open("ranges_sharpened.txt", "a").write(line + "\n")
+    if r[0] and ok.startswith("VERIFIED"): break            # the T's are given tightest first

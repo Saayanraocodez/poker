@@ -3468,7 +3468,7 @@ pole.
 
 *Method* (`continuations/qre.py`). Logit agent QRE: `x_i = 1/(1 + exp(−λ D_i/R_i))` at every
 information set. The principal branch is followed from `λ = 0` by pseudo-arclength continuation in
-`(logit x, log λ)` with the exact Jacobian; it has no turning point up to `λ ≈ 900`.
+`(logit x, log λ)` with the exact Jacobian; it has no turning point up to `λ ≈ 1700` (the run was stopped there).
 
 | λ | b11 = b21 | c11 | b32 | c34 | `c33` position in its window | cost(a11) = cost(a21) | cost(a41) |
 |---|---|---|---|---|---|---|---|
@@ -3476,6 +3476,7 @@ information set. The principal branch is followed from `λ = 0` by pseudo-arclen
 | 48 | 0.1678 | 0.2570 | 4.7e-4 | 1.2e-21 | 0.448 | 0.0877 | 0.0583 |
 | 184 | 0.1613 | 0.2519 | 6.7e-14 | 1.7e-80 | 0.364 | 0.0685 | 0.0610 |
 | 876 | 0.1615 | 0.2504 | 5.3e-64 | 0 | 0.340 | 0.0640 | 0.0624 |
+| 1711 | 0.1615 | 0.2502 | 2.0e-124 | 0 | 0.337 | 0.0634 | 0.0626 |
 
 (costs are conditional on the card, in chips.)
 

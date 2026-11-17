@@ -46,7 +46,7 @@ semi-algebraic sets with certified coordinate ranges (Theorem 5). The proofs are
 **We decide the refinements exactly on this set** (Theorem 6), writing Kreps–Wilson beliefs in
 closed form as leading coefficients along a tremble. Sequential rationality pins every off-path
 coordinate except two, and confines the third player's call frequency `c33` to `[1/2, 15/16]`. Every
-information set is binary, so extensive-form properness coincides with perfection. Perfection and
+information set is binary, so agent-normal-form properness coincides with perfection. Perfection and
 quasi-perfection both leave `c33` an interval; only normal-form properness selects a point.
 
 **The split is determined only under normal-form properness.** We define an incidence ratio ρ, the
@@ -67,6 +67,16 @@ certificate, checked exactly over all 2^40 pure profiles of a restricted game, p
   of two exact equilibria with equal payoffs has exploitability exactly 1/320.
 - Full-width CFR+ and DCFR do converge onto the Nash set (certified distance about 5e-6). Even so,
   they select neither the sequential nor the proper equilibrium.
+
+**Selection, correlation and the ante (new, §18).**
+- A fixed tremble shape selects one point: on path the corner `β = 1/4` (the largest transfer), off
+  path an end of the `c33` window, a pole of ρ. Logit noise selects `β* ≈ 0.1616`, the root of an
+  explicit equation, and `c33 = lo + w/3`.
+- The first player's silence needs independent randomisation: there is an exact normal-form
+  correlated equilibrium in which the first player bets (probability 3308538/55243663).
+- With the ante as a parameter, the silence holds only on a band of antes. A closed-form silent family
+  ends at `A2 = 1/2 + √23/6 ≈ 1.2993`, and the standard game sits exactly where the second player
+  starts betting.
 
 ---
 
@@ -115,7 +125,7 @@ P1 to P3 while staying in equilibrium. SGS left open whether other equilibria ex
    - In every sequential equilibrium every off-path coordinate is pinned except `c23` and `c33`, and
      `c33 ∈ [1/2, 15/16]`.
    - All 398 off-path support patterns are decided, every step replayed by an independent checker.
-   - Extensive-form properness equals perfection here and leaves `c33` an interval (*Corollary
+   - Agent-normal-form properness equals perfection here and leaves `c33` an interval (*Corollary
      6.1*). So does quasi-perfection (*Corollary 6.2*, new).
 
    **[P,E]**
@@ -156,6 +166,14 @@ P1 to P3 while staying in equilibrium. SGS left open whether other equilibria ex
       the theory says they can exist.
 
     **[P,E]**
+12. **Selection, correlation and the ante (§18).**
+    - Generic trembles pin the payoff split at `β = 1/4` and put `c33` on a pole; logit noise pins
+      `β* ≈ 0.1616` and `c33 = lo + w/3`.
+    - An exact normal-form correlated equilibrium in which P1 bets: no correlated-equilibrium
+      certificate can prove P1's silence.
+    - The ante as a parameter: a closed-form silent family and its exact end `A2 = 1/2 + √23/6`.
+
+    **[E,F]**
 
 ### 1.4 What the proofs trust
 
@@ -179,9 +197,13 @@ Floating-point arithmetic decides nothing (Appendix B.9).
 - Abou Risk & Szafron (2010) introduced the three-player variant used here; SGS (2013) found the
   family under study.
 - Hoehn et al. (2005) built exploitive agents from the analytic two-player solutions.
-- Billingham et al. (arXiv:1802.04670) study three-player Kuhn with N > 3 cards numerically. This is
-  likely the closest neighbour: **[?] verify what it reports before submission.** So are
-  arXiv:1704.08124 and arXiv:1707.01392 (simplified three-player Kuhn variants).
+- Billingham (arXiv:1802.04670) computes equilibria of three-player Kuhn poker with N > 3 cards
+  numerically (regularised equations, Newton and arc-length continuation) as a function of the pot
+  size. Its abstract reports that the standard N = 4 game is qualitatively different from N > 4, and
+  a new kind of midrange bet for N > 5. This is the closest neighbour: it is numerical where the
+  present results are exact, and §18.3 uses its parameter (the pot) at N = 4. **[?] Only the abstract
+  was read; read the paper before submission.** arXiv:1704.08124 and arXiv:1707.01392 (simplified
+  three-player Kuhn variants) are still to be checked.
 
 **Multiplayer equilibrium computation.**
 - CFR (Zinkevich et al. 2008), MCCFR (Lanctot et al. 2009), CFR+ (Tammelin 2014), and Linear and
@@ -576,7 +598,9 @@ is then a sign condition on `A_v`, linear in r. For a fixed profile it is one ex
 comes with a Farkas certificate.
 
 **Lemma R1 (binary sets).** With two actions per set, ε-proper ⇔ ε′-perfect with ε′ = ε/(1−ε). So
-extensive-form proper = extensive-form perfect = agent-normal-form perfect. Only *normal-form*
+agent-normal-form proper = extensive-form perfect = agent-normal-form perfect. (Earlier drafts called the
+first of these "extensive-form proper"; the lemma is about properness of the agent normal form, where each
+information set is its own player.) Only *normal-form*
 properness, which orders whole pure strategies across information sets, can select more. **[P]**
 
 ### 8.2 Theorem 6
@@ -628,9 +652,9 @@ box certificates and 21 witnesses on concrete tremble curves `x_w = ε^e ρ`, at
 - **Multi-homogeneity.** Per-set normalisation is without loss only for multi-homogeneous forms. The
   checker enforces this.
 
-### 8.3 Corollary 6.1: extensive-form properness does not select
+### 8.3 Corollary 6.1: agent-normal-form properness does not select
 
-**Corollary 6.1.** Extensive-form properness leaves `c33` an interval of width 7/32. Normal-form
+**Corollary 6.1.** Agent-normal-form properness leaves `c33` an interval of width 7/32. Normal-form
 properness (Theorem 3) selects `c33 = lo + w/3 = 55/96`. The two notions differ here. **[P,E]**
 
 ### 8.4 Corollary 6.2 (new): quasi-perfection does not select either
@@ -650,7 +674,7 @@ interior coordinate whose D is not identically zero.
 - **The endpoints** 1/2 and 23/32 are first-order tight and not sign-definite (at `a21` and `a41`
   respectively). They are undecided at first order.
 
-**Corollary 6.2.** *Quasi-perfection, like extensive-form properness, leaves `c33` an interval, at
+**Corollary 6.2.** *Quasi-perfection, like agent-normal-form properness, leaves `c33` an interval, at
 least the open interval (1/2, 23/32) at this slice. Only normal-form properness selects a point
 (55/96).* This closes open problem 2 for the refinements considered. **[E]**
 
@@ -797,14 +821,38 @@ The window width is **`w = hi − lo = (3/4)(b11 + b21) + β/4`**, independent o
 `w = 0`, a41's pole dies (its numerator vanishes) but a11's survives, as the only admissible value of
 `c33`. Exactly verified at six points across all sub-families (w = 21/80, 11/40, 7/16, 19/80, 1/4).
 
-### 9.8 Theorem 3: normal-form properness selects `c33 = lo + w/3` **[P,E]**
+### 9.8 Theorem 3: normal-form properness forces `c33 = lo + w/3` **[P,E]**
+
+**Theorem 3 (necessity).** *In every normal-form proper equilibrium with `β > 0`, `c33 = 1/2 + w/3`
+(that is `lo + w/3`, with `b32 = 0`). A normal-form proper equilibrium exists (Myerson 1978).*
 
 - **Costs:** `cost(a11) = cost(a21) = 4κ(c33 − lo)` and `cost(a41) = 2κ(hi − c33)`.
 - **Mechanism:** properness orders trembles by cost. P3's belief at BF holding the 3 is
   `q = (r1 + r2)/(r1 + r2 + 2 r4)`, and P3's call threshold is `q = 1/5`.
   - Any strict cost inequality sends `c33` to 0 or 1, outside the window.
-  - So cost equality is needed: **`c33 = lo + w/3`** (`= 1/2 + w/3` once `b32 = 0` is forced).
+  - So cost equality is needed: **`c33 = lo + w/3`**.
 - **Both corners are excluded.**
+
+*Proof.* A normal-form proper equilibrium induces a quasi-perfect, hence sequential, equilibrium (van
+Damme 1984), so Theorem 6 applies: `b12 = b22 = b32 = 0`, `b42 = 1`, `c13 = c34 = 0`, `c43 = 1`. P1's
+pure strategies are a plan per card, and their costs add over cards. So the cheapest strategy that
+bets card `j` costs `cost(a_j1)`, and along an ε-proper sequence the total probability `r_j` of betting
+card `j` is at most `Kε·r_j'` whenever `cost(a_j1) > cost(a_j'1)` in the limit.
+1. *`c23 = 0`.* If `c23 > 0` then `cost(a11) = 4κ(c33 + c23 − 1/2) > cost(a21) = 4κ(c33 − 1/2)`, so
+   `r1 ≪ r2`. An interior `c33` needs `r4 = 2(r1 + r2)(1 + o(1))`, so `r1 ≪ r4`; then P3's belief at BF
+   holding the 2, `r1/(r1 + r3 + 2 r4)`, goes to 0 and folding is strictly better: `c23 = 0`, a
+   contradiction. (A non-interior `c33` is outside the window, since `0 < 1/2 ≤ c33 ≤ hi < 1`.)
+2. *Cost equality.* With `c23 = 0`, `cost(a11) = cost(a21)`. If `cost(a41) > cost(a11)` then
+   `r4 ≪ r1 + r2`, `q → 1`, P3 calls and `c33 = 1`; if `cost(a41) < cost(a11)` then `q → 0` and
+   `c33 = 0`. Both are outside the window, so `4(c33 − lo) = 2(hi − c33)`.
+3. *The corners.* At `c33 = lo` one cost is 0 and the other positive, at `c33 = hi` the reverse; step 2
+   applies. (`hi > 0` because `b32 = 0`.) ∎
+
+*What is not proved.* That every on-path family member carries a normal-form proper equilibrium, or
+which `β` properness allows. Two selections computed in §18 bear on it: the limiting logit equilibrium
+sits exactly at `c33 = lo + w/3` (with `β = β* ≈ 0.1616`), while generic trembles of equal order go to
+an end of the window (with `β = 1/4`).
+
 - **ρ is finite and exactly rational** at the selected point:
 
 | point | w | ρ(a11) | ρ(a21) | ρ(a41) |
@@ -824,8 +872,16 @@ a41, since they are different information sets.
 | stage | what it does to ρ |
 |---|---|
 | Nash | undefined or unbounded; sign flips |
-| sequential = extensive-form proper = perfect = quasi-perfect (Theorem 6, Corollaries 6.1–6.2) | kills the numerator source (`c34`, `c44`, `b32` pinned); ρ's sign becomes determinate, ρ(+e_a11) ∈ [1.395, 45.42] on the refined face; both poles survive |
+| sequential (Theorem 6) | kills the numerator source (`c34`, `c44`, `b32` pinned); ρ's sign becomes determinate, ρ(+e_a11) ∈ [1.395, 45.42] on the refined face; both poles survive |
+| perfect = agent-normal-form proper, and quasi-perfect (Corollaries 6.1–6.2, at the slice of Theorem 6(5)) | the same interval of `c33`: nothing more is selected |
 | normal-form proper (Theorem 3) | kills the denominator source; ρ finite and rational |
+
+Perfection and quasi-perfection are not nested in general (Mertens 1995); here they are compared only
+on the slice where both are certified.
+
+**Sets versus selections (§18).** The rows above are sets of equilibria. A single noise model selects a
+point, and where it lands depends on the model: trembles of one order go to an END of the `c33` window,
+a pole of ρ (§18.1); logit noise goes to `lo + w/3`, where ρ is finite (§18.2).
 
 ### 9.10 Two-player control **[E,G]**
 
@@ -1154,7 +1210,7 @@ exploit-vs-safety trade-off.
    player deviates" is a fact about behaviour that never occurs. This is the most quotable result.
 4. **A refinement ladder in which each rung does something different.** Sequential rationality
    removes the numerator source and ρ's sign ambiguity. Only normal-form properness removes the
-   denominator source. Perfection, extensive-form properness and quasi-perfection all stop at the
+   denominator source. Perfection, agent-normal-form properness and quasi-perfection all stop at the
    same interval.
 5. **You cannot shrink the window instead.** The window width and the transfer are the same quantity
    (`w = 0 ⇔ κβ = 0`).
@@ -1183,8 +1239,9 @@ exploit-vs-safety trade-off.
    min-|du| are grid statistics **[G]**.
 4. **Coordinate directions.** ρ is a ratio and not a convex combination of coordinate ρ's, so
    per-direction values do not extend automatically.
-5. **Properness is the normal-form notion.** The step from normal-form tremble probabilities to the
-   behavioural rates is a modelling assumption; say so.
+5. **Properness is the normal-form notion, and Theorem 3 is a necessity statement.** It shows where
+   `c33` must be in a normal-form proper equilibrium, not that every on-path family member carries one.
+   The tremble and logit selections of §18 are machine-precision float results, not certificates.
 6. **Perfection everywhere on the sequential set is not decided:** the c23-interior pattern has no
    uniform inward direction. Corollary 6.2 is proved at one slice (open interval, symbolically); its
    endpoints are undecided at first order.
@@ -1201,6 +1258,12 @@ exploit-vs-safety trade-off.
 1. **(3,5) completeness:** are components I–III all the betting equilibria? This needs a relaxation
    that constrains correlation between players who meet.
 2. **Perfection on the whole sequential set**, and the endpoints of the `c33` interval.
+2a. **The normal-form proper set.** Which `β` does it allow, and does every such `β` carry a proper
+   equilibrium at `c33 = lo + w/3`? (Trembles give `β = 1/4`, logit `β* ≈ 0.1616`: §18.)
+2b. **Prove the tremble selection:** for every tremble shape of one order, is the limit
+   `(b11, b21, b23, c11) = (0, 1/4, 0, 0)`? 38 of 38 solved shapes say yes.
+2c. **The ante.** Is P1 silent in every equilibrium for `2/3 < A ≤ A2`, and never for `A > A2`? What is
+   the structure of the multiplicity window `1 < A ≲ 1.09`?
 3. **The N = n+1 law beyond (3,4)/(3,5):** an exact certificate at (4,5) and at a second N > n + 1
    point. The Krawczyk and CE-certificate tools should port.
 4. **A vector residue identity** for n ≥ 4, where incidence lives on an (n−2)-simplex.
@@ -1227,7 +1290,7 @@ exploit-vs-safety trade-off.
 | "CFR does not converge in 3-player games" | "external-sampling MCCFR and simultaneous-update CFR/LCFR stay at certified distance 3e-3 to 2e-2; alternating CFR+ and DCFR reach about 5e-6" |
 | "CFR converges to the family" | "MCCFR outputs are all certified off the Nash set (min distance 0.0067); the error is on path" |
 | "R14 suggests equilibria outside the family" | "R14's off-family outputs are averages of equilibria from different sub-families; the Nash set is not convex" |
-| "properness pins ρ" | "normal-form properness pins ρ; extensive-form properness (= perfection here) and quasi-perfection leave c33 an interval" |
+| "properness pins ρ" | "normal-form properness pins ρ; agent-normal-form properness (= perfection here) and quasi-perfection leave c33 an interval" |
 | "ρ is undefined on a measure-zero set" | "ρ is undefined on 19 of 48 coordinate directions everywhere, and on part of the family for 21 more" |
 | "P1 is the only player exposed" | "P1 is the only player whose poles are located by off-path parameters, and the only one whose ρ changes sign; P3 also has poles" |
 | "c34 and c44 are irrelevant" | "c34 and c44 are unconstrained by every incentive, but not inert: they set the numerator of P1's ρ" |
@@ -1235,6 +1298,11 @@ exploit-vs-safety trade-off.
 | "the first-order conditions characterise Nash" | "the own-reach-stripped system does, up to re-choosing own-unreached coordinates; the plain reach-weighted system admits non-equilibria" |
 | "(3,5) payoffs are unique" | "(3,5) has equilibria with different payoffs: P2 gets −0.00131 on I and +0.00160 on II" |
 | "exploitability measures distance to equilibrium" | "in this game the certified distance is a median 29× the exploitability" |
+| "perfection leaves the split undetermined" | "the perfect SET keeps an interval; a fixed tremble shape selects an end of it, a pole of ρ, and β = 1/4" |
+| "properness selects c33 = lo + w/3" | "every normal-form proper equilibrium has c33 = lo + w/3; logit noise selects the same point" |
+| "P1's silence follows from the incentive constraints" | "it needs independent play: P1 bets in an exact normal-form correlated equilibrium" |
+| "P1 is silent in small-deck Kuhn poker" | "at N = 4 P1 is silent for the standard ante; a closed-form silent family exists up to A2 = 1/2 + √23/6 and not beyond" |
+| "b44 ≥ 17/32 in every equilibrium" | "b44 ≥ 17/32 where b41 < 1; at b41 = 1 it is free" |
 
 ---
 
@@ -1297,6 +1365,133 @@ says it can: in equilibria with an opponent-silent action. Other findings:
 - The two-player control gives ρ ≡ 1.
 - Open next: the pot threshold between 1.5 and 3 at which P1's silence, and the mechanism, switch
   on — a pot-to-stack analogue of the N = n + 1 law.
+
+## 18. Selection, correlation and the ante (new, 2026-11-16)
+
+Four questions the earlier sections left open, all at (3, 4). Full detail: MASTER_DATA Part 17; code
+in `continuations/`. **[F\*]** marks a float computation carried to machine precision (an equilibrium of
+a perturbed game solved to violation ≤ 1e-16): strong evidence, not a certificate.
+
+### 18.1 A fixed tremble shape selects a corner and a pole **[F\*]**
+
+Theorem 6 treats perfection as a set, and `c33` keeps an interval because the trembles may sit on the
+knife-edge `r_a41 = 2(r_a11 + r_a21)`. A noisy player does not tremble on a knife-edge. So fix a
+*shape* `m` and perturb the game: at every information set `i` both actions have probability at least
+`ε·m_i`. With floors every set is own-reachable, so the D-condition is the exact equilibrium condition,
+and an active-set Newton method solves it to machine precision. The equilibrium is followed down to
+`ε = 3.9·10⁻⁶`.
+
+| shape | solved | limit on path `(b11, b21, b23, c11)` | `c33` |
+|---|---|---|---|
+| uniform | yes | `(0, 1/4, 0, 0)` | `hi = 3/4` |
+| 12 random, multipliers in `[1/3, 3]` | 11 | `(0, 1/4, 0, 0)` in all | `hi` in all 11 |
+| 30 random, multipliers in `[1/10, 10]` | 27 | `(0, 1/4, 0, 0)` in all | `hi` in 20, `lo = 1/2` in 7 |
+
+- **The perturbed equilibrium is isolated** in every solved case (the indifference Jacobian is
+  nonsingular, smallest singular value about 1.2e-2). The continuum of the unperturbed game is gone.
+- **On path every shape selects the same extreme point:** `β = 1/4`, with P2 and P3 bluffing only the
+  2 (`b11 = c11 = 0`, `b21 = 1/4`, `c21 = 1/2`). Payoffs `(−1/32, −1/48, 5/96)`: the largest transfer
+  from P1 to P3 in the family.
+- **Off path `c33` goes to a pole of ρ.** If `m_a41 < 2(m_a11 + m_a21)`, P3 would call with the 3, so
+  P1's value bet `a41` rises above its floor until P3 is indifferent, and that needs P1 indifferent on
+  `a41`: `c33 → hi`. With the opposite inequality the bluffs rise instead and `c33 → lo`. All 38 solved
+  shapes obey this rule.
+
+*Why this corner* (sketch). An accidental call by a 1 lets a bluff with the 2 win a showdown that a
+bluff with the 1 always loses, so the bluffs with the 1 fall to their floors. Accidental calls also
+make betting the 4 strictly better than checking it, so `b41` and the bluffs behind it rise until the
+next indifference binds: P1's call `a32`, at `b21 = 1/4`.
+
+*Consequence for the incidence ratio.* Under generic trembles of one order the split of a deviator's
+loss is not just undetermined: the selected equilibrium sits exactly where ρ has a pole.
+
+CFR+ run on the perturbed game does not converge (exploitability stalls near 6e-5), which is why the
+equilibria are solved by Newton's method.
+
+### 18.2 Logit noise selects `β*` and `c33 = lo + w/3` **[F\*]**, **[P]**
+
+The logit agent quantal response equilibrium (McKelvey & Palfrey 1998) plays the aggressive action at
+set `i` with probability `1/(1 + exp(−λ·D_i/R_i))`. Its principal branch, followed from `λ = 0` by
+pseudo-arclength continuation, has no turning point and reaches `λ ≈ 1700`:
+
+| λ | b11 = b21 | c11 | b32 | position of `c33` in its window | cost(a11) | cost(a41) |
+|---|---|---|---|---|---|---|
+| 48 | 0.1678 | 0.2570 | 4.7e-4 | 0.448 | 0.0877 | 0.0583 |
+| 184 | 0.1613 | 0.2519 | 6.7e-14 | 0.364 | 0.0685 | 0.0610 |
+| 876 | 0.1615 | 0.2504 | 5.3e-64 | 0.340 | 0.0640 | 0.0624 |
+| 1711 | 0.1615 | 0.2502 | 2.0e-124 | 0.337 | 0.0634 | 0.0626 |
+
+- The branch enters **sub-family B** and the sequential set (`b32, b22, c23, c34 → 0`).
+- **`c33 → lo + w/3`**, the point of Theorem 3: a tremble at set `j` has probability
+  `~ exp(−λ·cost_j)`, so P3's knife-edge forces `cost(a41) = cost(a11)` in the limit.
+- **`β` is pinned by an explicit equation.** Along the branch a mixed coordinate has
+  `D_i = R_i·logit(x_i)/λ`. The family's indifference system is singular, so this perturbation must be
+  orthogonal to the left null space of its Jacobian. In sub-family B that space is spanned by
+  `e_b11 − e_b21` and `½e_b11 + ½e_b33 + e_b41`, which gives `b11 = b21 = β` and
+
+  > **`12·logit(β) + 5·logit(1/2 + 3β/2) + 24·logit(4β) = 0`**,
+
+  with the unique root **`β* = 0.1615744435`** in `(0, 1/4)`. The branch agrees to four digits.
+- The limit: `c33 = 1/2 + 7β*/12 = 0.59425`, payoffs `(−0.027566, −1/48, 0.048399)`.
+
+So the two standard noise models disagree about who pays: trembles put the transfer at its maximum
+`β = 1/4`, logit at `β* ≈ 0.1616`. Neither is a property of the game alone.
+
+### 18.3 The first player's silence needs independence **[E]**
+
+The five-card result "no silent equilibrium" (Theorem 8) was proved by a correlated-equilibrium
+certificate. Could one such certificate replace the 81 trees of Theorem 4? It would bound P1's betting
+probability over all correlated equilibria, so it can exist only if P1 is silent in all of them.
+
+**Theorem 9.** *Three-player Kuhn poker has a normal-form correlated equilibrium in which P1 bets with
+probability 3308538/55243663 ≈ 0.0599 (cards 1, 2 and 4 with probabilities 0.050, 0.030, 0.160).*
+
+*Proof.* `continuations/nfce_witness.json` is a distribution on 193 pure profiles. `nfce_verify.py`
+checks in integer arithmetic every normal-form incentive constraint: for each player, each strategy
+recommended with positive probability, each card and each alternative plan for that card (2,309 rows;
+payoffs are additive over a player's cards, so single-card deviations suffice). ∎
+
+In the weaker type-agent sense (each (player, card) sees only its own plan) P1 can bet with probability
+0.1136 (`ce_witness.json`, 644 rows, exact). Payoffs leave the Nash set too: P2 gets −0.02027 in the
+normal-form equilibrium, not −1/48.
+
+*Consequence.* No Lagrangian or correlated-equilibrium certificate proves Corollary 4.1. The proof has
+to use the product structure of independent strategies, as the label enumeration does.
+
+### 18.4 The ante as a parameter **[E]**, **[F\*]**
+
+Let every player ante `A`, with the bet still 1; the standard game is `A = 1`.
+
+| ante | P1 | P2 | payoffs |
+|---|---|---|---|
+| `A < 2/3` | may bet the 4 | may bet the 4 | zero: nobody bluffs |
+| `2/3 < A < 1` | silent | **silent** | unique |
+| `A = 1` | silent | the SGS family | a segment (β) |
+| `1 < A ≲ 1.09` | silent | bets | several vectors, differing for all three players |
+| `1.1 ≲ A ≤ A2` | silent | bets the 4 always | unique |
+| `A > A2` | **bets** (the 4 always from `A ≈ 1.42`) | | unique |
+
+(Float sweep with machine-precision polish, except the family below.)
+
+- **The standard game is a transition point.** Below `A = 1` the second player never bets; above it,
+  it does. The SGS payoff continuum is the boundary case.
+- **A closed-form silent family.** With `q = 3A + 1`: `a32 = (3A−1)/q`, `a33 = (6A−4)/q`,
+  `b11 = b21 = c11 = c21 = 1/q`, `b33 = (3A−1)/q`, `b41 = 1`, the top card always calling, and the
+  off-path calls with the 3 in P1's deterrence window
+
+  > `(6A − 4)/q ≤ b32 + c33 ≤ (12A + 3)/q²`.
+
+  `pot_exact.py` verifies in exact arithmetic that this is a Nash equilibrium across the window at
+  `A = 11/10, 6/5, 5/4, 129/100`, and that P1 gains just outside it.
+- **The window closes at `A2 = 1/2 + √23/6 ≈ 1.2993`** (`18A² − 18A − 7 = 0`). The sweep has P1 silent
+  at 1.25 and betting at 1.30.
+
+So P1's silence is a band-of-antes phenomenon as well as a small-deck one, and its mechanism is the
+same at every ante: Table 3's `c33` interval is the `A = 1` case of a window whose ends cross at `A2`.
+*Not proved:* that no other silent equilibrium exists past `A2`, or that every equilibrium is silent
+below it.
+
+---
 
 ## References
 
