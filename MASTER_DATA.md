@@ -3359,3 +3359,259 @@ full rank), all of them the `c23 = 0` pattern.  The search is a grid, so "no per
 found" in the other 18 is not a proof of imperfection; but the `c23` interior patterns have no
 uniform inward direction at any point tried, and at the corners `a33 = c33 = 1/2` sits on both
 poles at once, where the first-order test is inconclusive by construction.
+
+---
+
+# PART 17 — THE (3, 4) CONTINUATIONS (2026-11-16)
+
+An independent re-check (`independent_check/`, 2026-11-11) found three errata and three gaps in the
+proof accounting; this part records the fixes and the five continuations that followed. Tags as
+before; **[F*]** marks a float computation carried to machine precision (an equilibrium of a perturbed
+game solved to violation ≤ 1e-16) that is still not an exact certificate.
+
+| # | question | answer | status |
+|---|---|---|---|
+| 17.1 | is Theorem 4 one replayable object? | 81 certificate trees + `check81.py`; Lemma 6 | **[E]** |
+| 17.2 | what does a fixed tremble shape select? | one on-path point, `β = 1/4`; off path a pole of ρ | **[F*]** |
+| 17.3 | what does logit noise select? | sub-family B, `β* = 0.16157…`, `c33 = lo + w/3` | **[F*]**, equation **[P]** |
+| 17.4 | can a correlated-equilibrium certificate prove P1's silence? | no: P1 bets in an exact normal-form correlated equilibrium | **[E]** |
+| 17.5 | what happens as the ante changes? | P1 is silent only on a band of antes; closed-form family, threshold `A2 = 1/2 + √23/6` | family **[E]**, diagram **[F*]** |
+
+## 17.1 Errata 12–14, and Theorem 4 as one object
+
+**Errata** (each with an exact counter-witness in `independent_check/check_34.py`, section 4):
+
+| # | old statement | corrected |
+|---|---|---|
+| 12 | Table 4: `b44 ∈ [17/32, 1]` over all equilibria | `b43`, `b44 ∈ [0, 1]`: both are free where `b41 = 1` (private / own-unreached). `b44 ≥ 17/32` only where `b41 < 1`. Cause: `ranges_table.py` took the union over leaves with a range certificate only. |
+| 13 | `ρ_{P3→P2}(+e_c31) = (2−4s)/(4−5s)` on the family | `(2−4s−m)/(4−5s−m)`, `m = b23(1−b21)`; from `du/dc31 = κ(2−s, 2−4s−m, m−4+5s)` |
+| 14 | `ρ(c22) ≡ 0.8` | `(b11+3b21)/(b11+4b21) ∈ [3/4, 1]`, from `du/dc22 = κ(b21, b11+3b21, −(b11+4b21))`; 4/5 on `b11 = b21` |
+
+**The gaps.**
+1. *Four of the 81 cells were outside the certified ledger.* `enumc7_summary_nash.txt` has 77 lines;
+   the silent cell's exact tree was listed as a control, and the three cells `root81` kills
+   (`a11 = a21 = 0`, `a41 = 1`) rested on float propagation plus a prover-side exact test.
+   Now: `enumc7` closes each of the three at the root with an exact certificate (1 node, `pkill`,
+   `checkenum2` OK), and the silent cell's tree is part of the proof (4,723 nodes in the run of
+   2026-10-05; re-derived in `proof34/`).
+2. *The checker trusted the header.* `checkenum2.py` took the root labels from the file. It now
+   requires them to be exactly the four opening labels of the header's spec, unassigned elsewhere
+   (controls: a header with one extra label, and one with another cell's spec, are both rejected).
+3. *No single place checked coverage.* `check81.py` replays a set of trees, checks that the 81 cells
+   are each covered once, that no support survives in a betting cell, and that the silent cell's
+   FAMILY leaves are the twelve label vectors of `independent_check/family_leaves.json`.
+
+**Lemma 6 (six cells by hand).** No equilibrium has `a11 = a21 = 0 < a41`: P1's bets then come from
+cards 3 and 4 only, every call with a card ≤ 3 loses for sure at a reached set, so a bet with card 1
+is called at most by a 4 and is worth ≥ −2/3 > −1. (Three root cells and three with `a41` interior.)
+
+**`proof34/`** holds the trees themselves (git ignores `*.jsonl.gz` elsewhere): 73 cells re-derived
+on a fresh clone at the time of writing (0.9 MB), the rest being derived; `proof34/ledger.txt` is
+`check81.py`'s output. Node counts differ between runs (worker count, LP solver build): the silent
+cell had 668 supports on the original machine and 610 on the re-run, one betting tree 484 nodes
+against 445. Only the verdicts are invariant.
+
+**Reproducibility.** `makeD.py` regenerates the git-ignored `D_all.pkl` (no script did);
+`family_leaves.json` gives the twelve FAMILY leaves' labels under the leaf ids the committed
+Theorem 5 / 6 artifacts use, because `enuml.py`'s numbering depends on the run.
+
+## 17.2 What a fixed tremble shape selects **[F*]**
+
+*Question.* Theorem 6 treats perfection as a set: `c33` keeps an interval, realised by trembles on the
+knife-edge `r_a41 = 2(r_a11 + r_a21)`. What does ONE tremble shape select?
+
+*Method* (`continuations/perturbed_eq.py`, `tremble_shapes.py`, `tremble_homotopy.py`,
+`tremble_lost.py`). Perturbed game `G(ε, m)`: at every information set `i` both actions have
+probability at least `ε·m_i`. With floors every set is own-reachable, so `x` is an equilibrium iff each
+coordinate is at a floor with the right sign of `D_i`, or interior with `D_i = 0`. Active-set Newton
+with the exact Jacobian (`D` is multilinear) solves this to violation ≤ 1e-16; the equilibrium is
+followed from `ε = 10⁻²` to `ε = 3.9·10⁻⁶`. Random shapes are reached by deforming the floors from
+the uniform shape at `ε = 10⁻³`.
+
+*Results.*
+
+| shape | solved | on-path limit `(b11, b21, b23, c11)` | `c33` |
+|---|---|---|---|
+| uniform (`m ≡ 1`) | yes | `(0, 1/4, 0, 0)` | `3/4 = hi` |
+| 12 random, multipliers log-uniform in `[1/3, 3]` | 11 | `(0, 1/4, 0, 0)` in all 11 | `hi` in all 11 |
+| 30 random, multipliers in `[1/10, 10]` | 27 | `(0, 1/4, 0, 0)` in all 27 | `hi` in 20, `lo = 1/2` in 7 |
+
+- In every solved case the perturbed equilibrium is **isolated**: the indifference Jacobian on the
+  mixed set has smallest singular value ≈ 1.2e-2. The mixed set is
+  `{a32, a33, a41, b21, b33, b41, c21, c33}` when `c33 → hi`, with `a41` replaced by `a21` when
+  `c33 → lo`.
+- The limit on path is always the same extreme point of the family: **`β = 1/4` with P2 and P3
+  bluffing only the 2** (`b11 = c11 = 0`, `b21 = 1/4`, `c21 = 1/2`, `b41 = 1/2`, `a33 = 1/2`), payoffs
+  `(−1/32, −1/48, 5/96)`: the largest transfer from P1 to P3 the family allows.
+- Off path, `c33` goes to a **pole of ρ**: the upper end `hi` in all 31 cases with
+  `m_a41 < 2(m_a11 + m_a21)` (then `a41/ε → 2(m_a11 + m_a21)`: P1 raises its value bets until P3 is
+  indifferent, which needs P1 indifferent on `a41`), and the lower end `lo` in all 7 cases with the
+  opposite inequality.
+- Four shapes were not solved (the solver lost the active set); they are not a regime of their own
+  (`m_a41 / 2(m_a11 + m_a21)` = 0.07, 0.09, 0.91, 2.55).
+
+*Why this point* (a sketch, not a proof). An accidental call by a 1 lets a bluff with the 2 win a
+showdown that a bluff with the 1 loses, so `b11`, `c11` fall to their floors. Accidental calls also
+make betting the 4 strictly better than checking it, so `b41` and the bluffs behind it rise until
+another indifference binds: P1's call `a32`, at `b21 = 1/4` (Table 3's cap, the `a32` pole of §7.5).
+
+*Reading.* The perfect SET is large, but its interior needs knife-edge trembles. A generic fixed shape
+selects extreme points: on path the corner `β = 1/4`, off path an end of the `c33` window. So the
+split of a deviator's loss under generic trembles is not merely indeterminate, it sits exactly at a
+pole.
+
+*CFR on the perturbed game does not converge.* CFR+ restricted to the floors stalls at exploitability
+≈ 6e-5 (ε = 0.01, 2·10⁵ iterations), with averages near but not at the equilibrium
+(`perturbed_cfr.py`); hence the Newton solver.
+
+## 17.3 The limiting logit equilibrium **[F*]**, **[P]**
+
+*Method* (`continuations/qre.py`). Logit agent QRE: `x_i = 1/(1 + exp(−λ D_i/R_i))` at every
+information set. The principal branch is followed from `λ = 0` by pseudo-arclength continuation in
+`(logit x, log λ)` with the exact Jacobian; it has no turning point up to `λ ≈ 900`.
+
+| λ | b11 = b21 | c11 | b32 | c34 | `c33` position in its window | cost(a11) = cost(a21) | cost(a41) |
+|---|---|---|---|---|---|---|---|
+| 10 | 0.174 / 0.184 | 0.253 | 2.0e-1 | 4.6e-5 | 0.986 | 0.210 / 0.204 | 0.033 |
+| 48 | 0.1678 | 0.2570 | 4.7e-4 | 1.2e-21 | 0.448 | 0.0877 | 0.0583 |
+| 184 | 0.1613 | 0.2519 | 6.7e-14 | 1.7e-80 | 0.364 | 0.0685 | 0.0610 |
+| 876 | 0.1615 | 0.2504 | 5.3e-64 | 0 | 0.340 | 0.0640 | 0.0624 |
+
+(costs are conditional on the card, in chips.)
+
+- The branch runs into **sub-family B** (`b11 = b21`, `c11` interior) and into the sequential set:
+  `b32, b22, c23, c34 → 0`.
+- **`c33 → lo + w/3`**, the point Theorem 3 derives for normal-form properness. The algebra is the same:
+  a tremble at set `j` has probability `~ exp(−λ·cost_j)`, so P3's knife-edge `r4 = 2(r1 + r2)` forces
+  `cost(a41) = cost(a11)` in the limit.
+- **`β` is pinned.** Along the branch a mixed coordinate has `D_i = R_i·logit(x_i)/λ`, so to first
+  order the family's indifference system is perturbed by `g_i = R_i logit(x_i)`. The system is singular
+  on the family, so `g` must be orthogonal to the left null space of the on-path indifference Jacobian.
+  In sub-family B that null space is spanned by `e_b11 − e_b21` and `½e_b11 + ½e_b33 + e_b41`
+  (`logit_balance.py`), with `R = (1/4, 1/4, 5/48, 1/4)` on `(b11, b21, b33, b41)`. The first vector
+  gives `b11 = b21`; the second gives
+
+  > **`12·logit(β) + 5·logit(1/2 + 3β/2) + 24·logit(4β) = 0`**,  i.e.
+  > `β¹² (1+3β)⁵ (4β)²⁴ = (1−β)¹² (1−3β)⁵ (1−4β)²⁴`,
+
+  with the unique root **`β* = 0.161574443453`** in `(0, 1/4)`. The branch agrees (0.1615 at λ = 876).
+  `c11` is not pinned at first order (the condition holds for every `c11`); the branch gives
+  `c11 → 0.250`.
+- The limit point: `b11 = b21 = β*`, `b41 = 4β*`, `b33 = 1/2 + 3β*/2`, `w = 7β*/4`,
+  `c33 = 1/2 + 7β*/12 = 0.594252`, payoffs `(−0.0275656, −1/48, 0.0483989)`.
+
+So two standard noise models pin the payoff split at different places: trembles at `β = 1/4`
+(P1 loses the most), logit at `β* ≈ 0.1616`.
+
+## 17.4 Correlated equilibria in which P1 bets **[E]**
+
+*Question.* (3, 5)'s "no silent equilibrium" was proved by a correlated-equilibrium (Lagrangian)
+certificate. Could one certificate of that kind replace the 81 trees and prove P1's silence at (3, 4)?
+Such a certificate bounds P1's betting probability over all correlated equilibria of a deviation
+class, so it exists only if P1 is silent in every one of them.
+
+*Answer: no.* P1 bets in exact correlated equilibria, even of the strongest kind.
+
+| notion | support | `P(P1 bets)` | per card (1, 2, 3, 4) | payoffs | check |
+|---|---|---|---|---|---|
+| type-agent (each (player, card) sees its own plan) | 68 profiles | 0.113567 | 0.098, 0.074, 0, 0.282 | (−0.03001, −0.02347, 0.05348) | 644 rows, exact |
+| **normal-form** (each player sees its whole strategy) | 193 profiles | **3308538/55243663 = 0.059890** | 0.050, 0.030, 0, 0.160 | (−0.02937, −0.02027, 0.04964) | 2,309 rows, exact |
+
+- `ce_lp.py`: LP over distributions on pure profiles (reduced plans, so no two plans are
+  payoff-equivalent) with all 1,608 type-agent incentive rows, solved by cutting planes on the dual;
+  the bound settles at 0.11357 (separation by local search, so the bound is not certified; the
+  equilibrium is). `nfce_lp.py`: the normal-form LP on a product set of 52 candidate strategies per
+  player with every deviation row of every candidate.
+- `ce_verify.py`, `nfce_verify.py`: the LP vertex is re-solved in Fractions (tight rows as
+  equalities) and every incentive constraint is checked in integer arithmetic. Payoffs are additive
+  over a player's cards, so single-card deviations are all there is to check in the normal form.
+  Witnesses: `ce_witness.json`, `nfce_witness.json`.
+
+*Reading.* P1's silence at (3, 4) is not a consequence of incentive constraints alone: it needs the
+players to randomise independently. A mediator can make P1's bet pay, and the Nash payoff set
+(`u2 = −1/48`) is left as well. So the proof of Theorem 4 has to use the product structure, as the
+label enumeration does; no Lagrangian shortcut exists.
+
+## 17.5 The ante as a parameter **[E]**, **[F*]**
+
+Ante `A` each, bet 1; the standard game is `A = 1` (pot `P = 3A`, the parameter of Billingham,
+arXiv:1802.04670). `continuations/pot_sweep.py`: CFR+ then Newton polish (exploitability ≤ 1e-16 where
+the polish converges); `pot_exact.py`: exact arithmetic with `indep.ANTE = A`.
+
+**Phase diagram** **[F*]**
+
+| ante | P1 | P2 | P3 | payoffs |
+|---|---|---|---|---|
+| `A < 2/3` | may bet the 4 | may bet the 4 | bets the 4 | all zero: nobody bluffs, nobody calls |
+| `2/3 < A < 1` | silent | **silent** | bluffs 1 and 2, `c11 + c21 = 2/(3A+1)` | unique, `u1 = u2` |
+| `A = 1` | silent | the SGS family, `b41 = 2(b11 + b21) ∈ [0, 1]` | `c11 + c21 = 1/2` | a segment (β) |
+| `1 < A ≲ 1.09` | silent | `b41 < 1` | asymmetric bluffs | **several payoff vectors, differing for all three players** |
+| `1.1 ≲ A ≤ A2` | silent | bets the 4 always | `c11 = c21 = 1/(3A+1)` | unique |
+| `A2 < A ≲ 1.41` | bets, `a41 < 1` | | | |
+| `A ≳ 1.42` | bets the 4 always, bluffs `a11 + a21 ≈ 0.38` at 1.5 | | | unique |
+
+- `A = 2/3` is where a bluff by the last player first pays: with card 1 it wins the pot when neither
+  opponent holds the 4 (probability 1/3), so its gain over checking is `A − 2/3`.
+- **The standard game is a transition point.** For `A < 1` P2 never bets; for `A > 1` it does. The
+  SGS payoff continuum sits exactly at the boundary, and just above it (A = 1.02, 1.05, 1.08) there
+  are equilibria with different payoffs for all three players, e.g. at `A = 1.05`
+  `u/A = (−0.0330, −0.0183, 0.0513)`, `(−0.0338, −0.0163, 0.0501)`, `(−0.0323, −0.0203, 0.0526)`.
+- P1's silence is a band-of-antes phenomenon, as it is a small-deck phenomenon: it ends at `A2`.
+
+**The closed-form silent family `F_A`** **[E]**. With `q = 3A + 1`:
+
+```
+P1:  a_j1 = 0;   a32 = (3A−1)/q;   a33 = (6A−4)/q;   a42 = a43 = a44 = 1
+P2:  b11 = b21 = 1/q;   b33 = (3A−1)/q;   b41 = b42 = b43 = b44 = 1;   b32 free (off path)
+P3:  c11 = c21 = 1/q;   c41 = c42 = c43 = c44 = 1;   c33 free (off path);   everything else 0
+```
+
+P1's deterrence window for the off-path calls with the 3:
+
+> `L(A) = (6A − 4)/q  ≤  b32 + c33  ≤  U(A) = (12A + 3)/q²`
+
+(below `L`, P1 gains by bluffing cards 1 and 2; above `U`, by betting the 4). `pot_exact.py` checks in
+exact arithmetic that `F_A` is a Nash equilibrium at six points of the window for
+`A = 11/10, 6/5, 5/4, 129/100`, and that P1 gains just outside it (by 43/120000 … below, 1/12000
+above). Payoffs at `A = 6/5`: `(−101/2116, −1/138, 349/6348)`.
+
+> **`L(A) ≤ U(A)  ⟺  18A² − 18A − 7 ≤ 0  ⟺  A ≤ A2 = 1/2 + √23/6 = 1.29930…`**
+
+Past `A2` the window is empty (`L − U = 2/2401` at `A = 13/10`), so this family is gone; the sweep has
+P1 silent at 1.25 and betting at 1.30. *Not proved:* that no other silent equilibrium exists for
+`A > A2`, or that every equilibrium is silent for `1 < A ≤ A2`; that would take the 81-cell machinery
+at each `A`. The deterrence mechanism is the one of the standard game: Table 3's `c33` window is the
+case `A = 1` of a window whose two ends cross at `A2`.
+
+## 17.6 Does a refinement pin β? Where Theorem 3 stands
+
+- **As sets, no.** Perfect equilibria exist at `β = 1/4` and at generic `β` (the witnesses of §16.13),
+  and sequential rationality does not touch the path.
+- **As selections, yes, and differently.** Generic trembles: `β = 1/4`. Logit: `β* ≈ 0.1616`.
+- **Theorem 3 is a necessity statement.** Every normal-form proper equilibrium with `β > 0` has
+  `c33 = lo + w/3` (proof completed below), and one exists by Myerson's theorem; it is not shown that
+  every on-path family member carries one, nor which `β` properness allows. The logit limit shows the
+  cost-equality point is reached by a natural cost-ordered noise model.
+
+*Completing the necessity proof.* A normal-form proper equilibrium induces a quasi-perfect, hence
+sequential, equilibrium (van Damme 1984), so Theorem 6 applies: `b12 = b22 = b32 = 0`, `b42 = 1`,
+`c13 = c34 = 0`, `c43 = 1`. P1's pure strategies are plans per card and their costs add over cards, so
+the cheapest strategy that bets card `j` costs `cost(a_j1)`, and properness makes the total probability
+`r_j` of betting card `j` at most `Kε` times `r_j'` whenever `cost(a_j1) > cost(a_j'1)` in the limit.
+With `c23 > 0`, `cost(a11) = 4κ(c33 + c23 − 1/2) > cost(a21) = 4κ(c33 − 1/2)`, so `r1 ≪ r2`; an interior
+`c33` needs `r4 = 2(r1 + r2)(1 + o(1))`, hence `r1 ≪ r4`, and P3's belief at BF holding the 2,
+`r1/(r1 + r3 + 2r4) → 0`, makes folding strictly better: `c23 = 0`, a contradiction. So `c23 = 0`,
+`cost(a11) = cost(a21)`, and the argument of Theorem 3 gives `cost(a41) = cost(a11)`:
+`c33 = 1/2 + w/3`. The endpoints are excluded as before (`hi > 0` because `b32 = 0`).
+
+## 17.7 Reproduction
+
+```
+python independent_check/check_34.py                    # errata, exact (15 s)
+python makeD.py ; python check81.py proof34 -j 4        # the 81-cell proof (replays every tree present)
+cd continuations
+python tremble_shapes.py 0 ; python tremble_homotopy.py 30 7 10 ; python tremble_lost.py 30 7 10
+python qre.py 3000 ; python logit_balance.py
+python ce_lp.py 600 0 ; python ce_verify.py 0 ; python nfce_lp.py 5 0 24 ; python nfce_verify.py 0
+python pot_sweep.py 1.0,1.05,1.1,1.2,1.25,1.3,1.4,1.5 8000 2 ; python pot_exact.py
+```
