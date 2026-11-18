@@ -56,3 +56,10 @@ and runs the negative coverage test.
 
 `nefull.py` and `nefull_refine.py` also load the committed family labels directly.
 Historical numerical samples are optional search seeds for `nefull.py`, never trusted proof inputs.
+
+## Committed-branch audit
+
+The complete audit also passed on commit `147a68638c973d0980efdd82b12a1d7101d10e3f`:
+https://github.com/Saayanraocodez/poker/actions/runs/44223799547
+
+`audit-results/summary.json` records nine passing checks and the separately scoped uniform-tremble diagnostic; no certificate check is blocked.
