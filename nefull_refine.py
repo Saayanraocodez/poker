@@ -6,6 +6,7 @@ there.  Updates nefull_ranges.txt / nefull_certs.json.gz in place.
 usage:  python nefull_refine.py [workers]
 """
 import numpy as np, sys, time, json, gzip, os
+from family_data import family_labels
 import sympy as sp
 from fractions import Fraction as F
 import kuhn3p as K, symleaf as SL, certbox, nefull
@@ -66,9 +67,8 @@ if __name__ == "__main__":
             print("   %-14s -> %s attained=%s" % (key, T, att), flush=True)
     with gzip.open("nefull_certs.json.gz", "wt") as f: json.dump(certs, f)
     # rewrite the ranges table from the certs
-    L = np.load("enum6_pat_silentR.npy")
-    with np.load("symleaf_silentR.npz") as z: vd = z["verdict"]
-    fam = [int(k) for k in np.flatnonzero(vd == SL.VC["FAMILY"])]
+    L = family_labels()
+    fam = sorted(L)
     fmt = lambda T: "?" if T is None else ("%s" % T if T.denominator <= 100 else "%.6f" % float(T))
     glob = {}
     with open("nefull_ranges.txt", "w") as f:

@@ -1249,7 +1249,7 @@ exploit-vs-safety trade-off.
 7. **CFR studies are of specific variants, budgets and averaging schemes.** Distances are certified,
    but the conclusions about convergence are empirical.
 8. **Identifiability (§12)** is a probe at single rational points, with float Fisher information.
-9. **Artifact coverage varies by result.** The complete 81-cell Theorem 4 proof is committed in `proof34/`. Historical cross-check data and some range/refinement certificates remain outside git; those claims need their original artifacts restored before a fresh clone can replay them. The historical working archive was reported as about 64 GB.
+9. **Artifact coverage varies by result.** The complete 81-cell Theorem 4 proof is committed in `proof34/`. The 522 range-bound and twelve sequential-pattern certificates have also been regenerated and independently replayed; see `RECOVERED_CERTIFICATES.md` for scope and fresh-clone commands. Recovered range records certify outer bounds and do not restore historical attainment claims. Other historical cross-check data remain outside git; the historical working archive was reported as about 64 GB.
 
 ---
 
@@ -2137,6 +2137,8 @@ Generated from each file's module docstring (first paragraph) or first comment. 
 ---
 
 ## Appendix D. Data inventory: every data file, log and certificate
+
+The inventory below is a historical snapshot. Current committed additions include the complete `proof34/` set, `nefull_certs.json.gz`, and all twelve `seqcert_<leaf>.jsonl.gz` files. See `RECOVERED_CERTIFICATES.md` for current replay coverage.
 
 ### D.1 In the repository (tracked or about to be committed)
 

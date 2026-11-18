@@ -22,6 +22,7 @@ the set explicit:
 usage:  python nefull.py [workers]      (KUHN_RANGE_BUDGET: B&B nodes per certificate, default 40)
 """
 import numpy as np, sys, time, json, gzip, os
+from family_data import family_labels
 import sympy as sp
 from fractions import Fraction as F
 import kuhn3p as K, symleaf as SL, certbox
@@ -93,8 +94,10 @@ def snap_witness(polys, kinds, gens, x, v, T, mixmask):
 _CACHE = {}
 def _leaf(k):
     if k not in _CACHE:
-        L = np.load("enum6_pat_silentR.npy"); lab = L[k]
-        W = np.concatenate([np.load("certified_eq_all.npy"), np.load("hunt_eq_bet2.npy")])
+        L = family_labels(); lab = L[k]
+        # Historical numerical samples are optional search seeds, never proof inputs.
+        samples = [np.load(p) for p in ("certified_eq_all.npy", "hunt_eq_bet2.npy") if os.path.isfile(p)]
+        W = np.concatenate(samples) if samples else np.empty((0, 48))
         X, syms, G, mixv, dcv, priv, gens, polys, kinds, orig = leaf_system(lab)
         gidx = mixv + dcv; mixmask = [g in [syms[i] for i in mixv] for g in gens]
         ok = np.ones(len(W), bool)
@@ -186,9 +189,8 @@ def range_task(a):
 def main(nw=8):
     from multiprocessing import Pool
     t0 = time.time()
-    L = np.load("enum6_pat_silentR.npy")
-    with np.load("symleaf_silentR.npz") as z: vd = z["verdict"]
-    fam = [int(k) for k in np.flatnonzero(vd == SL.VC["FAMILY"])]
+    L = family_labels()
+    fam = sorted(L)
     info = {k: leaf_text(k) for k in fam}
     with open("nefull_systems.txt", "w") as f:
         for k in fam: f.write(info[k][2])
