@@ -1,0 +1,55 @@
+name: Verify recovered supplemental certificates
+on:
+  push:
+    branches: [claude/funny-heisenberg-ga1r59]
+    paths: [.github/workflows/verify-recovered.yml, check_recovered.py]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy scipy sympy
+      - name: Wait for certificate artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for run in 44222144624 44222404514; do
+            gh run watch "$run" --interval 20 || true
+          done
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: '44222144624'
+          pattern: recovered-leaf-*
+          path: range-inputs
+          merge-multiple: true
+      - run: cp range-inputs/recovered-ranges-*.json.gz .
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: '44222404514'
+          pattern: sequential-leaf-*
+          merge-multiple: true
+      - run: python makeD.py
+      - run: python check_recovered.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: recovered-verified
+          path: |
+            nefull_certs.json.gz
+            seqcert_*.jsonl.gz
+            recovered-verification.json
+            recovered-*.log
+          retention-days: 30
