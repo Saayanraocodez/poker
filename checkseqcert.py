@@ -35,6 +35,7 @@ usage:  python checkseqcert.py [seqcert_<leaf>.jsonl.gz ...]
 import json, gzip, sys, glob, itertools
 from fractions import Fraction as F
 import numpy as np
+from family_data import family_labels
 import seqforms as SF
 import checkcert as C
 import kuhn3p as K
@@ -355,7 +356,7 @@ def lead_along(poly48, curve, pin0, pin1, interior):
 
 # ------------------------------------------------------------------ one leaf
 def check_file(path):
-    L = np.load("enum6_pat_silentR.npy")
+    L = family_labels()
     D, R = SF.DR()
     stats = {"closure": 0, "onesigned": 0, "cert": 0, "orderings": 0, "witness": 0}
     with gzip.open(path, "rt") as f:
@@ -378,7 +379,11 @@ def check_file(path):
             need(val == (1 if s > 0 else 0), "%s: form sign disagrees with the forced value" % name)
         assign0[v] = val; stats["closure"] += 1
     decide = [I[n] for n in head["decide"]]
-    need(sorted(set(decide) | set(assign0)) == sorted(set(decide) | set(assign0)), "")
+    need(len(set(decide)) == len(decide), "duplicate decide coordinate")
+    need(not (set(decide) & set(assign0)), "decide overlaps closure")
+    pin = {w: F(int(lab[w])) for w in range(NX) if lab[w] in (0, 1)}
+    expected = {v for v in range(NX) if lab[v] == DC and not substitute_values(D[v], pin)}
+    need(set(decide) == expected - set(assign0), "decide omits or adds off-path coordinates")
     # 2. coverage (records are prefixes in the decide order)
     index = {}
     for r in recs:
@@ -424,6 +429,8 @@ def check_file(path):
 
 if __name__ == "__main__":
     paths = sys.argv[1:] or sorted(glob.glob("seqcert_*.jsonl.gz"))
+    if not paths:
+        raise SystemExit("No sequential certificates found")
     bad = 0
     for p in paths:
         try:
@@ -432,3 +439,5 @@ if __name__ == "__main__":
         except (Bad, C.Bad) as e:
             bad += 1; print("%-24s FAILED: %s" % (p, e), flush=True)
     print("%d files, %d failed  %s" % (len(paths), bad, "OK" if bad == 0 else "*** NOT VERIFIED"))
+
+    sys.exit(bool(bad))

@@ -25,6 +25,7 @@ if _sys.stdout is None or _sys.stderr is None:
     _sys.stdout = _sys.stderr = open("log_seqcert.txt", "a", buffering=1, encoding="utf-8", errors="replace")
 import json, gzip, time, sys, itertools
 import numpy as np
+from family_data import family_labels
 from fractions import Fraction as F
 import seqforms as SF
 import checkseqcert as CK
@@ -148,7 +149,7 @@ def find_witness(lab, pieces, assign):
 
 # ------------------------------------------------------------------ the enumeration
 def run(k):
-    L = np.load("enum6_pat_silentR.npy"); lab = [int(x) for x in L[k]]; t0 = time.time()
+    L = family_labels(); lab = [int(x) for x in L[k]]; t0 = time.time()
     pieces = seqset.leaf_pieces(L[k])
     unreached = pieces[6]
     forced = closure(lab, unreached)

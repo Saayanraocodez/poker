@@ -1,0 +1,42 @@
+name: Recover missing certificates
+on:
+  push:
+    branches: [claude/funny-heisenberg-ga1r59]
+    paths: [.github/workflows/recover-certificates.yml, recover_ranges.py, family_data.py]
+permissions:
+  contents: read
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      max-parallel: 12
+      matrix:
+        leaf: [18,62,70,72,77,97,99,196,198,211,440,469]
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy scipy sympy
+      - run: python makeD.py
+      - name: Regenerate sequential certificate
+        run: python seqcert.py 1 ${{ matrix.leaf }}
+      - name: Replay sequential certificate
+        run: python checkseqcert.py seqcert_${{ matrix.leaf }}.jsonl.gz
+      - name: Recover range certificates
+        if: always()
+        run: python recover_ranges.py ${{ matrix.leaf }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: recovered-leaf-${{ matrix.leaf }}
+          path: |
+            seqcert_${{ matrix.leaf }}.jsonl.gz
+            recovered-ranges-${{ matrix.leaf }}.json.gz
+          retention-days: 30

@@ -12,6 +12,7 @@ usage:  python checknefull.py
 """
 import json, gzip, time, pickle
 import numpy as np
+from family_data import family_labels
 from fractions import Fraction as F
 import checkcert as C
 import kuhn3p as K
@@ -38,7 +39,8 @@ def evaluate(p48, x):
 if __name__ == "__main__":
     t0 = time.time()
     with gzip.open("nefull_certs.json.gz", "rt") as f: certs = json.load(f)
-    L = np.load("enum6_pat_silentR.npy")
+    L = family_labels()
+    if not certs: raise SystemExit("No range certificates found")
     ok = bad = wit_ok = wit_bad = 0
     for key, rec in certs.items():
         k, name, word = key.split(":"); k = int(k); lab = [int(v) for v in L[k]]
@@ -74,3 +76,5 @@ if __name__ == "__main__":
             if good: wit_ok += 1
             else: wit_bad += 1; print("%s: witness does not satisfy the leaf system" % key)
     print("range certificates: %d verified, %d failed; witnesses: %d verified, %d failed  (%.0fs)" % (ok, bad, wit_ok, wit_bad, time.time() - t0))
+
+    raise SystemExit(bool(bad or wit_bad))
