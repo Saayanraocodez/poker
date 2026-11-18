@@ -5,10 +5,11 @@ condition verified in Fractions, then the belief LP -- uniform scale first, then
 every ordering of P1's openings."""
 import json, itertools, time, sys
 import numpy as np
+from family_data import family_labels
 from fractions import Fraction as F
 import seqset, refine
 
-L = np.load("enum6_pat_silentR.npy"); NAME = refine.NAME; I = refine.I
+L = family_labels(); NAME = refine.NAME; I = refine.I
 B11 = [F(1, 8), F(1, 6), F(3, 16), F(1, 5), F(1, 4), F(1, 10), F(1, 12)]
 B21 = [F(0), F(1, 32), F(1, 24), F(1, 16), F(1, 12), F(1, 10)]
 B23 = [F(0), F(1, 64), F(1, 48), F(1, 40), F(1, 32), F(1, 24), F(1, 20)]

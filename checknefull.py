@@ -11,6 +11,7 @@ attained, and a certified bound otherwise.
 usage:  python checknefull.py
 """
 import json, gzip, time, pickle
+from pathlib import Path
 import numpy as np
 from family_data import family_labels
 from fractions import Fraction as F
@@ -41,10 +42,19 @@ if __name__ == "__main__":
     with gzip.open("nefull_certs.json.gz", "rt") as f: certs = json.load(f)
     L = family_labels()
     if not certs: raise SystemExit("No range certificates found")
+    expected = set()
+    for line in Path("nefull_ranges.txt").read_text().splitlines():
+        f = line.split()
+        if f and f[0].isdigit():
+            expected.update(f"{f[0]}:{f[2]}:{word}" for word in ("inf","sup"))
+    if set(certs) != expected:
+        raise SystemExit(f"Incomplete range coverage: {len(set(certs) & expected)}/{len(expected)}")
     ok = bad = wit_ok = wit_bad = 0
     for key, rec in certs.items():
         k, name, word = key.split(":"); k = int(k); lab = [int(v) for v in L[k]]
         T = C.fr(rec["T"]); v = I[name]; sign = rec["sign"]
+        if word not in ("inf", "sup") or sign != (1 if word == "sup" else -1):
+            raise SystemExit("Invalid range direction: " + key)
         cert = rec["cert"]; gens = cert["gens"]; t = gens.index(v)
         side = C.padd(C.var(t, len(gens)), C.const(-T, len(gens))) if sign > 0 else C.padd(C.pscale(C.var(t, len(gens)), F(-1)), C.const(T, len(gens)))
         base = C.rowof_for(lab, gens)

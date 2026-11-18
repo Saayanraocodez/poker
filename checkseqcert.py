@@ -367,6 +367,8 @@ def check_file(path):
     assign0 = {}
     for name, val, why in head["closure"]:
         v = I[name]
+        need(v not in assign0, "duplicate closure coordinate")
+        need(why in ("dominance", "robust"), "unknown closure reason")
         need(lab[v] == DC, "closure forces %s, which the leaf does not leave free" % name)
         if why == "dominance":
             m0 = next(iter(R[v])); c = D[v].get(m0, F(0)) / R[v][m0]
@@ -404,6 +406,7 @@ def check_file(path):
         a = dict(assign0); a.update({decide[t]: pref[t] for t in range(len(pref))})
         case = Case(lab, a)
         if r["kind"] == "witness":
+            need(len(pref) == len(decide), "witness must specify a complete pattern")
             check_witness(lab, a, r); stats["witness"] += 1; continue
         need(r["kind"] == "kill", "record of kind %r" % r["kind"])
         ev = r["ev"]
