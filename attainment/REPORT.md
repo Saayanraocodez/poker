@@ -74,3 +74,8 @@ python test_attainment_checker.py
 ```
 
 The committed evidence lives in `attainment/leaf-*.json.gz`; `attainment/summary.json` records coverage and hashes. Original outer-bound certificates remain unchanged. General global tremble-selection questions are outside this endpoint audit.
+
+## Committed-branch audit
+
+The integrated audit passed on `7eb54013ca76da9b5cbd31c7244e0e5d05db7ae4`, including endpoint evidence and all five negative controls:
+https://github.com/Saayanraocodez/poker/actions/runs/44449997950
