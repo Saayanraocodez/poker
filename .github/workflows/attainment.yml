@@ -2,7 +2,7 @@ name: Recover range endpoint evidence
 on:
   push:
     branches: [claude/funny-heisenberg-ga1r59]
-    paths: [recover_attainment.py, check_attainment.py, .github/workflows/attainment.yml]
+    paths: [recover_attainment.py]
 permissions:
   contents: read
 jobs:
@@ -47,6 +47,7 @@ jobs:
           merge-multiple: true
       - run: python makeD.py
       - run: python check_attainment.py | tee attainment/replay.log
+        shell: bash
       - uses: actions/upload-artifact@v4
         with:
           name: attainment-verified

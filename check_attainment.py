@@ -36,13 +36,19 @@ def check(paths,full=True):
             if r["kind"]=="open_label":
                 assert lab[K.NAME_IDX[name]]==2 and T in (0,1)
             else:
-                assert r["kind"]=="closed_side"
+                assert r["kind"] in ("closed_side","endpoint_equality","stronger_bound")
                 cert=r["cert"]; gens=cert["gens"]; n=len(gens); t=gens.index(K.NAME_IDX[name])
                 sign=1 if word=="sup" else -1
-                side=C.pscale(C.padd(C.var(t,n),C.const(-T,n)),F(sign))
+                target=T
+                kind=">="
+                if r["kind"]=="stronger_bound":
+                    target=F(r["stronger_T"]); assert sign*(T-target)>0, "Not a strictly stronger bound"
+                    kind=">"
+                elif r["kind"]=="endpoint_equality": kind="="
+                side=C.pscale(C.padd(C.var(t,n),C.const(-target,n)),F(sign))
                 base=C.rowof_for(lab,gens)
                 def rowof(o):
-                    return (side,">=") if o[0]=="side" else base(o)
+                    return (side,kind) if o[0]=="side" else base(o)
                 C.check_box_cert(cert,rowof,lab)
         counts[status]+=1
     print(json.dumps(counts),flush=True)
