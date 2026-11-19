@@ -63,3 +63,7 @@ The complete audit also passed on commit `147a68638c973d0980efdd82b12a1d7101d10e
 https://github.com/Saayanraocodez/poker/actions/runs/44223799547
 
 `audit-results/summary.json` records nine passing checks and the separately scoped uniform-tremble diagnostic; no certificate check is blocked.
+
+## Endpoint follow-up
+
+Exact endpoint evidence is now recorded separately in [attainment/REPORT.md](attainment/REPORT.md): 402 attained bounds, 91 excluded bounds, and 29 unknown endpoints. The original outer-bound records remain unchanged; use the sidecar evidence for the independently checked endpoint status. Exclusion alone does not establish tightness of an infimum or supremum.

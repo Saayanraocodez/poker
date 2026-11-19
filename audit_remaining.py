@@ -35,6 +35,8 @@ for name,inputs in [
         run(name,["checknefull.py"],marker=lambda s:"range certificates: 522 verified, 0 failed" in s)
     else:
         run(name,["checkseqcert.py",*inputs],marker=lambda s:"12 files, 0 failed  OK" in s)
+run("range-endpoint-evidence",["check_attainment.py"],marker=lambda s:"ALL ENDPOINT EVIDENCE VERIFIED" in s)
+run("range-endpoint-negative-controls",["test_attainment_checker.py"],marker=lambda s:"ALL FIVE NEGATIVE CONTROLS PASSED" in s)
 summary={"scope":"Available committed supplemental artifacts; excludes the already completed 81-cell replay and historical data outside git.","results":results}
 (out/"summary.json").write_text(json.dumps(summary,indent=2)+"\n")
 print(json.dumps(summary,indent=2))
